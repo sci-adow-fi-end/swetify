@@ -9,7 +9,7 @@
 			"_parent": {
 				"$ref": "AAAAAAFF+h6SjaM2Hec="
 			},
-			"name": "Model",
+			"name": "model.Model",
 			"ownedElements": [
 				{
 					"_type": "UMLClassDiagram",
@@ -77,7 +77,7 @@
 											"top": 64,
 											"width": 73.67724609375,
 											"height": 13,
-											"text": "(from Model)"
+											"text": "(from model.Model)"
 										},
 										{
 											"_type": "LabelView",
@@ -165,7 +165,7 @@
 											"top": 839,
 											"width": 366.447265625,
 											"height": 13,
-											"text": "Track"
+											"text": "model.Track"
 										},
 										{
 											"_type": "LabelView",
@@ -179,7 +179,7 @@
 											"top": 1408,
 											"width": 73.67724609375,
 											"height": 13,
-											"text": "(from Model)"
+											"text": "(from model.Model)"
 										},
 										{
 											"_type": "LabelView",
@@ -271,7 +271,7 @@
 											"top": 892,
 											"width": 366.447265625,
 											"height": 13,
-											"text": "-artists: ArrayList<Artist>",
+											"text": "-artists: ArrayList<model.Artist>",
 											"horizontalAlignment": 0
 										}
 									],
@@ -305,7 +305,7 @@
 											"top": 915,
 											"width": 366.447265625,
 											"height": 13,
-											"text": "+Track(title: String, duration: Duration, artists: ArrayList<Artist>)",
+											"text": "+model.Track(title: String, duration: Duration, artists: ArrayList<model.Artist>)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -446,7 +446,7 @@
 											"top": 161,
 											"width": 205,
 											"height": 13,
-											"text": "Playlist"
+											"text": "model.Playlist"
 										},
 										{
 											"_type": "LabelView",
@@ -459,7 +459,7 @@
 											"left": 16,
 											"width": 73.67724609375,
 											"height": 13,
-											"text": "(from Model)"
+											"text": "(from model.Model)"
 										},
 										{
 											"_type": "LabelView",
@@ -740,7 +740,7 @@
 											"top": 80,
 											"width": 73.67724609375,
 											"height": 13,
-											"text": "(from Model)"
+											"text": "(from model.Model)"
 										},
 										{
 											"_type": "LabelView",
@@ -815,7 +815,7 @@
 											"top": 229,
 											"width": 200.7861328125,
 											"height": 13,
-											"text": "-playlists: LinkedList<Playlist>",
+											"text": "-playlists: LinkedList<model.Playlist>",
 											"horizontalAlignment": 0
 										},
 										{
@@ -832,7 +832,7 @@
 											"top": 244,
 											"width": 200.7861328125,
 											"height": 13,
-											"text": "-favourites: Playlist",
+											"text": "-favourites: model.Playlist",
 											"horizontalAlignment": 0
 										},
 										{
@@ -849,7 +849,7 @@
 											"top": 259,
 											"width": 200.7861328125,
 											"height": 13,
-											"text": "-suggestions: Suggestions",
+											"text": "-suggestions: model.Suggestions",
 											"horizontalAlignment": 0
 										},
 										{
@@ -866,7 +866,7 @@
 											"top": 274,
 											"width": 200.7861328125,
 											"height": 13,
-											"text": "-followedArtits: LinkedList<Artist>",
+											"text": "-followedArtits: LinkedList<model.Artist>",
 											"horizontalAlignment": 0
 										}
 									],
@@ -900,7 +900,7 @@
 											"top": 297,
 											"width": 200.7861328125,
 											"height": 13,
-											"text": "+User(username: String)",
+											"text": "+model.User(username: String)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -1042,7 +1042,7 @@
 											"top": 591,
 											"width": 260.73974609375,
 											"height": 13,
-											"text": "Artist"
+											"text": "model.Artist"
 										},
 										{
 											"_type": "LabelView",
@@ -1056,7 +1056,7 @@
 											"top": 128,
 											"width": 73.67724609375,
 											"height": 13,
-											"text": "(from Model)"
+											"text": "(from model.Model)"
 										},
 										{
 											"_type": "LabelView",
@@ -1165,7 +1165,7 @@
 											"top": 659,
 											"width": 260.73974609375,
 											"height": 13,
-											"text": "-albums: ArrayList<Album>",
+											"text": "-albums: ArrayList<model.Album>",
 											"horizontalAlignment": 0
 										}
 									],
@@ -1199,7 +1199,7 @@
 											"top": 682,
 											"width": 260.73974609375,
 											"height": 13,
-											"text": "+Artist(username: String, stageName: String)",
+											"text": "+model.Artist(username: String, stageName: String)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -1409,7 +1409,7 @@
 											"top": 383,
 											"width": 215,
 											"height": 13,
-											"text": "Album"
+											"text": "model.Album"
 										},
 										{
 											"_type": "LabelView",
@@ -1423,7 +1423,7 @@
 											"top": 544,
 											"width": 73.67724609375,
 											"height": 13,
-											"text": "(from Model)"
+											"text": "(from model.Model)"
 										},
 										{
 											"_type": "LabelView",
@@ -1481,7 +1481,7 @@
 											"top": 406,
 											"width": 215,
 											"height": 13,
-											"text": "-playlist: Playlist",
+											"text": "-playlist: model.Playlist",
 											"horizontalAlignment": 0
 										},
 										{
@@ -1532,7 +1532,7 @@
 											"top": 444,
 											"width": 215,
 											"height": 13,
-											"text": "+Album(tracks: LinkedList<Track>)",
+											"text": "+model.Album(tracks: LinkedList<model.Track>)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -2487,7 +2487,7 @@
 											"top": 575,
 											"width": 271,
 											"height": 13,
-											"text": "PlaybackQueue"
+											"text": "model.PlaybackQueue"
 										},
 										{
 											"_type": "LabelView",
@@ -2501,7 +2501,7 @@
 											"top": 1072,
 											"width": 73.67724609375,
 											"height": 13,
-											"text": "(from Model)"
+											"text": "(from model.Model)"
 										},
 										{
 											"_type": "LabelView",
@@ -2593,7 +2593,7 @@
 											"top": 621,
 											"width": 271,
 											"height": 13,
-											"text": "+PlaybackQueue()",
+											"text": "+model.PlaybackQueue()",
 											"horizontalAlignment": 0
 										},
 										{
@@ -2610,7 +2610,7 @@
 											"top": 636,
 											"width": 271,
 											"height": 13,
-											"text": "+addTrack(track: Track): void",
+											"text": "+addTrack(track: model.Track): void",
 											"horizontalAlignment": 0
 										},
 										{
@@ -2627,7 +2627,7 @@
 											"top": 651,
 											"width": 271,
 											"height": 13,
-											"text": "+addPlaylist(playlist: Playlist): void",
+											"text": "+addPlaylist(playlist: model.Playlist): void",
 											"horizontalAlignment": 0
 										},
 										{
@@ -3294,7 +3294,7 @@
 											"top": 391,
 											"width": 199,
 											"height": 13,
-											"text": "Suggestions"
+											"text": "model.Suggestions"
 										},
 										{
 											"_type": "LabelView",
@@ -3308,7 +3308,7 @@
 											"top": -128,
 											"width": 73.67724609375,
 											"height": 13,
-											"text": "(from Model)"
+											"text": "(from model.Model)"
 										},
 										{
 											"_type": "LabelView",
@@ -3366,7 +3366,7 @@
 											"top": 414,
 											"width": 199,
 											"height": 13,
-											"text": "-playlist: Playlist",
+											"text": "-playlist: model.Playlist",
 											"horizontalAlignment": 0
 										}
 									],
@@ -3400,7 +3400,7 @@
 											"top": 437,
 											"width": 199,
 											"height": 13,
-											"text": "+Suggestions()",
+											"text": "+model.Suggestions()",
 											"horizontalAlignment": 0
 										}
 									],
@@ -4050,7 +4050,7 @@
 											"top": 583,
 											"width": 199,
 											"height": 13,
-											"text": "Song"
+											"text": "model.Song"
 										},
 										{
 											"_type": "LabelView",
@@ -4064,7 +4064,7 @@
 											"top": -64,
 											"width": 73.67724609375,
 											"height": 13,
-											"text": "(from Model)"
+											"text": "(from model.Model)"
 										},
 										{
 											"_type": "LabelView",
@@ -4281,7 +4281,7 @@
 											"top": 583,
 											"width": 191,
 											"height": 13,
-											"text": "Podcast"
+											"text": "model.Podcast"
 										},
 										{
 											"_type": "LabelView",
@@ -4295,7 +4295,7 @@
 											"top": -48,
 											"width": 73.67724609375,
 											"height": 13,
-											"text": "(from Model)"
+											"text": "(from model.Model)"
 										},
 										{
 											"_type": "LabelView",
@@ -4971,7 +4971,7 @@
 											"top": 383,
 											"width": 207,
 											"height": 13,
-											"text": "SongPlaylist"
+											"text": "model.SongPlaylist"
 										},
 										{
 											"_type": "LabelView",
@@ -4985,7 +4985,7 @@
 											"top": -416,
 											"width": 73.67724609375,
 											"height": 13,
-											"text": "(from Model)"
+											"text": "(from model.Model)"
 										},
 										{
 											"_type": "LabelView",
@@ -5043,7 +5043,7 @@
 											"top": 406,
 											"width": 207,
 											"height": 13,
-											"text": "-tracks: LinkedList<Song>",
+											"text": "-tracks: LinkedList<model.Song>",
 											"horizontalAlignment": 0
 										}
 									],
@@ -5077,7 +5077,7 @@
 											"top": 429,
 											"width": 207,
 											"height": 13,
-											"text": "+Playlist(title: String)",
+											"text": "+model.Playlist(title: String)",
 											"horizontalAlignment": 0
 										}
 									],
@@ -5185,7 +5185,7 @@
 											"top": 383,
 											"width": 199,
 											"height": 13,
-											"text": "PodcastPlaylist"
+											"text": "model.PodcastPlaylist"
 										},
 										{
 											"_type": "LabelView",
@@ -5199,7 +5199,7 @@
 											"top": -800,
 											"width": 73.67724609375,
 											"height": 13,
-											"text": "(from Model)"
+											"text": "(from model.Model)"
 										},
 										{
 											"_type": "LabelView",
@@ -5257,7 +5257,7 @@
 											"top": 406,
 											"width": 199,
 											"height": 13,
-											"text": "-tracks: LinkedList<Podcast>",
+											"text": "-tracks: LinkedList<model.Podcast>",
 											"horizontalAlignment": 0
 										}
 									],
@@ -5291,7 +5291,7 @@
 											"top": 429,
 											"width": 199,
 											"height": 13,
-											"text": "+Playlist(title: String)",
+											"text": "+model.Playlist(title: String)",
 											"horizontalAlignment": 0
 										}
 									],
@@ -6670,7 +6670,7 @@
 											"top": 127,
 											"width": 227.1669921875,
 											"height": 13,
-											"text": "HomeView"
+											"text": "view.HomeView"
 										},
 										{
 											"_type": "LabelView",
@@ -6683,7 +6683,7 @@
 											"left": -48,
 											"width": 73.67724609375,
 											"height": 13,
-											"text": "(from Model)"
+											"text": "(from model.Model)"
 										},
 										{
 											"_type": "LabelView",
@@ -6757,7 +6757,7 @@
 											"top": 165,
 											"width": 227.1669921875,
 											"height": 13,
-											"text": "-menuOptions: ArrayList<MenuOption>",
+											"text": "-menuOptions: ArrayList<view.MenuOption>",
 											"horizontalAlignment": 0
 										}
 									],
@@ -6877,7 +6877,7 @@
 											"top": 127,
 											"width": 167,
 											"height": 13,
-											"text": "SearchView"
+											"text": "view.SearchView"
 										},
 										{
 											"_type": "LabelView",
@@ -6890,7 +6890,7 @@
 											"left": -64,
 											"width": 73.67724609375,
 											"height": 13,
-											"text": "(from Model)"
+											"text": "(from model.Model)"
 										},
 										{
 											"_type": "LabelView",
@@ -7048,7 +7048,7 @@
 											"top": 127,
 											"width": 191,
 											"height": 13,
-											"text": "UserPlaylistsView"
+											"text": "view.UserPlaylistsView"
 										},
 										{
 											"_type": "LabelView",
@@ -7061,7 +7061,7 @@
 											"left": -16,
 											"width": 73.67724609375,
 											"height": 13,
-											"text": "(from Model)"
+											"text": "(from model.Model)"
 										},
 										{
 											"_type": "LabelView",
@@ -7220,7 +7220,7 @@
 											"top": 367,
 											"width": 175,
 											"height": 13,
-											"text": "PlaylistView"
+											"text": "view.PlaylistView"
 										},
 										{
 											"_type": "LabelView",
@@ -7234,7 +7234,7 @@
 											"top": -32,
 											"width": 73.67724609375,
 											"height": 13,
-											"text": "(from Model)"
+											"text": "(from model.Model)"
 										},
 										{
 											"_type": "LabelView",
@@ -7396,7 +7396,7 @@
 											"top": 375,
 											"width": 167,
 											"height": 13,
-											"text": "RegisterView"
+											"text": "view.RegisterView"
 										},
 										{
 											"_type": "LabelView",
@@ -7410,7 +7410,7 @@
 											"top": -32,
 											"width": 73.67724609375,
 											"height": 13,
-											"text": "(from Model)"
+											"text": "(from model.Model)"
 										},
 										{
 											"_type": "LabelView",
@@ -7572,7 +7572,7 @@
 											"top": 375,
 											"width": 191,
 											"height": 13,
-											"text": "RegisterView"
+											"text": "view.RegisterView"
 										},
 										{
 											"_type": "LabelView",
@@ -7586,7 +7586,7 @@
 											"top": -79,
 											"width": 73.67724609375,
 											"height": 13,
-											"text": "(from Model)"
+											"text": "(from model.Model)"
 										},
 										{
 											"_type": "LabelView",
@@ -7748,7 +7748,7 @@
 											"top": 607,
 											"width": 175,
 											"height": 13,
-											"text": "MenuOption"
+											"text": "view.MenuOption"
 										},
 										{
 											"_type": "LabelView",
@@ -7762,7 +7762,7 @@
 											"top": -112,
 											"width": 73.67724609375,
 											"height": 13,
-											"text": "(from Model)"
+											"text": "(from model.Model)"
 										},
 										{
 											"_type": "LabelView",
@@ -7889,7 +7889,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Track",
+					"name": "model.Track",
 					"ownedElements": [
 						{
 							"_type": "UMLAssociation",
@@ -8020,7 +8020,7 @@
 							},
 							"name": "artists",
 							"visibility": "private",
-							"type": "ArrayList<Artist>"
+							"type": "ArrayList<model.Artist>"
 						}
 					],
 					"operations": [
@@ -8030,7 +8030,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGOFSnumOQHlMU="
 							},
-							"name": "Track",
+							"name": "model.Track",
 							"parameters": [
 								{
 									"_type": "UMLParameter",
@@ -8057,7 +8057,7 @@
 										"$ref": "AAAAAAGOOKCMy3rXKn8="
 									},
 									"name": "artists",
-									"type": "ArrayList<Artist>"
+									"type": "ArrayList<model.Artist>"
 								}
 							]
 						},
@@ -8108,7 +8108,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Playlist",
+					"name": "model.Playlist",
 					"ownedElements": [
 						{
 							"_type": "UMLAssociation",
@@ -8502,7 +8502,7 @@
 							},
 							"name": "playlists",
 							"visibility": "private",
-							"type": "LinkedList<Playlist>"
+							"type": "LinkedList<model.Playlist>"
 						},
 						{
 							"_type": "UMLAttribute",
@@ -8536,7 +8536,7 @@
 							},
 							"name": "followedArtits",
 							"visibility": "private",
-							"type": "LinkedList<Artist>"
+							"type": "LinkedList<model.Artist>"
 						}
 					],
 					"operations": [
@@ -8546,7 +8546,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGOFTqJKfaZWtQ="
 							},
-							"name": "User",
+							"name": "model.User",
 							"parameters": [
 								{
 									"_type": "UMLParameter",
@@ -8605,7 +8605,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Artist",
+					"name": "model.Artist",
 					"ownedElements": [
 						{
 							"_type": "UMLAssociation",
@@ -8790,7 +8790,7 @@
 							},
 							"name": "albums",
 							"visibility": "private",
-							"type": "ArrayList<Album>"
+							"type": "ArrayList<model.Album>"
 						}
 					],
 					"operations": [
@@ -8800,7 +8800,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGOOIiAmshLiFI="
 							},
-							"name": "Artist",
+							"name": "model.Artist",
 							"parameters": [
 								{
 									"_type": "UMLParameter",
@@ -8944,7 +8944,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Album",
+					"name": "model.Album",
 					"ownedElements": [
 						{
 							"_type": "UMLAssociation",
@@ -9092,7 +9092,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGOOIpjzNAXTy4="
 							},
-							"name": "Album",
+							"name": "model.Album",
 							"parameters": [
 								{
 									"_type": "UMLParameter",
@@ -9101,7 +9101,7 @@
 										"$ref": "AAAAAAGOOKSxKpDqHr4="
 									},
 									"name": "tracks",
-									"type": "LinkedList<Track>"
+									"type": "LinkedList<model.Track>"
 								}
 							]
 						},
@@ -9151,7 +9151,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "PlaybackQueue",
+					"name": "model.PlaybackQueue",
 					"ownedElements": [
 						{
 							"_type": "UMLAssociation",
@@ -9201,7 +9201,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGOOMraHl6fuzQ="
 							},
-							"name": "PlaybackQueue"
+							"name": "model.PlaybackQueue"
 						},
 						{
 							"_type": "UMLOperation",
@@ -9290,7 +9290,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Suggestions",
+					"name": "model.Suggestions",
 					"ownedElements": [
 						{
 							"_type": "UMLAssociation",
@@ -9343,7 +9343,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGOOOfGh6zjTn8="
 							},
-							"name": "Suggestions"
+							"name": "model.Suggestions"
 						}
 					]
 				},
@@ -9353,7 +9353,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Song",
+					"name": "model.Song",
 					"ownedElements": [
 						{
 							"_type": "UMLGeneralization",
@@ -9457,7 +9457,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Podcast",
+					"name": "model.Podcast",
 					"ownedElements": [
 						{
 							"_type": "UMLGeneralization",
@@ -9561,7 +9561,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "SongPlaylist",
+					"name": "model.SongPlaylist",
 					"ownedElements": [
 						{
 							"_type": "UMLGeneralization",
@@ -9671,7 +9671,7 @@
 							},
 							"name": "tracks",
 							"visibility": "private",
-							"type": "LinkedList<Song>"
+							"type": "LinkedList<model.Song>"
 						}
 					],
 					"operations": [
@@ -9681,7 +9681,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGOOQnhOyHp4PQ="
 							},
-							"name": "Playlist",
+							"name": "model.Playlist",
 							"parameters": [
 								{
 									"_type": "UMLParameter",
@@ -9702,7 +9702,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "PodcastPlaylist",
+					"name": "model.PodcastPlaylist",
 					"ownedElements": [
 						{
 							"_type": "UMLGeneralization",
@@ -9727,7 +9727,7 @@
 							},
 							"name": "tracks",
 							"visibility": "private",
-							"type": "LinkedList<Podcast>"
+							"type": "LinkedList<model.Podcast>"
 						}
 					],
 					"operations": [
@@ -9737,7 +9737,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGOOQnuISvMMCY="
 							},
-							"name": "Playlist",
+							"name": "model.Playlist",
 							"parameters": [
 								{
 									"_type": "UMLParameter",
@@ -9766,7 +9766,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "HomeView",
+					"name": "view.HomeView",
 					"attributes": [
 						{
 							"_type": "UMLAttribute",
@@ -9786,7 +9786,7 @@
 							},
 							"name": "menuOptions",
 							"visibility": "private",
-							"type": "ArrayList<MenuOption>"
+							"type": "ArrayList<view.MenuOption>"
 						}
 					]
 				},
@@ -9796,7 +9796,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "SearchView"
+					"name": "view.SearchView"
 				},
 				{
 					"_type": "UMLClass",
@@ -9804,7 +9804,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "UserPlaylistsView"
+					"name": "view.UserPlaylistsView"
 				},
 				{
 					"_type": "UMLClass",
@@ -9812,7 +9812,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "PlaylistView"
+					"name": "view.PlaylistView"
 				},
 				{
 					"_type": "UMLClass",
@@ -9820,7 +9820,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "SuggestionsView"
+					"name": "view.SuggestionsView"
 				},
 				{
 					"_type": "UMLClass",
@@ -9828,7 +9828,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "RegisterView"
+					"name": "view.RegisterView"
 				},
 				{
 					"_type": "UMLClass",
@@ -9836,7 +9836,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Model",
+					"name": "model.Model",
 					"attributes": [
 						{
 							"_type": "UMLAttribute",
@@ -9846,7 +9846,7 @@
 							},
 							"name": "views",
 							"visibility": "private",
-							"type": "LinkedList<View>"
+							"type": "LinkedList<view.View>"
 						}
 					],
 					"operations": [
@@ -9865,7 +9865,7 @@
 										"$ref": "AAAAAAGOXRk8PFOODPw="
 									},
 									"name": "observer",
-									"type": "View"
+									"type": "view.View"
 								}
 							]
 						},
@@ -9884,7 +9884,7 @@
 										"$ref": "AAAAAAGOXRod11X7WFA="
 									},
 									"name": "observer",
-									"type": "View"
+									"type": "view.View"
 								}
 							]
 						},
@@ -9913,7 +9913,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "View",
+					"name": "view.View",
 					"attributes": [
 						{
 							"_type": "UMLAttribute",
@@ -9923,7 +9923,7 @@
 							},
 							"name": "Controllers",
 							"visibility": "private",
-							"type": "LinkedList<Controller>"
+							"type": "LinkedList<controller.Controller>"
 						}
 					],
 					"operations": [
@@ -9952,7 +9952,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "MenuOption"
+					"name": "view.MenuOption"
 				},
 				{
 					"_type": "UMLClass",
@@ -9960,7 +9960,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Controller",
+					"name": "controller.Controller",
 					"operations": [
 						{
 							"_type": "UMLOperation",
@@ -49727,7 +49727,7 @@
 									"top": 389,
 									"width": 176,
 									"height": 13,
-									"text": "Artist"
+									"text": "model.Artist"
 								},
 								{
 									"_type": "ERDColumnCompartmentView",
@@ -49778,7 +49778,7 @@
 									"top": 29,
 									"width": 184,
 									"height": 13,
-									"text": "SongPlaylist"
+									"text": "model.SongPlaylist"
 								},
 								{
 									"_type": "ERDColumnCompartmentView",
@@ -49829,7 +49829,7 @@
 									"top": 373,
 									"width": 176,
 									"height": 13,
-									"text": "Album"
+									"text": "model.Album"
 								},
 								{
 									"_type": "ERDColumnCompartmentView",
@@ -49880,7 +49880,7 @@
 									"top": 205,
 									"width": 216,
 									"height": 13,
-									"text": "PodcastPlaylist"
+									"text": "model.PodcastPlaylist"
 								},
 								{
 									"_type": "ERDColumnCompartmentView",
@@ -50336,7 +50336,7 @@
 									"top": 205,
 									"width": 216,
 									"height": 13,
-									"text": "Podcast"
+									"text": "model.Podcast"
 								},
 								{
 									"_type": "ERDColumnCompartmentView",
@@ -50468,7 +50468,7 @@
 									"top": 205,
 									"width": 160,
 									"height": 13,
-									"text": "Song"
+									"text": "model.Song"
 								},
 								{
 									"_type": "ERDColumnCompartmentView",
@@ -50876,7 +50876,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGOn9iMnvGua/I="
 					},
-					"name": "Artist",
+					"name": "model.Artist",
 					"ownedElements": [
 						{
 							"_type": "ERDRelationship",
@@ -50942,7 +50942,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGOn9iMnvGua/I="
 					},
-					"name": "SongPlaylist",
+					"name": "model.SongPlaylist",
 					"ownedElements": [
 						{
 							"_type": "ERDRelationship",
@@ -50981,7 +50981,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGOn9iMnvGua/I="
 					},
-					"name": "Album",
+					"name": "model.Album",
 					"ownedElements": [
 						{
 							"_type": "ERDRelationship",
@@ -51019,7 +51019,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGOn9iMnvGua/I="
 					},
-					"name": "PodcastPlaylist",
+					"name": "model.PodcastPlaylist",
 					"ownedElements": [
 						{
 							"_type": "ERDRelationship",
@@ -51058,7 +51058,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGOn9iMnvGua/I="
 					},
-					"name": "Podcast"
+					"name": "model.Podcast"
 				},
 				{
 					"_type": "ERDEntity",
@@ -51066,7 +51066,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGOn9iMnvGua/I="
 					},
-					"name": "Song"
+					"name": "model.Song"
 				}
 			]
 		}
