@@ -14,9 +14,11 @@ public abstract class View {
 
     protected Controller controller;
 
+    abstract protected Event generateEvent(String input);
+
     protected void getUserInput() {
         Scanner input = new Scanner(System.in);
-        controller.handleEvent(input.nextLine());
+        controller.handleEvent(generateEvent(input.nextLine()));
     }
 
     public abstract void update(); //è proprio proprio quella dell'observer ;-)

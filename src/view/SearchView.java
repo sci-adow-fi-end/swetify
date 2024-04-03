@@ -4,12 +4,18 @@ import controller.NavigationController;
 import model.Track;
 
 import java.util.ArrayList;
-import java.util.List;
+
 
 public class SearchView extends View {
 
     private String inputBuffer;
 
+    public enum Events{
+        SEARCH_TRACK,
+        LISTEN_TRACK,
+
+        BACK
+    }
 
 
     public SearchView(NavigationController controller) {

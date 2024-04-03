@@ -1,5 +1,7 @@
 package controller;
 
+import view.Event;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,9 +26,9 @@ public class NavigationController implements Controller{
     }
 
     @Override
-    public void handleEvent(String data) {
+    public void handleEvent(Event evt) {
         if (currentController != null) {
-            currentController.handleEvent(data);
+            currentController.handleEvent(evt);
         } else {
             throw new IllegalStateException("No controller is currently active");
         }

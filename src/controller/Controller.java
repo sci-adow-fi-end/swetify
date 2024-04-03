@@ -1,5 +1,7 @@
 package controller;
 
+import view.Event;
+
 public interface Controller {
-    public void handleEvent(String evt);
+    public void handleEvent(Event evt);
 }
