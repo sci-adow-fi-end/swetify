@@ -1,22 +1,22 @@
-package model;
+package domainmodel;
 
 import java.util.*;
 
 /**
  * 
  */
-public class PodcastPlaylist extends Playlist {
+public class SongPlaylist extends Playlist {
 
     /**
      * Default constructor
      */
-    public PodcastPlaylist() {
+    public SongPlaylist() {
     }
 
     /**
      * 
      */
-    private LinkedList<Podcast> tracks;
+    private LinkedList<Song> tracks;
 
     /**
      * @param title

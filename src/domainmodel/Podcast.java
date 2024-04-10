@@ -1,4 +1,4 @@
-package model;
+package domainmodel;
 
 
 public class Podcast extends Track {

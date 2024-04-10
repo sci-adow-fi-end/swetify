@@ -1,4 +1,4 @@
-package model;
+package domainmodel;
 
 import java.time.Duration;
 import java.util.*;

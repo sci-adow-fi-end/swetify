@@ -1,9 +1,9 @@
-package model;
+package domainmodel;
 
 import java.util.*;
 
 
-public abstract class Playlist {
+public abstract class Playlist<T> {
 
 
     public Playlist() {
@@ -18,7 +18,6 @@ public abstract class Playlist {
 
     public void addTrack(T track) {
         // TODO implement here
-        return null;
     }
 
     public String getTitle() {

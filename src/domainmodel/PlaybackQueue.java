@@ -1,7 +1,4 @@
-package model;
-
-import model.Playlist;
-import model.Track;
+package domainmodel;
 
 import java.util.*;
 

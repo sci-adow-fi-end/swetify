@@ -1,4 +1,4 @@
-package model;
+package domainmodel;
 
 import java.util.List;
 import java.util.Optional;
