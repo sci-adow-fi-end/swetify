@@ -16,6 +16,11 @@ public class UserDao implements Dao<User> {
     }
 
     @Override
+    public Optional<User> get(String name) {
+        // code to select the user from the database
+    }
+
+    @Override
     public List<User> getAll() {
         // code to select all users from the database
     }
@@ -26,7 +31,7 @@ public class UserDao implements Dao<User> {
     }
 
     @Override
-    public void update(User user, String[] params) {
+    public void update(User user) {
         // code to update the user in the database
     }
 
