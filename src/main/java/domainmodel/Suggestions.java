@@ -1,26 +1,9 @@
 package domainmodel;
 
-/**
- * 
- */
-public class Suggestions {
-
-    /**
-     * Default constructor
-     */
-    public Suggestions() {
-    }
-
-    /**
-     * 
-     */
+public class Suggestions extends Model {
     private Playlist playlist;
 
-    /**
-     * 
-     */
     public void Suggestions() {
         // TODO implement here
     }
-
 }

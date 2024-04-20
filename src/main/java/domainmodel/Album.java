@@ -1,27 +1,44 @@
 package domainmodel;
 
+import jakarta.persistence.*;
+
 import java.util.*;
 
-public class Album {
+@Entity
+@Table(name = "Albums")
+public class Album extends Model {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    @OneToOne(cascade = CascadeType.ALL)
+    private SongPlaylist playlist;
+    private Date releaseDate;
 
     public Album() {
     }
 
-    private Playlist playlist;
+    public Long getId() {
+        return id;
+    }
 
-    private Date releaseDate;
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-    public void Album(LinkedList<Track> tracks) {
-        // TODO implement here
+    public SongPlaylist getPlaylist() {
+        return playlist;
+    }
+
+    public void setPlaylist(SongPlaylist playlist) {
+        this.playlist = playlist;
     }
 
     public Date getReleaseDate() {
-        // TODO implement here
-        return null;
+        return releaseDate;
     }
 
-    public void setReleaseDate(Date value) {
-        // TODO implement here
+    public void setReleaseDate(Date releaseDate) {
+        this.releaseDate = releaseDate;
     }
 }

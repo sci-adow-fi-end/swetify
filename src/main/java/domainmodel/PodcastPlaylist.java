@@ -1,28 +1,9 @@
 package domainmodel;
 
-import java.util.*;
+import jakarta.persistence.*;
 
-/**
- * 
- */
-public class PodcastPlaylist extends Playlist {
-
-    /**
-     * Default constructor
-     */
-    public PodcastPlaylist() {
-    }
-
-    /**
-     * 
-     */
-    private LinkedList<Podcast> tracks;
-
-    /**
-     * @param title
-     */
-    public void Playlist(String title) {
-        // TODO implement here
-    }
-
+@Entity
+@Table(name = "PodcastPlaylists")
+public class PodcastPlaylist extends Playlist<Podcast> {
+    public PodcastPlaylist() {}
 }

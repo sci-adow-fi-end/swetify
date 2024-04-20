@@ -1,40 +1,88 @@
 package domainmodel;
 
+import jakarta.persistence.*;
+
 import java.util.*;
 
-public class User {
-
-    public User() {
-    }
-
+@Entity
+@Table(name = "SwetifyUsers")
+public class User extends Model {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
     private String username;
 
-    private LinkedList<Playlist> playlists;
+    private String password;
 
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Playlist<Track>> playlists = new LinkedList<>();
 
-    private Playlist favourites;
+    /* TODO: decide how favorites should be implemented
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    private Playlist<> favourites;
 
-
+    TODO: decide how suggestions should be implemented
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     private Suggestions suggestions;
+    */
 
+    @ManyToMany(cascade = CascadeType.ALL)
+    private List<Artist> followedArtists = new LinkedList<>();
 
-    private LinkedList<Artist> followedArtits;
+    public User() {}
 
-
-    public void User(String username) {
-
+    public void setId(Long id) {
+        this.id = id;
+        notifyObservers();
     }
 
+    public Long getId() {
+        return id;
+    }
 
     public String getUsername() {
-
-        return "";
+        return username;
     }
 
-
-    public void setUsername(String value) {
-
+    public void setUsername(String username) {
+        this.username = username;
+        notifyObservers();
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+        notifyObservers();
+    }
+
+    public List<Playlist<Track>> getPlaylists() {
+        return playlists;
+    }
+
+    public void setPlaylists(List<Playlist<Track>> playlists) {
+        this.playlists = playlists;
+        notifyObservers();
+    }
+
+    /*public Playlist<Track> getFavourites() {
+        return favourites;
+    }
+
+    public void setFavourites(Playlist<Track> favourites) {
+        this.favourites = favourites;
+        notifyObservers();
+    }*/
+
+    public List<Artist> getFollowedArtists() {
+        return followedArtists;
+    }
+
+    public void setFollowedArtists(List<Artist> followedArtists) {
+        this.followedArtists = followedArtists;
+        notifyObservers();
+    }
 }

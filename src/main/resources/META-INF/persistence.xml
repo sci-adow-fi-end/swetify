@@ -8,8 +8,6 @@
             Persistence unit for the swetify application
         </description>
 
-        <class>domainmodel.User</class>
-
         <properties>
             <!-- Database connection settings -->
             <!-- TODO: Change the JDBC URL, username and password to a proper SQL DB -->

@@ -1,37 +1,60 @@
 package domainmodel;
 
+import jakarta.persistence.*;
+
 import java.time.Duration;
 import java.util.*;
 
+@Entity
+@Table(name = "Tracks")
+public abstract class Track extends Model {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
-public abstract class Track{
+    private String title;
 
+    private Duration duration;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    private List<Artist> authors = new ArrayList<>();
 
     public Track() {
     }
 
-
-    private String title;
-
-
-    private Duration duration;
-
-
-    private ArrayList<Artist> artists;
-
-
-    public void Track(String title, Duration duration, ArrayList<Artist> artists) {
-        // TODO implement here
+    public Long getId() {
+        return id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+        notifyObservers();
+    }
 
     public String getTitle() {
-        // TODO implement here
-        return "";
+        return title;
     }
 
-    public void setTitle(String value) {
-        // TODO implement here
+    public void setTitle(String title) {
+        this.title = title;
+        notifyObservers();
     }
 
+    public Duration getDuration() {
+        return duration;
+    }
+
+    public void setDuration(Duration duration) {
+        this.duration = duration;
+        notifyObservers();
+    }
+
+    public List<Artist> getAuthors() {
+        return authors;
+    }
+
+    public void setAuthors(List<Artist> artists) {
+        this.authors = artists;
+        notifyObservers();
+    }
 }
