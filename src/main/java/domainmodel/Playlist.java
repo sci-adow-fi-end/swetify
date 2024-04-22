@@ -7,23 +7,11 @@ import java.util.*;
 @Entity
 @Table(name = "Playlists")
 public abstract class Playlist<T extends Track> extends Model {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
     private String title;
     @ManyToMany(cascade = CascadeType.ALL)
     private List<T> tracks = new ArrayList<>();
 
     public Playlist() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-        notifyObservers();
     }
 
     public String getTitle() {

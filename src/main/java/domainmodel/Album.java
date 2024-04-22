@@ -7,24 +7,12 @@ import java.util.*;
 @Entity
 @Table(name = "Albums")
 public class Album extends Model {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
     @OneToOne(cascade = CascadeType.ALL)
     private SongPlaylist playlist;
+    @Temporal(TemporalType.DATE)
     private Date releaseDate;
 
     public Album() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-        notifyObservers();
     }
 
     public SongPlaylist getPlaylist() {

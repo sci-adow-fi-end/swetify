@@ -7,10 +7,6 @@ import java.util.*;
 @Entity
 @Table(name = "SwetifyUsers")
 public class User extends Model {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
     private String username;
 
     private String password;
@@ -31,15 +27,6 @@ public class User extends Model {
     private List<Artist> followedArtists = new LinkedList<>();
 
     public User() {}
-
-    public void setId(Long id) {
-        this.id = id;
-        notifyObservers();
-    }
-
-    public Long getId() {
-        return id;
-    }
 
     public String getUsername() {
         return username;
