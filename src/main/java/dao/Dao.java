@@ -19,11 +19,17 @@ public abstract class Dao<T> {
 
     public abstract List<T> getAll();
 
-    public abstract void save(T t);
+    public void save(T t) {
+        executeInsideTransaction(entityManager -> entityManager.persist(t));
+    };
 
-    public abstract void update(T t);
+    public void update(T t) {
+        executeInsideTransaction(entityManager -> entityManager.merge(t));
+    };
 
-    public abstract void delete(T t);
+    public void delete(T t) {
+        executeInsideTransaction(entityManager -> entityManager.remove(t));
+    };
 
     void executeInsideTransaction(Consumer<EntityManager> work) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
@@ -44,10 +50,8 @@ public abstract class Dao<T> {
         }
     }
 
+    // TODO: decide how to ensure this is only called once
     protected void setUp() {
         entityManagerFactory = Persistence.createEntityManagerFactory("swetifyPersistenceUnit");
     }
-
-
-
 }

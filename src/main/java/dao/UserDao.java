@@ -8,10 +8,6 @@ import java.util.List;
 import java.util.Optional;
 
 public class UserDao extends Dao<User> {
-
-    public UserDao() {
-    }
-
     @Override
     public Optional<User> get(long id) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
@@ -31,20 +27,5 @@ public class UserDao extends Dao<User> {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         Query query = entityManager.createQuery("SELECT e FROM User e");
         return query.getResultList();
-    }
-
-    @Override
-    public void save(User user) {
-        executeInsideTransaction(entityManager -> entityManager.persist(user));
-    }
-
-    @Override
-    public void update(User user) {
-        executeInsideTransaction(entityManager -> entityManager.merge(user));
-    }
-
-    @Override
-    public void delete(User user) {
-        executeInsideTransaction(entityManager -> entityManager.remove(user));
     }
 }
