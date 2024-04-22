@@ -21,15 +21,15 @@ public abstract class Dao<T> {
 
     public void save(T t) {
         executeInsideTransaction(entityManager -> entityManager.persist(t));
-    };
+    }
 
     public void update(T t) {
         executeInsideTransaction(entityManager -> entityManager.merge(t));
-    };
+    }
 
     public void delete(T t) {
         executeInsideTransaction(entityManager -> entityManager.remove(t));
-    };
+    }
 
     void executeInsideTransaction(Consumer<EntityManager> work) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
