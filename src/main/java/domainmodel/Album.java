@@ -24,6 +24,7 @@ public class Album extends Model {
 
     public void setId(Long id) {
         this.id = id;
+        notifyObservers();
     }
 
     public SongPlaylist getPlaylist() {
@@ -32,6 +33,7 @@ public class Album extends Model {
 
     public void setPlaylist(SongPlaylist playlist) {
         this.playlist = playlist;
+        notifyObservers();
     }
 
     public Date getReleaseDate() {
@@ -40,5 +42,6 @@ public class Album extends Model {
 
     public void setReleaseDate(Date releaseDate) {
         this.releaseDate = releaseDate;
+        notifyObservers();
     }
 }
