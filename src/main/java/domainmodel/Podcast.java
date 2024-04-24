@@ -6,7 +6,7 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "Podcasts")
 public class Podcast extends Track {
-    private String theme; // TODO: decide if this should be an enum
+    private String theme;
 
     public Podcast() {
     }
