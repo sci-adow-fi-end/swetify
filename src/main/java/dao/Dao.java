@@ -12,6 +12,7 @@ import java.util.function.Consumer;
 public abstract class Dao<T> {
 
     protected EntityManagerFactory entityManagerFactory;
+    private boolean setUpComplete = false;
 
     public abstract Optional<T> get(long id);
 
@@ -50,8 +51,10 @@ public abstract class Dao<T> {
         }
     }
 
-    // TODO: decide how to ensure this is only called once
     protected void setUp() {
-        entityManagerFactory = Persistence.createEntityManagerFactory("swetifyPersistenceUnit");
+        if (!setUpComplete) {
+            setUpComplete = true;
+            entityManagerFactory = Persistence.createEntityManagerFactory("swetifyPersistenceUnit");
+        }
     }
 }
