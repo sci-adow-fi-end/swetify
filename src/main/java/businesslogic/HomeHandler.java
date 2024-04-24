@@ -10,12 +10,12 @@ public class HomeHandler extends Handler {
     @Override
     protected void render() {
         clearScreen();
-        System.out.println("welcome to swetify, the engeneer's music streaming service!");
+        System.out.println("Welcome to swetify, the engineer's music streaming service!");
         System.out.println("\n");
-        System.out.println("press 1 to search for a track, artist or playlist");
-        System.out.println("press 2 to view your playlists");
-        System.out.println("press 3 to view suggested songs");
-        System.out.println("press 4 to log out");
+        System.out.println("1: Search for a track, artist or playlist");
+        System.out.println("2: View your playlists");
+        System.out.println("3: View suggested songs");
+        System.out.println("4: Log out");
     }
     @Override
     protected void handleInput() {
