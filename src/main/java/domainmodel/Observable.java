@@ -8,7 +8,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 @MappedSuperclass
-public class Observer {
+public class Observable {
     @Transient
     private final List<Handler> observers = new LinkedList<>();
 

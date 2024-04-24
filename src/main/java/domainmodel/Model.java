@@ -9,7 +9,7 @@ import jakarta.persistence.MappedSuperclass;
 import java.util.Objects;
 
 @MappedSuperclass
-public abstract class Model extends Observer {
+public abstract class Model extends Observable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
