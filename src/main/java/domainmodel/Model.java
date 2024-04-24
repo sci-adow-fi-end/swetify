@@ -1,33 +1,18 @@
 package domainmodel;
 
 
-import businesslogic.Handler;
-import jakarta.persistence.*;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.MappedSuperclass;
 
-import java.util.*;
+import java.util.Objects;
 
 @MappedSuperclass
-public abstract class Model {
+public abstract class Model extends Observer {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
-    @Transient
-    private final List<Handler> observers = new LinkedList<>();
-
-    public void attach(Handler observer) {
-        observers.add(observer);
-    }
-
-    public void detach(Handler observer) {
-        observers.remove(observer);
-    }
-
-    public void notifyObservers() {
-        for (Handler observer : observers) {
-            observer.update();
-        }
-    }
 
     public void setId(Long id) {
         this.id = id;
