@@ -6,10 +6,11 @@ public class PlaylistHandler extends Handler {
     }
 
     @Override
-    protected void render() {
+    protected void renderChoices() {
     }
 
     @Override
-    protected void handleInput() {
+    protected boolean handleInput() {
+        return false;
     }
 }

@@ -4,6 +4,7 @@ package businesslogic;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Stack;
+import domainmodel.User;
 
 public class NavigationManager {
 
@@ -21,6 +22,7 @@ public class NavigationManager {
     }
     private final Map<HandlerId, Handler> controllers;
     private final Stack<Handler> states;
+    private User savedUser;
 
     public NavigationManager() {
         this.controllers = new HashMap<>();
@@ -29,6 +31,7 @@ public class NavigationManager {
         controllers.put(HandlerId.HOME, new HomeHandler());
         controllers.put(HandlerId.SEARCH, new SearchHandler());
         controllers.put(HandlerId.VIEW_PLAYLIST, new PlaylistHandler());
+        controllers.put(HandlerId.VIEW_SUGGESTIONS, new SuggestionsHandler());
         //TODO stiò
 
 
@@ -49,6 +52,14 @@ public class NavigationManager {
         } else {
             throw new IllegalArgumentException("gne gne il controller non c'è");
         }
+    }
+
+    User getSavedUser(){
+        return savedUser;
+    }
+
+    void setSavedUser(User user){
+        savedUser = new User(user.getUsername(), user.getPassword());
     }
 
 

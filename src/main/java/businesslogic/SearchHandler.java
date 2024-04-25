@@ -1,4 +1,5 @@
 package businesslogic;
+import java.util.Scanner;
 
 import java.util.ArrayList;
 import java.util.Optional;
@@ -9,6 +10,7 @@ import domainmodel.Track;
 
 public class SearchHandler extends Handler {
 
+    //TODO: move pullData to handleInput()
     private String input = "";
     private ArrayList<Song> songs;
     private ArrayList<Song> podcasts ;
@@ -25,7 +27,7 @@ public class SearchHandler extends Handler {
     }
 
     @Override
-    protected void render() {
+    protected void renderChoices() {
         System.out.println("enter a keyword to search or the number of a track to select it \n");
         int i = 0;
         for (Song song : songs){
@@ -35,6 +37,8 @@ public class SearchHandler extends Handler {
     }
 
     @Override
-    protected void handleInput() {
+    protected boolean handleInput() {
+        Scanner scanner = new Scanner(System.in);
+        return false;
     }
 }

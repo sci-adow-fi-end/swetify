@@ -6,10 +6,11 @@ public class SuggestionsHandler extends Handler {
     }
 
     @Override
-    protected void render() {
+    protected void renderChoices() {
     }
 
     @Override
-    protected void handleInput() {
+    protected boolean handleInput() {
+        return false;
     }
 }

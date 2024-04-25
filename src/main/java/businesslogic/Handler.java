@@ -1,4 +1,5 @@
 package businesslogic;
+import java.util.Scanner;
 
 public abstract class Handler {
 
@@ -13,10 +14,10 @@ public abstract class Handler {
     public static final String ANSI_CYAN = "\u001B[36m";
     public static final String ANSI_WHITE = "\u001B[37m";
 
-    private static NavigationManager navigationManager = new NavigationManager();
+    protected static NavigationManager navigationManager = new NavigationManager();
 
     protected abstract void pullData();
-    protected abstract void render();
+    protected abstract void renderChoices();
     protected abstract boolean handleInput();
 
     public static void clearScreen() {
@@ -31,12 +32,11 @@ public abstract class Handler {
     }
 
     public void update(){
-        pullData();
-        render();
+        renderChoices();
         boolean askForInput = true;
         while (askForInput) {
             askForInput = handleInput();
-            if (askForInput){
+            if (!askForInput){
                 printError();
             }
         }

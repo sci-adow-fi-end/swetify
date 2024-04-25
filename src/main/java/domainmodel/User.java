@@ -32,7 +32,13 @@ public class User extends Model {
 
     // TODO: add map to keep track of how many times a user has listened to a track
 
-    public User() {}
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+
+    public User() {
+    }
 
     public String getUsername() {
         return username;
