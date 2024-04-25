@@ -18,6 +18,7 @@ public class SearchHandler extends Handler {
 
     @Override
     protected void renderChoices() {
+        clearScreen();
         System.out.println("enter a keyword to search or the number of a track to select it \n");
         int i = 0;
         for (Song song : songs){

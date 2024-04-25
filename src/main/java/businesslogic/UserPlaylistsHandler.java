@@ -3,7 +3,7 @@ package businesslogic;
 public class UserPlaylistsHandler extends Handler {
 
     @Override
-    protected void render() {
+    protected void renderChoices() {
     }
 
     @Override
