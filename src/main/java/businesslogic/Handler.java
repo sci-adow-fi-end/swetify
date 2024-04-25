@@ -16,7 +16,6 @@ public abstract class Handler {
 
     protected static NavigationManager navigationManager = new NavigationManager();
 
-    protected abstract void pullData();
     protected abstract void renderChoices();
     protected abstract boolean handleInput();
 

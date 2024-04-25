@@ -6,7 +6,6 @@ public class HomeHandler extends Handler {
     public HomeHandler(){
     }
 
-    protected void pullData(){};
 
     @Override
     protected void renderChoices() {

@@ -13,8 +13,6 @@ public class RegistrationHandler extends Handler{
     public String password;
     public Dao<User> userDatabase = new UserDao();
 
-    @Override
-    protected void pullData() {}
 
     @Override
     protected void renderChoices() {

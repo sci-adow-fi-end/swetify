@@ -13,8 +13,6 @@ public class LoginHandler extends Handler{
     public String password;
     private final Dao<User> userDatabase = new UserDao();
 
-    @Override
-    protected void pullData(){}
 
     @Override
     protected void renderChoices() {

@@ -10,21 +10,11 @@ import domainmodel.Track;
 
 public class SearchHandler extends Handler {
 
-    //TODO: move pullData to handleInput()
     private String input = "";
     private ArrayList<Song> songs;
     private ArrayList<Song> podcasts ;
     private ArrayList<Song> artists;
     private Dao database;
-
-    @Override
-    protected void pullData() {
-        try {
-            songs = (ArrayList<Song>) database.get(input).orElseThrow();
-        }catch (Exception e){
-            System.out.println(ANSI_RED +"No matches found"+ ANSI_RESET);
-        }
-    }
 
     @Override
     protected void renderChoices() {
@@ -39,6 +29,12 @@ public class SearchHandler extends Handler {
     @Override
     protected boolean handleInput() {
         Scanner scanner = new Scanner(System.in);
+        try {
+            songs = (ArrayList<Song>) database.get(input).orElseThrow();
+        }catch (Exception e){
+            System.out.println(ANSI_RED +"No matches found"+ ANSI_RESET);
+        }
+
         return false;
     }
 }
