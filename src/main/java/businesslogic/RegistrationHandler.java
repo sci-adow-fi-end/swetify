@@ -14,8 +14,8 @@ public class RegistrationHandler extends Handler{
     public Dao<User> userDatabase = new UserDao();
 
 
-    @Override
-    protected void renderChoices() {
+
+    private void renderChoices() {
         clearScreen();
         System.out.println("\n");
         //System.out.println("insert your desired name and password or press 1 to go back to the login page");
@@ -24,7 +24,7 @@ public class RegistrationHandler extends Handler{
     }
 
     @Override
-    protected boolean handleInput() {
+    public void update() {
         int conv_input;
         try{
             Scanner scanner = new Scanner(System.in);

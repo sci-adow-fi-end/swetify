@@ -14,15 +14,15 @@ public class SearchHandler extends Handler {
     private ArrayList<Song> artists;
     private Dao songsDatabase;
 
-    @Override
-    protected void renderChoices() {
+
+    private void renderChoices() {
         clearScreen();
         System.out.println("enter a keyword to search or press 1 to go back\n");
     }
     //TODO remove casts when the dao class is ready
 
     @Override
-    protected boolean handleInput() {
+    public void update() {
 
         Scanner scanner = new Scanner(System.in);
         input = scanner.nextLine();

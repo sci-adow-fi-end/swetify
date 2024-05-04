@@ -1,5 +1,4 @@
 package businesslogic;
-import java.util.Scanner;
 
 public abstract class Handler {
 
@@ -16,28 +15,19 @@ public abstract class Handler {
 
     protected static NavigationManager navigationManager = new NavigationManager();
 
-    protected abstract void renderChoices();
-    protected abstract boolean handleInput();
+    public abstract void update();
 
-    public static void clearScreen() {
+
+    //TODO add clearscreen to all handlers
+    protected static void clearScreen() {
         System.out.print("\033[H\033[2J");
         System.out.flush();
     }
 
-    protected static void printError(){
+    protected static void printError(String error){
         System.out.println(" ");
-        System.out.println("the inserted input is not valid, please type it again");
+        System.out.println(ANSI_RED+error+ANSI_RESET);
         System.out.println(" ");
     }
 
-    public void update(){
-        renderChoices();
-        boolean askForInput = true;
-        while (askForInput) {
-            askForInput = handleInput();
-            if (!askForInput){
-                printError();
-            }
-        }
-    }
 }

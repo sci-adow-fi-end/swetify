@@ -2,12 +2,12 @@ package businesslogic;
 
 public class SuggestionsHandler extends Handler {
 
-    @Override
-    protected void renderChoices() {
+
+    private void renderChoices() {
     }
 
     @Override
-    protected boolean handleInput() {
-        return false;
+    public void update() {
+
     }
 }

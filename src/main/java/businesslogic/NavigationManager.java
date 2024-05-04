@@ -45,6 +45,7 @@ public class NavigationManager {
         states.peek().update();
     }
 
+
     void switchToController(HandlerId id) {
         if (controllers.containsKey(id)) {
             states.push(controllers.get(id));

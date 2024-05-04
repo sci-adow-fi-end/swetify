@@ -3,12 +3,12 @@ package businesslogic;
 public class PlaylistHandler extends Handler {
 
 
-    @Override
-    protected void renderChoices() {
+
+    private void renderChoices() {
+        System.out.println("");
     }
 
     @Override
-    protected boolean handleInput() {
-        return false;
+    public void update() {
     }
 }

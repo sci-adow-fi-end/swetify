@@ -3,12 +3,8 @@ import java.util.Scanner;
 
 public class HomeHandler extends Handler {
 
-    public HomeHandler(){
-    }
 
-
-    @Override
-    protected void renderChoices() {
+    private void renderChoices() {
         clearScreen();
         System.out.println("Welcome to swetify, the engineer's music streaming service!");
         System.out.println("\n");
@@ -17,8 +13,10 @@ public class HomeHandler extends Handler {
         System.out.println("3: View suggested songs");
         System.out.println("4: Log out");
     }
+
+
     @Override
-    protected boolean handleInput() {
+    public void update() {
         int conv_input;
         try{
             Scanner input = new Scanner(System.in);
