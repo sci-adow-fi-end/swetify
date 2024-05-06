@@ -48,15 +48,15 @@ public class LoginHandler extends Handler{
 
     @Override
     public void update() {
+        clearScreen();
+        renderChoices();
         int navigationChoice;
         boolean validNavigationChoice = false;
         boolean validUsername = false;
         boolean validPassword = false;
         Scanner scanner = new Scanner(System.in);
-
         while(!validNavigationChoice) {
             validNavigationChoice=true;
-
             try {
                 navigationChoice = scanner.nextInt();
             } catch (NumberFormatException e) {
@@ -64,10 +64,8 @@ public class LoginHandler extends Handler{
                 validNavigationChoice=false;
                 continue;
             }
-
             switch (navigationChoice) {
                 case 1:
-
                     while (!validPassword) {
                         while (!validUsername) {
                             validUsername = validateUsername();
@@ -76,7 +74,6 @@ public class LoginHandler extends Handler{
                         }
                     navigationManager.setSavedUser(usr);
                     navigationManager.switchToController(NavigationManager.HandlerId.HOME);
-
                     break;
                 case 2:
                     navigationManager.switchToController(NavigationManager.HandlerId.REGISTRATION);
