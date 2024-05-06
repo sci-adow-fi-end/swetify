@@ -17,15 +17,17 @@ public class HomeHandler extends Handler {
 
     @Override
     public void update() {
-        int conv_input;
-        try{
-            Scanner input = new Scanner(System.in);
-            conv_input = Integer.parseInt(input.nextLine());
+        renderChoices();
+        int navigationOption = -1;
+        boolean valid_choice = false;
+        Scanner input = new Scanner(System.in);
+        while (!valid_choice) {
+            try {
+                navigationOption = Integer.parseInt(input.nextLine());
+                valid_choice = true;
+            } catch (NumberFormatException ignored) {}
         }
-        catch(NumberFormatException e){
-            return false;
-        }
-        switch(conv_input){
+        switch(navigationOption){
             case 1:
                 navigationManager.switchToController(NavigationManager.HandlerId.SEARCH);
                 break;
@@ -39,8 +41,7 @@ public class HomeHandler extends Handler {
                 navigationManager.switchToController(NavigationManager.HandlerId.LOGIN);
                 break;
             default:
-                return false;
+                printError("inserted option not valid");
         }
-        return true;
     }
 }
