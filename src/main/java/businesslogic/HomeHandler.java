@@ -19,29 +19,33 @@ public class HomeHandler extends Handler {
     public void update() {
         renderChoices();
         int navigationOption = -1;
-        boolean valid_choice = false;
+        boolean validNavigationOption = false;
         Scanner input = new Scanner(System.in);
-        while (!valid_choice) {
+        while (!validNavigationOption) {
             try {
                 navigationOption = Integer.parseInt(input.nextLine());
-                valid_choice = true;
-            } catch (NumberFormatException ignored) {}
-        }
-        switch(navigationOption){
-            case 1:
-                navigationManager.switchToController(NavigationManager.HandlerId.SEARCH);
-                break;
-            case 2:
-                navigationManager.switchToController(NavigationManager.HandlerId.VIEW_PLAYLIST);
-                break;
-            case 3:
-                navigationManager.switchToController(NavigationManager.HandlerId.VIEW_SUGGESTIONS);
-                break;
-            case 4:
-                navigationManager.switchToController(NavigationManager.HandlerId.LOGIN);
-                break;
-            default:
-                printError("inserted option not valid");
+                validNavigationOption = true;
+            } catch (NumberFormatException ignored) {
+                continue;
+            }
+
+            switch (navigationOption) {
+                case 1:
+                    navigationManager.switchToController(NavigationManager.HandlerId.SEARCH);
+                    break;
+                case 2:
+                    navigationManager.switchToController(NavigationManager.HandlerId.VIEW_PLAYLIST);
+                    break;
+                case 3:
+                    navigationManager.switchToController(NavigationManager.HandlerId.VIEW_SUGGESTIONS);
+                    break;
+                case 4:
+                    navigationManager.switchToController(NavigationManager.HandlerId.LOGIN);
+                    break;
+                default:
+                    printError("inserted option not valid");
+                    validNavigationOption=false;
+            }
         }
     }
 }
