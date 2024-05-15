@@ -1,13 +1,64 @@
 package businesslogic;
 
+import domainmodel.*;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class UserPlaylistsHandler extends Handler {
 
+    private ArrayList<SongPlaylist> songPlaylists;
+    private ArrayList<PodcastPlaylist> podcastsPlaylists;
+
+    //TODO pigliare le playlist dal dao
 
     private void renderChoices() {
+        System.out.println("press the number of a playlist to select it or 0 to go back");
+        System.out.println("\n");
     }
 
     @Override
-    public void update() {
+    public State update(State state) {
+        clearScreen();
+        int index = 1;
+        System.out.println("Song playlists:");
+        for (SongPlaylist sp : songPlaylists){
+            System.out.println(index+") "+sp.getTitle());
+            index++;
+        }
+        System.out.println("\n");
+
+        System.out.println("Podcast playlists:");
+        for (PodcastPlaylist pp : podcastsPlaylists){
+            System.out.println(index+") "+pp.getTitle());
+            index++;
+        }
+        System.out.println("\n");
+
+        renderChoices();
+
+        boolean validNavigationChoice=false;
+        int navigationChoice=-1;
+        Scanner scanner = new Scanner(System.in);
+
+        while(!validNavigationChoice) {
+            validNavigationChoice = true;
+            try {
+                navigationChoice = scanner.nextInt();
+            } catch (NumberFormatException e) {
+                printError("Inserted value is not a number");
+                validNavigationChoice = false;
+                continue;
+            }
+
+            if (navigationChoice==0){
+                navigationManager.previousState();
+            }
+            else if (navigationChoice <= songPlaylists.size()){
+                state.setNextPlaylist(songPlaylists.get(index-1));
+            }
+        }
 
     }
+
 }

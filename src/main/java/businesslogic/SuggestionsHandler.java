@@ -7,7 +7,8 @@ public class SuggestionsHandler extends Handler {
     }
 
     @Override
-    public void update() {
+    public State update(State state) {
 
+        return state;
     }
 }

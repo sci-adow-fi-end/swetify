@@ -16,7 +16,7 @@ public class HomeHandler extends Handler {
 
 
     @Override
-    public void update() {
+    public State update(State state) {
         renderChoices();
         int navigationOption = -1;
         boolean validNavigationOption = false;
@@ -47,5 +47,6 @@ public class HomeHandler extends Handler {
                     validNavigationOption=false;
             }
         }
+        return state;
     }
 }

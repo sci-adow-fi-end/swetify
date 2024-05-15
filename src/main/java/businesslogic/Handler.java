@@ -15,7 +15,7 @@ public abstract class Handler {
 
     protected static NavigationManager navigationManager = new NavigationManager();
 
-    public abstract void update();
+    public abstract State update(State state);
 
 
     //TODO add clearscreen to all handlers

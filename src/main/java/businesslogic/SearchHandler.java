@@ -22,7 +22,7 @@ public class SearchHandler extends Handler {
     //TODO remove casts when the dao class is ready
 
     @Override
-    public void update() {
+    public State update(State state) {
 
         Scanner scanner = new Scanner(System.in);
         input = scanner.nextLine();
@@ -48,6 +48,6 @@ public class SearchHandler extends Handler {
             //TODO add tracks and artists
         }
 
-        return false;
+        return state;
     }
 }

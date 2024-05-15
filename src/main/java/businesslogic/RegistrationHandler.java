@@ -40,7 +40,7 @@ public class RegistrationHandler extends Handler{
 
 
     @Override
-    public void update() {
+    public State update(State state) {
         renderChoices();
         int navigationOption = -1;
         boolean validNavigationOption = false;
@@ -59,7 +59,6 @@ public class RegistrationHandler extends Handler{
                         validUsername = validateUsername();
                     }
                     userDatabase.save(new User(userName, password));
-                    navigationManager.setSavedUser(new User(userName, password));
                     navigationManager.switchToController(NavigationManager.HandlerId.LOGIN);
                     break;
                 case 1:
@@ -69,5 +68,6 @@ public class RegistrationHandler extends Handler{
                     validNavigationOption = false;
             }
         }
+        return state;
     }
 }

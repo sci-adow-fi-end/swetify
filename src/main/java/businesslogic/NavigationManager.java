@@ -22,7 +22,7 @@ public class NavigationManager {
     }
     private final Map<HandlerId, Handler> controllers;
     private final Stack<Handler> states;
-    private User savedUser;
+    private State currentState;
 
     public NavigationManager() {
         this.controllers = new HashMap<>();
@@ -54,14 +54,5 @@ public class NavigationManager {
             throw new IllegalArgumentException("gne gne il controller non c'è");
         }
     }
-
-    User getSavedUser(){
-        return savedUser;
-    }
-
-    void setSavedUser(User user){
-        savedUser = new User(user.getUsername(), user.getPassword());
-    }
-
 
 }

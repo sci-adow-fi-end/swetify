@@ -47,7 +47,7 @@ public class LoginHandler extends Handler{
     }
 
     @Override
-    public void update() {
+    public State update(State state) {
         clearScreen();
         renderChoices();
         int navigationChoice;
@@ -72,7 +72,7 @@ public class LoginHandler extends Handler{
                         }
                         validPassword = validatePassword();
                         }
-                    navigationManager.setSavedUser(usr);
+                    state.setLoggedUser(usr);
                     navigationManager.switchToController(NavigationManager.HandlerId.HOME);
                     break;
                 case 2:
@@ -83,6 +83,7 @@ public class LoginHandler extends Handler{
                     validNavigationChoice=false;
             }
             }
+        return state;
         }
     }
 
