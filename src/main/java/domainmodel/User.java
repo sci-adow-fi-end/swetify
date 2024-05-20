@@ -16,10 +16,10 @@ public class User extends Model {
     private List<Playlist<Track>> playlists = new LinkedList<>();
 
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-    private SongPlaylist favouriteSongs = new SongPlaylist();
+    private Playlist<Song> favouriteSongs = new Playlist<>();
 
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-    private PodcastPlaylist favouritePodcasts = new PodcastPlaylist();
+    private Playlist<Podcast> favouritePodcasts = new Playlist<>();
 
     /*
     TODO: decide how suggestions should be implemented
@@ -76,20 +76,20 @@ public class User extends Model {
         notifyObservers();
     }
 
-    public SongPlaylist getFavouriteSongs() {
+    public Playlist<Song> getFavouriteSongs() {
         return favouriteSongs;
     }
 
-    public void setFavouriteSongs(SongPlaylist favouriteSongs) {
+    public void setFavouriteSongs(Playlist<Song> favouriteSongs) {
         this.favouriteSongs = favouriteSongs;
         notifyObservers();
     }
 
-    public PodcastPlaylist getFavouritePodcasts() {
+    public Playlist<Podcast> getFavouritePodcasts() {
         return favouritePodcasts;
     }
 
-    public void setFavouritePodcasts(PodcastPlaylist favouritePodcasts) {
+    public void setFavouritePodcasts(Playlist<Podcast> favouritePodcasts) {
         this.favouritePodcasts = favouritePodcasts;
         notifyObservers();
     }

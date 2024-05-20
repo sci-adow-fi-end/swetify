@@ -2,24 +2,24 @@ package domainmodel;
 
 import jakarta.persistence.*;
 
-import java.util.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "Albums")
 public class Album extends Model {
     @OneToOne(cascade = CascadeType.ALL)
-    private SongPlaylist playlist;
+    private Playlist<Song> playlist;
     @Temporal(TemporalType.DATE)
     private Date releaseDate;
 
     public Album() {
     }
 
-    public SongPlaylist getPlaylist() {
+    public Playlist<Song> getPlaylist() {
         return playlist;
     }
 
-    public void setPlaylist(SongPlaylist playlist) {
+    public void setPlaylist(Playlist<Song> playlist) {
         this.playlist = playlist;
         notifyObservers();
     }

@@ -1,14 +1,17 @@
 package businesslogic;
 
-import domainmodel.*;
+import domainmodel.Playlist;
+import domainmodel.Podcast;
+import domainmodel.Song;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class UserPlaylistsHandler extends Handler {
 
-    private ArrayList<SongPlaylist> songPlaylists;
-    private ArrayList<PodcastPlaylist> podcastsPlaylists;
+    // FIXME: potrebbero essere una sola lista (?)
+    private ArrayList<Playlist<Song>> songPlaylists;
+    private ArrayList<Playlist<Podcast>> podcastsPlaylists;
 
     //TODO pigliare le playlist dal dao
 
@@ -22,14 +25,14 @@ public class UserPlaylistsHandler extends Handler {
         clearScreen();
         int index = 1;
         System.out.println("Song playlists:");
-        for (SongPlaylist sp : songPlaylists){
+        for (Playlist<Song> sp : songPlaylists) {
             System.out.println(index+") "+sp.getTitle());
             index++;
         }
         System.out.println("\n");
 
         System.out.println("Podcast playlists:");
-        for (PodcastPlaylist pp : podcastsPlaylists){
+        for (Playlist<Podcast> pp : podcastsPlaylists) {
             System.out.println(index+") "+pp.getTitle());
             index++;
         }

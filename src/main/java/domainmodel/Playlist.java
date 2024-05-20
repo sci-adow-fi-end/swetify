@@ -1,12 +1,16 @@
 package domainmodel;
 
-import jakarta.persistence.*;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.Table;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "Playlists")
-public abstract class Playlist<T extends Track> extends Model {
+public class Playlist<T extends Track> extends Model {
     private String title;
     @ManyToMany(cascade = CascadeType.ALL)
     private List<T> tracks = new ArrayList<>();

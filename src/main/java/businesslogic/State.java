@@ -8,7 +8,7 @@ import domainmodel.User;
 public class State {
 
     private User loggedUser;
-    private Playlist<Track> nextPlaylist;
+    private Playlist<? extends Track> nextPlaylist;
     private Song nextSong;
 
 
@@ -28,12 +28,11 @@ public class State {
         this.nextSong = nextSong;
     }
 
-    public Playlist<Track> getNextPlaylist() {
+    public Playlist<? extends Track> getNextPlaylist() {
         return nextPlaylist;
     }
 
-    public void setNextPlaylist(Playlist<Track> nextPlaylist) {
-        this.nextPlaylist = nextPlaylist;
+    public void setNextPlaylist(Playlist<? extends Track> nextPlaylist) {
     }
 
 
