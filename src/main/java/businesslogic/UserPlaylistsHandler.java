@@ -9,10 +9,8 @@ import java.util.Scanner;
 
 public class UserPlaylistsHandler extends Handler {
 
-    // FIXME: potrebbero essere una sola lista (?)  giusto bro!
     private ArrayList<Playlist<Song>> songPlaylists;
     private ArrayList<Playlist<Podcast>> podcastsPlaylists;
-
 
     //TODO pigliare le playlist dal dao
 

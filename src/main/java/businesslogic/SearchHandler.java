@@ -16,13 +16,14 @@ public class SearchHandler extends Handler {
 
 
     private void renderChoices() {
-        clearScreen();
-        System.out.println("enter a keyword to search or press 1 to go back\n");
+        System.out.println("enter a keyword to search or press 0 to go back\n");
     }
     //TODO remove casts when the dao class is ready
 
     @Override
     public State update(State state) {
+        clearScreen();
+        renderChoices();
 
         Scanner scanner = new Scanner(System.in);
         input = scanner.nextLine();

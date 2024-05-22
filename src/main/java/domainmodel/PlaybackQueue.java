@@ -3,18 +3,13 @@ package domainmodel;
 import java.util.*;
 
 
-public class PlaybackQueue {
+public class PlaybackQueue implements Iterable<Track>{
 
-    private final Deque<Track> queue = new ArrayDeque<Track>();
+    private final Deque<Track> queue = new ArrayDeque<>();
 
     public PlaybackQueue() {
+
     }
-
-
-    public void PlaybackQueue() {
-        // TODO implement here
-    }
-
 
     public void addTrackOnTop(Track track) {
         queue.addFirst(track);
@@ -24,21 +19,28 @@ public class PlaybackQueue {
         queue.addLast(track);
     }
 
-    public void addPlaylistOnTop(Playlist playlist) {
-        for (Track t : playlist){
-
+    public void addPlaylistOnTop(Playlist<Track> playlist) {
+        ListIterator<Track> listIterator = playlist.getTracks().
+                listIterator(playlist.getTracks().size());
+        while (listIterator.hasPrevious()){
+            queue.addFirst(listIterator.previous());
         }
-
     }
 
-    public void addPlaylist(Playlist playlist) {
-        // TODO implement here
+    public void addPlaylistAtBottom(Playlist<Track> playlist) {
+        for (Track t : playlist){
+            queue.addLast(t);
+        }
 
     }
 
 
     public void clear() {
-        // TODO implement here
+        queue.clear();
     }
 
+    @Override
+    public Iterator<Track> iterator() {
+        return queue.iterator();
+    }
 }

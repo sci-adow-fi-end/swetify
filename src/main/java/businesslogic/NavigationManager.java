@@ -4,7 +4,6 @@ package businesslogic;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Stack;
-import domainmodel.User;
 
 public class NavigationManager {
 

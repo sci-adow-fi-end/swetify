@@ -6,8 +6,13 @@ public class State {
 
     private User loggedUser;
     private Playlist<? extends Track> selectedPlaylist;
-    private Song selectedSong;
+    private Track selectedTrack;
+
+
     private final PlaybackQueue queue = new PlaybackQueue();
+
+
+    private Track playingTrack;
 
 
     public User getLoggedUser() {
@@ -18,12 +23,12 @@ public class State {
         this.loggedUser = loggedUser;
     }
 
-    public Song getSelectedSong() {
-        return selectedSong;
+    public Track getSelectedTrack() {
+        return selectedTrack;
     }
 
-    public void setSelectedSong(Song selectedSong) {
-        this.selectedSong = selectedSong;
+    public void setSelectedTrack(Song selectedTrack) {
+        this.selectedTrack = selectedTrack;
     }
 
     public Playlist<? extends Track> getSelectedPlaylist() {
@@ -35,9 +40,20 @@ public class State {
     }
 
     public void addOnTop(Track t){
-        queue.addTrack(t);
+        queue.addTrackOnTop(t);
     }
 
 
+    public Track getPlayingTrack() {
+        return playingTrack;
+    }
+
+    public void setPlayingTrack(Track playingTrack) {
+        this.playingTrack = playingTrack;
+    }
+
+    public PlaybackQueue getQueue() {
+        return queue;
+    }
 
 }
