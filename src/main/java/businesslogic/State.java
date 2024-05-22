@@ -1,15 +1,13 @@
 package businesslogic;
 
-import domainmodel.Playlist;
-import domainmodel.Song;
-import domainmodel.Track;
-import domainmodel.User;
+import domainmodel.*;
 
 public class State {
 
     private User loggedUser;
-    private Playlist<? extends Track> nextPlaylist;
-    private Song nextSong;
+    private Playlist<? extends Track> selectedPlaylist;
+    private Song selectedSong;
+    private final PlaybackQueue queue = new PlaybackQueue();
 
 
     public User getLoggedUser() {
@@ -20,19 +18,24 @@ public class State {
         this.loggedUser = loggedUser;
     }
 
-    public Song getNextSong() {
-        return nextSong;
+    public Song getSelectedSong() {
+        return selectedSong;
     }
 
-    public void setNextSong(Song nextSong) {
-        this.nextSong = nextSong;
+    public void setSelectedSong(Song selectedSong) {
+        this.selectedSong = selectedSong;
     }
 
-    public Playlist<? extends Track> getNextPlaylist() {
-        return nextPlaylist;
+    public Playlist<? extends Track> getSelectedPlaylist() {
+        return selectedPlaylist;
     }
 
-    public void setNextPlaylist(Playlist<? extends Track> nextPlaylist) {
+    public void setSelectedPlaylist(Playlist<? extends Track> selectedPlaylist) {
+        this.selectedPlaylist = selectedPlaylist;
+    }
+
+    public void addOnTop(Track t){
+        queue.addTrack(t);
     }
 
 

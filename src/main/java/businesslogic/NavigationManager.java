@@ -42,14 +42,14 @@ public class NavigationManager {
 
     void previousState() {
         states.pop();
-        states.peek().update();
+        currentState = states.peek().update(currentState);
     }
 
 
     void switchToController(HandlerId id) {
         if (controllers.containsKey(id)) {
             states.push(controllers.get(id));
-            states.peek().update();
+            currentState = states.peek().update(currentState);
         } else {
             throw new IllegalArgumentException("gne gne il controller non c'è");
         }

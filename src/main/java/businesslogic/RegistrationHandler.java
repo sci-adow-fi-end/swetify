@@ -4,7 +4,6 @@ import dao.Dao;
 import dao.UserDao;
 import domainmodel.User;
 
-import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class RegistrationHandler extends Handler{

@@ -9,9 +9,10 @@ import java.util.Scanner;
 
 public class UserPlaylistsHandler extends Handler {
 
-    // FIXME: potrebbero essere una sola lista (?)
+    // FIXME: potrebbero essere una sola lista (?)  giusto bro!
     private ArrayList<Playlist<Song>> songPlaylists;
     private ArrayList<Playlist<Podcast>> podcastsPlaylists;
+
 
     //TODO pigliare le playlist dal dao
 
@@ -58,10 +59,17 @@ public class UserPlaylistsHandler extends Handler {
                 navigationManager.previousState();
             }
             else if (navigationChoice <= songPlaylists.size()){
-                state.setNextPlaylist(songPlaylists.get(index-1));
+                state.setSelectedPlaylist(songPlaylists.get(index-1));
+            }
+            else if (navigationChoice <= songPlaylists.size()+podcastsPlaylists.size()){
+                state.setSelectedPlaylist(podcastsPlaylists.get(index-1-songPlaylists.size()));
+            }
+            else{
+                validNavigationChoice = false;
             }
         }
 
+        return state;
     }
 
 }
