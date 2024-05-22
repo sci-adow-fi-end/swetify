@@ -2,8 +2,10 @@ package domainmodel;
 
 import jakarta.persistence.*;
 
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 @Entity
 @Table(name = "SwetifyUsers")
@@ -30,7 +32,11 @@ public class User extends Model {
     @ManyToMany(cascade = CascadeType.ALL)
     private List<Artist> followedArtists = new LinkedList<>();
 
-    // TODO: add map to keep track of how many times a user has listened to a track
+    @ElementCollection
+    @CollectionTable(name = "User_Track_Counts", joinColumns = @JoinColumn(name = "user_id"))
+    @MapKeyJoinColumn(name = "track_id")
+    @Column(name = "listen_count")
+    private Map<Track, Integer> trackListenCounts = new HashMap<>();
 
     public User(String username, String password) {
         this.username = username;
@@ -92,5 +98,13 @@ public class User extends Model {
     public void setFavouritePodcasts(Playlist<Podcast> favouritePodcasts) {
         this.favouritePodcasts = favouritePodcasts;
         notifyObservers();
+    }
+
+    public Map<Track, Integer> getTrackListenCounts() {
+        return trackListenCounts;
+    }
+
+    public void setTrackListenCounts(Map<Track, Integer> trackListenCounts) {
+        this.trackListenCounts = trackListenCounts;
     }
 }
