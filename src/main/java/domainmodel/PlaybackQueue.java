@@ -34,6 +34,10 @@ public class PlaybackQueue implements Iterable<Track>{
 
     }
 
+    public Track getNextSong(){
+        return queue.pop();
+    }
+
 
     public void clear() {
         queue.clear();

@@ -1,10 +1,61 @@
 package businesslogic;
 
 import domainmodel.Track;
-
+import businesslogic.State;
 import java.util.Scanner;
 
 public class PlaybackHandler extends Handler{
+
+    class PlaybackThread extends Thread {
+
+        private boolean paused = true;
+        private boolean skip = false;
+        private businesslogic.State state;
+        int totalSteps;
+
+
+        PlaybackThread(businesslogic.State state){
+            this.state=state;
+            this.totalSteps = (int) state.getPlayingTrack().getDuration().toSeconds();
+        }
+
+        public void run() {
+            int i=0;
+            try {
+                while (true) {
+
+                    if (i <= totalSteps && !skip) {
+                        if (!paused){
+                            Thread.sleep(100);
+                            printProgressBar(i, totalSteps);
+                            i++;
+                        }
+                        else{
+                            Thread.sleep(100);
+                            printProgressBar(i, totalSteps);
+                        }
+                    }
+                    else{
+                        skip = false;
+                        Thread.sleep(100);
+                        i=0;
+                        Track newTrack = state.getQueue().getNextSong();
+                        state.setPlayingTrack(newTrack);
+                        this.totalSteps = (int) state.getPlayingTrack().getDuration().toSeconds();
+
+                    }
+                }
+            }catch (Exception ignored){}
+        }
+
+        public void playPause(){
+            paused = !paused;
+        }
+
+        public void skip(){
+            skip = true;
+        }
+    }
 
     private void renderChoices(){
         System.out.println("0: go back");
@@ -22,16 +73,6 @@ public class PlaybackHandler extends Handler{
         }
     }
 
-    private void play (Track t) throws InterruptedException {
-        
-        int totalSteps = (int) t.getDuration().toSeconds();
-        
-        for (int i = 0; i <= totalSteps; i++) {
-            Thread.sleep(100);
-            
-            printProgressBar(i, totalSteps);
-        }
-    }
     public static void printProgressBar(int currentStep, int totalSteps) {
         int barLength = 50;
         int progress = (int) ((double) currentStep / totalSteps * barLength);
@@ -75,18 +116,28 @@ public class PlaybackHandler extends Handler{
                 continue;
             }
 
+            PlaybackThread pbt = new PlaybackThread(state);
+            pbt.start();
+
             switch (navigationOption) {
                 case 0:
+                    pbt.interrupt();
+                    try {
+                        pbt.join();
+                    }catch (Exception ignored){}
                     navigationManager.previousState();
                     break;
                 case 1:
                     try {
-                        play(state.getPlayingTrack());
+                        pbt.playPause();
                     }catch (Exception ignored){}
 
                     break;
                 case 2:
-                    navigationManager.switchToController(NavigationManager.HandlerId.VIEW_SUGGESTIONS);
+                    try {
+                        pbt.skip();
+                    }catch (Exception ignored){}
+
                     break;
 
                 default:
