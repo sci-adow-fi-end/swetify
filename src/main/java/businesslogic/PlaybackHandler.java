@@ -22,10 +22,41 @@ public class PlaybackHandler extends Handler{
         }
     }
 
-    private void play(){
+    private void play (Track t) throws InterruptedException {
+        
+        int totalSteps = (int) t.getDuration().toSeconds();
+        
+        for (int i = 0; i <= totalSteps; i++) {
+            Thread.sleep(100);
+            
+            printProgressBar(i, totalSteps);
+        }
+    }
+    public static void printProgressBar(int currentStep, int totalSteps) {
+        int barLength = 50;
+        int progress = (int) ((double) currentStep / totalSteps * barLength);
+
+        StringBuilder bar = new StringBuilder("[");
+        for (int i = 0; i < barLength; i++) {
+            if (i < progress) {
+                bar.append("=");
+            } else {
+                bar.append(" ");
+            }
+        }
+        bar.append("]");
+
+        int percent = (int) ((double) currentStep / totalSteps * 100);
+
+        System.out.print("\r" + bar + " " + percent + "%");
+
+        System.out.flush();
+
+        if (currentStep == totalSteps) {
+            System.out.println();
+        }
 
     }
-
 
     @Override
     public State update(State state){
@@ -49,7 +80,10 @@ public class PlaybackHandler extends Handler{
                     navigationManager.previousState();
                     break;
                 case 1:
-                    navigationManager.switchToController(NavigationManager.HandlerId.VIEW_PLAYLIST);
+                    try {
+                        play(state.getPlayingTrack());
+                    }catch (Exception ignored){}
+
                     break;
                 case 2:
                     navigationManager.switchToController(NavigationManager.HandlerId.VIEW_SUGGESTIONS);
@@ -60,6 +94,8 @@ public class PlaybackHandler extends Handler{
                     validNavigationOption=false;
             }
         }
+
+
 
 
         return state;
