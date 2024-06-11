@@ -4,10 +4,13 @@ public class SuggestionsHandler extends Handler {
 
 
     private void renderChoices() {
+        System.out.println("press the number of a song to select it or 0 to go back");
+        System.out.println("\n");
     }
 
     @Override
     public State update(State state) {
+
 
         return state;
     }
