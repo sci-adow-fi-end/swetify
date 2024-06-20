@@ -1,0 +1,344 @@
+@startuml
+class dao.UserDao {
++ Optional<User> get(long)
++ Optional<User> get(String)
++ List<User> getAll()
+}
+
+class businesslogic.PlaylistHandler {
+- void renderChoices()
++ State update(State)
+}
+
+class domainmodel.types.DurationConverter {
++ Long convertToDatabaseColumn(Duration)
++ Duration convertToEntityAttribute(Long)
+}
+
+class Main {
+}
+class domainmodel.Suggestions {
+- Playlist playlist
++ void Suggestions()
+}
+
+
+class domainmodel.Observable {
+- List<Handler> observers
++ void attach(Handler)
++ void detach(Handler)
++ void notifyObservers()
+}
+
+
+class domainmodel.Podcast {
+- String theme
++ <<Create>> Podcast()
++ String getTheme()
++ void setTheme(String)
+}
+
+
+abstract class domainmodel.Model {
+- Long id
++ void setId(Long)
++ Long getId()
++ boolean equals(Object)
++ int hashCode()
+}
+
+
+class domainmodel.Album {
+- Playlist<Song> playlist
+- Date releaseDate
++ <<Create>> Album()
++ Playlist<Song> getPlaylist()
++ void setPlaylist(Playlist<Song>)
++ Date getReleaseDate()
++ void setReleaseDate(Date)
+}
+
+
+class businesslogic.PlaybackHandler {
+- void renderChoices()
+- void printQueue(State)
++ {static} void printProgressBar(int,int)
++ State update(State)
+}
+
+class businesslogic.PlaybackHandler$PlaybackThread {
+- boolean paused
+- boolean skip
+- businesslogic.State state
+~ int totalSteps
+~ <<Create>> PlaybackThread(businesslogic.State)
++ void run()
++ void playPause()
++ void skip()
+}
+
+
+class domainmodel.PlaybackQueue {
+- Deque<Track> queue
++ <<Create>> PlaybackQueue()
++ void addTrackOnTop(Track)
++ void addTrackAtBottom(Track)
++ void addPlaylistOnTop(Playlist<Track>)
++ void addPlaylistAtBottom(Playlist<Track>)
++ Track getNextSong()
++ void clear()
++ Iterator<Track> iterator()
+}
+
+
+class domainmodel.Playlist {
+- String title
+- List<T> tracks
++ <<Create>> Playlist()
++ String getTitle()
++ void setTitle(String)
++ List<T> getTracks()
++ void setTracks(List<T>)
++ void addTrack(T)
++ Iterator<T> iterator()
+}
+
+
+abstract class businesslogic.Handler {
++ {static} String ANSI_RESET
++ {static} String ANSI_BLACK
++ {static} String ANSI_RED
++ {static} String ANSI_GREEN
++ {static} String ANSI_YELLOW
++ {static} String ANSI_BLUE
++ {static} String ANSI_PURPLE
++ {static} String ANSI_CYAN
++ {static} String ANSI_WHITE
+# {static} NavigationManager navigationManager
++ {abstract}State update(State)
+# {static} void clearScreen()
+# {static} void printError(String)
+}
+
+
+class businesslogic.State {
+- User loggedUser
+- Playlist<? extends Track> selectedPlaylist
+- Track selectedTrack
+- PlaybackQueue queue
+- Track playingTrack
+- Artist viewingArtist
++ User getLoggedUser()
++ void setLoggedUser(User)
++ Track getSelectedTrack()
++ void setSelectedTrack(Track)
++ Playlist<? extends Track> getSelectedPlaylist()
++ void setSelectedPlaylist(Playlist<? extends Track>)
++ void addOnTop(Track)
++ Track getPlayingTrack()
++ void setPlayingTrack(Track)
++ PlaybackQueue getQueue()
++ void setViewingArtist(Artist)
++ Artist getViewingArtist()
+}
+
+
+abstract class domainmodel.Track {
+- String title
+- Duration duration
+- List<Artist> authors
++ <<Create>> Track()
++ String getTitle()
++ void setTitle(String)
++ Duration getDuration()
++ void setDuration(Duration)
++ List<Artist> getAuthors()
++ void setAuthors(List<Artist>)
+}
+
+
+abstract class dao.Dao {
+# EntityManagerFactory entityManagerFactory
+- boolean setUpComplete
++ {abstract}Optional<T> get(long)
++ {abstract}Optional<T> get(String)
++ {abstract}List<T> getAll()
++ void save(T)
++ void update(T)
++ void delete(T)
+~ void executeInsideTransaction(Consumer<EntityManager>)
+# void setUp()
+}
+
+
+class domainmodel.Artist {
+- String username
+- String password
+- String stageName
+- String biography
+- List<Album> albums
+- int followers
++ <<Create>> Artist()
++ String getUsername()
++ void setUsername(String)
++ String getPassword()
++ void setPassword(String)
++ String getStageName()
++ void setStageName(String)
++ String getBiography()
++ void setBiography(String)
++ List<Album> getAlbums()
++ void setAlbums(List<Album>)
++ int getFollowers()
++ void setFollowers(int)
+}
+
+
+class businesslogic.UserPlaylistsHandler {
+- ArrayList<Playlist<Song>> songPlaylists
+- ArrayList<Playlist<Podcast>> podcastsPlaylists
+- void renderChoices()
++ State update(State)
+}
+
+
+class businesslogic.SuggestionsHandler {
+- void renderChoices()
++ State update(State)
+}
+
+class businesslogic.HomeHandler {
+- void renderChoices()
++ State update(State)
+}
+
+class domainmodel.Song {
+- String lyrics
++ <<Create>> Song()
++ String getLyrics()
++ void setLyrics(String)
+}
+
+
+class businesslogic.RegistrationHandler {
++ String userName
++ String password
++ Dao<User> userDatabase
+- void renderChoices()
+- boolean validateUsername()
++ State update(State)
+}
+
+
+class businesslogic.LoginHandler {
++ String userName
++ String password
+- Dao<User> userDatabase
+- User usr
+- void renderChoices()
+- boolean validateUsername()
+- boolean validatePassword()
++ State update(State)
+}
+
+
+class businesslogic.AlbumsHandler {
++ State update(State)
+}
+
+class businesslogic.SearchHandler {
+- String input
+- ArrayList<Song> songs
+- ArrayList<Podcast> podcasts
+- ArrayList<Artist> artists
+- Dao songsDatabase
+- Dao podcastsDatabase
+- Dao artistsDatabase
+- void renderChoices()
++ State update(State)
+}
+
+
+class businesslogic.ArtistInfoHandler {
+- void renderArtistInfo(Artist)
+- void renderChoices()
++ State update(State)
+}
+
+class domainmodel.User {
+- String username
+- String password
+- List<Playlist<Track>> playlists
+- Playlist<Song> favouriteSongs
+- Playlist<Podcast> favouritePodcasts
+- List<Artist> followedArtists
+- Map<Track,Integer> trackListenCounts
++ <<Create>> User(String,String)
++ <<Create>> User()
++ String getUsername()
++ void setUsername(String)
++ String getPassword()
++ void setPassword(String)
++ List<Playlist<Track>> getPlaylists()
++ void setPlaylists(List<Playlist<Track>>)
++ List<Artist> getFollowedArtists()
++ void setFollowedArtists(List<Artist>)
++ Playlist<Song> getFavouriteSongs()
++ void setFavouriteSongs(Playlist<Song>)
++ Playlist<Podcast> getFavouritePodcasts()
++ void setFavouritePodcasts(Playlist<Podcast>)
++ Map<Track,Integer> getTrackListenCounts()
++ void setTrackListenCounts(Map<Track,Integer>)
+}
+
+
+class businesslogic.NavigationManager {
+- Map<HandlerId,Handler> controllers
+- Stack<Handler> states
+- State currentState
++ <<Create>> NavigationManager()
+~ void previousState()
+~ void switchToController(HandlerId)
+}
+
+
+enum businesslogic.HandlerId {
++  LOGIN
++  REGISTRATION
++  HOME
++  SEARCH
++  VIEW_PLAYLIST
++  VIEW_ARTIST
++  VIEW_TRACK
++  VIEW_SUGGESTIONS
++  PLAY_TRACK
+}
+
+
+
+dao.Dao <|-- dao.UserDao
+businesslogic.Handler <|-- businesslogic.PlaylistHandler
+jakarta.persistence.AttributeConverter <|.. domainmodel.types.DurationConverter
+domainmodel.Model <|-- domainmodel.Suggestions
+domainmodel.Track <|-- domainmodel.Podcast
+domainmodel.Observable <|-- domainmodel.Model
+domainmodel.Model <|-- domainmodel.Album
+businesslogic.Handler <|-- businesslogic.PlaybackHandler
+businesslogic.PlaybackHandler +.. businesslogic.PlaybackHandler$PlaybackThread
+businesslogic.Thread <|-- businesslogic.PlaybackHandler$PlaybackThread
+domainmodel.Iterable <|.. domainmodel.PlaybackQueue
+domainmodel.Iterable <|.. domainmodel.Playlist
+domainmodel.Model <|-- domainmodel.Playlist
+domainmodel.Model <|-- domainmodel.Track
+domainmodel.Model <|-- domainmodel.Artist
+businesslogic.Handler <|-- businesslogic.UserPlaylistsHandler
+businesslogic.Handler <|-- businesslogic.SuggestionsHandler
+businesslogic.Handler <|-- businesslogic.HomeHandler
+domainmodel.Track <|-- domainmodel.Song
+businesslogic.Handler <|-- businesslogic.RegistrationHandler
+businesslogic.Handler <|-- businesslogic.LoginHandler
+businesslogic.Handler <|-- businesslogic.AlbumsHandler
+businesslogic.Handler <|-- businesslogic.SearchHandler
+businesslogic.Handler <|-- businesslogic.ArtistInfoHandler
+domainmodel.Model <|-- domainmodel.User
+@enduml
