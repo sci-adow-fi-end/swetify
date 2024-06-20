@@ -8,12 +8,10 @@ public class State {
     private Playlist<? extends Track> selectedPlaylist;
     private Track selectedTrack;
 
-
     private final PlaybackQueue queue = new PlaybackQueue();
 
-
     private Track playingTrack;
-
+    private Artist viewingArtist;
 
     public User getLoggedUser() {
         return loggedUser;
@@ -27,9 +25,11 @@ public class State {
         return selectedTrack;
     }
 
-    public void setSelectedTrack(Song selectedTrack) {
-        this.selectedTrack = selectedTrack;
-    }
+    //public void setSelectedTrack(Song selectedTrack) {
+        //this.selectedTrack = selectedTrack;
+    //}
+    //replaced Song with Track in setSelectedTrack() in order to be able to add podcasts to playback queue
+    public void setSelectedTrack(Track selectedTrack) {this.selectedTrack = selectedTrack;}
 
     public Playlist<? extends Track> getSelectedPlaylist() {
         return selectedPlaylist;
@@ -55,5 +55,9 @@ public class State {
     public PlaybackQueue getQueue() {
         return queue;
     }
+
+    public void setViewingArtist(Artist artist) { this.viewingArtist = artist; }
+
+    public Artist getViewingArtist() { return this.viewingArtist; }
 
 }

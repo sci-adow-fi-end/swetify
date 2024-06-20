@@ -16,8 +16,8 @@ public class NavigationManager {
         VIEW_PLAYLIST,
         VIEW_ARTIST,
         VIEW_TRACK,
-        VIEW_SUGGESTIONS
-
+        VIEW_SUGGESTIONS,
+        PLAY_TRACK
     }
     private final Map<HandlerId, Handler> controllers;
     private final Stack<Handler> states;
@@ -31,6 +31,8 @@ public class NavigationManager {
         controllers.put(HandlerId.SEARCH, new SearchHandler());
         controllers.put(HandlerId.VIEW_PLAYLIST, new PlaylistHandler());
         controllers.put(HandlerId.VIEW_SUGGESTIONS, new SuggestionsHandler());
+        controllers.put(HandlerId.PLAY_TRACK, new PlaybackHandler());
+        controllers.put(HandlerId.VIEW_ARTIST, new ArtistInfoHandler());
         //TODO stiò
 
 
