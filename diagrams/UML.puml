@@ -10,13 +10,7 @@ class businesslogic.PlaylistHandler {
 + State update(State)
 }
 
-class domainmodel.types.DurationConverter {
-+ Long convertToDatabaseColumn(Duration)
-+ Duration convertToEntityAttribute(Long)
-}
 
-class Main {
-}
 class domainmodel.Suggestions {
 - Playlist playlist
 + void Suggestions()
@@ -318,7 +312,6 @@ enum businesslogic.HandlerId {
 
 dao.Dao <|-- dao.UserDao
 businesslogic.Handler <|-- businesslogic.PlaylistHandler
-jakarta.persistence.AttributeConverter <|.. domainmodel.types.DurationConverter
 domainmodel.Model <|-- domainmodel.Suggestions
 domainmodel.Track <|-- domainmodel.Podcast
 domainmodel.Observable <|-- domainmodel.Model
@@ -326,8 +319,6 @@ domainmodel.Model <|-- domainmodel.Album
 businesslogic.Handler <|-- businesslogic.PlaybackHandler
 businesslogic.PlaybackHandler +.. businesslogic.PlaybackHandler$PlaybackThread
 businesslogic.Thread <|-- businesslogic.PlaybackHandler$PlaybackThread
-domainmodel.Iterable <|.. domainmodel.PlaybackQueue
-domainmodel.Iterable <|.. domainmodel.Playlist
 domainmodel.Model <|-- domainmodel.Playlist
 domainmodel.Model <|-- domainmodel.Track
 domainmodel.Model <|-- domainmodel.Artist
