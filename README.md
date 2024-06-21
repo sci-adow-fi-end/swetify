@@ -8,7 +8,7 @@ la simulazione di un'applicazione di questa tipologia, da noi denominata *Swetif
 
 ## Descrizione e requisiti
 Swetify deve permettere agli utenti di creare un account ed effettuare l'accesso fornendo username e password.
-L'applicazione di streaming musicale prevede la partecipazione di due tipologie di utenti: cliente e artista
+L'applicazione di streaming musicale prevede la partecipazione di due tipologie di utenti: cliente e artista  
 Una volta autenticati, i clienti devono poter:
 
 - visualizzare un catalogo musicale che consenta agli utenti di cercare brani, album e artisti tramite una barra di ricerca.
