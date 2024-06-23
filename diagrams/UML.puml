@@ -16,14 +16,14 @@ class domainmodel.Suggestions {
 + void Suggestions()
 }
 
-
+/'
 class domainmodel.Observable {
 - List<Handler> observers
 + void attach(Handler)
 + void detach(Handler)
 + void notifyObservers()
 }
-
+'/
 
 class domainmodel.Podcast {
 - String theme
@@ -60,6 +60,7 @@ class businesslogic.PlaybackHandler {
 + State update(State)
 }
 
+/'
 class businesslogic.PlaybackHandler$PlaybackThread {
 - boolean paused
 - boolean skip
@@ -70,6 +71,7 @@ class businesslogic.PlaybackHandler$PlaybackThread {
 + void playPause()
 + void skip()
 }
+'/
 
 
 class domainmodel.PlaybackQueue {
@@ -263,8 +265,7 @@ class domainmodel.User {
 - String username
 - String password
 - List<Playlist<Track>> playlists
-- Playlist<Song> favouriteSongs
-- Playlist<Podcast> favouritePodcasts
+- Playlist<Track> favouriteTracks
 - List<Artist> followedArtists
 - Map<Track,Integer> trackListenCounts
 + <<Create>> User(String,String)
@@ -312,13 +313,12 @@ enum businesslogic.HandlerId {
 
 dao.Dao <|-- dao.UserDao
 businesslogic.Handler <|-- businesslogic.PlaylistHandler
-domainmodel.Model <|-- domainmodel.Suggestions
+domainmodel.Model <|- domainmodel.Suggestions
 domainmodel.Track <|-- domainmodel.Podcast
-domainmodel.Observable <|-- domainmodel.Model
+'domainmodel.Observable <|-- domainmodel.Model'
 domainmodel.Model <|-- domainmodel.Album
 businesslogic.Handler <|-- businesslogic.PlaybackHandler
-businesslogic.PlaybackHandler +.. businesslogic.PlaybackHandler$PlaybackThread
-businesslogic.Thread <|-- businesslogic.PlaybackHandler$PlaybackThread
+businesslogic.Thread *-- businesslogic.PlaybackHandler
 domainmodel.Model <|-- domainmodel.Playlist
 domainmodel.Model <|-- domainmodel.Track
 domainmodel.Model <|-- domainmodel.Artist
@@ -332,4 +332,16 @@ businesslogic.Handler <|-- businesslogic.AlbumsHandler
 businesslogic.Handler <|-- businesslogic.SearchHandler
 businesslogic.Handler <|-- businesslogic.ArtistInfoHandler
 domainmodel.Model <|-- domainmodel.User
+domainmodel.Album  "1,1  " o-- domainmodel.Playlist
+domainmodel.Playlist "0,n" o-- domainmodel.Song
+domainmodel.Playlist "0.n" o-- domainmodel.Podcast
+domainmodel.PlaybackQueue "o,n" o-- domainmodel.Song
+domainmodel.Artist "0,n" o-- domainmodel.Album
+domainmodel.User "0,n" o-- domainmodel.Playlist
+domainmodel.User "0,n" o-- domainmodel.Artist
+domainmodel.User "0,n" o-- domainmodel.Track
+businesslogic.Handler "1,1" o- businesslogic.NavigationManager
+businesslogic.Handler "1,1" o- businesslogic.State
+businesslogic.NavigationManager ..> businesslogic.HandlerId
+businesslogic.SearchHandler "0,n" o-- domainmodel.Track
 @enduml

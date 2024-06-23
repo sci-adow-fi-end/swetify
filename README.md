@@ -6,7 +6,7 @@ struttura e il desiderio di replicarne il funzionamento.
 Abbiamo quindi considerato opportuno e ragionevole la realizzazione, o meglio,
 la simulazione di un'applicazione di questa tipologia, da noi denominata *Swetify*.
 
-## Descrizione e requisiti
+## Requisiti funzionali
 Swetify deve permettere agli utenti di creare un account ed effettuare l'accesso fornendo username e password.
 L'applicazione di streaming musicale prevede la partecipazione di due tipologie di utenti: cliente e artista  
 Una volta autenticati, i clienti devono poter:
