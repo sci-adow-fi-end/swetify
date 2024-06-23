@@ -20,14 +20,16 @@ public class ArtistInfoHandler extends Handler {
     @Override
     public State update(State state) {
 
-        clearScreen();
-        renderChoices();
-
-        int navigationOption = -1;
         boolean validNavigationOption = false;
-        Scanner input = new Scanner(System.in);
 
-        while (!validNavigationOption) {
+        while (!validNavigationOption) { //render again choices when the input is not valid
+            clearScreen();
+            renderArtistInfo(state.getViewingArtist());
+            renderChoices();
+
+            int navigationOption = -1;
+            Scanner input = new Scanner(System.in);
+
             try {
                 navigationOption = input.nextInt();
                 validNavigationOption = true;
@@ -36,11 +38,9 @@ public class ArtistInfoHandler extends Handler {
                 continue;
             }
 
-            //TODO: decide what to do after viewing artist's info
-
             switch (navigationOption) {
                 case 0:
-
+                    navigationManager.switchToController(NavigationManager.HandlerId.VIEW_ALBUMS);
                     break;
                 case 1:
                     navigationManager.previousState();
@@ -50,12 +50,6 @@ public class ArtistInfoHandler extends Handler {
                     validNavigationOption=false;
             }
         }
-
-
-
-
-
-
 
         return state;
     }

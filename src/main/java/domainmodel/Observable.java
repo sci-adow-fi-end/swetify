@@ -22,7 +22,7 @@ public class Observable {
 
     public void notifyObservers() {
         for (Handler observer : observers) {
-            observer.update();
+            //observer.update();
         }
     }
 }

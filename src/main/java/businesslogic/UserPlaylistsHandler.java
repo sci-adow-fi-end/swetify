@@ -12,7 +12,8 @@ public class UserPlaylistsHandler extends Handler {
     private ArrayList<Playlist<Song>> songPlaylists;
     private ArrayList<Playlist<Podcast>> podcastsPlaylists;
 
-    //TODO pigliare le playlist dal dao
+    //TODO: pigliare le playlist dal dao
+    //TODO: decide how to implement PlaylistDao to handle generics
 
     private void renderChoices() {
         System.out.println("press the number of a playlist to select it or 0 to go back");

@@ -1,10 +1,13 @@
 package businesslogic;
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 import java.util.ArrayList;
 
-import dao.Dao;
+import dao.ArtistDao;
+import dao.PodcastDao;
+import dao.SongDao;
 import domainmodel.Artist;
 import domainmodel.Podcast;
 import domainmodel.Song;
@@ -12,18 +15,17 @@ import domainmodel.Song;
 public class SearchHandler extends Handler {
 
     private String input = "";
-    private ArrayList<Song> songs;
-    private ArrayList<Podcast> podcasts ;
-    private ArrayList<Artist> artists;
-    private Dao songsDatabase;
-    private Dao podcastsDatabase;
-    private Dao artistsDatabase;
+    private List<Song> songs = new ArrayList<>();
+    private List<Podcast> podcasts = new ArrayList<>();
+    private List<Artist> artists = new ArrayList<>();
+    private SongDao songsDatabase = new SongDao();
+    private PodcastDao podcastsDatabase = new PodcastDao();
+    private ArtistDao artistsDatabase = new ArtistDao();
 
 
     private void renderChoices() {
         System.out.println("enter a keyword to search or press - to go back\n");
     }
-    //TODO remove casts when the dao class is ready
 
     @Override
     public State update(State state) {
@@ -38,23 +40,28 @@ public class SearchHandler extends Handler {
 
         if (!input.equals("-")){
 
-            try {
-                songs = (ArrayList<Song>) songsDatabase.get(input).orElseThrow();
-                songsFound = true;
-            }catch (NoSuchElementException e){
+            songs = songsDatabase.getAllByName(input);
+            if (songs.isEmpty()){
                 System.out.println(ANSI_RED +"No song matches found"+ ANSI_RESET);
             }
-            try {
-                podcasts = (ArrayList<Podcast>) podcastsDatabase.get(input).orElseThrow();
-                podcastsFound = true;
-            }catch (NoSuchElementException e){
+            else{
+                songsFound = true;
+            }
+
+            podcasts = podcastsDatabase.getAllByName(input);
+            if (podcasts.isEmpty()){
                 System.out.println(ANSI_RED +"No podcast matches found"+ ANSI_RESET);
             }
-            try {
-                artists = (ArrayList<Artist>) artistsDatabase.get(input).orElseThrow();
-                artistsFound = true;
-            }catch (NoSuchElementException e){
+            else{
+                podcastsFound = true;
+            }
+
+            artists = artistsDatabase.getAllByName(input);
+            if (artists.isEmpty()){
                 System.out.println(ANSI_RED +"No artist matches found"+ ANSI_RESET);
+            }
+            else{
+                artistsFound = true;
             }
 
             int navigationChoice;
@@ -129,9 +136,8 @@ public class SearchHandler extends Handler {
                 }
             }
         }
-        else{
+        else
             navigationManager.previousState();
-        }
 
         return state;
     }

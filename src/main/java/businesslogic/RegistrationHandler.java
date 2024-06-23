@@ -27,7 +27,7 @@ public class RegistrationHandler extends Handler{
         userName = scanner.nextLine();
         System.out.println("Choose a password: ");
         password = scanner.nextLine();
-        if (userDatabase.get(userName).isPresent()) {
+        if (userDatabase.getByName(userName).isPresent()) {
             System.out.println("Username is already taken");
             return false;
         }

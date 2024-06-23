@@ -14,9 +14,6 @@ public class LoginHandler extends Handler{
     private final Dao<User> userDatabase = new UserDao();
     private User usr;
 
-
-
-
     private void renderChoices() {
         System.out.println("1: Log in Swetify");
         System.out.println("2: Don't have an account? Register now!");
@@ -29,7 +26,7 @@ public class LoginHandler extends Handler{
         System.out.println("Enter username: ");
         userName = input.nextLine();
         try {
-            usr = userDatabase.get(userName).orElseThrow();
+            usr = userDatabase.getByName(userName).orElseThrow();
             return true;
         } catch (NoSuchElementException e) {
             printError("Username is not correct, try again");
@@ -82,8 +79,8 @@ public class LoginHandler extends Handler{
                     printError("Inserted choice out of range");
                     validNavigationChoice=false;
             }
-            }
-        return state;
         }
+        return state;
     }
+}
 

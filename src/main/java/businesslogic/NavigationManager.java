@@ -1,6 +1,8 @@
 package businesslogic;
 
 
+import domainmodel.Album;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Stack;
@@ -17,7 +19,8 @@ public class NavigationManager {
         VIEW_ARTIST,
         VIEW_TRACK,
         VIEW_SUGGESTIONS,
-        PLAY_TRACK
+        PLAY_TRACK,
+        VIEW_ALBUMS
     }
     private final Map<HandlerId, Handler> controllers;
     private final Stack<Handler> states;
@@ -33,6 +36,7 @@ public class NavigationManager {
         controllers.put(HandlerId.VIEW_SUGGESTIONS, new SuggestionsHandler());
         controllers.put(HandlerId.PLAY_TRACK, new PlaybackHandler());
         controllers.put(HandlerId.VIEW_ARTIST, new ArtistInfoHandler());
+        controllers.put(HandlerId.VIEW_ALBUMS, new AlbumsHandler());
         //TODO stiò
 
 
