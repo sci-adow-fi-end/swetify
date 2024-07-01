@@ -27,19 +27,19 @@ public class PlaylistHandler extends Handler {
             }
 
             switch (navigationOption) {
-                case 1:
-                    navigationManager.switchToController(NavigationManager.HandlerId.SEARCH);
+                case 0:
+                    navigationManager.previousState();
                     break;
-                case 2:
+                case 1:
                     navigationManager.switchToController(NavigationManager.HandlerId.VIEW_PLAYLIST);
                     break;
-                case 3:
+                case 2:
                     navigationManager.switchToController(NavigationManager.HandlerId.VIEW_SUGGESTIONS);
                     break;
-                case 4:
+                case 3:
                     navigationManager.switchToController(NavigationManager.HandlerId.LOGIN);
                     break;
-	        case 5:
+	        case 4:
 		    navigationManager.switchToController(NavigationManager.HandlerId.LOGIN);
                     break;
                 default:
