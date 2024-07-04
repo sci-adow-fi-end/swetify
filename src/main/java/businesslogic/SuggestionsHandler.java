@@ -10,7 +10,9 @@ public class SuggestionsHandler extends Handler {
 
     @Override
     public State update(State state) {
-
+	clearScreen();
+	renderChoices();
+	    
 
         return state;
     }
