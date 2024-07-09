@@ -2,11 +2,13 @@ package businesslogic;
 
 import domainmodel.Track;
 import businesslogic.State;
+
+import java.io.ByteArrayInputStream;
 import java.util.Scanner;
 
 public class PlaybackHandler extends Handler{
 
-    class PlaybackThread extends Thread {
+    public class PlaybackThread extends Thread {
 
         private boolean paused = true;
         private boolean skip = false;
@@ -55,6 +57,14 @@ public class PlaybackHandler extends Handler{
         public void skip(){
             skip = true;
         }
+
+        public boolean isPaused(){
+            return paused;
+        }
+
+        public boolean isSkipped(){
+            return skip;
+        }
     }
 
     private void renderChoices(){
@@ -97,6 +107,10 @@ public class PlaybackHandler extends Handler{
             System.out.println();
         }
 
+    }
+
+    public PlaybackThread createPlaybackQueue(State state){
+        return new PlaybackThread(state);
     }
 
     @Override
@@ -145,9 +159,6 @@ public class PlaybackHandler extends Handler{
                     validNavigationOption=false;
             }
         }
-
-
-
 
         return state;
     }

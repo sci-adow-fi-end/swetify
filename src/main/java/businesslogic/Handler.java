@@ -1,5 +1,7 @@
 package businesslogic;
 
+import java.util.Scanner;
+
 public abstract class Handler {
 
 
@@ -13,10 +15,13 @@ public abstract class Handler {
     public static final String ANSI_CYAN = "\u001B[36m";
     public static final String ANSI_WHITE = "\u001B[37m";
 
-    protected static NavigationManager navigationManager = new NavigationManager();
+    protected static NavigationManager navigationManager;
 
     public abstract State update(State state);
 
+    public void setNavigationManager(NavigationManager navigationManager) {
+        Handler.navigationManager = navigationManager;
+    }
 
     //TODO add clearscreen to all handlers
     protected static void clearScreen() {
@@ -28,6 +33,15 @@ public abstract class Handler {
         System.out.println(" ");
         System.out.println(ANSI_RED+error+ANSI_RESET);
         System.out.println(" ");
+    }
+
+    protected static String getRestOfInput(Scanner input){
+        StringBuilder restOfInput = new StringBuilder();
+        while (input.hasNextLine()) {
+            String riga = input.nextLine();
+            restOfInput.append(riga).append("\n");
+        }
+        return restOfInput.toString();
     }
 
 }

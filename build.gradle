@@ -10,6 +10,7 @@ dependencies {
     implementation(platform "org.hibernate.orm:hibernate-platform:6.4.4.Final")
     implementation "org.hibernate.orm:hibernate-core"
     implementation "jakarta.transaction:jakarta.transaction-api"
+    implementation 'org.junit.jupiter:junit-jupiter-api:5.5.1'
     testImplementation(platform('org.junit:junit-bom:5.10.2'))
     testImplementation('org.junit.jupiter:junit-jupiter')
     testRuntimeOnly('org.junit.platform:junit-platform-launcher')

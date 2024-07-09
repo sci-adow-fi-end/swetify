@@ -1,19 +1,22 @@
 package businesslogic;
 
+import java.io.ByteArrayInputStream;
+import java.util.Scanner;
+
 public class PlaylistHandler extends Handler {
 
     private void renderChoices() {
         System.out.println("0: go back");
         System.out.println("1: add playlist to the bottom of the queue");
         System.out.println("2: add playlist to the top of the queue");
-	System.out.println("3: add song to the playlist");
-	System.out.println("4: remove song from the playlist");
-	
+	    System.out.println("3: add song to the playlist");
+	    System.out.println("4: remove song from the playlist");
+        System.out.println("5: close Swetify");
     }
 
     @Override
     public State update(State state) {
-	clearScreen();
+	    clearScreen();
         renderChoices();
         int navigationOption = -1;
         boolean validNavigationOption = false;
@@ -24,6 +27,11 @@ public class PlaylistHandler extends Handler {
                 validNavigationOption = true;
             } catch (NumberFormatException ignored) {
                 continue;
+            }
+
+            if (ConfigOptions.TEST_MODE) {
+                String nextInput = getRestOfInput(input);
+                System.setIn(new ByteArrayInputStream(nextInput.getBytes()));
             }
 
             switch (navigationOption) {
@@ -39,8 +47,11 @@ public class PlaylistHandler extends Handler {
                 case 3:
                     navigationManager.switchToController(NavigationManager.HandlerId.LOGIN);
                     break;
-	        case 4:
-		    navigationManager.switchToController(NavigationManager.HandlerId.LOGIN);
+	            case 4:
+		            navigationManager.switchToController(NavigationManager.HandlerId.LOGIN);
+                    break;
+                case 5:
+                    navigationManager.stop();
                     break;
                 default:
                     printError("inserted option not valid");

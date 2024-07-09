@@ -4,6 +4,7 @@ import dao.Dao;
 import dao.UserDao;
 import domainmodel.User;
 
+import java.io.ByteArrayInputStream;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
@@ -11,12 +12,17 @@ public class LoginHandler extends Handler{
 
     public String userName;
     public String password;
-    private final Dao<User> userDatabase = new UserDao();
+    private final UserDao userDatabase;
     private User usr;
+
+    public LoginHandler(UserDao userDatabase){
+        this.userDatabase = userDatabase;
+    }
 
     private void renderChoices() {
         System.out.println("1: Log in Swetify");
         System.out.println("2: Don't have an account? Register now!");
+        System.out.println("3: Close Swetify");
         System.out.println("\n");
     }
 
@@ -65,15 +71,36 @@ public class LoginHandler extends Handler{
                 case 1:
                     while (!validPassword) {
                         while (!validUsername) {
+
+                            if (ConfigOptions.TEST_MODE) {
+                                String nextInput = getRestOfInput(scanner);
+                                System.setIn(new ByteArrayInputStream(nextInput.getBytes()));
+                            }
+
                             validUsername = validateUsername();
                         }
-                        validPassword = validatePassword();
+
+                        if (ConfigOptions.TEST_MODE) {
+                            String nextInput = getRestOfInput(scanner);
+                            System.setIn(new ByteArrayInputStream(nextInput.getBytes()));
                         }
+
+                        validPassword = validatePassword();
+                    }
                     state.setLoggedUser(usr);
+
+                    if (ConfigOptions.TEST_MODE) {
+                        String nextInput = getRestOfInput(scanner);
+                        System.setIn(new ByteArrayInputStream(nextInput.getBytes()));
+                    }
+
                     navigationManager.switchToController(NavigationManager.HandlerId.HOME);
                     break;
                 case 2:
                     navigationManager.switchToController(NavigationManager.HandlerId.REGISTRATION);
+                    break;
+                case 3:
+                    navigationManager.stop();
                     break;
                 default:
                     printError("Inserted choice out of range");

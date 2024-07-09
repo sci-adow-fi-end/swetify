@@ -1,4 +1,5 @@
 package businesslogic;
+import java.io.ByteArrayInputStream;
 import java.util.Scanner;
 
 public class HomeHandler extends Handler {
@@ -11,6 +12,7 @@ public class HomeHandler extends Handler {
         System.out.println("2: View your playlists");
         System.out.println("3: View suggested songs");
         System.out.println("4: Log out");
+        System.out.println("5: Close Swetify");
     }
 
 
@@ -29,6 +31,11 @@ public class HomeHandler extends Handler {
                 continue;
             }
 
+            if (ConfigOptions.TEST_MODE) {
+                String nextInput = getRestOfInput(input);
+                System.setIn(new ByteArrayInputStream(nextInput.getBytes()));
+            }
+
             switch (navigationOption) {
                 case 1:
                     navigationManager.switchToController(NavigationManager.HandlerId.SEARCH);
@@ -41,6 +48,9 @@ public class HomeHandler extends Handler {
                     break;
                 case 4:
                     navigationManager.switchToController(NavigationManager.HandlerId.LOGIN);
+                    break;
+                case 5:
+                    navigationManager.stop();
                     break;
                 default:
                     printError("inserted option not valid");

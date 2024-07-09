@@ -1,4 +1,5 @@
 package businesslogic;
+import java.io.ByteArrayInputStream;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
@@ -18,10 +19,15 @@ public class SearchHandler extends Handler {
     private List<Song> songs = new ArrayList<>();
     private List<Podcast> podcasts = new ArrayList<>();
     private List<Artist> artists = new ArrayList<>();
-    private SongDao songsDatabase = new SongDao();
-    private PodcastDao podcastsDatabase = new PodcastDao();
-    private ArtistDao artistsDatabase = new ArtistDao();
+    private final SongDao songsDatabase;
+    private final PodcastDao podcastsDatabase;
+    private final ArtistDao artistsDatabase;
 
+    public SearchHandler(SongDao songsDatabase, PodcastDao podcastsDatabase, ArtistDao artistsDatabase) {
+        this.songsDatabase = songsDatabase;
+        this.podcastsDatabase = podcastsDatabase;
+        this.artistsDatabase = artistsDatabase;
+    }
 
     private void renderChoices() {
         System.out.println("enter a keyword to search or press - to go back\n");
@@ -37,6 +43,11 @@ public class SearchHandler extends Handler {
         boolean songsFound = false;
         boolean podcastsFound = false;
         boolean artistsFound = false;
+
+        if (ConfigOptions.TEST_MODE) {
+            String nextInput = getRestOfInput(scanner);
+            System.setIn(new ByteArrayInputStream(nextInput.getBytes()));
+        }
 
         if (!input.equals("-")){
 

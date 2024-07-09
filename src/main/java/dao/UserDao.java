@@ -9,6 +9,11 @@ import java.util.List;
 import java.util.Optional;
 
 public class UserDao extends Dao<User> {
+
+    public UserDao() {
+        //setUp(); //TODO: remove comment when the database is ready
+    }
+
     @Override
     public Optional<User> get(long id) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();

@@ -4,15 +4,18 @@ import dao.Dao;
 import dao.UserDao;
 import domainmodel.User;
 
+import java.io.ByteArrayInputStream;
 import java.util.Scanner;
 
 public class RegistrationHandler extends Handler{
 
     public String userName;
     public String password;
-    public Dao<User> userDatabase = new UserDao();
+    private final Dao<User> userDatabase;
 
-
+    public RegistrationHandler(Dao<User> userDatabase) {
+        this.userDatabase = userDatabase;
+    }
 
     private void renderChoices() {
         clearScreen();
@@ -55,9 +58,21 @@ public class RegistrationHandler extends Handler{
                 case 0:
                     boolean validUsername = false;
                     while (!validUsername) {
+
+                        if (ConfigOptions.TEST_MODE) {
+                            String nextInput = getRestOfInput(scanner);
+                            System.setIn(new ByteArrayInputStream(nextInput.getBytes()));
+                        }
+
                         validUsername = validateUsername();
                     }
                     userDatabase.save(new User(userName, password));
+
+                    if (ConfigOptions.TEST_MODE) {
+                        String nextInput = getRestOfInput(scanner);
+                        System.setIn(new ByteArrayInputStream(nextInput.getBytes()));
+                    }
+
                     navigationManager.switchToController(NavigationManager.HandlerId.LOGIN);
                     break;
                 case 1:
