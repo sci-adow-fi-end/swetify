@@ -1,0 +1,8 @@
+\contentsline {section}{\numberline {1}Motivazioni}{2}{}%
+\contentsline {section}{\numberline {2}Requisiti Funzionali}{2}{}%
+\contentsline {subsection}{\numberline {2.1}Funzionalità proposte al cliente}{2}{}%
+\contentsline {subsection}{\numberline {2.2}Funzionalità proposte all'artista}{2}{}%
+\contentsline {subsection}{\numberline {2.3}Diagramma dei casi d'uso}{3}{}%
+\contentsline {section}{\numberline {3}Scelte di progetto}{3}{}%
+\contentsline {section}{\numberline {4}Documentazione}{3}{}%
+\contentsline {section}{\numberline {5}Test}{3}{}%
