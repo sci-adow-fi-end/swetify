@@ -43,7 +43,7 @@ public class LoginHandler extends Handler{
         userName = input.nextLine();
         try {
             usr = userDatabase.getByName(userName).orElseThrow();
-            return true;
+ -m             return true;
         } catch (NoSuchElementException e) {
             printError("Username is not correct, try again");
             return false;
