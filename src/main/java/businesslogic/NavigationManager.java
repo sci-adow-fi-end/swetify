@@ -69,7 +69,6 @@ public class NavigationManager {
 
     void previousState() {
         states.pop();
-        currentState = states.peek().update(currentState);
     }
 
     public int getCurrentHandlerId(){
@@ -83,7 +82,6 @@ public class NavigationManager {
     void switchToController(HandlerId id) {
         if (controllers.containsKey(id)) {
             states.push(controllers.get(id));
-            currentState = states.peek().update(currentState);
         } else {
             throw new IllegalArgumentException("gne gne il controller non c'è");
         }
@@ -94,6 +92,13 @@ public class NavigationManager {
             states.push(controllers.get(id));
         }
     }
+
+    public void run(){
+	while(states.notEmpty()){
+	currentState = states.peek().update(currentState);
+	}
+    }
+	
 
     public void stop(){
         lastId = getCurrentHandlerId();

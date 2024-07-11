@@ -23,9 +23,19 @@ public class LoginHandler extends Handler{
         System.out.println("1: Log in Swetify");
         System.out.println("2: Don't have an account? Register now!");
         System.out.println("3: Close Swetify");
-        System.out.println("\n");
+        System.out.println("1: Log in as artist");System.out.println("\n");
     }
 
+    private boolean checkArtist(){
+	Scanner input = new Scanner(System.in);
+
+	System.out.println("1: Log in as customer");
+	System.out.println("2: Log in as artist");
+	System.out.println("\n");
+	
+	
+    }
+    
     private boolean validateUsername() {
         Scanner input = new Scanner(System.in);
 
@@ -57,7 +67,9 @@ public class LoginHandler extends Handler{
         boolean validNavigationChoice = false;
         boolean validUsername = false;
         boolean validPassword = false;
+	boolean isArtist = false;
         Scanner scanner = new Scanner(System.in);
+	
         while(!validNavigationChoice) {
             validNavigationChoice=true;
             try {
