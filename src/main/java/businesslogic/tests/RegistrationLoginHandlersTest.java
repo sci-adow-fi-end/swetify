@@ -1,3 +1,4 @@
+
 package businesslogic.tests;
 
 import businesslogic.NavigationManager;
@@ -17,8 +18,6 @@ import java.io.ByteArrayInputStream;
 public class RegistrationLoginHandlersTest {
 
     private final NavigationManager navigationManager = new NavigationManager();
-    private final RegistrationHandler registrationHandler =
-            (RegistrationHandler) navigationManager.getHandlerById(NavigationManager.HandlerId.REGISTRATION);
     private final State state = new State();
     String testString = "0\nStio\nNelChill\n1\nStio\nNelChill\n5\n"; //Registration -> Login -> Home
 
@@ -31,7 +30,7 @@ public class RegistrationLoginHandlersTest {
     void testRegistrationLogin(){
         ByteArrayInputStream input = new ByteArrayInputStream(testString.getBytes());
         System.setIn(input);
-        registrationHandler.update(state);
+        navigationManager.run();
 
         User usr = state.getLoggedUser();
         assertEquals("Stio", usr.getUsername());

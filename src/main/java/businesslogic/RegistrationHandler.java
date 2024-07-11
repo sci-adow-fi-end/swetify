@@ -11,10 +11,12 @@ public class RegistrationHandler extends Handler{
 
     public String userName;
     public String password;
-    private final Dao<User> userDatabase;
+    private final UserDao userDatabase;
+    private final ArtistDao artistDatabase;
 
-    public RegistrationHandler(Dao<User> userDatabase) {
+    public RegistrationHandler(UserDao userDatabase, ArtistDao artistDatabase){
         this.userDatabase = userDatabase;
+	this.artistDatabase = artistDatabase;
     }
 
     private void renderChoices() {
@@ -24,13 +26,54 @@ public class RegistrationHandler extends Handler{
         System.out.println("\n");
     }
 
+
+        private boolean checkArtist(){
+	Scanner input = new Scanner(System.in);
+
+	System.out.println("1: Register as customer");
+	System.out.println("2: Register as artist");
+	System.out.println("\n");
+	int answer = 0;
+	boolean isArtist = false;
+	boolean validAnswer = false; 
+	
+	
+	  while(!validAnswer) {
+            validAnswer=true;
+            try {
+                answer = scanner.nextInt();
+            } catch (NumberFormatException e) {
+                printError("Inserted value is not a number");
+                validAnswer=false;
+		continue;
+
+		switch (answer) {
+
+                  case 1:
+                      isArtist = false;
+                      break;
+                  case 2:
+                      isArtist = true;
+                      break;
+                  default:
+                      printError("Inserted choice out of range");
+                      validAnswer=false;
+		}
+	    }
+	    return isArtist;
+	  }
+	}
+        
+
     private boolean validateUsername(){
         Scanner scanner = new Scanner(System.in);
         System.out.println("Choose a username: ");
         userName = scanner.nextLine();
         System.out.println("Choose a password: ");
         password = scanner.nextLine();
-        if (userDatabase.getByName(userName).isPresent()) {
+	
+        if ((!isArtist && userDatabase.getByName(userName).isPresent())||
+	    (isArtist && artistDatabase.getByName(userName).isPresent())) {
             System.out.println("Username is already taken");
             return false;
         }
@@ -52,7 +95,7 @@ public class RegistrationHandler extends Handler{
                 navigationOption = scanner.nextInt();
                 validNavigationOption = true;
             } catch (NumberFormatException e) {
-                continue;
+                 continue;
             }
             switch (navigationOption) {
                 case 0:

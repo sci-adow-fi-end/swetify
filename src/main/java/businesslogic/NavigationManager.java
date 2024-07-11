@@ -14,6 +14,7 @@ public class NavigationManager {
         LOGIN,
         REGISTRATION,
         HOME,
+	ARTIST_HOME,
         SEARCH,
         VIEW_PLAYLIST,
         VIEW_ARTIST,
@@ -40,7 +41,8 @@ public class NavigationManager {
         databases.put(DaoId.USER, new UserDao());
         databases.put(DaoId.PODCAST, new PodcastDao());
         databases.put(DaoId.SONG, new SongDao());
-
+	databases.put(DaoId.ARTIST, new ArtistDao());
+	
         this.controllers = new HashMap<>();
         controllers.put(HandlerId.LOGIN, new LoginHandler((UserDao)databases.get(DaoId.USER)));
         controllers.put(HandlerId.REGISTRATION, new RegistrationHandler((UserDao)databases.get(DaoId.USER)));
@@ -59,11 +61,15 @@ public class NavigationManager {
         for (Handler h: controllers.values()){
             h.setNavigationManager(this);
         }
-        //switchToController(HandlerId.LOGIN);
+	if(!ConfigOptions.TESTMODE){
+	    start();
+	}
+	
     }
 
     public void start(){
         switchToController(HandlerId.LOGIN);
+	run();
     }
 
 
