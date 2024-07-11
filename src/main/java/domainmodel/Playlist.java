@@ -13,7 +13,7 @@ import java.util.List;
 @Table(name = "Playlists")
 public class Playlist<T extends Track> extends Model implements Iterable<T>{
     private String title;
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL, targetEntity = Track.class)
     private List<T> tracks = new ArrayList<>();
 
     public Playlist() {

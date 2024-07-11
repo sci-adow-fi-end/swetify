@@ -11,7 +11,7 @@ import java.util.Optional;
 public class UserDao extends Dao<User> {
 
     public UserDao() {
-        //setUp(); //TODO: remove comment when the database is ready
+        setUp();
     }
 
     @Override
