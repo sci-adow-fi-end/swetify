@@ -108,7 +108,6 @@ public class LoginHandler extends Handler{
         boolean validPassword = false;
 	boolean isArtist = false;
         Scanner scanner = new Scanner(System.in);
-	boolean isArtist = checkArtist();
 	
         while(!validNavigationChoice) {
             validNavigationChoice=true;
@@ -121,6 +120,14 @@ public class LoginHandler extends Handler{
             }
             switch (navigationChoice) {
                 case 1:
+
+		    if (ConfigOptions.TEST_MODE) {
+                       String nextInput = getRestOfInput(scanner);
+                       System.setIn(new ByteArrayInputStream(nextInput.getBytes()));
+                    }
+
+		    isArtist = checkArtist();
+		    
                     while (!validPassword) {
                         while (!validUsername) {
 

@@ -13,7 +13,6 @@ import java.io.ByteArrayInputStream;
 public class HomeHandlerTest {
 
     private final NavigationManager navigationManager = new NavigationManager();
-    private final HomeHandler homeHandler = (HomeHandler) navigationManager.getHandlerById(NavigationManager.HandlerId.HOME);
     private final State state = new State();
 
     @BeforeEach
@@ -25,7 +24,7 @@ public class HomeHandlerTest {
     public void testHomeSearch() {
         ByteArrayInputStream input = new ByteArrayInputStream("1\n-\n5\n".getBytes());
         System.setIn(input);
-        homeHandler.update(state);
+        navigationManager.run();
 
         assertEquals(NavigationManager.HandlerId.HOME.ordinal(), navigationManager.getLastId());
     }
@@ -34,7 +33,7 @@ public class HomeHandlerTest {
     public void testHomeViewPlaylist() {
         ByteArrayInputStream input = new ByteArrayInputStream("2\n5\n".getBytes());
         System.setIn(input);
-        homeHandler.update(state);
+        navigationManager.run();
 
         assertEquals(NavigationManager.HandlerId.VIEW_PLAYLIST.ordinal(), navigationManager.getLastId());
     }
@@ -43,7 +42,7 @@ public class HomeHandlerTest {
     public void testHomeSuggestions() {
         ByteArrayInputStream input = new ByteArrayInputStream("3".getBytes());
         System.setIn(input);
-        homeHandler.update(state);
+        navigationManager.run();
 
         assertEquals(NavigationManager.HandlerId.VIEW_SUGGESTIONS.ordinal(), navigationManager.getCurrentHandlerId());
     }

@@ -66,6 +66,12 @@ public class RegistrationHandler extends Handler{
         
 
     private boolean validateUsername(){
+
+	if (ConfigOptions.TEST_MODE) {
+            String nextInput = getRestOfInput(scanner);
+            System.setIn(new ByteArrayInputStream(nextInput.getBytes()));
+        }
+	isArtist = checkArtist();
         Scanner scanner = new Scanner(System.in);
         System.out.println("Choose a username: ");
         userName = scanner.nextLine();

@@ -19,7 +19,7 @@ public class RegistrationLoginHandlersTest {
 
     private final NavigationManager navigationManager = new NavigationManager();
     private final State state = new State();
-    String testString = "0\nStio\nNelChill\n1\nStio\nNelChill\n5\n"; //Registration -> Login -> Home
+    String testString = "0\n1\nStio\nNelChill\n1\n1\nStio\nNelChill\n5\n"; //Registration -> Login -> Home
 
     @BeforeEach
     void setUp() {
