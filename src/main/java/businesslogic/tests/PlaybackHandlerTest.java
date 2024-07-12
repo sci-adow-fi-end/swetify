@@ -22,9 +22,9 @@ public class PlaybackHandlerTest {
     @BeforeEach
     public void setUp() {
         track1.setTitle("Song 1");
-        track1.setDuration(Duration.ofSeconds(10)); // 5 minutes
+        track1.setDuration(Duration.ofSeconds(10)); // 10 seconds
         track2.setTitle("Song 2");
-        track2.setDuration(Duration.ofSeconds(20)); // 3 minutes 20 seconds
+        track2.setDuration(Duration.ofSeconds(20)); // 20 seconds
 
         state.setPlayingTrack(track1);
         state.getQueue().addTrackAtBottom(track2);
