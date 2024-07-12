@@ -4,13 +4,14 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-import businesslogic.RegistrationHandler;
 import businesslogic.State;
 import domainmodel.User;
 
 import java.io.ByteArrayInputStream;
 
 //TODO: execute and verify tests when the database is ready
+
+//TODO: create two separate tests for login and registration (use @Order)
 
 public class RegistrationLoginHandlersTest {
 

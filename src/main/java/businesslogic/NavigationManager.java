@@ -41,11 +41,13 @@ public class NavigationManager {
         databases.put(DaoId.USER, new UserDao());
         databases.put(DaoId.PODCAST, new PodcastDao());
         databases.put(DaoId.SONG, new SongDao());
-	databases.put(DaoId.ARTIST, new ArtistDao());
+	    databases.put(DaoId.ARTIST, new ArtistDao());
 	
         this.controllers = new HashMap<>();
-        controllers.put(HandlerId.LOGIN, new LoginHandler((UserDao)databases.get(DaoId.USER)));
-        controllers.put(HandlerId.REGISTRATION, new RegistrationHandler((UserDao)databases.get(DaoId.USER)));
+        controllers.put(HandlerId.LOGIN, new LoginHandler((UserDao)databases.get(DaoId.USER),
+                (ArtistDao)databases.get(DaoId.ARTIST)));
+        controllers.put(HandlerId.REGISTRATION, new RegistrationHandler((UserDao)databases.get(DaoId.USER),
+                (ArtistDao)databases.get(DaoId.ARTIST)));
         controllers.put(HandlerId.HOME, new HomeHandler());
         controllers.put(HandlerId.SEARCH, new SearchHandler((SongDao)databases.get(DaoId.SONG),
                 (PodcastDao)databases.get(DaoId.PODCAST), (ArtistDao)databases.get(DaoId.ARTIST)));
@@ -61,7 +63,7 @@ public class NavigationManager {
         for (Handler h: controllers.values()){
             h.setNavigationManager(this);
         }
-	if(!ConfigOptions.TESTMODE){
+	if(!ConfigOptions.TEST_MODE){
 	    start();
 	}
 	
@@ -100,7 +102,7 @@ public class NavigationManager {
     }
 
     public void run(){
-	while(states.notEmpty()){
+	while(!states.empty()){
 	currentState = states.peek().update(currentState);
 	}
     }
@@ -108,7 +110,7 @@ public class NavigationManager {
 
     public void stop(){
         lastId = getCurrentHandlerId();
-        while (!states.isEmpty()){
+        while (!states.empty()){
             states.pop();
         }
 

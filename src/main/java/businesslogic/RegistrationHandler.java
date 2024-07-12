@@ -1,22 +1,22 @@
 package businesslogic;
 
-import dao.Dao;
+import dao.ArtistDao;
 import dao.UserDao;
 import domainmodel.User;
 
 import java.io.ByteArrayInputStream;
 import java.util.Scanner;
 
-public class RegistrationHandler extends Handler{
+public class RegistrationHandler extends Handler {
 
     public String userName;
     public String password;
     private final UserDao userDatabase;
     private final ArtistDao artistDatabase;
 
-    public RegistrationHandler(UserDao userDatabase, ArtistDao artistDatabase){
+    public RegistrationHandler(UserDao userDatabase, ArtistDao artistDatabase) {
         this.userDatabase = userDatabase;
-	this.artistDatabase = artistDatabase;
+        this.artistDatabase = artistDatabase;
     }
 
     private void renderChoices() {
@@ -27,67 +27,65 @@ public class RegistrationHandler extends Handler{
     }
 
 
-        private boolean checkArtist(){
-	Scanner input = new Scanner(System.in);
+    private boolean checkArtist() {
+        Scanner input = new Scanner(System.in);
 
-	System.out.println("1: Register as customer");
-	System.out.println("2: Register as artist");
-	System.out.println("\n");
-	int answer = 0;
-	boolean isArtist = false;
-	boolean validAnswer = false; 
-	
-	
-	  while(!validAnswer) {
-            validAnswer=true;
+        System.out.println("1: Register as customer");
+        System.out.println("2: Register as artist");
+        System.out.println("\n");
+        int answer = 0;
+        boolean isArtist = false;
+        boolean validAnswer = false;
+
+        while (!validAnswer) {
+            validAnswer = true;
             try {
-                answer = scanner.nextInt();
+                answer = input.nextInt();
             } catch (NumberFormatException e) {
                 printError("Inserted value is not a number");
-                validAnswer=false;
-		continue;
+                validAnswer = false;
+                continue;
+            }
 
-		switch (answer) {
+            switch (answer) {
+                case 1:
+                    isArtist = false;
+                    break;
+                case 2:
+                    isArtist = true;
+                    break;
+                default:
+                    printError("Inserted choice out of range");
+                    validAnswer = false;
+            }
+        }
+        return isArtist;
+    }
 
-                  case 1:
-                      isArtist = false;
-                      break;
-                  case 2:
-                      isArtist = true;
-                      break;
-                  default:
-                      printError("Inserted choice out of range");
-                      validAnswer=false;
-		}
-	    }
-	    return isArtist;
-	  }
-	}
-        
 
-    private boolean validateUsername(){
+    private boolean validateUsername() {
 
-	if (ConfigOptions.TEST_MODE) {
+        Scanner scanner = new Scanner(System.in);
+        boolean isArtist;
+
+        if (ConfigOptions.TEST_MODE) {
             String nextInput = getRestOfInput(scanner);
             System.setIn(new ByteArrayInputStream(nextInput.getBytes()));
         }
-	isArtist = checkArtist();
-        Scanner scanner = new Scanner(System.in);
+        isArtist = checkArtist();
         System.out.println("Choose a username: ");
         userName = scanner.nextLine();
         System.out.println("Choose a password: ");
         password = scanner.nextLine();
-	
-        if ((!isArtist && userDatabase.getByName(userName).isPresent())||
-	    (isArtist && artistDatabase.getByName(userName).isPresent())) {
+
+        if ((!isArtist && userDatabase.getByName(userName).isPresent()) ||
+                (isArtist && artistDatabase.getByName(userName).isPresent())) {
             System.out.println("Username is already taken");
             return false;
-        }
-        else{
+        } else {
             return true;
         }
     }
-
 
 
     @Override
@@ -96,12 +94,12 @@ public class RegistrationHandler extends Handler{
         int navigationOption = -1;
         boolean validNavigationOption = false;
         Scanner scanner = new Scanner(System.in);
-        while(!validNavigationOption) {
+        while (!validNavigationOption) {
             try {
                 navigationOption = scanner.nextInt();
                 validNavigationOption = true;
             } catch (NumberFormatException e) {
-                 continue;
+                continue;
             }
             switch (navigationOption) {
                 case 0:

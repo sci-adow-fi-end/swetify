@@ -2,7 +2,7 @@ package businesslogic;
 import java.io.ByteArrayInputStream;
 import java.util.Scanner;
 
-public class HomeHandler extends Handler {
+public class ArtistHomeHandler extends Handler {
 
 
     private void renderChoices() {
@@ -37,10 +37,10 @@ public class HomeHandler extends Handler {
 
             switch (navigationOption) {
                 case 1:
-                    navigationManager.switchToController(NavigationManager.HandlerId.);
+                    //navigationManager.switchToController(NavigationManager.HandlerId.);
                     break;
                 case 2:
-                    navigationManager.switchToController(NavigationManager.HandlerId.);
+                    //navigationManager.switchToController(NavigationManager.HandlerId.);
                     break;
                 case 3:
                     navigationManager.switchToController(NavigationManager.HandlerId.LOGIN);

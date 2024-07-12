@@ -13,7 +13,7 @@ import domainmodel.Artist;
 import domainmodel.Podcast;
 import domainmodel.Song;
 
-public class SearchHandler extends Handler {
+public class PlaylistUpdateHandler extends Handler {
 
     private String input = "";
     private List<Song> songs = new ArrayList<>();
@@ -23,7 +23,7 @@ public class SearchHandler extends Handler {
     private final PodcastDao podcastsDatabase;
     private final ArtistDao artistsDatabase;
 
-    public SearchHandler(SongDao songsDatabase, PodcastDao podcastsDatabase, ArtistDao artistsDatabase) {
+    public PlaylistUpdateHandler(SongDao songsDatabase, PodcastDao podcastsDatabase, ArtistDao artistsDatabase) {
         this.songsDatabase = songsDatabase;
         this.podcastsDatabase = podcastsDatabase;
         this.artistsDatabase = artistsDatabase;
@@ -50,8 +50,6 @@ public class SearchHandler extends Handler {
         }
 
         if (!input.equals("-")){
-
-	    if()
               songs = songsDatabase.getAllByName(input);
               if (songs.isEmpty()){
                   System.out.println(ANSI_RED +"No song matches found"+ ANSI_RESET);
