@@ -1,4 +1,3 @@
-package businesslogic.tests;
 
 import businesslogic.NavigationManager;
 import org.junit.jupiter.api.BeforeEach;
