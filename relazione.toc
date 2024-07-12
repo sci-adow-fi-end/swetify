@@ -1,6 +1,0 @@
-\contentsline {section}{\numberline {1}Introduzione}{2}{}%
-\contentsline {subsection}{\numberline {1.1}Motivazioni}{2}{}%
-\contentsline {subsection}{\numberline {1.2}Requisiti Funzionali}{2}{}%
-\contentsline {section}{\numberline {2}Scelte di progetto}{2}{}%
-\contentsline {section}{\numberline {3}Struttura dell'elaborato}{2}{}%
-\contentsline {section}{\numberline {4}Documentazione}{2}{}%
