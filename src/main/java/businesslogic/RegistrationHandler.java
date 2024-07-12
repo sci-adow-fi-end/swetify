@@ -41,6 +41,10 @@ public class RegistrationHandler extends Handler {
             validAnswer = true;
             try {
                 answer = input.nextInt();
+                if (ConfigOptions.TEST_MODE) {
+                    String nextInput = getRestOfInput(input);
+                    System.setIn(new ByteArrayInputStream(nextInput.getBytes()));
+                }
             } catch (NumberFormatException e) {
                 printError("Inserted value is not a number");
                 validAnswer = false;
@@ -73,9 +77,18 @@ public class RegistrationHandler extends Handler {
             System.setIn(new ByteArrayInputStream(nextInput.getBytes()));
         }
         isArtist = checkArtist();
+        scanner = new Scanner(System.in);
+
         System.out.println("Choose a username: ");
         userName = scanner.nextLine();
+
+        if (ConfigOptions.TEST_MODE) {
+            String nextInput = getRestOfInput(scanner);
+            System.setIn(new ByteArrayInputStream(nextInput.getBytes()));
+        }
+
         System.out.println("Choose a password: ");
+        scanner = new Scanner(System.in);
         password = scanner.nextLine();
 
         if ((!isArtist && userDatabase.getByName(userName).isPresent()) ||
