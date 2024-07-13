@@ -21,12 +21,12 @@ public class UserDao extends Dao<User> {
     }
 
     @Override
-    public Optional<User> getByName(String name){
+    public User getByName(String name){
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         //Query query = entityManager.createQuery("SELECT e FROM User e WHERE e.username = :name");
         TypedQuery<User> query = entityManager.createQuery("SELECT e FROM User e WHERE e.username = :name", User.class);
         query.setParameter("name", name);
-        return Optional.ofNullable(query.getSingleResult());
+        return query.getSingleResult();
     }
 
     @Override

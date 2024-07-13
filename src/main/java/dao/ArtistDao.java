@@ -15,11 +15,11 @@ public class ArtistDao extends Dao<Artist> {
     }
 
     @Override
-    public Optional<Artist> getByName(String name){
+    public Artist getByName(String name){
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         TypedQuery<Artist> query = entityManager.createQuery("SELECT a FROM Artist a WHERE a.stageName = :name", Artist.class);
         query.setParameter("name", name);
-        return Optional.ofNullable(query.getSingleResult());
+        return query.getSingleResult();
     }
 
     public List<Artist> getAllByName(String name) {

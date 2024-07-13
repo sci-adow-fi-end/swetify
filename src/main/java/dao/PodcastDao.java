@@ -15,11 +15,11 @@ public class PodcastDao extends Dao<Podcast> {
     }
 
     @Override
-    public Optional<Podcast> getByName(String name){
+    public Podcast getByName(String name){
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         TypedQuery<Podcast> query = entityManager.createQuery("SELECT p FROM Podcast p WHERE p.title = :title", Podcast.class);
         query.setParameter("title", name);
-        return Optional.ofNullable(query.getSingleResult());
+        return query.getSingleResult();
     }
 
     public List<Podcast> getAllByName(String name) {

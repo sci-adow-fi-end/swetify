@@ -15,11 +15,11 @@ public class SongDao extends Dao<Song> {
     }
 
     @Override
-    public Optional<Song> getByName(String name){
+    public Song getByName(String name){
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         TypedQuery<Song> query = entityManager.createQuery("SELECT s FROM Song s WHERE s.title = :title", Song.class);
         query.setParameter("title", name);
-        return Optional.ofNullable(query.getSingleResult());
+        return query.getSingleResult();
     }
 
     public List<Song> getAllByName(String name) {

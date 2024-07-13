@@ -16,7 +16,7 @@ public abstract class Dao<T> {
 
     public abstract Optional<T> get(long id);
 
-    public abstract Optional<T> getByName(String name);
+    public abstract T getByName(String name);
 
     //public abstract List<T> getAllByName(String name);
 
