@@ -3,6 +3,7 @@ package businesslogic;
 import dao.ArtistDao;
 import dao.UserDao;
 import domainmodel.User;
+import jakarta.persistence.NoResultException;
 
 import java.io.ByteArrayInputStream;
 import java.util.Scanner;
@@ -91,12 +92,22 @@ public class RegistrationHandler extends Handler {
         scanner = new Scanner(System.in);
         password = scanner.nextLine();
 
-        if ((!isArtist && userDatabase.getByName(userName).isPresent()) ||
-                (isArtist && artistDatabase.getByName(userName).isPresent())) {
-            System.out.println("Username is already taken");
-            return false;
+        if (isArtist) {
+            try {
+                artistDatabase.getByName(userName);
+                System.out.println("Username is already taken");
+                return false;
+            } catch (NoResultException e) {
+                return true;
+            }
         } else {
-            return true;
+            try {
+                userDatabase.getByName(userName);
+                System.out.println("Username is already taken");
+                return false;
+            } catch (NoResultException e) {
+                return true;
+            }
         }
     }
 
