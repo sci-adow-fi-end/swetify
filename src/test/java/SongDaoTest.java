@@ -22,7 +22,6 @@ public class SongDaoTest extends BaseDaoTest {
         super.setUp();
         songDatabase = new SongDao();
 
-        System.out.println("Stio");
         song1.setTitle("title1");
         song1.setDuration(Duration.ofSeconds(10));
         song2.setTitle("title2");
@@ -44,9 +43,9 @@ public class SongDaoTest extends BaseDaoTest {
     @Test
     void testGetByName(){
 
-        assertSame(song1.getTitle(), songDatabase.getByName(song1.getTitle()).getTitle());
-        assertSame(song2.getTitle(), songDatabase.getByName(song2.getTitle()).getTitle());
-        assertSame(song3.getTitle(), songDatabase.getByName(song3.getTitle()).getTitle());
+        assertEquals(song1.getTitle(), songDatabase.getByName(song1.getTitle()).getTitle());
+        assertEquals(song2.getTitle(), songDatabase.getByName(song2.getTitle()).getTitle());
+        assertEquals(song3.getTitle(), songDatabase.getByName(song3.getTitle()).getTitle());
 
         Song song = new Song();
         song.setTitle("stio");
@@ -70,6 +69,15 @@ public class SongDaoTest extends BaseDaoTest {
         songDatabase.save(song4);
         List<Song> foundSongs = songDatabase.getAllByName(song1.getTitle());
         assertEquals(2, foundSongs.size());
+    }
+
+    @Test
+    void testGetAll(){
+        List<Song> allSongs = songDatabase.getAll();
+        assertEquals(3, allSongs.size());
+        assertEquals(allSongs.get(0).getTitle(), song1.getTitle());
+        assertEquals(allSongs.get(1).getTitle(), song2.getTitle());
+        assertEquals(allSongs.get(2).getTitle(), song3.getTitle());
     }
 
 }
