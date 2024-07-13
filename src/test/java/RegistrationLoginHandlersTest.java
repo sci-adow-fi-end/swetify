@@ -22,6 +22,7 @@ public class RegistrationLoginHandlersTest {
     @BeforeEach
     void setUp() {
         navigationManager.pushHandler(NavigationManager.HandlerId.REGISTRATION);
+        navigationManager.setCurrentState(state);
     }
 
     @Test

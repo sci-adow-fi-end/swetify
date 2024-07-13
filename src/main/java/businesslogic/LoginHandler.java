@@ -47,6 +47,10 @@ public class LoginHandler extends Handler {
             validAnswer = true;
             try {
                 answer = input.nextInt();
+                if (ConfigOptions.TEST_MODE) {
+                    String nextInput = getRestOfInput(input);
+                    System.setIn(new ByteArrayInputStream(nextInput.getBytes()));
+                }
             } catch (NumberFormatException e) {
                 printError("Inserted value is not a number");
                 validAnswer = false;
@@ -74,6 +78,16 @@ private boolean validateUsername(boolean isArtist) {
 
     System.out.println("Enter username: ");
     userName = input.nextLine();
+    if (ConfigOptions.TEST_MODE) {
+        String nextInput = getRestOfInput(input);
+        System.setIn(new ByteArrayInputStream(nextInput.getBytes()));
+    }
+    input = new Scanner(System.in);
+    userName = input.nextLine();
+    if (ConfigOptions.TEST_MODE) {
+        String nextInput = getRestOfInput(input);
+        System.setIn(new ByteArrayInputStream(nextInput.getBytes()));
+    }
     try {
         if (!isArtist) {
             usr = userDatabase.getByName(userName);
@@ -91,6 +105,10 @@ private boolean validatePassword(boolean isArtist) {
     Scanner input = new Scanner(System.in);
     System.out.println("Enter password: ");
     password = input.nextLine();
+    if (ConfigOptions.TEST_MODE) {
+        String nextInput = getRestOfInput(input);
+        System.setIn(new ByteArrayInputStream(nextInput.getBytes()));
+    }
 
     if (!isArtist) {
         return usr.getPassword().equals(password);
@@ -131,28 +149,12 @@ public State update(State state) {
 
                 while (!validPassword) {
                     while (!validUsername) {
-
-                        if (ConfigOptions.TEST_MODE) {
-                            String nextInput = getRestOfInput(scanner);
-                            System.setIn(new ByteArrayInputStream(nextInput.getBytes()));
-                        }
-
                         validUsername = validateUsername(isArtist);
                     }
-
-                    if (ConfigOptions.TEST_MODE) {
-                        String nextInput = getRestOfInput(scanner);
-                        System.setIn(new ByteArrayInputStream(nextInput.getBytes()));
-                    }
-
                     validPassword = validatePassword(isArtist);
                 }
                 state.setLoggedUser(usr);
 
-                if (ConfigOptions.TEST_MODE) {
-                    String nextInput = getRestOfInput(scanner);
-                    System.setIn(new ByteArrayInputStream(nextInput.getBytes()));
-                }
                 if (!isArtist) {
                     navigationManager.switchToController(NavigationManager.HandlerId.HOME);
                 } else {

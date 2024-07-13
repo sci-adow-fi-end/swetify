@@ -2,6 +2,7 @@ package businesslogic;
 
 import dao.ArtistDao;
 import dao.UserDao;
+import domainmodel.Artist;
 import domainmodel.User;
 import jakarta.persistence.NoResultException;
 
@@ -14,6 +15,7 @@ public class RegistrationHandler extends Handler {
     public String password;
     private final UserDao userDatabase;
     private final ArtistDao artistDatabase;
+    private boolean isArtist = false;
 
     public RegistrationHandler(UserDao userDatabase, ArtistDao artistDatabase) {
         this.userDatabase = userDatabase;
@@ -70,17 +72,18 @@ public class RegistrationHandler extends Handler {
 
     private boolean validateUsername() {
 
+        isArtist = checkArtist();
+
+        System.out.println("Choose a username: ");
         Scanner scanner = new Scanner(System.in);
-        boolean isArtist;
+        userName = scanner.nextLine();
 
         if (ConfigOptions.TEST_MODE) {
             String nextInput = getRestOfInput(scanner);
             System.setIn(new ByteArrayInputStream(nextInput.getBytes()));
         }
-        isArtist = checkArtist();
-        scanner = new Scanner(System.in);
 
-        System.out.println("Choose a username: ");
+        scanner = new Scanner(System.in);
         userName = scanner.nextLine();
 
         if (ConfigOptions.TEST_MODE) {
@@ -91,6 +94,11 @@ public class RegistrationHandler extends Handler {
         System.out.println("Choose a password: ");
         scanner = new Scanner(System.in);
         password = scanner.nextLine();
+
+        if (ConfigOptions.TEST_MODE) {
+            String nextInput = getRestOfInput(scanner);
+            System.setIn(new ByteArrayInputStream(nextInput.getBytes()));
+        }
 
         if (isArtist) {
             try {
@@ -137,11 +145,13 @@ public class RegistrationHandler extends Handler {
 
                         validUsername = validateUsername();
                     }
-                    userDatabase.save(new User(userName, password));
-
-                    if (ConfigOptions.TEST_MODE) {
-                        String nextInput = getRestOfInput(scanner);
-                        System.setIn(new ByteArrayInputStream(nextInput.getBytes()));
+                    if (!isArtist)
+                        userDatabase.save(new User(userName, password));
+                    else {
+                        Artist art = new Artist();
+                        art.setUsername(userName);
+                        art.setPassword(password);
+                        artistDatabase.save(art);
                     }
 
                     navigationManager.switchToController(NavigationManager.HandlerId.LOGIN);

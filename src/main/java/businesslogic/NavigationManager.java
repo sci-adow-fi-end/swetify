@@ -129,4 +129,8 @@ public class NavigationManager {
         return controllers.get(handlerId);
     }
 
+    public void setCurrentState(State state){
+        this.currentState = state;
+    }
+
 }
