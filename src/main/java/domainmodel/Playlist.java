@@ -12,9 +12,9 @@ import java.util.List;
 @Entity
 @Table(name = "Playlists")
 public class Playlist<T extends Track> extends Model implements Iterable<T>{
-    private String title;
+    protected String title;
     @ManyToMany(cascade = CascadeType.ALL, targetEntity = Track.class)
-    private List<T> tracks = new ArrayList<>();
+    protected List<T> tracks = new ArrayList<>();
 
     public Playlist(){
     }

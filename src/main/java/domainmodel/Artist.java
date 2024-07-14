@@ -22,6 +22,8 @@ public class Artist extends Model {
     @Transient
     private int followers;
 
+    public Artist(){}
+
     public Artist(String username, String password, String stageName, String biography, int followers) {
         this.username = username;
         this.password = password;

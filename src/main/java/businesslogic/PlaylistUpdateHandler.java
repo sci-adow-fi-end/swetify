@@ -41,7 +41,7 @@ public class PlaylistUpdateHandler extends Handler {
     }
 
 
-    private Track askNewSong(State s){
+    private Song askNewSong(State s){
         Scanner input = new Scanner(System.in);
         System.out.println("Insert song name");
         System.out.println("\n");
@@ -63,7 +63,7 @@ public class PlaylistUpdateHandler extends Handler {
         return songs.get(selectedSong-1);
     }
 
-    private Track askNewPodcast(State s){
+    private Podcast askNewPodcast(State s){
         Scanner input = new Scanner(System.in);
         System.out.println("Insert podcast name");
         System.out.println("\n");
@@ -92,31 +92,54 @@ public class PlaylistUpdateHandler extends Handler {
         int size = state.getSelectedPlaylist().print();
         renderChoices();
         int option= askNumberInRange(1,4);
-        switch (option) {
-            case 1:
-                System.out.println("Type the name of the song you want to add");
-                System.out.println("\n");
-                state.getSelectedPlaylist().addTrack(askNewSong(state));
 
-                break;
-            case 2:
-                System.out.println("Type the number of the song you want to remove");
-                System.out.println("\n");
-                int removedSong = askNumberInRange(1,size)-1;
-                state.getSelectedPlaylist().removeTrack(removedSong);
-                break;
-            case 3:
-                navigationManager.previousState();
-                break;
-            case 4:
-                navigationManager.stop();
-                break;
-        }
 
-        if (state.getSelectedPlaylist().getClass().getName().equals("Playlist<Song>")){
+        if (state.getSelectedPlaylist() instanceof  SongPlaylist){
 
+            switch (option) {
+                case 1:
+                    System.out.println("Type the name of the song you want to add");
+                    System.out.println("\n");
+
+                    ((SongPlaylist)(state.getSelectedPlaylist())).addSong(askNewSong(state));
+
+                    break;
+                case 2:
+                    System.out.println("Type the number of the song you want to remove");
+                    System.out.println("\n");
+                    int removedSong = askNumberInRange(1,size)-1;
+                    state.getSelectedPlaylist().removeTrack(removedSong);
+                    break;
+                case 3:
+                    navigationManager.previousState();
+                    break;
+                case 4:
+                    navigationManager.stop();
+                    break;
+            }
         }
         else {
+            switch (option) {
+                case 1:
+                    System.out.println("Type the name of the song you want to add");
+                    System.out.println("\n");
+
+                    ((PodcastPlaylist)(state.getSelectedPlaylist())).addPodcast(askNewPodcast(state));
+
+                    break;
+                case 2:
+                    System.out.println("Type the number of the song you want to remove");
+                    System.out.println("\n");
+                    int removedSong = askNumberInRange(1,size)-1;
+                    state.getSelectedPlaylist().removeTrack(removedSong);
+                    break;
+                case 3:
+                    navigationManager.previousState();
+                    break;
+                case 4:
+                    navigationManager.stop();
+                    break;
+            }
 
         }
         return state;

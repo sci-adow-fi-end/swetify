@@ -9,6 +9,8 @@ import java.util.List;
 public class Song extends Track {
     private String lyrics;
 
+    public Song(){}
+
     public Song(String title, String lyrics, int minutes, int seconds, List<Artist> authors) {
         super(title, minutes, seconds, authors);
         this.lyrics = lyrics;
