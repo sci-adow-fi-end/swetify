@@ -30,6 +30,10 @@ public class Playlist<T extends Track> extends Model implements Iterable<T>{
         return title;
     }
 
+    public void removeTrack(int i){
+        tracks.remove(i);
+    }
+
     public void setTitle(String title) {
         this.title = title;
         notifyObservers();
@@ -47,6 +51,16 @@ public class Playlist<T extends Track> extends Model implements Iterable<T>{
     public void addTrack(T track) {
         tracks.add(track);
         notifyObservers();
+    }
+
+    public int print(){
+        int i=1;
+        for (Track track : tracks){
+            System.out.println(i+" "+track.getTitle());
+            System.out.println("\n");
+            i++;
+        }
+        return i;
     }
 
     @Override

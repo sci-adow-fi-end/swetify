@@ -7,12 +7,12 @@ import domainmodel.Album;
 import domainmodel.Artist;
 import domainmodel.Song;
 
+import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class AlbumLoadHandler extends Handler{
-
 
     ArtistDao artistData;
     SongDao songData;
@@ -28,14 +28,24 @@ public class AlbumLoadHandler extends Handler{
         Scanner input = new Scanner(System.in);
         System.out.println("Insert song name");
         System.out.println("\n");
-        return input.nextLine();
+        String sn = input.nextLine();
+        if (ConfigOptions.TEST_MODE) {
+            String nextInput = getRestOfInput(input);
+            System.setIn(new ByteArrayInputStream(nextInput.getBytes()));
+        }
+        return sn;
     }
 
     private String askSongLyrics(){
         Scanner input = new Scanner(System.in);
         System.out.println("Insert song lyrics");
         System.out.println("\n");
-        return input.nextLine();
+        String ly = input.nextLine();
+        if (ConfigOptions.TEST_MODE) {
+            String nextInput = getRestOfInput(input);
+            System.setIn(new ByteArrayInputStream(nextInput.getBytes()));
+        }
+        return ly;
     }
 
 
@@ -51,6 +61,10 @@ public class AlbumLoadHandler extends Handler{
             System.out.println("\n");
             System.out.println("Insert artist name");
             artists.add(artistData.getByName(input.nextLine()));
+            if (ConfigOptions.TEST_MODE) {
+                String nextInput = getRestOfInput(input);
+                System.setIn(new ByteArrayInputStream(nextInput.getBytes()));
+            }
         }
         return artists;
     }
@@ -83,7 +97,6 @@ public class AlbumLoadHandler extends Handler{
         albumData.save(na);
         return na;
     }
-
 
 
     public State update(State s) {

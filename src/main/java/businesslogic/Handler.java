@@ -43,6 +43,10 @@ public abstract class Handler {
         while (!validNavigationOption) {
             try {
                 navigationOption = Integer.parseInt(input.nextLine());
+                if (ConfigOptions.TEST_MODE) {
+                    String nextInput = getRestOfInput(input);
+                    System.setIn(new ByteArrayInputStream(nextInput.getBytes()));
+                }
                 if (navigationOption>=min&&navigationOption<=max) {
                     validNavigationOption = true;
                 }

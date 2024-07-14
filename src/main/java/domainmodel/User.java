@@ -18,10 +18,10 @@ public class User extends Model {
     private List<Playlist<Track>> playlists = new LinkedList<>();
 
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-    private Playlist<Song> favouriteSongs = new Playlist<>();
+    private Playlist<Song> favouriteSongs = new Playlist<>("Favourites");
 
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-    private Playlist<Podcast> favouritePodcasts = new Playlist<>();
+    private Playlist<Podcast> favouritePodcasts = new Playlist<>("Favourites");
 
     /*
     TODO: decide how suggestions should be implemented

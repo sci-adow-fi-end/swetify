@@ -14,7 +14,6 @@ public class PodcastLoadHandler extends Handler{
     ArtistDao artistData;
     PodcastDao podcastData;
 
-
     private void renderChoices() {
         System.out.println("1: Load a podcast");
         System.out.println("2: exit");
@@ -34,7 +33,6 @@ public class PodcastLoadHandler extends Handler{
         System.out.println("\n");
         return input.nextLine();
     }
-
 
     private List<Artist> askAuthors(State s){
         List<Artist> artists= new ArrayList<>();
