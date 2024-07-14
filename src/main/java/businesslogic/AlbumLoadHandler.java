@@ -1,6 +1,8 @@
 package businesslogic;
 
+import dao.AlbumDao;
 import dao.ArtistDao;
+import dao.SongDao;
 import domainmodel.Album;
 import domainmodel.Artist;
 import domainmodel.Song;
@@ -12,7 +14,9 @@ import java.util.Scanner;
 public class AlbumLoadHandler extends Handler{
 
 
-    ArtistDao data;
+    ArtistDao artistData;
+    SongDao songData;
+    AlbumDao albumData;
 
     private void renderChoices() {
         System.out.println("1: Load a podcast");
@@ -46,14 +50,17 @@ public class AlbumLoadHandler extends Handler{
             insertionEnded = askNumberInRange(1,2)==2;
             System.out.println("\n");
             System.out.println("Insert artist name");
-            artists.add(data.getByName(input.nextLine()));
+            artists.add(artistData.getByName(input.nextLine()));
         }
         return artists;
     }
 
     private Song createSong(State s){
-        return new Song(askSongName(),askSongLyrics(),askNumberInRange(0, Integer.MAX_VALUE),
+
+        Song ns = new Song(askSongName(),askSongLyrics(),askNumberInRange(0, Integer.MAX_VALUE),
                 askNumberInRange(0, Integer.MAX_VALUE),askAuthors(s));
+        songData.save(ns);
+        return ns;
     }
 
     private Album createAlbum(State s){
@@ -72,7 +79,9 @@ public class AlbumLoadHandler extends Handler{
             System.out.println("Insert artist name");
             songs.add(createSong(s));
         }
-        return new Album(name, songs);
+        Album na = new Album(name, songs);
+        albumData.save(na);
+        return na;
     }
 
 
@@ -85,6 +94,7 @@ public class AlbumLoadHandler extends Handler{
         switch (navOpt){
             case 1:
                 s.getLoggedArtist().addAlbum(createAlbum(s));
+                artistData.update(s.getLoggedArtist());
                 break;
             case 2:
                 navigationManager.previousState();

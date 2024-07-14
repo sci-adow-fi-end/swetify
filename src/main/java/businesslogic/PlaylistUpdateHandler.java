@@ -99,48 +99,6 @@ public class PlaylistUpdateHandler extends Handler {
                     }
                 }
 
-                if (podcastsFound){
-                    int i = 0;
-                    for (Podcast podcast : podcasts){
-                        System.out.println(i+") "+ podcast.getTitle());
-                    }
-                    System.out.println("Enter the number corresponding to the podcast you want to play:");
-                    try{
-                        navigationChoice = scanner.nextInt();
-                        state.setSelectedTrack(podcasts.get(navigationChoice));
-                        navigationManager.switchToController(NavigationManager.HandlerId.PLAY_TRACK);
-                    }
-                    catch (NumberFormatException e){
-                        System.out.println("Input is not a number");
-                        validNavigationChoice = false;
-                    }
-                    catch (IndexOutOfBoundsException e){
-                        System.out.println("Please enter a valid number");
-                        validNavigationChoice = false;
-                    }
-                }
-
-                if (artistsFound){
-                    int i = 0;
-                    for (Artist artist : artists){
-                        System.out.println(i+") "+ artist.getStageName());
-                    }
-
-                    System.out.println("Enter the number corresponding to the artist you want to view:");
-                    try{
-                        navigationChoice = scanner.nextInt();
-                        state.setViewingArtist(artists.get(navigationChoice));
-                        navigationManager.switchToController(NavigationManager.HandlerId.VIEW_ARTIST);
-                    }
-                    catch (NumberFormatException e){
-                        System.out.println("Input is not a number");
-                        validNavigationChoice = false;
-                    }
-                    catch (IndexOutOfBoundsException e){
-                        System.out.println("Please enter a valid number");
-                        validNavigationChoice = false;
-                    }
-                }
             }
         }
         else

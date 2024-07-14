@@ -1,6 +1,7 @@
 package businesslogic;
 
 import dao.ArtistDao;
+import dao.PodcastDao;
 import domainmodel.Artist;
 import domainmodel.Podcast;
 import java.util.ArrayList;
@@ -10,7 +11,8 @@ import java.util.Scanner;
 public class PodcastLoadHandler extends Handler{
 
 
-    ArtistDao data;
+    ArtistDao artistData;
+    PodcastDao podcastData;
 
 
     private void renderChoices() {
@@ -45,14 +47,16 @@ public class PodcastLoadHandler extends Handler{
             insertionEnded = askNumberInRange(1,2)==2;
             System.out.println("\n");
             System.out.println("Insert artist name");
-            artists.add(data.getByName(input.nextLine()));
+            artists.add(artistData.getByName(input.nextLine()));
         }
         return artists;
     }
 
     private Podcast createPodcast(State s){
-        return new Podcast(askPodcastName(),askPodcastTheme(),askNumberInRange(0, Integer.MAX_VALUE),
+        Podcast np = new Podcast(askPodcastName(),askPodcastTheme(),askNumberInRange(0, Integer.MAX_VALUE),
                 askNumberInRange(0, Integer.MAX_VALUE),askAuthors(s));
+        podcastData.save(np);
+        return np;
     }
 
     @Override
@@ -64,6 +68,7 @@ public class PodcastLoadHandler extends Handler{
         switch (navOpt){
             case 1:
                 s.getLoggedArtist().addPodcast(createPodcast(s));
+                artistData.update(s.getLoggedArtist());
                 break;
             case 2:
                 navigationManager.previousState();

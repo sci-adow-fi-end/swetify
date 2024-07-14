@@ -17,19 +17,16 @@ public class Artist extends Model {
     private String biography;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    private List<Album> albums = new ArrayList<>();
-    private List<Podcast> podcasts = new ArrayList<>();
+    final private List<Album> albums = new ArrayList<>();
+    final private List<Podcast> podcasts = new ArrayList<>();
     @Transient
     private int followers;
 
-    public Artist(String username, String password, String stageName, String biography, List<Album> albums,
-                  List<Podcast> podcasts, int followers) {
+    public Artist(String username, String password, String stageName, String biography, int followers) {
         this.username = username;
         this.password = password;
         this.stageName = stageName;
         this.biography = biography;
-        this.albums = albums;
-        this.podcasts = podcasts;
         this.followers = followers;
     }
 
