@@ -46,7 +46,7 @@ public class LoginHandler extends Handler {
         while (!validAnswer) {
             validAnswer = true;
             try {
-                answer = input.nextInt();
+                answer = Integer.parseInt(input.nextLine());
                 if (ConfigOptions.TEST_MODE) {
                     String nextInput = getRestOfInput(input);
                     System.setIn(new ByteArrayInputStream(nextInput.getBytes()));
@@ -82,12 +82,7 @@ private boolean validateUsername(boolean isArtist) {
         String nextInput = getRestOfInput(input);
         System.setIn(new ByteArrayInputStream(nextInput.getBytes()));
     }
-    input = new Scanner(System.in);
-    userName = input.nextLine();
-    if (ConfigOptions.TEST_MODE) {
-        String nextInput = getRestOfInput(input);
-        System.setIn(new ByteArrayInputStream(nextInput.getBytes()));
-    }
+
     try {
         if (!isArtist) {
             usr = userDatabase.getByName(userName);
@@ -131,7 +126,7 @@ public State update(State state) {
     while (!validNavigationChoice) {
         validNavigationChoice = true;
         try {
-            navigationChoice = scanner.nextInt();
+            navigationChoice = Integer.parseInt(scanner.nextLine());
         } catch (NumberFormatException e) {
             printError("Inserted value is not a number");
             validNavigationChoice = false;

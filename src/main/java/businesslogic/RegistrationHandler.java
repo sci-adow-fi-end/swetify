@@ -43,7 +43,7 @@ public class RegistrationHandler extends Handler {
         while (!validAnswer) {
             validAnswer = true;
             try {
-                answer = input.nextInt();
+                answer = Integer.parseInt(input.nextLine());
                 if (ConfigOptions.TEST_MODE) {
                     String nextInput = getRestOfInput(input);
                     System.setIn(new ByteArrayInputStream(nextInput.getBytes()));
@@ -76,14 +76,6 @@ public class RegistrationHandler extends Handler {
 
         System.out.println("Choose a username: ");
         Scanner scanner = new Scanner(System.in);
-        userName = scanner.nextLine();
-
-        if (ConfigOptions.TEST_MODE) {
-            String nextInput = getRestOfInput(scanner);
-            System.setIn(new ByteArrayInputStream(nextInput.getBytes()));
-        }
-
-        scanner = new Scanner(System.in);
         userName = scanner.nextLine();
 
         if (ConfigOptions.TEST_MODE) {
@@ -128,7 +120,7 @@ public class RegistrationHandler extends Handler {
         Scanner scanner = new Scanner(System.in);
         while (!validNavigationOption) {
             try {
-                navigationOption = scanner.nextInt();
+                navigationOption = Integer.parseInt(scanner.nextLine());
                 validNavigationOption = true;
             } catch (NumberFormatException e) {
                 continue;

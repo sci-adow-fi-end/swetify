@@ -9,6 +9,10 @@ import java.util.Optional;
 
 public class AlbumDao extends Dao<Album> {
 
+    public AlbumDao(){
+        setUp();
+    }
+
     @Override
     public Optional<Album> get(long id) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();

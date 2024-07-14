@@ -8,6 +8,11 @@ import java.util.List;
 import java.util.Optional;
 
 public class PodcastDao extends Dao<Podcast> {
+
+    public PodcastDao(){
+        setUp();
+    }
+
     @Override
     public Optional<Podcast> get(long id) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();

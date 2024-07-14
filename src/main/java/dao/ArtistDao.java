@@ -8,6 +8,10 @@ import java.util.List;
 import java.util.Optional;
 
 public class ArtistDao extends Dao<Artist> {
+
+    public ArtistDao(){
+        setUp();
+    }
     @Override
     public Optional<Artist> get(long id) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
