@@ -18,6 +18,8 @@ public class Artist extends Model {
 
     @ManyToMany(cascade = CascadeType.ALL)
     final private List<Album> albums = new ArrayList<>();
+
+    @ManyToMany(cascade = CascadeType.ALL)
     final private List<Podcast> podcasts = new ArrayList<>();
     @Transient
     private int followers;
