@@ -16,6 +16,13 @@ public class AlbumLoadHandler extends Handler{
 
     ArtistDao artistData;
     SongDao songData;
+
+    public AlbumLoadHandler(ArtistDao artistData, SongDao songData, AlbumDao albumData) {
+        this.artistData = artistData;
+        this.songData = songData;
+        this.albumData = albumData;
+    }
+
     AlbumDao albumData;
 
     private void renderChoices() {

@@ -29,7 +29,7 @@ public class NavigationManager {
         SONG,
         ARTIST
     }
-    private final Map<HandlerId, Handler> controllers;
+    private final Map<HandlerId, Handler> handlers;
     private final Stack<Handler> states;
     private final Map<DaoId, Dao<?>> databases;
     private State currentState;
@@ -43,24 +43,24 @@ public class NavigationManager {
         databases.put(DaoId.SONG, new SongDao());
 	    databases.put(DaoId.ARTIST, new ArtistDao());
 	
-        this.controllers = new HashMap<>();
-        controllers.put(HandlerId.LOGIN, new LoginHandler((UserDao)databases.get(DaoId.USER),
+        this.handlers = new HashMap<>();
+        handlers.put(HandlerId.LOGIN, new LoginHandler((UserDao)databases.get(DaoId.USER),
                 (ArtistDao)databases.get(DaoId.ARTIST)));
-        controllers.put(HandlerId.REGISTRATION, new RegistrationHandler((UserDao)databases.get(DaoId.USER),
+        handlers.put(HandlerId.REGISTRATION, new RegistrationHandler((UserDao)databases.get(DaoId.USER),
                 (ArtistDao)databases.get(DaoId.ARTIST)));
-        controllers.put(HandlerId.HOME, new HomeHandler());
-        controllers.put(HandlerId.SEARCH, new SearchHandler((SongDao)databases.get(DaoId.SONG),
+        handlers.put(HandlerId.HOME, new HomeHandler());
+        handlers.put(HandlerId.SEARCH, new SearchHandler((SongDao)databases.get(DaoId.SONG),
                 (PodcastDao)databases.get(DaoId.PODCAST), (ArtistDao)databases.get(DaoId.ARTIST)));
-        controllers.put(HandlerId.VIEW_PLAYLIST, new PlaylistHandler());
-        controllers.put(HandlerId.VIEW_SUGGESTIONS, new SuggestionsHandler());
-        controllers.put(HandlerId.PLAY_TRACK, new PlaybackHandler());
-        controllers.put(HandlerId.VIEW_ARTIST, new ArtistInfoHandler());
-        controllers.put(HandlerId.VIEW_ALBUMS, new AlbumsHandler());
+        handlers.put(HandlerId.VIEW_PLAYLIST, new PlaylistHandler());
+        handlers.put(HandlerId.VIEW_SUGGESTIONS, new SuggestionsHandler());
+        handlers.put(HandlerId.PLAY_TRACK, new PlaybackHandler());
+        handlers.put(HandlerId.VIEW_ARTIST, new ArtistInfoHandler());
+        handlers.put(HandlerId.VIEW_ALBUMS, new AlbumsHandler());
         //TODO stiò
 
         states = new Stack<>();
 
-        for (Handler h: controllers.values()){
+        for (Handler h: handlers.values()){
             h.setNavigationManager(this);
         }
 	if(!ConfigOptions.TEST_MODE){
@@ -80,7 +80,7 @@ public class NavigationManager {
     }
 
     public int getCurrentHandlerId(){
-        for (Map.Entry<HandlerId, Handler> entry : controllers.entrySet()){
+        for (Map.Entry<HandlerId, Handler> entry : handlers.entrySet()){
             if (entry.getValue().equals(states.peek()))
                 return entry.getKey().ordinal();
         }
@@ -88,16 +88,16 @@ public class NavigationManager {
     }
 
     void switchToController(HandlerId id) {
-        if (controllers.containsKey(id)) {
-            states.push(controllers.get(id));
+        if (handlers.containsKey(id)) {
+            states.push(handlers.get(id));
         } else {
             throw new IllegalArgumentException("gne gne il controller non c'è");
         }
     }
 
     public void pushHandler(HandlerId id){
-        if (controllers.containsKey(id)) {
-            states.push(controllers.get(id));
+        if (handlers.containsKey(id)) {
+            states.push(handlers.get(id));
         }
     }
 
@@ -126,7 +126,7 @@ public class NavigationManager {
     }
 
     public Handler getHandlerById(HandlerId handlerId){
-        return controllers.get(handlerId);
+        return handlers.get(handlerId);
     }
 
     public void setCurrentState(State state){

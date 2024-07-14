@@ -11,6 +11,11 @@ import java.util.Scanner;
 public class PodcastLoadHandler extends Handler{
 
 
+    public PodcastLoadHandler(ArtistDao artistData, PodcastDao podcastData) {
+        this.artistData = artistData;
+        this.podcastData = podcastData;
+    }
+
     ArtistDao artistData;
     PodcastDao podcastData;
 

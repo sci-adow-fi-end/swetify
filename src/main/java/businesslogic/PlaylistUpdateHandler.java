@@ -17,7 +17,6 @@ public class PlaylistUpdateHandler extends Handler {
     SongDao songData;
     PodcastDao podcastData;
 
-    private String input = "";
     private List<Song> songs = new ArrayList<>();
     private List<Podcast> podcasts = new ArrayList<>();
     private List<Artist> artists = new ArrayList<>();
@@ -102,6 +101,7 @@ public class PlaylistUpdateHandler extends Handler {
                     System.out.println("\n");
 
                     ((SongPlaylist)(state.getSelectedPlaylist())).addSong(askNewSong(state));
+
 
                     break;
                 case 2:
