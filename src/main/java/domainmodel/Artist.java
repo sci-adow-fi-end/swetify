@@ -8,7 +8,6 @@ import java.util.*;
 @Table(name = "Artists")
 public class Artist extends Model {
 
-    // TODO: should artist incapsulate a User?
     private String username;
 
     private String password;
@@ -19,10 +18,19 @@ public class Artist extends Model {
 
     @ManyToMany(cascade = CascadeType.ALL)
     private List<Album> albums = new ArrayList<>();
+    private List<Podcast> podcasts = new ArrayList<>();
     @Transient
     private int followers;
 
-    public Artist() {
+    public Artist(String username, String password, String stageName, String biography, List<Album> albums,
+                  List<Podcast> podcasts, int followers) {
+        this.username = username;
+        this.password = password;
+        this.stageName = stageName;
+        this.biography = biography;
+        this.albums = albums;
+        this.podcasts = podcasts;
+        this.followers = followers;
     }
 
     public String getUsername() {
@@ -61,13 +69,12 @@ public class Artist extends Model {
         notifyObservers();
     }
 
-    public List<Album> getAlbums() {
-        return albums;
+    public void addAlbum(Album a){
+        this.albums.add(a);
     }
 
-    public void setAlbums(List<Album> albums) {
-        this.albums = albums;
-        notifyObservers();
+    public void addPodcast(Podcast p){
+        this.podcasts.add(p);
     }
 
     public int getFollowers() {

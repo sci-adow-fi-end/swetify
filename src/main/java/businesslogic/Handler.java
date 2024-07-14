@@ -1,5 +1,6 @@
 package businesslogic;
 
+import java.io.ByteArrayInputStream;
 import java.util.Scanner;
 
 public abstract class Handler {
@@ -35,6 +36,25 @@ public abstract class Handler {
         System.out.println(" ");
     }
 
+    protected static int askNumberInRange(int min, int max){
+        int navigationOption = -1;
+        boolean validNavigationOption = false;
+        Scanner input = new Scanner(System.in);
+        while (!validNavigationOption) {
+            try {
+                navigationOption = Integer.parseInt(input.nextLine());
+                if (navigationOption>=min&&navigationOption<=max) {
+                    validNavigationOption = true;
+                }
+            } catch (NumberFormatException ignored) {}
+        }
+
+        if (ConfigOptions.TEST_MODE) {
+            String nextInput = getRestOfInput(input);
+            System.setIn(new ByteArrayInputStream(nextInput.getBytes()));
+        }
+        return navigationOption;
+    }
     protected static String getRestOfInput(Scanner input){
         StringBuilder restOfInput = new StringBuilder();
         while (input.hasNextLine()) {

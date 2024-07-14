@@ -33,6 +33,9 @@ public class PlaylistUpdateHandler extends Handler {
         System.out.println("enter a keyword to search or press - to go back\n");
     }
 
+
+
+
     @Override
     public State update(State state) {
         clearScreen();

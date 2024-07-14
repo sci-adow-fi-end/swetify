@@ -16,7 +16,14 @@ public class Playlist<T extends Track> extends Model implements Iterable<T>{
     @ManyToMany(cascade = CascadeType.ALL, targetEntity = Track.class)
     private List<T> tracks = new ArrayList<>();
 
-    public Playlist() {
+    public Playlist(){
+    }
+    public Playlist(String title) {
+        this.title=title;
+    }
+    public Playlist(String title, List<T> trackList) {
+        this.title=title;
+        this.tracks=trackList;
     }
 
     public String getTitle() {

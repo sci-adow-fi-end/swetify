@@ -148,7 +148,12 @@ public State update(State state) {
                     }
                     validPassword = validatePassword(isArtist);
                 }
-                state.setLoggedUser(usr);
+                if(!isArtist){
+                    state.setLoggedUser(usr);
+                }
+                else{
+                    state.setLoggedArtist(art);
+                }
 
                 if (!isArtist) {
                     navigationManager.switchToController(NavigationManager.HandlerId.HOME);

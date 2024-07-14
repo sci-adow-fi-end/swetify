@@ -5,6 +5,9 @@ import domainmodel.*;
 public class State {
 
     private User loggedUser;
+
+
+    private Artist loggedArtist;
     private Playlist<? extends Track> selectedPlaylist;
     private Track selectedTrack;
 
@@ -20,6 +23,15 @@ public class State {
     public void setLoggedUser(User loggedUser) {
         this.loggedUser = loggedUser;
     }
+
+    public Artist getLoggedArtist() {
+        return loggedArtist;
+    }
+
+    public void setLoggedArtist(Artist loggedArtist) {
+        this.loggedArtist = loggedArtist;
+    }
+
 
     public Track getSelectedTrack() {
         return selectedTrack;

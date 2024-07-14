@@ -16,7 +16,10 @@ public abstract class Track extends Model {
     @ManyToMany(cascade = CascadeType.ALL)
     private List<Artist> authors = new ArrayList<>();
 
-    public Track() {
+    public Track(String title, int minutes, int seconds, List<Artist> authors) {
+        this.title=title;
+        this.duration = Duration.ofSeconds(seconds + 60L *minutes);
+        this.authors = authors;
     }
 
     public String getTitle() {

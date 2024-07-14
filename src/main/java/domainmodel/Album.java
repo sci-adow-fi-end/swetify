@@ -3,6 +3,7 @@ package domainmodel;
 import jakarta.persistence.*;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "Albums")
@@ -12,7 +13,9 @@ public class Album extends Model {
     @Temporal(TemporalType.DATE)
     private Date releaseDate;
 
-    public Album() {
+    public Album(String title, List<Song> trackList) {
+        this.playlist = new Playlist<>(title,trackList);
+        this.releaseDate = new Date();
     }
 
     public Playlist<Song> getPlaylist() {
