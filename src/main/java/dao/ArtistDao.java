@@ -15,7 +15,9 @@ public class ArtistDao extends BaseDao<Artist> {
     @Override
     public Optional<Artist> get(long id) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
-        return Optional.ofNullable(entityManager.find(Artist.class, id));
+        Artist result = entityManager.find(Artist.class, id);
+        entityManager.close();
+        return Optional.ofNullable(result);
     }
 
     @Override
@@ -23,20 +25,26 @@ public class ArtistDao extends BaseDao<Artist> {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         TypedQuery<Artist> query = entityManager.createQuery("SELECT a FROM Artist a WHERE a.stageName = :name", Artist.class);
         query.setParameter("name", name);
-        return query.getSingleResult();
+        Artist result = query.getSingleResult();
+        entityManager.close();
+        return result;
     }
 
     public List<Artist> getAllByName(String name) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         TypedQuery<Artist> query = entityManager.createQuery("SELECT a FROM Artist a WHERE a.stageName = :name", Artist.class);
         query.setParameter("name", name);
-        return query.getResultList();
+        List<Artist> resultList = query.getResultList();
+        entityManager.close();
+        return resultList;
     }
 
     @Override
     public List<Artist> getAll() {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         TypedQuery<Artist> query = entityManager.createQuery("SELECT a FROM Artist a", Artist.class);
-        return query.getResultList();
+        List<Artist> resultList = query.getResultList();
+        entityManager.close();
+        return resultList;
     }
 }

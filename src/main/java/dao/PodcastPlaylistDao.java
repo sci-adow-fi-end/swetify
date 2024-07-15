@@ -11,28 +11,36 @@ public class PodcastPlaylistDao extends BaseDao<PodcastPlaylist> {
     @Override
     public Optional<PodcastPlaylist> get(long id) {
         EntityManager em = entityManagerFactory.createEntityManager();
-        return Optional.ofNullable(em.find(PodcastPlaylist.class, id));
+        PodcastPlaylist result = em.find(PodcastPlaylist.class, id);
+        em.close();
+        return Optional.ofNullable(result);
     }
 
     @Override
     public PodcastPlaylist getByName(String name) {
         EntityManager em = entityManagerFactory.createEntityManager();
-        return em.createQuery("SELECT s FROM PodcastPlaylist s WHERE s.title = :name", PodcastPlaylist.class)
+        PodcastPlaylist result = em.createQuery("SELECT s FROM PodcastPlaylist s WHERE s.title = :name", PodcastPlaylist.class)
                 .setParameter("name", name)
                 .getSingleResult();
+        em.close();
+        return result;
     }
 
     @Override
     public List<PodcastPlaylist> getAll() {
         EntityManager em = entityManagerFactory.createEntityManager();
-        return em.createQuery("SELECT s FROM PodcastPlaylist s", PodcastPlaylist.class)
+        List<PodcastPlaylist> resultList = em.createQuery("SELECT s FROM PodcastPlaylist s", PodcastPlaylist.class)
                 .getResultList();
+        em.close();
+        return resultList;
     }
 
     public List<PodcastPlaylist> getAllByName(String name) {
         EntityManager em = entityManagerFactory.createEntityManager();
-        return em.createQuery("SELECT s FROM PodcastPlaylist s WHERE s.title = :name", PodcastPlaylist.class)
+        List<PodcastPlaylist> resultList = em.createQuery("SELECT s FROM PodcastPlaylist s WHERE s.title = :name", PodcastPlaylist.class)
                 .setParameter("name", name)
                 .getResultList();
+        em.close();
+        return resultList;
     }
 }

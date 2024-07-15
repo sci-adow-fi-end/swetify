@@ -16,7 +16,9 @@ public class AlbumDao extends BaseDao<Album> {
     @Override
     public Optional<Album> get(long id) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
-        return Optional.ofNullable(entityManager.find(Album.class, id));
+        Album result = entityManager.find(Album.class, id);
+        entityManager.close();
+        return Optional.ofNullable(result);
     }
 
     @Override
@@ -24,13 +26,17 @@ public class AlbumDao extends BaseDao<Album> {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         TypedQuery<Album> query = entityManager.createQuery("SELECT a FROM Album a JOIN a.playlist p WHERE p.title = :name", Album.class);
         query.setParameter("name", name);
-        return query.getSingleResult();
+        Album result = query.getSingleResult();
+        entityManager.close();
+        return result;
     }
 
     @Override
     public List<Album> getAll() {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         TypedQuery<Album> query = entityManager.createQuery("SELECT a FROM Album a", Album.class);
-        return query.getResultList();
+        List<Album> resultList = query.getResultList();
+        entityManager.close();
+        return resultList;
     }
 }
