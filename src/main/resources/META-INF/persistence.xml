@@ -10,10 +10,13 @@
 
         <class>domainmodel.Album</class>
         <class>domainmodel.Artist</class>
-        <class>domainmodel.Playlist</class>
         <class>domainmodel.Podcast</class>
+        <class>domainmodel.Track</class>
         <class>domainmodel.Song</class>
         <class>domainmodel.User</class>
+        <class>domainmodel.Playlist</class>
+        <class>domainmodel.SongPlaylist</class>
+        <class>domainmodel.PodcastPlaylist</class>
 
         <properties>
             <!-- Database connection settings -->
