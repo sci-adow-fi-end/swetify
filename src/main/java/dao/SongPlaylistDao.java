@@ -28,4 +28,11 @@ public class SongPlaylistDao extends BaseDao<SongPlaylist> {
         return em.createQuery("SELECT s FROM SongPlaylist s", SongPlaylist.class)
                 .getResultList();
     }
+
+    public List<SongPlaylist> getAllByName(String name) {
+        EntityManager em = entityManagerFactory.createEntityManager();
+        return em.createQuery("SELECT s FROM SongPlaylist s WHERE s.title = :name", SongPlaylist.class)
+                .setParameter("name", name)
+                .getResultList();
+    }
 }
