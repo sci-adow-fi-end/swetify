@@ -13,6 +13,7 @@ public class RegistrationHandler extends Handler {
 
     public String userName;
     public String password;
+    public String stageName;
     private final UserDao userDatabase;
     private final ArtistDao artistDatabase;
     private boolean isArtist = false;
@@ -93,8 +94,19 @@ public class RegistrationHandler extends Handler {
         }
 
         if (isArtist) {
+            System.out.println("Choose a stage name: ");
+            scanner = new Scanner(System.in);
+            stageName = scanner.nextLine();
+
+            if (ConfigOptions.TEST_MODE) {
+                String nextInput = getRestOfInput(scanner);
+                System.setIn(new ByteArrayInputStream(nextInput.getBytes()));
+            }
+        }
+
+        if (isArtist) {
             try {
-                artistDatabase.getByName(userName);
+                artistDatabase.getByUserName(userName);
                 System.out.println("Username is already taken");
                 return false;
             } catch (NoResultException e) {
@@ -143,6 +155,7 @@ public class RegistrationHandler extends Handler {
                         Artist art = new Artist();
                         art.setUsername(userName);
                         art.setPassword(password);
+                        art.setStageName(stageName);
                         artistDatabase.save(art);
                     }
 

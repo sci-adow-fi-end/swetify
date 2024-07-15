@@ -58,6 +58,7 @@ public class NavigationManager {
         handlers.put(HandlerId.PLAY_TRACK, new PlaybackHandler());
         handlers.put(HandlerId.VIEW_ARTIST, new ArtistInfoHandler());
         handlers.put(HandlerId.VIEW_ALBUMS, new AlbumsHandler());
+        handlers.put(HandlerId.ARTIST_HOME, new ArtistHomeHandler());
         //TODO stiò
 
         states = new Stack<>();
@@ -131,8 +132,8 @@ public class NavigationManager {
         return handlers.get(handlerId);
     }
 
-    public void setCurrentState(State state) {
-        this.currentState = state;
+    public State getCurrentState() {
+        return currentState;
     }
 
 }

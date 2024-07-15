@@ -36,6 +36,15 @@ public class ArtistDao extends BaseDao<Artist> {
         return resultList;
     }
 
+    public Artist getByUserName(String userName) {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        TypedQuery<Artist> query = entityManager.createQuery("SELECT a FROM Artist a WHERE a.username = :username", Artist.class);
+        query.setParameter("username", userName);
+        Artist result = query.getSingleResult();
+        entityManager.close();
+        return result;
+    }
+
     @Override
     public List<Artist> getAll() {
         EntityManager entityManager = entityManagerFactory.createEntityManager();

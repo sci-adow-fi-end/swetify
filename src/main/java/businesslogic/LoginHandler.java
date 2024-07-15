@@ -86,7 +86,7 @@ private boolean validateUsername(boolean isArtist) {
         if (!isArtist) {
             usr = userDatabase.getByName(userName);
         } else {
-            art = artistDatabase.getByName(userName);
+            art = artistDatabase.getByUserName(userName);
         }
         return true;
     } catch (NoSuchElementException e) {
