@@ -15,17 +15,18 @@ import java.util.Scanner;
 public class PlaylistUpdateHandler extends Handler {
 
 
+    public PlaylistUpdateHandler(SongDao songData, PodcastDao podcastData, SongPlaylistDao soPlayData, PodcastPlaylistDao poPlayData) {
+        this.songData = songData;
+        this.podcastData = podcastData;
+        this.soPlayData = soPlayData;
+        this.poPlayData = poPlayData;
+    }
+
     SongDao songData;
     PodcastDao podcastData;
     SongPlaylistDao soPlayData;
     PodcastPlaylistDao poPlayData;
 
-    private List<Song> songs = new ArrayList<>();
-    private List<Podcast> podcasts = new ArrayList<>();
-    private List<Artist> artists = new ArrayList<>();
-    private final SongDao songsDatabase;
-    private final PodcastDao podcastsDatabase;
-    private final ArtistDao artistsDatabase;
 
 
     private void renderChoices() {
@@ -34,12 +35,6 @@ public class PlaylistUpdateHandler extends Handler {
         System.out.println("2: remove a track");
         System.out.println("3: go back");
         System.out.println("4: close Swetify");
-    }
-
-    public PlaylistUpdateHandler(SongDao songsDatabase, PodcastDao podcastsDatabase, ArtistDao artistsDatabase) {
-        this.songsDatabase = songsDatabase;
-        this.podcastsDatabase = podcastsDatabase;
-        this.artistsDatabase = artistsDatabase;
     }
 
 

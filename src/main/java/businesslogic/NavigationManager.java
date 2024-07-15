@@ -17,6 +17,7 @@ public class NavigationManager {
         ARTIST_HOME,
         SEARCH,
         VIEW_PLAYLIST,
+        UPDATE_PLAYLIST,
         VIEW_ARTIST,
         VIEW_TRACK,
         VIEW_SUGGESTIONS,
@@ -28,6 +29,8 @@ public class NavigationManager {
         USER,
         PODCAST,
         SONG,
+        PODCAST_PLAYLIST,
+        SONG_PLAYLIST,
         ARTIST
     }
 
@@ -43,6 +46,8 @@ public class NavigationManager {
         databases.put(DaoId.USER, new UserDao());
         databases.put(DaoId.PODCAST, new PodcastDao());
         databases.put(DaoId.SONG, new SongDao());
+        databases.put(DaoId.SONG_PLAYLIST, new SongPlaylistDao());
+        databases.put(DaoId.PODCAST_PLAYLIST, new PodcastPlaylistDao());
         databases.put(DaoId.ARTIST, new ArtistDao());
 
         this.handlers = new HashMap<>();
@@ -59,6 +64,8 @@ public class NavigationManager {
         handlers.put(HandlerId.VIEW_ARTIST, new ArtistInfoHandler());
         handlers.put(HandlerId.VIEW_ALBUMS, new AlbumsHandler());
         handlers.put(HandlerId.ARTIST_HOME, new ArtistHomeHandler());
+        handlers.put(HandlerId.UPDATE_PLAYLIST, new PlaylistUpdateHandler((SongDao) databases.get(DaoId.SONG),(PodcastDao) databases.get(DaoId.PODCAST),
+                (SongPlaylistDao) databases.get(DaoId.SONG_PLAYLIST),(PodcastPlaylistDao) databases.get(DaoId.PODCAST_PLAYLIST) ));
         //TODO stiò
 
         states = new Stack<>();
