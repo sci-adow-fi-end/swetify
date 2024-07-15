@@ -1,12 +1,10 @@
 package domainmodel;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
 
 import java.util.List;
 
 @Entity
-@Table(name = "Podcasts")
 public class Podcast extends Track {
     private String theme;
 

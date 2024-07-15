@@ -1,11 +1,10 @@
 package domainmodel;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
 
 import java.util.List;
 
 @Entity
-@Table(name = "Songs")
 public class Song extends Track {
     private String lyrics;
 
