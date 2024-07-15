@@ -12,7 +12,7 @@ import java.util.function.Consumer;
 public abstract class Dao<T> {
 
     protected EntityManagerFactory entityManagerFactory;
-    private boolean setUpComplete = false;
+    static boolean setUpComplete = false;
 
     public abstract Optional<T> get(long id);
 
