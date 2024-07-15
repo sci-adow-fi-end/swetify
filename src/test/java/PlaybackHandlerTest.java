@@ -9,7 +9,7 @@ import businesslogic.State;
 import java.io.ByteArrayInputStream;
 import java.time.Duration;
 
-public class PlaybackHandlerTest {
+public class PlaybackHandlerTest extends BaseTest{
 
     private final State state = new State();
     private final Song track1 = new Song();
@@ -19,6 +19,7 @@ public class PlaybackHandlerTest {
 
     @BeforeEach
     public void setUp() {
+        super.setUp();
         track1.setTitle("Song 1");
         track1.setDuration(Duration.ofSeconds(10)); // 10 seconds
         track2.setTitle("Song 2");

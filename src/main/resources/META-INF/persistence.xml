@@ -23,7 +23,7 @@
             <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
 
             <!-- Automatically export the schema -->
-            <property name="jakarta.persistence.schema-generation.database.action" value="create"/>
+            <property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create"/>
 
             <!-- Echo all executed SQL to console -->
             <property name="hibernate.show_sql" value="true"/>

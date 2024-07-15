@@ -9,10 +9,16 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;
 
-public abstract class Dao<T> {
+public abstract class BaseDao<T> {
 
-    protected EntityManagerFactory entityManagerFactory;
+
+    protected static final EntityManagerFactory entityManagerFactory;
+    static{entityManagerFactory = Persistence.createEntityManagerFactory("swetifyPersistenceUnit");}
     static boolean setUpComplete = false;
+
+    public static EntityManagerFactory getEntityManagerFactory(){
+        return entityManagerFactory;
+    }
 
     public abstract Optional<T> get(long id);
 
@@ -54,9 +60,9 @@ public abstract class Dao<T> {
     }
 
     protected void setUp() {
-        if (!setUpComplete) {
-            setUpComplete = true;
-            entityManagerFactory = Persistence.createEntityManagerFactory("swetifyPersistenceUnit");
-        }
+        //if (!setUpComplete) {
+        //    setUpComplete = true;
+        //    entityManagerFactory = Persistence.createEntityManagerFactory("swetifyPersistenceUnit");
+        //}
     }
 }

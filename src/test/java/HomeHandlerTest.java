@@ -8,13 +8,14 @@ import businesslogic.State;
 
 import java.io.ByteArrayInputStream;
 
-public class HomeHandlerTest {
+public class HomeHandlerTest extends BaseTest{
 
     private final NavigationManager navigationManager = new NavigationManager();
     private final State state = new State();
 
     @BeforeEach
-    void setUp() {
+    public void setUp() {
+        super.setUp();
         navigationManager.pushHandler(NavigationManager.HandlerId.HOME);
     }
 

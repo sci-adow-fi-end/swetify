@@ -13,14 +13,15 @@ import java.io.ByteArrayInputStream;
 
 //TODO: create two separate tests for login and registration (use @Order)
 
-public class RegistrationLoginHandlersTest {
+public class RegistrationLoginHandlersTest extends BaseTest{
 
     private final NavigationManager navigationManager = new NavigationManager();
     private final State state = new State();
     String testString = "0\n1\nStio\nNelChill\n1\n1\nStio\nNelChill\n5\n"; //Registration -> Login -> Home
 
     @BeforeEach
-    void setUp() {
+    public void setUp() {
+        super.setUp();
         navigationManager.pushHandler(NavigationManager.HandlerId.REGISTRATION);
         navigationManager.setCurrentState(state);
     }

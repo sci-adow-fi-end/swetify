@@ -1,7 +1,6 @@
 package businesslogic;
 
 import dao.ArtistDao;
-import dao.Dao;
 import dao.UserDao;
 import domainmodel.Artist;
 import domainmodel.User;

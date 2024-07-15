@@ -153,7 +153,7 @@ abstract class domainmodel.Track {
 }
 
 
-abstract class dao.Dao {
+abstract class dao.BaseDao {
 # EntityManagerFactory entityManagerFactory
 - boolean setUpComplete
 + {abstract}Optional<T> get(long)
@@ -311,7 +311,7 @@ enum businesslogic.HandlerId {
 
 
 
-dao.Dao <|-- dao.UserDao
+dao.BaseDao <|-- dao.UserDao
 businesslogic.Handler <|-- businesslogic.PlaylistHandler
 domainmodel.Model <|- domainmodel.Suggestions
 domainmodel.Track <|-- domainmodel.Podcast

@@ -1,5 +1,4 @@
 import dao.UserDao;
-import domainmodel.Song;
 import domainmodel.User;
 
 import jakarta.persistence.NoResultException;
@@ -10,7 +9,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class UserDaoTest extends BaseDaoTest {
+public class UserDaoTest extends BaseTest {
 
     UserDao userDatabase;
     User[] users = new User[]{new User("Esidisi", "jojo"),

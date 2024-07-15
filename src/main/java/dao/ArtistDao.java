@@ -7,7 +7,7 @@ import jakarta.persistence.TypedQuery;
 import java.util.List;
 import java.util.Optional;
 
-public class ArtistDao extends Dao<Artist> {
+public class ArtistDao extends BaseDao<Artist> {
 
     public ArtistDao(){
         setUp();

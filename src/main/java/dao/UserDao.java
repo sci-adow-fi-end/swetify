@@ -2,13 +2,12 @@ package dao;
 
 import domainmodel.User;
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
 
 import java.util.List;
 import java.util.Optional;
 
-public class UserDao extends Dao<User> {
+public class UserDao extends BaseDao<User> {
 
     public UserDao() {
         setUp();

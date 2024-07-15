@@ -10,7 +10,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class ArtistDaoTest extends BaseDaoTest {
+public class ArtistDaoTest extends BaseTest {
 
     ArtistDao artistDatabase;
 

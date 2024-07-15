@@ -7,7 +7,7 @@ import jakarta.persistence.TypedQuery;
 import java.util.List;
 import java.util.Optional;
 
-public class PodcastDao extends Dao<Podcast> {
+public class PodcastDao extends BaseDao<Podcast> {
 
     public PodcastDao(){
         setUp();

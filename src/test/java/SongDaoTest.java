@@ -9,7 +9,7 @@ import java.time.Duration;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
-public class SongDaoTest extends BaseDaoTest {
+public class SongDaoTest extends BaseTest {
 
     SongDao songDatabase;
     Song song1 = new Song();

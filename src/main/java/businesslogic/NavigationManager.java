@@ -31,8 +31,8 @@ public class NavigationManager {
     }
     private final Map<HandlerId, Handler> handlers;
     private final Stack<Handler> states;
-    private final Map<DaoId, Dao<?>> databases;
-    private State currentState;
+    private final Map<DaoId, BaseDao<?>> databases;
+    private State currentState = new State();
     private int lastId = 0;
 
     public NavigationManager() {
@@ -121,7 +121,7 @@ public class NavigationManager {
         return lastId;
     }
 
-    public Dao<?> getDaoById(DaoId daoId){
+    public BaseDao<?> getDaoById(DaoId daoId){
         return databases.get(daoId);
     }
 
