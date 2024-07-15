@@ -11,6 +11,7 @@ public class PlaylistViewHandler extends Handler {
         System.out.println("5: close Swetify");
     }
 
+    //TODO sistemare l'update
     @Override
     public State update(State state) {
         clearScreen();

@@ -1,8 +1,6 @@
 package businesslogic;
 
-import dao.ArtistDao;
-import dao.PodcastDao;
-import dao.SongDao;
+import dao.*;
 import domainmodel.entities.Artist;
 import domainmodel.entities.playlist.PodcastPlaylist;
 import domainmodel.entities.playlist.SongPlaylist;
@@ -19,6 +17,8 @@ public class PlaylistUpdateHandler extends Handler {
 
     SongDao songData;
     PodcastDao podcastData;
+    SongPlaylistDao soPlayData;
+    PodcastPlaylistDao poPlayData;
 
     private List<Song> songs = new ArrayList<>();
     private List<Podcast> podcasts = new ArrayList<>();
@@ -104,14 +104,14 @@ public class PlaylistUpdateHandler extends Handler {
                     System.out.println("\n");
 
                     ((SongPlaylist)(state.getSelectedPlaylist())).addSong(askNewSong(state));
-
-
+                    soPlayData.update((SongPlaylist) state.getSelectedPlaylist());
                     break;
                 case 2:
                     System.out.println("Type the number of the song you want to remove");
                     System.out.println("\n");
                     int removedSong = askNumberInRange(1,size)-1;
                     state.getSelectedPlaylist().removeTrack(removedSong);
+                    soPlayData.update((SongPlaylist) state.getSelectedPlaylist());
                     break;
                 case 3:
                     navigationManager.previousState();
@@ -128,6 +128,7 @@ public class PlaylistUpdateHandler extends Handler {
                     System.out.println("\n");
 
                     ((PodcastPlaylist)(state.getSelectedPlaylist())).addPodcast(askNewPodcast(state));
+                    poPlayData.update((PodcastPlaylist) state.getSelectedPlaylist());
 
                     break;
                 case 2:
@@ -135,6 +136,7 @@ public class PlaylistUpdateHandler extends Handler {
                     System.out.println("\n");
                     int removedSong = askNumberInRange(1,size)-1;
                     state.getSelectedPlaylist().removeTrack(removedSong);
+                    poPlayData.update((PodcastPlaylist) state.getSelectedPlaylist());
                     break;
                 case 3:
                     navigationManager.previousState();
