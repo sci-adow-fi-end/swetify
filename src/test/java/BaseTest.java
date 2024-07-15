@@ -1,7 +1,9 @@
+import businesslogic.ConfigOptions;
 import dao.BaseDao;
 import jakarta.persistence.Query;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -12,6 +14,10 @@ public abstract class BaseTest {
     protected static EntityManagerFactory entityManagerFactory = BaseDao.getEntityManagerFactory();
     protected EntityManager entityManager;
 
+    @BeforeAll
+    public static void setOptions(){
+        ConfigOptions.TEST_MODE = true;
+    }
 
     @BeforeEach
     public void setUp() {
