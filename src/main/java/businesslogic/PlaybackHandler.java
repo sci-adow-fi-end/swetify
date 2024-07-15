@@ -1,9 +1,7 @@
 package businesslogic;
 
-import domainmodel.Track;
-import businesslogic.State;
+import domainmodel.entities.track.Track;
 
-import java.io.ByteArrayInputStream;
 import java.util.Scanner;
 
 public class PlaybackHandler extends Handler{

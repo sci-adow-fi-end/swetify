@@ -1,5 +1,9 @@
-package domainmodel;
+package domainmodel.entities;
 
+import domainmodel.entities.playlist.Playlist;
+import domainmodel.entities.track.Podcast;
+import domainmodel.entities.track.Song;
+import domainmodel.entities.track.Track;
 import jakarta.persistence.*;
 
 import java.util.HashMap;
@@ -9,7 +13,7 @@ import java.util.Map;
 
 @Entity
 @Table(name = "SwetifyUsers")
-public class User extends Model {
+public class User extends BaseEntity {
     private String username;
 
     private String password;
@@ -52,7 +56,7 @@ public class User extends Model {
 
     public void setUsername(String username) {
         this.username = username;
-        notifyObservers();
+
     }
 
     public String getPassword() {
@@ -61,7 +65,7 @@ public class User extends Model {
 
     public void setPassword(String password) {
         this.password = password;
-        notifyObservers();
+
     }
 
     public List<Playlist<Track>> getPlaylists() {
@@ -70,7 +74,7 @@ public class User extends Model {
 
     public void setPlaylists(List<Playlist<Track>> playlists) {
         this.playlists = playlists;
-        notifyObservers();
+
     }
 
     public List<Artist> getFollowedArtists() {
@@ -79,7 +83,7 @@ public class User extends Model {
 
     public void setFollowedArtists(List<Artist> followedArtists) {
         this.followedArtists = followedArtists;
-        notifyObservers();
+
     }
 
     public Playlist<Song> getFavouriteSongs() {
@@ -88,7 +92,7 @@ public class User extends Model {
 
     public void setFavouriteSongs(Playlist<Song> favouriteSongs) {
         this.favouriteSongs = favouriteSongs;
-        notifyObservers();
+
     }
 
     public Playlist<Podcast> getFavouritePodcasts() {
@@ -97,7 +101,7 @@ public class User extends Model {
 
     public void setFavouritePodcasts(Playlist<Podcast> favouritePodcasts) {
         this.favouritePodcasts = favouritePodcasts;
-        notifyObservers();
+
     }
 
     public Map<Track, Integer> getTrackListenCounts() {

@@ -1,6 +1,6 @@
 package businesslogic;
 
-import domainmodel.Artist;
+import domainmodel.entities.Artist;
 
 import java.util.Scanner;
 

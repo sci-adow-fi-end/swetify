@@ -1,6 +1,6 @@
 package dao;
 
-import domainmodel.Artist;
+import domainmodel.entities.Artist;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 
@@ -9,9 +9,6 @@ import java.util.Optional;
 
 public class ArtistDao extends BaseDao<Artist> {
 
-    public ArtistDao(){
-        setUp();
-    }
     @Override
     public Optional<Artist> get(long id) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();

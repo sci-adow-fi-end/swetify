@@ -1,13 +1,12 @@
 import businesslogic.NavigationManager;
-
+import businesslogic.State;
+import domainmodel.entities.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
-
-import businesslogic.State;
-import domainmodel.User;
 
 import java.io.ByteArrayInputStream;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 //TODO: execute and verify tests when the database is ready
 

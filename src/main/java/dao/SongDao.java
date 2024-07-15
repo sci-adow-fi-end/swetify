@@ -1,6 +1,6 @@
 package dao;
 
-import domainmodel.Song;
+import domainmodel.entities.track.Song;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 
@@ -9,9 +9,6 @@ import java.util.Optional;
 
 public class SongDao extends BaseDao<Song> {
 
-    public SongDao(){
-        setUp();
-    }
     @Override
     public Optional<Song> get(long id) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();

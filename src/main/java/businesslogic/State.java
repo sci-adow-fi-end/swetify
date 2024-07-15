@@ -1,6 +1,10 @@
 package businesslogic;
 
-import domainmodel.*;
+import domainmodel.PlaybackQueue;
+import domainmodel.entities.Artist;
+import domainmodel.entities.User;
+import domainmodel.entities.playlist.Playlist;
+import domainmodel.entities.track.Track;
 
 public class State {
 

@@ -1,5 +1,7 @@
-package domainmodel;
+package domainmodel.entities.playlist;
 
+import domainmodel.entities.BaseEntity;
+import domainmodel.entities.track.Track;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToMany;
@@ -11,7 +13,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "Playlists")
-public class Playlist<T extends Track> extends Model implements Iterable<T>{
+public class Playlist<T extends Track> extends BaseEntity implements Iterable<T> {
     protected String title;
     @ManyToMany(cascade = CascadeType.ALL, targetEntity = Track.class)
     protected List<T> tracks = new ArrayList<>();
@@ -36,7 +38,7 @@ public class Playlist<T extends Track> extends Model implements Iterable<T>{
 
     public void setTitle(String title) {
         this.title = title;
-        notifyObservers();
+
     }
 
     public List<T> getTracks() {
@@ -45,12 +47,12 @@ public class Playlist<T extends Track> extends Model implements Iterable<T>{
 
     public void setTracks(List<T> tracks) {
         this.tracks = tracks;
-        notifyObservers();
+
     }
 
     public void addTrack(T track) {
         tracks.add(track);
-        notifyObservers();
+
     }
 
     public int print(){

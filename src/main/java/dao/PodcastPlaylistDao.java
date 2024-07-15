@@ -1,7 +1,7 @@
 package dao;
 
 
-import domainmodel.PodcastPlaylist;
+import domainmodel.entities.playlist.PodcastPlaylist;
 import jakarta.persistence.EntityManager;
 
 import java.util.List;

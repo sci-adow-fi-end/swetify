@@ -1,6 +1,6 @@
 package dao;
 
-import domainmodel.Podcast;
+import domainmodel.entities.track.Podcast;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 
@@ -8,10 +8,6 @@ import java.util.List;
 import java.util.Optional;
 
 public class PodcastDao extends BaseDao<Podcast> {
-
-    public PodcastDao(){
-        setUp();
-    }
 
     @Override
     public Optional<Podcast> get(long id) {

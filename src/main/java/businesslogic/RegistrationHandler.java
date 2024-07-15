@@ -2,8 +2,8 @@ package businesslogic;
 
 import dao.ArtistDao;
 import dao.UserDao;
-import domainmodel.Artist;
-import domainmodel.User;
+import domainmodel.entities.Artist;
+import domainmodel.entities.User;
 import jakarta.persistence.NoResultException;
 
 import java.io.ByteArrayInputStream;

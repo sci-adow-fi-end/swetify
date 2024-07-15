@@ -1,5 +1,6 @@
-package domainmodel;
+package domainmodel.entities.track;
 
+import domainmodel.entities.Artist;
 import jakarta.persistence.Entity;
 
 import java.util.List;
@@ -22,6 +23,5 @@ public class Podcast extends Track {
 
     public void setTheme(String theme) {
         this.theme = theme;
-        notifyObservers();
     }
 }

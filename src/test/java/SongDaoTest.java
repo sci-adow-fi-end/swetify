@@ -1,14 +1,14 @@
 import dao.SongDao;
-import domainmodel.Song;
+import domainmodel.entities.track.Song;
 import jakarta.persistence.NoResultException;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.Duration;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 public class SongDaoTest extends BaseTest {
 
     SongDao songDatabase;

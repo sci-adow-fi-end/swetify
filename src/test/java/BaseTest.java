@@ -1,12 +1,11 @@
 import businesslogic.ConfigOptions;
 import dao.BaseDao;
-import jakarta.persistence.Query;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Query;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 
 import java.util.List;
 
@@ -38,7 +37,6 @@ public abstract class BaseTest {
 
             entityManager.getTransaction().commit();
         } catch (Exception e) {
-            e.printStackTrace();
             entityManager.getTransaction().rollback();
         } finally {
             entityManager.close();
@@ -51,10 +49,5 @@ public abstract class BaseTest {
             entityManager.getTransaction().rollback();
         }
         entityManager.close();
-    }
-
-    @AfterAll
-    public static void tearDownAfterAll() {
-        //entityManagerFactory.close();
     }
 }

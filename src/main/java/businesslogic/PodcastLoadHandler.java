@@ -2,8 +2,9 @@ package businesslogic;
 
 import dao.ArtistDao;
 import dao.PodcastDao;
-import domainmodel.Artist;
-import domainmodel.Podcast;
+import domainmodel.entities.Artist;
+import domainmodel.entities.track.Podcast;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;

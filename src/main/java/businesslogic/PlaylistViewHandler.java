@@ -1,8 +1,6 @@
 package businesslogic;
 
-import java.util.Scanner;
-
-public class PlaylistHandler extends Handler {
+public class PlaylistViewHandler extends Handler {
 
     private void renderChoices() {
 

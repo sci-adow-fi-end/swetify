@@ -1,13 +1,16 @@
-package domainmodel;
+package domainmodel.entities.track;
 
+import domainmodel.entities.Artist;
+import domainmodel.entities.BaseEntity;
 import jakarta.persistence.*;
 
 import java.time.Duration;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "Tracks")
-public abstract class Track extends Model {
+public abstract class Track extends BaseEntity {
     private String title;
 
     @Convert(converter = domainmodel.types.DurationConverter.class)
@@ -30,7 +33,7 @@ public abstract class Track extends Model {
 
     public void setTitle(String title) {
         this.title = title;
-        notifyObservers();
+
     }
 
     public Duration getDuration() {
@@ -39,7 +42,7 @@ public abstract class Track extends Model {
 
     public void setDuration(Duration duration) {
         this.duration = duration;
-        notifyObservers();
+
     }
 
     public List<Artist> getAuthors() {
@@ -48,6 +51,5 @@ public abstract class Track extends Model {
 
     public void setAuthors(List<Artist> artists) {
         this.authors = artists;
-        notifyObservers();
     }
 }

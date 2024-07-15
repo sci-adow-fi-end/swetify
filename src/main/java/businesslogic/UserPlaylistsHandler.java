@@ -1,8 +1,8 @@
 package businesslogic;
 
-import domainmodel.Playlist;
-import domainmodel.Podcast;
-import domainmodel.Song;
+import domainmodel.entities.playlist.Playlist;
+import domainmodel.entities.track.Podcast;
+import domainmodel.entities.track.Song;
 
 import java.util.ArrayList;
 import java.util.Scanner;

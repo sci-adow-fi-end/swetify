@@ -3,9 +3,9 @@ package businesslogic;
 import dao.AlbumDao;
 import dao.ArtistDao;
 import dao.SongDao;
-import domainmodel.Album;
-import domainmodel.Artist;
-import domainmodel.Song;
+import domainmodel.entities.Album;
+import domainmodel.entities.Artist;
+import domainmodel.entities.track.Song;
 
 import java.io.ByteArrayInputStream;
 import java.util.ArrayList;

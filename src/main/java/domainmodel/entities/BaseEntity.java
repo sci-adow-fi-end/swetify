@@ -1,4 +1,4 @@
-package domainmodel;
+package domainmodel.entities;
 
 
 import jakarta.persistence.GeneratedValue;
@@ -9,14 +9,13 @@ import jakarta.persistence.MappedSuperclass;
 import java.util.Objects;
 
 @MappedSuperclass
-public abstract class Model extends Observable {
+public abstract class BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     public void setId(Long id) {
         this.id = id;
-        notifyObservers();
     }
 
     public Long getId() {
@@ -26,8 +25,8 @@ public abstract class Model extends Observable {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Model model)) return false;
-        return Objects.equals(id, model.id);
+        if (!(o instanceof BaseEntity baseEntity)) return false;
+        return Objects.equals(id, baseEntity.id);
     }
 
     @Override

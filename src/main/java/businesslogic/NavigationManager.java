@@ -10,11 +10,11 @@ import java.util.Stack;
 public class NavigationManager {
 
 
-    public enum HandlerId{
+    public enum HandlerId {
         LOGIN,
         REGISTRATION,
         HOME,
-	ARTIST_HOME,
+        ARTIST_HOME,
         SEARCH,
         VIEW_PLAYLIST,
         VIEW_ARTIST,
@@ -23,12 +23,14 @@ public class NavigationManager {
         PLAY_TRACK,
         VIEW_ALBUMS
     }
-    public enum DaoId{
+
+    public enum DaoId {
         USER,
         PODCAST,
         SONG,
         ARTIST
     }
+
     private final Map<HandlerId, Handler> handlers;
     private final Stack<Handler> states;
     private final Map<DaoId, BaseDao<?>> databases;
@@ -41,17 +43,17 @@ public class NavigationManager {
         databases.put(DaoId.USER, new UserDao());
         databases.put(DaoId.PODCAST, new PodcastDao());
         databases.put(DaoId.SONG, new SongDao());
-	    databases.put(DaoId.ARTIST, new ArtistDao());
-	
+        databases.put(DaoId.ARTIST, new ArtistDao());
+
         this.handlers = new HashMap<>();
-        handlers.put(HandlerId.LOGIN, new LoginHandler((UserDao)databases.get(DaoId.USER),
-                (ArtistDao)databases.get(DaoId.ARTIST)));
-        handlers.put(HandlerId.REGISTRATION, new RegistrationHandler((UserDao)databases.get(DaoId.USER),
-                (ArtistDao)databases.get(DaoId.ARTIST)));
+        handlers.put(HandlerId.LOGIN, new LoginHandler((UserDao) databases.get(DaoId.USER),
+                (ArtistDao) databases.get(DaoId.ARTIST)));
+        handlers.put(HandlerId.REGISTRATION, new RegistrationHandler((UserDao) databases.get(DaoId.USER),
+                (ArtistDao) databases.get(DaoId.ARTIST)));
         handlers.put(HandlerId.HOME, new HomeHandler());
-        handlers.put(HandlerId.SEARCH, new SearchHandler((SongDao)databases.get(DaoId.SONG),
-                (PodcastDao)databases.get(DaoId.PODCAST), (ArtistDao)databases.get(DaoId.ARTIST)));
-        handlers.put(HandlerId.VIEW_PLAYLIST, new PlaylistHandler());
+        handlers.put(HandlerId.SEARCH, new SearchHandler((SongDao) databases.get(DaoId.SONG),
+                (PodcastDao) databases.get(DaoId.PODCAST), (ArtistDao) databases.get(DaoId.ARTIST)));
+        handlers.put(HandlerId.VIEW_PLAYLIST, new PlaylistViewHandler());
         handlers.put(HandlerId.VIEW_SUGGESTIONS, new SuggestionsHandler());
         handlers.put(HandlerId.PLAY_TRACK, new PlaybackHandler());
         handlers.put(HandlerId.VIEW_ARTIST, new ArtistInfoHandler());
@@ -60,34 +62,34 @@ public class NavigationManager {
 
         states = new Stack<>();
 
-        for (Handler h: handlers.values()){
+        for (Handler h : handlers.values()) {
             h.setNavigationManager(this);
         }
-	if(!ConfigOptions.TEST_MODE){
-	    start();
-	}
-	
+        if (!ConfigOptions.TEST_MODE) {
+            start();
+        }
+
     }
 
-    public void start(){
+    public void start() {
         switchToController(HandlerId.LOGIN);
-	run();
+        run();
     }
 
 
-    void previousState() {
+    public void previousState() {
         states.pop();
     }
 
-    public int getCurrentHandlerId(){
-        for (Map.Entry<HandlerId, Handler> entry : handlers.entrySet()){
+    public int getCurrentHandlerId() {
+        for (Map.Entry<HandlerId, Handler> entry : handlers.entrySet()) {
             if (entry.getValue().equals(states.peek()))
                 return entry.getKey().ordinal();
         }
         return -1;
     }
 
-    void switchToController(HandlerId id) {
+    public void switchToController(HandlerId id) {
         if (handlers.containsKey(id)) {
             states.push(handlers.get(id));
         } else {
@@ -95,41 +97,41 @@ public class NavigationManager {
         }
     }
 
-    public void pushHandler(HandlerId id){
+    public void pushHandler(HandlerId id) {
         if (handlers.containsKey(id)) {
             states.push(handlers.get(id));
         }
     }
 
-    public void run(){
-	while(!states.empty()){
-	currentState = states.peek().update(currentState);
-	}
+    public void run() {
+        while (!states.empty()) {
+            currentState = states.peek().update(currentState);
+        }
     }
-	
 
-    public void stop(){
+
+    public void stop() {
         lastId = getCurrentHandlerId();
-        while (!states.empty()){
+        while (!states.empty()) {
             states.pop();
         }
 
         System.out.println("Swetify closed");
     }
 
-    public int getLastId(){
+    public int getLastId() {
         return lastId;
     }
 
-    public BaseDao<?> getDaoById(DaoId daoId){
+    public BaseDao<?> getDaoById(DaoId daoId) {
         return databases.get(daoId);
     }
 
-    public Handler getHandlerById(HandlerId handlerId){
+    public Handler getHandlerById(HandlerId handlerId) {
         return handlers.get(handlerId);
     }
 
-    public void setCurrentState(State state){
+    public void setCurrentState(State state) {
         this.currentState = state;
     }
 

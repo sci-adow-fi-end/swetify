@@ -1,12 +1,14 @@
-package domainmodel;
+package domainmodel.entities;
 
+import domainmodel.entities.track.Podcast;
 import jakarta.persistence.*;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "Artists")
-public class Artist extends Model {
+public class Artist extends BaseEntity {
 
     private String username;
 
@@ -40,7 +42,6 @@ public class Artist extends Model {
 
     public void setUsername(String username) {
         this.username = username;
-        notifyObservers();
     }
 
     public String getPassword() {
@@ -49,7 +50,7 @@ public class Artist extends Model {
 
     public void setPassword(String password) {
         this.password = password;
-        notifyObservers();
+
     }
 
     public String getStageName() {
@@ -58,7 +59,7 @@ public class Artist extends Model {
 
     public void setStageName(String stageName) {
         this.stageName = stageName;
-        notifyObservers();
+
     }
 
     public String getBiography() {
@@ -67,7 +68,7 @@ public class Artist extends Model {
 
     public void setBiography(String biography) {
         this.biography = biography;
-        notifyObservers();
+
     }
 
     public void addAlbum(Album a){
@@ -84,6 +85,6 @@ public class Artist extends Model {
 
     public void setFollowers(int followers) {
         this.followers = followers;
-        notifyObservers();
+
     }
 }

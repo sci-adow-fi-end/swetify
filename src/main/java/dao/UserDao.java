@@ -1,6 +1,6 @@
 package dao;
 
-import domainmodel.User;
+import domainmodel.entities.User;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 
@@ -8,10 +8,6 @@ import java.util.List;
 import java.util.Optional;
 
 public class UserDao extends BaseDao<User> {
-
-    public UserDao() {
-        setUp();
-    }
 
     @Override
     public Optional<User> get(long id) {

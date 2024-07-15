@@ -8,15 +8,15 @@
             Persistence unit for the swetify application
         </description>
 
-        <class>domainmodel.Album</class>
-        <class>domainmodel.Artist</class>
-        <class>domainmodel.Podcast</class>
-        <class>domainmodel.Track</class>
-        <class>domainmodel.Song</class>
-        <class>domainmodel.User</class>
-        <class>domainmodel.Playlist</class>
-        <class>domainmodel.SongPlaylist</class>
-        <class>domainmodel.PodcastPlaylist</class>
+        <class>domainmodel.entities.Album</class>
+        <class>domainmodel.entities.Artist</class>
+        <class>domainmodel.entities.track.Podcast</class>
+        <class>domainmodel.entities.track.Track</class>
+        <class>domainmodel.entities.track.Song</class>
+        <class>domainmodel.entities.User</class>
+        <class>domainmodel.entities.playlist.Playlist</class>
+        <class>domainmodel.entities.playlist.SongPlaylist</class>
+        <class>domainmodel.entities.playlist.PodcastPlaylist</class>
 
         <properties>
             <!-- Database connection settings -->

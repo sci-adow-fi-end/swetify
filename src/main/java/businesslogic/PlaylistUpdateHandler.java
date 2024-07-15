@@ -1,15 +1,18 @@
 package businesslogic;
-import java.io.ByteArrayInputStream;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Scanner;
-
-import java.util.ArrayList;
 
 import dao.ArtistDao;
 import dao.PodcastDao;
 import dao.SongDao;
-import domainmodel.*;
+import domainmodel.entities.Artist;
+import domainmodel.entities.playlist.PodcastPlaylist;
+import domainmodel.entities.playlist.SongPlaylist;
+import domainmodel.entities.track.Podcast;
+import domainmodel.entities.track.Song;
+
+import java.io.ByteArrayInputStream;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 public class PlaylistUpdateHandler extends Handler {
 
@@ -93,7 +96,7 @@ public class PlaylistUpdateHandler extends Handler {
         int option= askNumberInRange(1,4);
 
 
-        if (state.getSelectedPlaylist() instanceof  SongPlaylist){
+        if (state.getSelectedPlaylist() instanceof SongPlaylist) {
 
             switch (option) {
                 case 1:

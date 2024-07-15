@@ -58,11 +58,4 @@ public abstract class BaseDao<T> {
             entityManager.close();
         }
     }
-
-    protected void setUp() {
-        //if (!setUpComplete) {
-        //    setUpComplete = true;
-        //    entityManagerFactory = Persistence.createEntityManagerFactory("swetifyPersistenceUnit");
-        //}
-    }
 }

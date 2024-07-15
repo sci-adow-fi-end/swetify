@@ -1,6 +1,6 @@
 package dao;
 
-import domainmodel.Album;
+import domainmodel.entities.Album;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 
@@ -8,10 +8,6 @@ import java.util.List;
 import java.util.Optional;
 
 public class AlbumDao extends BaseDao<Album> {
-
-    public AlbumDao(){
-        setUp();
-    }
 
     @Override
     public Optional<Album> get(long id) {

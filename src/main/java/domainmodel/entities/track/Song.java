@@ -1,5 +1,6 @@
-package domainmodel;
+package domainmodel.entities.track;
 
+import domainmodel.entities.Artist;
 import jakarta.persistence.Entity;
 
 import java.util.List;
@@ -21,6 +22,5 @@ public class Song extends Track {
 
     public void setLyrics(String lyrics) {
         this.lyrics = lyrics;
-        notifyObservers();
     }
 }

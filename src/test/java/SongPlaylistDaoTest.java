@@ -1,7 +1,7 @@
 import dao.SongDao;
 import dao.SongPlaylistDao;
-import domainmodel.Song;
-import domainmodel.SongPlaylist;
+import domainmodel.entities.playlist.SongPlaylist;
+import domainmodel.entities.track.Song;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

@@ -1,17 +1,16 @@
 package businesslogic;
-import java.io.ByteArrayInputStream;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Scanner;
-
-import java.util.ArrayList;
 
 import dao.ArtistDao;
 import dao.PodcastDao;
 import dao.SongDao;
-import domainmodel.Artist;
-import domainmodel.Podcast;
-import domainmodel.Song;
+import domainmodel.entities.Artist;
+import domainmodel.entities.track.Podcast;
+import domainmodel.entities.track.Song;
+
+import java.io.ByteArrayInputStream;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 public class SearchHandler extends Handler {
 

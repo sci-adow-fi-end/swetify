@@ -1,13 +1,13 @@
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
-
-import domainmodel.Song;
 import businesslogic.PlaybackHandler;
 import businesslogic.State;
+import domainmodel.entities.track.Song;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
 import java.time.Duration;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class PlaybackHandlerTest extends BaseTest{
 
