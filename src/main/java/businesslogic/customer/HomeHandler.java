@@ -1,7 +1,8 @@
 package businesslogic.customer;
-import businesslogic.utility.NavigationManager;
+
 import businesslogic.utility.ConfigOptions;
 import businesslogic.utility.Handler;
+import businesslogic.utility.NavigationManager;
 import businesslogic.utility.State;
 
 import java.io.ByteArrayInputStream;
@@ -15,7 +16,7 @@ public class HomeHandler extends Handler {
         System.out.println("\n");
         System.out.println("1: Search for a track, artist or playlist");
         System.out.println("2: View your playlists");
-        System.out.println("3: View suggested songs");
+        System.out.println("3: View suggested songs and podcasts");
         System.out.println("4: Log out");
         System.out.println("5: Close Swetify");
     }

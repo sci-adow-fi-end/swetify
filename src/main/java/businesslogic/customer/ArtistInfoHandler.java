@@ -17,7 +17,9 @@ public class ArtistInfoHandler extends Handler {
 
     private void renderChoices(){
         System.out.println("0: view artist's albums");
-        System.out.println("1: go back");
+        System.out.println("1: follow artist");
+        System.out.println("2: go back");
+        System.out.println("3: close Swetify");
     }
 
     @Override
@@ -46,7 +48,14 @@ public class ArtistInfoHandler extends Handler {
                     navigationManager.switchToController(NavigationManager.HandlerId.VIEW_ALBUMS);
                     break;
                 case 1:
+                    state.getViewingArtist().setFollowers(state.getViewingArtist().getFollowers() + 1);
+                    System.out.println("Now you follow " + state.getViewingArtist().getStageName());
+                    break;
+                case 2:
                     navigationManager.previousState();
+                    break;
+                case 3:
+                    navigationManager.stop();
                     break;
                 default:
                     printError("inserted option not valid");

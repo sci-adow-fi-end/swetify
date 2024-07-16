@@ -1,17 +1,14 @@
-
 import businesslogic.utility.NavigationManager;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
-
-import businesslogic.utility.State;
 
 import java.io.ByteArrayInputStream;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class HomeHandlerTest extends BaseTest{
 
     private final NavigationManager navigationManager = new NavigationManager();
-    private final State state = new State();
 
     @BeforeEach
     public void setUp() {
@@ -37,12 +34,12 @@ public class HomeHandlerTest extends BaseTest{
         assertEquals(NavigationManager.HandlerId.VIEW_PLAYLIST.ordinal(), navigationManager.getLastId());
     }
 
-    //@Test
+    @Test
     public void testHomeSuggestions() {
-        ByteArrayInputStream input = new ByteArrayInputStream("3".getBytes());
+        ByteArrayInputStream input = new ByteArrayInputStream("3\n4\n".getBytes());
         System.setIn(input);
-        //navigationManager.run();
+        navigationManager.run();
 
-        assertEquals(NavigationManager.HandlerId.VIEW_SUGGESTIONS.ordinal(), navigationManager.getCurrentHandlerId());
+        assertEquals(NavigationManager.HandlerId.VIEW_SUGGESTIONS.ordinal(), navigationManager.getLastId());
     }
 }

@@ -11,6 +11,7 @@ import dao.BaseDAO;
 import dao.collections.AlbumDAO;
 import dao.collections.PodcastPlaylistDAO;
 import dao.collections.SongPlaylistDAO;
+import dao.suggestions.SuggestionDAO;
 import dao.tracks.PodcastDAO;
 import dao.tracks.SongDAO;
 import dao.users.ArtistDAO;
@@ -47,7 +48,8 @@ public class NavigationManager {
         PODCAST_PLAYLIST,
         SONG_PLAYLIST,
         ARTIST,
-        ALBUM
+        ALBUM,
+        SUGGESTIONS
     }
 
     private final Map<HandlerId, Handler> handlers;
@@ -66,6 +68,7 @@ public class NavigationManager {
         databases.put(DaoId.PODCAST_PLAYLIST, new PodcastPlaylistDAO());
         databases.put(DaoId.ARTIST, new ArtistDAO());
         databases.put(DaoId.ALBUM, new AlbumDAO());
+        databases.put(DaoId.SUGGESTIONS, new SuggestionDAO());
 
         this.handlers = new HashMap<>();
         handlers.put(HandlerId.LOGIN, new LoginHandler((CustomerDAO) databases.get(DaoId.USER),
@@ -77,7 +80,7 @@ public class NavigationManager {
                 (PodcastDAO) databases.get(DaoId.PODCAST), (ArtistDAO) databases.get(DaoId.ARTIST)));
         handlers.put(HandlerId.VIEW_PLAYLIST, new PlaylistViewHandler((SongPlaylistDAO) databases.get(DaoId.SONG_PLAYLIST)
                 , (PodcastPlaylistDAO) databases.get(DaoId.PODCAST_PLAYLIST)));
-        handlers.put(HandlerId.VIEW_SUGGESTIONS, new SuggestionsHandler());
+        handlers.put(HandlerId.VIEW_SUGGESTIONS, new SuggestionsHandler((SuggestionDAO) databases.get(DaoId.SUGGESTIONS)));
         handlers.put(HandlerId.PLAY_TRACK, new PlaybackHandler());
         handlers.put(HandlerId.VIEW_ARTIST, new ArtistInfoHandler());
         handlers.put(HandlerId.VIEW_ALBUMS, new AlbumsHandler());
