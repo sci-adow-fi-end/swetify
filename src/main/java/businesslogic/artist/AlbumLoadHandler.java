@@ -1,18 +1,22 @@
-package businesslogic;
+package businesslogic.artist;
 
+import businesslogic.utility.ConfigOptions;
+import businesslogic.utility.Handler;
+import businesslogic.utility.State;
 import dao.AlbumDao;
 import dao.ArtistDao;
 import dao.SongDao;
 import domainmodel.entities.Album;
 import domainmodel.entities.Artist;
 import domainmodel.entities.track.Song;
+import jakarta.persistence.NoResultException;
 
 import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class AlbumLoadHandler extends Handler{
+public class AlbumLoadHandler extends Handler {
 
     ArtistDao artistData;
     SongDao songData;
@@ -26,7 +30,7 @@ public class AlbumLoadHandler extends Handler{
     AlbumDao albumData;
 
     private void renderChoices() {
-        System.out.println("1: Load a podcast");
+        System.out.println("1: Load an Album");
         System.out.println("2: exit");
         System.out.println("\n");
     }
@@ -65,12 +69,18 @@ public class AlbumLoadHandler extends Handler{
             System.out.println("1: Add Collaboration");
             System.out.println("2: exit");
             insertionEnded = askNumberInRange(1,2)==2;
-            System.out.println("\n");
-            System.out.println("Insert artist name");
-            artists.add(artistData.getByName(input.nextLine()));
-            if (ConfigOptions.TEST_MODE) {
-                String nextInput = getRestOfInput(input);
-                System.setIn(new ByteArrayInputStream(nextInput.getBytes()));
+            if(!insertionEnded) {
+                System.out.println("\n");
+                System.out.println("Insert artist name");
+                try {
+                    artists.add(artistData.getByName(input.nextLine()));
+                } catch (NoResultException e) {
+                    printError("Artist not found");
+                }
+                if (ConfigOptions.TEST_MODE) {
+                    String nextInput = getRestOfInput(input);
+                    System.setIn(new ByteArrayInputStream(nextInput.getBytes()));
+                }
             }
         }
         return artists;
@@ -78,8 +88,15 @@ public class AlbumLoadHandler extends Handler{
 
     private Song createSong(State s){
 
-        Song ns = new Song(askSongName(),askSongLyrics(),askNumberInRange(0, Integer.MAX_VALUE),
-                askNumberInRange(0, Integer.MAX_VALUE),askAuthors(s));
+        String title = askSongName();
+        String lyrics = askSongLyrics();
+        System.out.println("Insert duration (minutes)");
+        int minutes = askNumberInRange(0, Integer.MAX_VALUE);
+        System.out.println("Insert duration (seconds)");
+        int seconds = askNumberInRange(0, Integer.MAX_VALUE);
+        List<Artist> authors = askAuthors(s);
+
+        Song ns = new Song(title,lyrics,minutes,seconds,authors);
         songData.save(ns);
         return ns;
     }
@@ -91,17 +108,23 @@ public class AlbumLoadHandler extends Handler{
         boolean insertionEnded = false;
         System.out.println("Insert album name");
         name = input.nextLine();
+
+        if (ConfigOptions.TEST_MODE) {
+            String nextInput = getRestOfInput(input);
+            System.setIn(new ByteArrayInputStream(nextInput.getBytes()));
+        }
         System.out.println("\n");
+        Album na = new Album();
+        na.getPlaylist().setTitle(name);
+        albumData.save(na);
         while(!insertionEnded){
             System.out.println("1: Add Song");
             System.out.println("2: exit");
             insertionEnded = askNumberInRange(1,2)==2;
-            System.out.println("\n");
-            System.out.println("Insert artist name");
             songs.add(createSong(s));
         }
-        Album na = new Album(name, songs);
-        albumData.save(na);
+        na.getPlaylist().setTracks(songs);
+
         return na;
     }
 
@@ -124,6 +147,4 @@ public class AlbumLoadHandler extends Handler{
         }
         return s;
     }
-
-
 }

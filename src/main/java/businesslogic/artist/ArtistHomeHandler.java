@@ -1,4 +1,9 @@
-package businesslogic;
+package businesslogic.artist;
+import businesslogic.utility.ConfigOptions;
+import businesslogic.utility.Handler;
+import businesslogic.utility.NavigationManager;
+import businesslogic.utility.State;
+
 import java.io.ByteArrayInputStream;
 import java.util.Scanner;
 
@@ -37,10 +42,10 @@ public class ArtistHomeHandler extends Handler {
 
             switch (navigationOption) {
                 case 1:
-                    //navigationManager.switchToController(NavigationManager.HandlerId.);
+                    navigationManager.switchToController(NavigationManager.HandlerId.LOAD_ALBUM);
                     break;
                 case 2:
-                    //navigationManager.switchToController(NavigationManager.HandlerId.);
+                    navigationManager.switchToController(NavigationManager.HandlerId.LOAD_PODCAST);
                     break;
                 case 3:
                     navigationManager.switchToController(NavigationManager.HandlerId.LOGIN);

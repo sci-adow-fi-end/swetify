@@ -1,5 +1,8 @@
-package businesslogic;
+package businesslogic.customer;
 
+import businesslogic.utility.NavigationManager;
+import businesslogic.utility.Handler;
+import businesslogic.utility.State;
 import domainmodel.entities.Artist;
 
 import java.util.Scanner;

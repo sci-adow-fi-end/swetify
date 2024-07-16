@@ -1,5 +1,7 @@
-package businesslogic;
+package businesslogic.artist;
 
+import businesslogic.utility.Handler;
+import businesslogic.utility.State;
 import dao.ArtistDao;
 import dao.PodcastDao;
 import domainmodel.entities.Artist;
@@ -9,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class PodcastLoadHandler extends Handler{
+public class PodcastLoadHandler extends Handler {
 
 
     public PodcastLoadHandler(ArtistDao artistData, PodcastDao podcastData) {

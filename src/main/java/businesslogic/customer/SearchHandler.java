@@ -1,5 +1,9 @@
-package businesslogic;
+package businesslogic.customer;
 
+import businesslogic.utility.ConfigOptions;
+import businesslogic.utility.Handler;
+import businesslogic.utility.NavigationManager;
+import businesslogic.utility.State;
 import dao.ArtistDao;
 import dao.PodcastDao;
 import dao.SongDao;

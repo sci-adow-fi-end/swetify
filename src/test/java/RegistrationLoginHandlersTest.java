@@ -1,4 +1,4 @@
-import businesslogic.NavigationManager;
+import businesslogic.utility.NavigationManager;
 import domainmodel.entities.Artist;
 import domainmodel.entities.User;
 import jakarta.persistence.NoResultException;

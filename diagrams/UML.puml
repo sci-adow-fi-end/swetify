@@ -53,7 +53,7 @@ class domainmodel.Album {
 }
 
 
-class businesslogic.PlaybackHandler {
+class businesslogic.customer.PlaybackHandler {
 - void renderChoices()
 - void printQueue(State)
 + {static} void printProgressBar(int,int)
@@ -61,12 +61,12 @@ class businesslogic.PlaybackHandler {
 }
 
 /'
-class businesslogic.PlaybackHandler$PlaybackThread {
+class businesslogic.customer.PlaybackHandler$PlaybackThread {
 - boolean paused
 - boolean skip
-- businesslogic.State state
+- businesslogic.utility.State state
 ~ int totalSteps
-~ <<Create>> PlaybackThread(businesslogic.State)
+~ <<Create>> PlaybackThread(businesslogic.utility.State)
 + void run()
 + void playPause()
 + void skip()
@@ -100,7 +100,7 @@ class domainmodel.Playlist {
 }
 
 
-abstract class businesslogic.Handler {
+abstract class businesslogic.utility.Handler {
 + {static} String ANSI_RESET
 + {static} String ANSI_BLACK
 + {static} String ANSI_RED
@@ -117,7 +117,7 @@ abstract class businesslogic.Handler {
 }
 
 
-class businesslogic.State {
+class businesslogic.utility.State {
 - User loggedUser
 - Playlist<? extends Track> selectedPlaylist
 - Track selectedTrack
@@ -190,7 +190,7 @@ class domainmodel.Artist {
 }
 
 
-class businesslogic.UserPlaylistsHandler {
+class businesslogic.customer.UserPlaylistsHandler {
 - ArrayList<Playlist<Song>> songPlaylists
 - ArrayList<Playlist<Podcast>> podcastsPlaylists
 - void renderChoices()
@@ -198,12 +198,12 @@ class businesslogic.UserPlaylistsHandler {
 }
 
 
-class businesslogic.SuggestionsHandler {
+class businesslogic.customer.SuggestionsHandler {
 - void renderChoices()
 + State update(State)
 }
 
-class businesslogic.HomeHandler {
+class businesslogic.customer.HomeHandler {
 - void renderChoices()
 + State update(State)
 }
@@ -216,7 +216,7 @@ class domainmodel.Song {
 }
 
 
-class businesslogic.RegistrationHandler {
+class businesslogic.common.RegistrationHandler {
 + String userName
 + String password
 + Dao<User> userDatabase
@@ -226,7 +226,7 @@ class businesslogic.RegistrationHandler {
 }
 
 
-class businesslogic.LoginHandler {
+class businesslogic.common.LoginHandler {
 + String userName
 + String password
 - Dao<User> userDatabase
@@ -238,11 +238,11 @@ class businesslogic.LoginHandler {
 }
 
 
-class businesslogic.AlbumsHandler {
+class businesslogic.customer.AlbumsHandler {
 + State update(State)
 }
 
-class businesslogic.SearchHandler {
+class businesslogic.customer.SearchHandler {
 - String input
 - ArrayList<Song> songs
 - ArrayList<Podcast> podcasts
@@ -255,7 +255,7 @@ class businesslogic.SearchHandler {
 }
 
 
-class businesslogic.ArtistInfoHandler {
+class businesslogic.customer.ArtistInfoHandler {
 - void renderArtistInfo(Artist)
 - void renderChoices()
 + State update(State)
@@ -287,7 +287,7 @@ class domainmodel.User {
 }
 
 
-class businesslogic.NavigationManager {
+class businesslogic.utility.NavigationManager {
 - Map<HandlerId,Handler> controllers
 - Stack<Handler> states
 - State currentState
@@ -312,25 +312,25 @@ enum businesslogic.HandlerId {
 
 
 dao.BaseDao <|-- dao.UserDao
-businesslogic.Handler <|-- businesslogic.PlaylistHandler
+businesslogic.utility.Handler <|-- businesslogic.PlaylistHandler
 domainmodel.Model <|- domainmodel.Suggestions
 domainmodel.Track <|-- domainmodel.Podcast
 'domainmodel.Observable <|-- domainmodel.Model'
 domainmodel.Model <|-- domainmodel.Album
-businesslogic.Handler <|-- businesslogic.PlaybackHandler
-businesslogic.Thread *-- businesslogic.PlaybackHandler
+businesslogic.utility.Handler <|-- businesslogic.customer.PlaybackHandler
+businesslogic.Thread *-- businesslogic.customer.PlaybackHandler
 domainmodel.Model <|-- domainmodel.Playlist
 domainmodel.Model <|-- domainmodel.Track
 domainmodel.Model <|-- domainmodel.Artist
-businesslogic.Handler <|-- businesslogic.UserPlaylistsHandler
-businesslogic.Handler <|-- businesslogic.SuggestionsHandler
-businesslogic.Handler <|-- businesslogic.HomeHandler
+businesslogic.utility.Handler <|-- businesslogic.customer.UserPlaylistsHandler
+businesslogic.utility.Handler <|-- businesslogic.customer.SuggestionsHandler
+businesslogic.utility.Handler <|-- businesslogic.customer.HomeHandler
 domainmodel.Track <|-- domainmodel.Song
-businesslogic.Handler <|-- businesslogic.RegistrationHandler
-businesslogic.Handler <|-- businesslogic.LoginHandler
-businesslogic.Handler <|-- businesslogic.AlbumsHandler
-businesslogic.Handler <|-- businesslogic.SearchHandler
-businesslogic.Handler <|-- businesslogic.ArtistInfoHandler
+businesslogic.utility.Handler <|-- businesslogic.common.RegistrationHandler
+businesslogic.utility.Handler <|-- businesslogic.common.LoginHandler
+businesslogic.utility.Handler <|-- businesslogic.customer.AlbumsHandler
+businesslogic.utility.Handler <|-- businesslogic.customer.SearchHandler
+businesslogic.utility.Handler <|-- businesslogic.customer.ArtistInfoHandler
 domainmodel.Model <|-- domainmodel.User
 domainmodel.Album  "1,1  " o-- domainmodel.Playlist
 domainmodel.Playlist "0,n" o-- domainmodel.Song
@@ -340,8 +340,8 @@ domainmodel.Artist "0,n" o-- domainmodel.Album
 domainmodel.User "0,n" o-- domainmodel.Playlist
 domainmodel.User "0,n" o-- domainmodel.Artist
 domainmodel.User "0,n" o-- domainmodel.Track
-businesslogic.Handler "1,1" o- businesslogic.NavigationManager
-businesslogic.Handler "1,1" o- businesslogic.State
-businesslogic.NavigationManager ..> businesslogic.HandlerId
-businesslogic.SearchHandler "0,n" o-- domainmodel.Track
+businesslogic.utility.Handler "1,1" o- businesslogic.utility.NavigationManager
+businesslogic.utility.Handler "1,1" o- businesslogic.utility.State
+businesslogic.utility.NavigationManager ..> businesslogic.HandlerId
+businesslogic.customer.SearchHandler "0,n" o-- domainmodel.Track
 @enduml

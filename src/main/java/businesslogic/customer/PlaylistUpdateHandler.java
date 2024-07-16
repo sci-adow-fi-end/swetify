@@ -1,14 +1,15 @@
-package businesslogic;
+package businesslogic.customer;
 
+import businesslogic.utility.ConfigOptions;
+import businesslogic.utility.Handler;
+import businesslogic.utility.State;
 import dao.*;
-import domainmodel.entities.Artist;
 import domainmodel.entities.playlist.PodcastPlaylist;
 import domainmodel.entities.playlist.SongPlaylist;
 import domainmodel.entities.track.Podcast;
 import domainmodel.entities.track.Song;
 
 import java.io.ByteArrayInputStream;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 

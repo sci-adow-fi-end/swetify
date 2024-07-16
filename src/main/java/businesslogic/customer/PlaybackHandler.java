@@ -1,20 +1,22 @@
-package businesslogic;
+package businesslogic.customer;
 
+import businesslogic.utility.Handler;
+import businesslogic.utility.State;
 import domainmodel.entities.track.Track;
 
 import java.util.Scanner;
 
-public class PlaybackHandler extends Handler{
+public class PlaybackHandler extends Handler {
 
     public class PlaybackThread extends Thread {
 
         private boolean paused = true;
         private boolean skip = false;
-        private businesslogic.State state;
+        private businesslogic.utility.State state;
         int totalSteps;
 
 
-        PlaybackThread(businesslogic.State state){
+        PlaybackThread(businesslogic.utility.State state){
             this.state=state;
             this.totalSteps = (int) state.getPlayingTrack().getDuration().toSeconds();
         }

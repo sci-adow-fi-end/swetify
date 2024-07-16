@@ -1,7 +1,5 @@
-import businesslogic.ConfigOptions;
-import businesslogic.NavigationManager;
-
-import java.util.Scanner;
+import businesslogic.utility.ConfigOptions;
+import businesslogic.utility.NavigationManager;
 
 public class Main {
     public static void main(String[] args) {

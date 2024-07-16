@@ -1,10 +1,10 @@
 
-import businesslogic.NavigationManager;
+import businesslogic.utility.NavigationManager;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-import businesslogic.State;
+import businesslogic.utility.State;
 
 import java.io.ByteArrayInputStream;
 

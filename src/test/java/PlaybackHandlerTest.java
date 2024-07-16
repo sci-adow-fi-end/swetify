@@ -1,5 +1,5 @@
-import businesslogic.PlaybackHandler;
-import businesslogic.State;
+import businesslogic.customer.PlaybackHandler;
+import businesslogic.utility.State;
 import domainmodel.entities.track.Song;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

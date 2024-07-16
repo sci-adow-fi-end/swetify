@@ -15,7 +15,9 @@ public class Album extends BaseEntity {
     @Temporal(TemporalType.DATE)
     private Date releaseDate;
 
-    public Album(){}
+    public Album(){
+        this.playlist = new Playlist<>();
+    }
 
     public Album(String title, List<Song> trackList) {
         this.playlist = new Playlist<>(title,trackList);
@@ -37,4 +39,5 @@ public class Album extends BaseEntity {
     public void setReleaseDate(Date releaseDate) {
         this.releaseDate = releaseDate;
     }
+
 }

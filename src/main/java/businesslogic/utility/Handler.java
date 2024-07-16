@@ -1,4 +1,4 @@
-package businesslogic;
+package businesslogic.utility;
 
 import java.io.ByteArrayInputStream;
 import java.util.Scanner;

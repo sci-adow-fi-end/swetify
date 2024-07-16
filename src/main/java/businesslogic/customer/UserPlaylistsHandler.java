@@ -1,5 +1,7 @@
-package businesslogic;
+package businesslogic.customer;
 
+import businesslogic.utility.Handler;
+import businesslogic.utility.State;
 import domainmodel.entities.playlist.Playlist;
 import domainmodel.entities.track.Podcast;
 import domainmodel.entities.track.Song;

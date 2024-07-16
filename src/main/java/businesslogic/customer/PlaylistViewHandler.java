@@ -1,11 +1,12 @@
-package businesslogic;
+package businesslogic.customer;
 
+import businesslogic.utility.Handler;
+import businesslogic.utility.NavigationManager;
+import businesslogic.utility.State;
 import dao.PodcastPlaylistDao;
 import dao.SongPlaylistDao;
 import domainmodel.entities.playlist.PodcastPlaylist;
 import domainmodel.entities.playlist.SongPlaylist;
-import domainmodel.entities.track.Podcast;
-import domainmodel.entities.track.Song;
 import domainmodel.entities.track.Track;
 
 import java.util.Scanner;
@@ -70,10 +71,9 @@ public class PlaylistViewHandler extends Handler {
     private Track chooseTrack(State s){
         System.out.println("Insert the number of the song you want to play");
         int size = s.getSelectedPlaylist().getTracks().size();
-        return s.getSelectedPlaylist().getTracks().get(askNumberInRange(1,size));
+        return s.getSelectedPlaylist().getTracks().get(askNumberInRange(1,size)-1);
     }
 
-    //TODO sistemare l'update
     @Override
     public State update(State state) {
         clearScreen();

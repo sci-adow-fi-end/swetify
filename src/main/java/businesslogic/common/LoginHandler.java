@@ -1,9 +1,14 @@
-package businesslogic;
+package businesslogic.common;
 
+import businesslogic.utility.NavigationManager;
+import businesslogic.utility.ConfigOptions;
+import businesslogic.utility.Handler;
+import businesslogic.utility.State;
 import dao.ArtistDao;
 import dao.UserDao;
 import domainmodel.entities.Artist;
 import domainmodel.entities.User;
+import jakarta.persistence.NoResultException;
 
 import java.io.ByteArrayInputStream;
 import java.util.NoSuchElementException;
@@ -89,7 +94,7 @@ private boolean validateUsername(boolean isArtist) {
             art = artistDatabase.getByUserName(userName);
         }
         return true;
-    } catch (NoSuchElementException e) {
+    } catch (NoSuchElementException | NoResultException e) {
         printError("Username is not correct, try again");
         return false;
     }

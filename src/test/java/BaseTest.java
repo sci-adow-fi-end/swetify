@@ -1,4 +1,4 @@
-import businesslogic.ConfigOptions;
+import businesslogic.utility.ConfigOptions;
 import dao.BaseDao;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;

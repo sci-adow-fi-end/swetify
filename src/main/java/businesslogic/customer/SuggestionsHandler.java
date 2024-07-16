@@ -1,4 +1,7 @@
-package businesslogic;
+package businesslogic.customer;
+
+import businesslogic.utility.Handler;
+import businesslogic.utility.State;
 
 public class SuggestionsHandler extends Handler {
 

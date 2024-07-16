@@ -1,6 +1,12 @@
-package businesslogic;
+package businesslogic.utility;
 
 
+import businesslogic.artist.AlbumLoadHandler;
+import businesslogic.artist.ArtistHomeHandler;
+import businesslogic.artist.PodcastLoadHandler;
+import businesslogic.common.LoginHandler;
+import businesslogic.common.RegistrationHandler;
+import businesslogic.customer.*;
 import dao.*;
 
 import java.util.HashMap;
@@ -22,7 +28,9 @@ public class NavigationManager {
         VIEW_TRACK,
         VIEW_SUGGESTIONS,
         PLAY_TRACK,
-        VIEW_ALBUMS
+        VIEW_ALBUMS,
+        LOAD_ALBUM,
+        LOAD_PODCAST
     }
 
     public enum DaoId {
@@ -31,7 +39,8 @@ public class NavigationManager {
         SONG,
         PODCAST_PLAYLIST,
         SONG_PLAYLIST,
-        ARTIST
+        ARTIST,
+        ALBUM
     }
 
     private final Map<HandlerId, Handler> handlers;
@@ -49,6 +58,7 @@ public class NavigationManager {
         databases.put(DaoId.SONG_PLAYLIST, new SongPlaylistDao());
         databases.put(DaoId.PODCAST_PLAYLIST, new PodcastPlaylistDao());
         databases.put(DaoId.ARTIST, new ArtistDao());
+        databases.put(DaoId.ALBUM, new AlbumDao());
 
         this.handlers = new HashMap<>();
         handlers.put(HandlerId.LOGIN, new LoginHandler((UserDao) databases.get(DaoId.USER),
@@ -66,6 +76,10 @@ public class NavigationManager {
         handlers.put(HandlerId.ARTIST_HOME, new ArtistHomeHandler());
         handlers.put(HandlerId.UPDATE_PLAYLIST, new PlaylistUpdateHandler((SongDao) databases.get(DaoId.SONG),(PodcastDao) databases.get(DaoId.PODCAST),
                 (SongPlaylistDao) databases.get(DaoId.SONG_PLAYLIST),(PodcastPlaylistDao) databases.get(DaoId.PODCAST_PLAYLIST) ));
+        handlers.put(HandlerId.LOAD_ALBUM, new AlbumLoadHandler((ArtistDao) databases.get(DaoId.ARTIST),
+                (SongDao) databases.get(DaoId.SONG),(AlbumDao) databases.get(DaoId.ALBUM) ));
+        handlers.put(HandlerId.LOAD_PODCAST, new PodcastLoadHandler((ArtistDao) databases.get(DaoId.ARTIST),
+                (PodcastDao) databases.get(DaoId.PODCAST) ));
         //TODO stiò
 
         states = new Stack<>();

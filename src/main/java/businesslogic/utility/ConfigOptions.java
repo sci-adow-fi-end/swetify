@@ -1,4 +1,4 @@
-package businesslogic;
+package businesslogic.utility;
 
 //class for debugging/testing purposes
 

@@ -1,4 +1,4 @@
-package businesslogic;
+package businesslogic.utility;
 
 import domainmodel.PlaybackQueue;
 import domainmodel.entities.Artist;

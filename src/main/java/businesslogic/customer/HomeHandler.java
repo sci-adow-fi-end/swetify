@@ -1,4 +1,9 @@
-package businesslogic;
+package businesslogic.customer;
+import businesslogic.utility.NavigationManager;
+import businesslogic.utility.ConfigOptions;
+import businesslogic.utility.Handler;
+import businesslogic.utility.State;
+
 import java.io.ByteArrayInputStream;
 import java.util.Scanner;
 
