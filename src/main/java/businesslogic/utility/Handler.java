@@ -50,13 +50,14 @@ public abstract class Handler {
                 if (navigationOption>=min&&navigationOption<=max) {
                     validNavigationOption = true;
                 }
-            } catch (NumberFormatException ignored) {}
+                else{
+                    printError("not in range");
+                }
+            } catch (NumberFormatException e) {
+                printError("not a number");
+            }
         }
 
-        if (ConfigOptions.TEST_MODE) {
-            String nextInput = getRestOfInput(input);
-            System.setIn(new ByteArrayInputStream(nextInput.getBytes()));
-        }
         return navigationOption;
     }
     protected static String getRestOfInput(Scanner input){

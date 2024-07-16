@@ -31,7 +31,8 @@ public class AlbumLoadHandler extends Handler {
 
     private void renderChoices() {
         System.out.println("1: Load an Album");
-        System.out.println("2: exit");
+        System.out.println("2: Go back");
+        System.out.println("3: Close Swetify");
         System.out.println("\n");
     }
 
@@ -97,7 +98,6 @@ public class AlbumLoadHandler extends Handler {
         List<Artist> authors = askAuthors(s);
 
         Song ns = new Song(title,lyrics,minutes,seconds,authors);
-        songData.save(ns);
         return ns;
     }
 
@@ -116,15 +116,16 @@ public class AlbumLoadHandler extends Handler {
         System.out.println("\n");
         Album na = new Album();
         na.getPlaylist().setTitle(name);
-        albumData.save(na);
         while(!insertionEnded){
             System.out.println("1: Add Song");
-            System.out.println("2: exit");
+            System.out.println("2: Exit");
             insertionEnded = askNumberInRange(1,2)==2;
+            if(!insertionEnded){
             songs.add(createSong(s));
+            }
         }
         na.getPlaylist().setTracks(songs);
-        albumData.update(na);
+        albumData.save(na);
         return na;
     }
 
@@ -133,14 +134,18 @@ public class AlbumLoadHandler extends Handler {
 
         clearScreen();
         renderChoices();
-        int navOpt = askNumberInRange(1,2);
+        int navOpt = askNumberInRange(1,3);
         switch (navOpt){
             case 1:
                 s.getLoggedArtist().addAlbum(createAlbum(s));
                 artistData.update(s.getLoggedArtist());
+
                 break;
             case 2:
                 navigationManager.previousState();
+                break;
+            case 3:
+                navigationManager.stop();
                 break;
             default:
                 printError("option not valid");
