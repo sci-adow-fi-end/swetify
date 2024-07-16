@@ -53,15 +53,15 @@ public class SongPlaylistDAOTest extends BaseTest {
 
     @Test
     void testGet() {
-        SongPlaylist songPlaylist = songPlaylistDatabase.getByName(songPlaylist1.getTitle());
+        SongPlaylist songPlaylist = songPlaylistDatabase.getByTitle(songPlaylist1.getTitle()).getFirst();
         SongPlaylist songPlaylist2 = songPlaylistDatabase.get(songPlaylist.getId()).orElseThrow();
         assertEquals(songPlaylist.getTitle(), songPlaylist2.getTitle());
     }
 
     @Test
     void testGetByName() {
-        assertEquals(songPlaylist1.getTitle(), songPlaylistDatabase.getByName(songPlaylist1.getTitle()).getTitle());
-        assertEquals(songPlaylist2.getTitle(), songPlaylistDatabase.getByName(songPlaylist2.getTitle()).getTitle());
+        assertEquals(songPlaylist1.getTitle(), songPlaylistDatabase.getByTitle(songPlaylist1.getTitle()).getFirst().getTitle());
+        assertEquals(songPlaylist2.getTitle(), songPlaylistDatabase.getByTitle(songPlaylist2.getTitle()).getFirst().getTitle());
     }
 
     @Test
@@ -71,11 +71,11 @@ public class SongPlaylistDAOTest extends BaseTest {
     }
 
     @Test
-    void testGetAllByName() {
+    void testGetByTitle() {
         SongPlaylist songPlaylist3 = new SongPlaylist();
         songPlaylist3.setTitle("playlist1");
         songPlaylistDatabase.save(songPlaylist3);
-        List<SongPlaylist> foundSongPlaylists = songPlaylistDatabase.getAllByName(songPlaylist1.getTitle());
+        List<SongPlaylist> foundSongPlaylists = songPlaylistDatabase.getByTitle(songPlaylist1.getTitle());
         assertEquals(2, foundSongPlaylists.size());
     }
 

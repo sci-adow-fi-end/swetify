@@ -1,6 +1,5 @@
 import dao.tracks.SongDAO;
 import domainmodel.entities.tracks.Song;
-import jakarta.persistence.NoResultException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -8,7 +7,6 @@ import java.time.Duration;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class SongDAOTest extends BaseTest {
 
@@ -36,39 +34,29 @@ public class SongDAOTest extends BaseTest {
 
     @Test
     void testGet(){
-        Song song = songDatabase.getByName(song1.getTitle());
+        Song song = songDatabase.getByTitle(song1.getTitle()).getFirst();
         Song song2 = songDatabase.get(song.getId()).orElseThrow();
         assertEquals(song.getTitle(), song2.getTitle());
     }
 
     @Test
-    void testGetByName(){
+    void testGetByTitle() {
 
-        assertEquals(song1.getTitle(), songDatabase.getByName(song1.getTitle()).getTitle());
-        assertEquals(song2.getTitle(), songDatabase.getByName(song2.getTitle()).getTitle());
-        assertEquals(song3.getTitle(), songDatabase.getByName(song3.getTitle()).getTitle());
+        assertEquals(song1.getTitle(), songDatabase.getByTitle(song1.getTitle()).getFirst().getTitle());
+        assertEquals(song2.getTitle(), songDatabase.getByTitle(song2.getTitle()).getFirst().getTitle());
+        assertEquals(song3.getTitle(), songDatabase.getByTitle(song3.getTitle()).getFirst().getTitle());
 
         Song song = new Song();
         song.setTitle("stio");
         song.setDuration(Duration.ofSeconds(10));
 
-        boolean present;
-        try{
-            songDatabase.getByName(song.getTitle());
-            present = true;
-        }
-        catch(NoResultException e){
-            present = false;
-        }
-        assertFalse(present);
-    }
+        List<Song> results = songDatabase.getByTitle(song.getTitle());
+        assertEquals(0, results.size());
 
-    @Test
-    void testGetAllByName(){
         song4.setTitle("title1");
         song4.setDuration(Duration.ofSeconds(15));
         songDatabase.save(song4);
-        List<Song> foundSongs = songDatabase.getAllByName(song1.getTitle());
+        List<Song> foundSongs = songDatabase.getByTitle(song1.getTitle());
         assertEquals(2, foundSongs.size());
     }
 

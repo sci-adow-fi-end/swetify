@@ -1,4 +1,6 @@
 import businesslogic.utility.NavigationManager;
+import dao.users.ArtistDAO;
+import dao.users.CustomerDAO;
 import domainmodel.entities.users.Artist;
 import domainmodel.entities.users.Customer;
 import jakarta.persistence.NoResultException;
@@ -31,7 +33,8 @@ public class RegistrationLoginHandlersTest extends BaseTest{
 
         boolean existOne;
         try {
-            navigationManager.getDaoById(NavigationManager.DaoId.USER).getByName("Stio");
+            CustomerDAO customerDAO = new CustomerDAO();
+            customerDAO.getByUsername("Stio");
             existOne = true;
         } catch (NoResultException | NonUniqueResultException e) {
             existOne = false;
@@ -50,7 +53,8 @@ public class RegistrationLoginHandlersTest extends BaseTest{
 
         boolean existOne;
         try {
-            navigationManager.getDaoById(NavigationManager.DaoId.ARTIST).getByName("KuruKuru");
+            ArtistDAO artistDAO = new ArtistDAO();
+            artistDAO.getByUserName("Stio");
             existOne = true;
         } catch (NoResultException | NonUniqueResultException e) {
             existOne = false;

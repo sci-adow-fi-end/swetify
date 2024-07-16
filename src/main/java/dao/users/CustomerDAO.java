@@ -18,11 +18,10 @@ public class CustomerDAO extends BaseDAO<Customer> {
         return Optional.ofNullable(result);
     }
 
-    @Override
-    public Customer getByName(String name) {
+    public Customer getByUsername(String username) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         TypedQuery<Customer> query = entityManager.createQuery("SELECT e FROM Customer e WHERE e.username = :name", Customer.class);
-        query.setParameter("name", name);
+        query.setParameter("name", username);
         Customer result = query.getSingleResult();
         entityManager.close();
         return result;

@@ -22,11 +22,6 @@ public class SongPlaysCountDAO extends BaseDAO<SongPlaysCount> {
     }
 
     @Override
-    public SongPlaysCount getByName(String name) {
-        return null;
-    }
-
-    @Override
     public List<SongPlaysCount> getAll() {
         EntityManager entityManager = getEntityManagerFactory().createEntityManager();
         TypedQuery<SongPlaysCount> query = entityManager.createQuery("SELECT spc FROM SongPlaysCount spc", SongPlaysCount.class);

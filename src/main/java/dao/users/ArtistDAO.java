@@ -18,29 +18,19 @@ public class ArtistDAO extends BaseDAO<Artist> {
         return Optional.ofNullable(result);
     }
 
-    @Override
-    public Artist getByName(String name){
+    public List<Artist> getByStageName(String stageName) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
-        TypedQuery<Artist> query = entityManager.createQuery("SELECT a FROM Artist a WHERE a.stageName = :name", Artist.class);
-        query.setParameter("name", name);
-        Artist result = query.getSingleResult();
-        entityManager.close();
-        return result;
-    }
-
-    public List<Artist> getAllByName(String name) {
-        EntityManager entityManager = entityManagerFactory.createEntityManager();
-        TypedQuery<Artist> query = entityManager.createQuery("SELECT a FROM Artist a WHERE a.stageName = :name", Artist.class);
-        query.setParameter("name", name);
+        TypedQuery<Artist> query = entityManager.createQuery("SELECT a FROM Artist a WHERE LOWER(a.stageName) LIKE LOWER(:name)", Artist.class);
+        query.setParameter("name", "%" + stageName.toLowerCase() + "%");
         List<Artist> resultList = query.getResultList();
         entityManager.close();
         return resultList;
     }
 
-    public Artist getByUserName(String userName) {
+    public Artist getByUserName(String username) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         TypedQuery<Artist> query = entityManager.createQuery("SELECT a FROM Artist a WHERE a.username = :username", Artist.class);
-        query.setParameter("username", userName);
+        query.setParameter("username", username);
         Artist result = query.getSingleResult();
         entityManager.close();
         return result;

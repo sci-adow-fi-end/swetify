@@ -18,13 +18,12 @@ public class AlbumDAO extends BaseDAO<Album> {
         return Optional.ofNullable(result);
     }
 
-    @Override
-    public Album getByName(String name) {
+    public List<Album> getByTitle(String title) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         TypedQuery<Album> query = entityManager.createQuery("SELECT a FROM Album a JOIN a.playlist p WHERE LOWER(p.title) LIKE LOWER(:name)",
                 Album.class);
-        query.setParameter("name", "%" + name.toLowerCase() + "%");
-        Album result = query.getSingleResult();
+        query.setParameter("name", "%" + title.toLowerCase() + "%");
+        List<Album> result = query.getResultList();
         entityManager.close();
         return result;
     }

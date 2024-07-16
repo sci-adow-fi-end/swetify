@@ -53,7 +53,7 @@ public class PodcastLoadHandler extends Handler {
             insertionEnded = askNumberInRange(1,2)==2;
             System.out.println("\n");
             System.out.println("Insert artist name");
-            artists.add(artistData.getByName(input.nextLine()));
+            artists.addAll(artistData.getByStageName(input.nextLine()));
         }
         return artists;
     }

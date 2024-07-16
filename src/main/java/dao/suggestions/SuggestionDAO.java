@@ -23,7 +23,6 @@ public class SuggestionDAO extends BaseDAO<TrackPlaysCount> {
     @PersistenceContext
     private EntityManager entityManager;
 
-    // Generic method to get top tracks by user
     private <T extends TrackPlaysCount> List<Track> getTopTracksByUser(Customer user, Class<T> entityClass) {
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
         CriteriaQuery<Track> query = cb.createQuery(Track.class);
@@ -36,7 +35,6 @@ public class SuggestionDAO extends BaseDAO<TrackPlaysCount> {
                 .getResultList();
     }
 
-    // Generic method to get users who listened to top tracks
     private <T extends TrackPlaysCount> List<Long> getUsersWhoListenedToTopTracks(List<Track> topTracks, Class<T> entityClass) {
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
         CriteriaQuery<Long> query = cb.createQuery(Long.class);
@@ -46,7 +44,6 @@ public class SuggestionDAO extends BaseDAO<TrackPlaysCount> {
         return entityManager.createQuery(query).getResultList();
     }
 
-    // Generic method to get top tracks by users
     private <T extends TrackPlaysCount> List<Track> getTopTracksByUsers(List<Long> users, Class<T> entityClass) {
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
         CriteriaQuery<Track> query = cb.createQuery(Track.class);
@@ -60,7 +57,6 @@ public class SuggestionDAO extends BaseDAO<TrackPlaysCount> {
                 .getResultList();
     }
 
-    // Method to get top songs by similar users
     public List<Song> getTopSongsBySimilarUsers(Customer user) {
         entityManager.getTransaction().begin();
 
@@ -71,13 +67,11 @@ public class SuggestionDAO extends BaseDAO<TrackPlaysCount> {
         entityManager.getTransaction().commit();
         entityManager.close();
 
-        // Convert Track objects to Song objects
         return topTracksByUsers.stream()
                 .map(track -> (Song) track)
                 .collect(Collectors.toList());
     }
 
-    // Method to get top podcasts by similar users
     public List<Podcast> getTopPodcastsBySimilarUsers(Customer user) {
         entityManager.getTransaction().begin();
 
@@ -88,7 +82,6 @@ public class SuggestionDAO extends BaseDAO<TrackPlaysCount> {
         entityManager.getTransaction().commit();
         entityManager.close();
 
-        // Convert Track objects to Podcast objects
         return topTracksByUsers.stream()
                 .map(track -> (Podcast) track)
                 .collect(Collectors.toList());
@@ -97,16 +90,18 @@ public class SuggestionDAO extends BaseDAO<TrackPlaysCount> {
 
     @Override
     public Optional<TrackPlaysCount> get(long id) {
-        return Optional.empty();
-    }
-
-    @Override
-    public TrackPlaysCount getByName(String name) {
-        return null;
+        EntityManager em = entityManagerFactory.createEntityManager();
+        TrackPlaysCount result = em.find(TrackPlaysCount.class, id);
+        em.close();
+        return Optional.ofNullable(result);
     }
 
     @Override
     public List<TrackPlaysCount> getAll() {
-        return List.of();
+        EntityManager em = entityManagerFactory.createEntityManager();
+        List<TrackPlaysCount> resultList = em.createQuery("SELECT s FROM TrackPlaysCount s", TrackPlaysCount.class)
+                .getResultList();
+        em.close();
+        return resultList;
     }
 }

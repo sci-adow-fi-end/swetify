@@ -22,11 +22,6 @@ public class PodcastPlaysCountDAO extends BaseDAO<PodcastPlaysCount> {
     }
 
     @Override
-    public PodcastPlaysCount getByName(String name) {
-        return null;
-    }
-
-    @Override
     public List<PodcastPlaysCount> getAll() {
         EntityManager entityManager = getEntityManagerFactory().createEntityManager();
         TypedQuery<PodcastPlaysCount> query = entityManager.createQuery("SELECT ppc FROM PodcastPlaysCount ppc", PodcastPlaysCount.class);

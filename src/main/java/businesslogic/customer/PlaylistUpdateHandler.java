@@ -46,7 +46,7 @@ public class PlaylistUpdateHandler extends Handler {
         Scanner input = new Scanner(System.in);
         System.out.println("Insert song name");
         System.out.println("\n");
-        List<Song> songs = songData.getAllByName(input.nextLine());
+        List<Song> songs = songData.getByTitle(input.nextLine());
         if (ConfigOptions.TEST_MODE) {
             String nextInput = getRestOfInput(input);
             System.setIn(new ByteArrayInputStream(nextInput.getBytes()));
@@ -68,7 +68,7 @@ public class PlaylistUpdateHandler extends Handler {
         Scanner input = new Scanner(System.in);
         System.out.println("Insert podcast name");
         System.out.println("\n");
-        List<Podcast> podcasts = podcastData.getAllByName(input.nextLine());
+        List<Podcast> podcasts = podcastData.getByTitle(input.nextLine());
             if (ConfigOptions.TEST_MODE) {
                 String nextInput = getRestOfInput(input);
                 System.setIn(new ByteArrayInputStream(nextInput.getBytes()));

@@ -89,7 +89,7 @@ private boolean validateUsername(boolean isArtist) {
 
     try {
         if (!isArtist) {
-            usr = userDatabase.getByName(userName);
+            usr = userDatabase.getByUsername(userName);
         } else {
             art = artistDatabase.getByUserName(userName);
         }

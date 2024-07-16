@@ -74,7 +74,7 @@ public class AlbumLoadHandler extends Handler {
                 System.out.println("\n");
                 System.out.println("Insert artist name");
                 try {
-                    artists.add(artistData.getByName(input.nextLine()));
+                    artists.addAll(artistData.getByStageName(input.nextLine()));
                 } catch (NoResultException e) {
                     printError("Artist not found");
                 }

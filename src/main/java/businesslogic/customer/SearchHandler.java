@@ -54,7 +54,7 @@ public class SearchHandler extends Handler {
 
         if (!input.equals("-")){
 
-            songs = songsDatabase.getAllByName(input);
+            songs = songsDatabase.getByTitle(input);
             if (songs.isEmpty()){
                 System.out.println(ANSI_RED +"No song matches found"+ ANSI_RESET);
             }
@@ -62,7 +62,7 @@ public class SearchHandler extends Handler {
                 songsFound = true;
             }
 
-            podcasts = podcastsDatabase.getAllByName(input);
+            podcasts = podcastsDatabase.getByTitle(input);
             if (podcasts.isEmpty()){
                 System.out.println(ANSI_RED +"No podcast matches found"+ ANSI_RESET);
             }
@@ -70,7 +70,7 @@ public class SearchHandler extends Handler {
                 podcastsFound = true;
             }
 
-            artists = artistsDatabase.getAllByName(input);
+            artists = artistsDatabase.getByStageName(input);
             if (artists.isEmpty()){
                 System.out.println(ANSI_RED +"No artist matches found"+ ANSI_RESET);
             }

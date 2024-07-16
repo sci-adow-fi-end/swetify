@@ -28,23 +28,23 @@ public class CustomerDAOTest extends BaseTest {
 
     @Test
     void testGet(){
-        Customer usr = userDatabase.getByName(users[0].getUsername());
+        Customer usr = userDatabase.getByUsername(users[0].getUsername());
         Customer usr2 = userDatabase.get(usr.getId()).orElseThrow();
         assertEquals(usr.getUsername(), usr2.getUsername());
         assertEquals(usr.getPassword(), usr2.getPassword());
     }
 
     @Test
-    void testGetByName(){
+    void testGetByUsername() {
         for (Customer user : users) {
-            assertEquals(user.getUsername(), userDatabase.getByName(user.getUsername()).getUsername());
-            assertEquals(user.getPassword(), userDatabase.getByName(user.getUsername()).getPassword());
+            assertEquals(user.getUsername(), userDatabase.getByUsername(user.getUsername()).getUsername());
+            assertEquals(user.getPassword(), userDatabase.getByUsername(user.getUsername()).getPassword());
         }
 
         Customer user = new Customer("RyanGosling", "stiò");
         boolean present;
         try{
-            userDatabase.getByName(user.getUsername());
+            userDatabase.getByUsername(user.getUsername());
             present = true;
         }
         catch(NoResultException e){

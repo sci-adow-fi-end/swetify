@@ -118,7 +118,7 @@ public class RegistrationHandler extends Handler {
             }
         } else {
             try {
-                userDatabase.getByName(userName);
+                userDatabase.getByUsername(userName);
                 System.out.println("Username is already taken");
                 return false;
             } catch (NoResultException e) {

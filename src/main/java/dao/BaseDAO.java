@@ -22,10 +22,6 @@ public abstract class BaseDAO<T> {
 
     public abstract Optional<T> get(long id);
 
-    public abstract T getByName(String name);
-
-    //public abstract List<T> getAllByName(String name);
-
     public abstract List<T> getAll();
 
     public void save(T t) {

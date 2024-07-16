@@ -1,13 +1,11 @@
 import dao.users.ArtistDAO;
 import domainmodel.entities.users.Artist;
-import jakarta.persistence.NoResultException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class ArtistDAOTest extends BaseTest {
 
@@ -34,7 +32,7 @@ public class ArtistDAOTest extends BaseTest {
 
     @Test
     void testGet(){
-        Artist artist1 = artistDatabase.getByName(artists[0].getStageName());
+        Artist artist1 = artistDatabase.getByStageName(artists[0].getStageName()).getFirst();
         Artist artist2 = artistDatabase.get(artist1.getId()).orElseThrow();
 
         assertEquals(artist1.getStageName(), artist2.getStageName());
@@ -45,9 +43,9 @@ public class ArtistDAOTest extends BaseTest {
     @Test
     void testGetByName(){
         for (Artist artist : artists){
-            assertEquals(artist.getStageName(), artistDatabase.getByName(artist.getStageName()).getStageName());
+            assertEquals(artist.getStageName(), artistDatabase.getByStageName(artist.getStageName()).getFirst().getStageName());
             //assertEquals(artist.getFollowers(), artistDatabase.getByName(artist.getStageName()).getFollowers());
-            assertEquals(artist.getBiography(), artistDatabase.getByName(artist.getStageName()).getBiography());
+            assertEquals(artist.getBiography(), artistDatabase.getByStageName(artist.getStageName()).getFirst().getBiography());
         }
 
         Artist artist = new Artist();
@@ -55,20 +53,13 @@ public class ArtistDAOTest extends BaseTest {
         //artist.setFollowers(5000);
         artist.setBiography("kuru kuru");
 
-        boolean present;
-        try{
-            artistDatabase.getByName(artist.getStageName());
-            present = true;
-        }
-        catch(NoResultException e){
-            present = false;
-        }
+        List<Artist> results = artistDatabase.getByStageName(artist.getStageName());
 
-        assertFalse(present);
+        assertEquals(0, results.size());
     }
 
     @Test
-    void testGetAllByName(){
+    void testGetByStageName() {
         Artist artist1 = new Artist();
         artist1.setStageName("artist1");
         Artist artist2 = new Artist();
@@ -77,7 +68,7 @@ public class ArtistDAOTest extends BaseTest {
         artistDatabase.save(artist1);
         artistDatabase.save(artist2);
 
-        List<Artist> foundArtists = artistDatabase.getAllByName("artist1");
+        List<Artist> foundArtists = artistDatabase.getByStageName("artist1");
         assertEquals(3, foundArtists.size());
     }
 

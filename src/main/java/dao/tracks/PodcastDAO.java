@@ -18,20 +18,10 @@ public class PodcastDAO extends BaseDAO<Podcast> {
         return Optional.ofNullable(result);
     }
 
-    @Override
-    public Podcast getByName(String name){
+    public List<Podcast> getByTitle(String title) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         TypedQuery<Podcast> query = entityManager.createQuery("SELECT p FROM Podcast p WHERE LOWER(p.title) LIKE LOWER(:title)", Podcast.class);
-        query.setParameter("title", "%" + name.toLowerCase() + "%");
-        Podcast result = query.getSingleResult();
-        entityManager.close();
-        return result;
-    }
-
-    public List<Podcast> getAllByName(String name) {
-        EntityManager entityManager = entityManagerFactory.createEntityManager();
-        TypedQuery<Podcast> query = entityManager.createQuery("SELECT p FROM Podcast p WHERE LOWER(p.title) LIKE LOWER(:title)", Podcast.class);
-        query.setParameter("title", "%" + name.toLowerCase() + "%");
+        query.setParameter("title", "%" + title.toLowerCase() + "%");
         List<Podcast> resultList = query.getResultList();
         entityManager.close();
         return resultList;

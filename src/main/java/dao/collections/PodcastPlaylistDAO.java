@@ -17,12 +17,11 @@ public class PodcastPlaylistDAO extends BaseDAO<PodcastPlaylist> {
         return Optional.ofNullable(result);
     }
 
-    @Override
-    public PodcastPlaylist getByName(String name) {
+    public List<PodcastPlaylist> getByTitle(String title) {
         EntityManager em = entityManagerFactory.createEntityManager();
-        PodcastPlaylist result = em.createQuery("SELECT s FROM PodcastPlaylist s WHERE LOWER(s.title) LIKE LOWER(:name)", PodcastPlaylist.class)
-                .setParameter("name", "%" + name.toLowerCase() + "%")
-                .getSingleResult();
+        List<PodcastPlaylist> result = em.createQuery("SELECT s FROM PodcastPlaylist s WHERE LOWER(s.title) LIKE LOWER(:name)", PodcastPlaylist.class)
+                .setParameter("name", "%" + title.toLowerCase() + "%")
+                .getResultList();
         em.close();
         return result;
     }
@@ -31,15 +30,6 @@ public class PodcastPlaylistDAO extends BaseDAO<PodcastPlaylist> {
     public List<PodcastPlaylist> getAll() {
         EntityManager em = entityManagerFactory.createEntityManager();
         List<PodcastPlaylist> resultList = em.createQuery("SELECT s FROM PodcastPlaylist s", PodcastPlaylist.class)
-                .getResultList();
-        em.close();
-        return resultList;
-    }
-
-    public List<PodcastPlaylist> getAllByName(String name) {
-        EntityManager em = entityManagerFactory.createEntityManager();
-        List<PodcastPlaylist> resultList = em.createQuery("SELECT s FROM PodcastPlaylist s WHERE LOWER(s.title) LIKE LOWER(:name)", PodcastPlaylist.class)
-                .setParameter("name", "%" + name.toLowerCase() + "%")
                 .getResultList();
         em.close();
         return resultList;
