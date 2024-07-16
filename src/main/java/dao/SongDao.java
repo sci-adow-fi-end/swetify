@@ -20,8 +20,8 @@ public class SongDao extends BaseDao<Song> {
     @Override
     public Song getByName(String name){
         EntityManager entityManager = entityManagerFactory.createEntityManager();
-        TypedQuery<Song> query = entityManager.createQuery("SELECT s FROM Song s WHERE s.title = :title", Song.class);
-        query.setParameter("title", name);
+        TypedQuery<Song> query = entityManager.createQuery("SELECT s FROM Song s WHERE LOWER(s.title) LIKE LOWER(:title)", Song.class);
+        query.setParameter("title", "%" + name.toLowerCase() + "%");
         Song result = query.getSingleResult();
         entityManager.close();
         return result;
@@ -29,8 +29,8 @@ public class SongDao extends BaseDao<Song> {
 
     public List<Song> getAllByName(String name) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
-        TypedQuery<Song> query = entityManager.createQuery("SELECT s FROM Song s WHERE s.title = :title", Song.class);
-        query.setParameter("title", name);
+        TypedQuery<Song> query = entityManager.createQuery("SELECT s FROM Song s WHERE LOWER(s.title) LIKE LOWER(:title)", Song.class);
+        query.setParameter("title", "%" + name.toLowerCase() + "%");
         List<Song> resultList = query.getResultList();
         entityManager.close();
         return resultList;

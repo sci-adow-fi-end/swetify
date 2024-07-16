@@ -19,8 +19,8 @@ public class PodcastPlaylistDao extends BaseDao<PodcastPlaylist> {
     @Override
     public PodcastPlaylist getByName(String name) {
         EntityManager em = entityManagerFactory.createEntityManager();
-        PodcastPlaylist result = em.createQuery("SELECT s FROM PodcastPlaylist s WHERE s.title = :name", PodcastPlaylist.class)
-                .setParameter("name", name)
+        PodcastPlaylist result = em.createQuery("SELECT s FROM PodcastPlaylist s WHERE LOWER(s.title) LIKE LOWER(:name)", PodcastPlaylist.class)
+                .setParameter("name", "%" + name.toLowerCase() + "%")
                 .getSingleResult();
         em.close();
         return result;
@@ -37,8 +37,8 @@ public class PodcastPlaylistDao extends BaseDao<PodcastPlaylist> {
 
     public List<PodcastPlaylist> getAllByName(String name) {
         EntityManager em = entityManagerFactory.createEntityManager();
-        List<PodcastPlaylist> resultList = em.createQuery("SELECT s FROM PodcastPlaylist s WHERE s.title = :name", PodcastPlaylist.class)
-                .setParameter("name", name)
+        List<PodcastPlaylist> resultList = em.createQuery("SELECT s FROM PodcastPlaylist s WHERE LOWER(s.title) LIKE LOWER(:name)", PodcastPlaylist.class)
+                .setParameter("name", "%" + name.toLowerCase() + "%")
                 .getResultList();
         em.close();
         return resultList;
