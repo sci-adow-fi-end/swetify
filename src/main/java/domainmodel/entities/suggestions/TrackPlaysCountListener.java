@@ -1,6 +1,6 @@
 package domainmodel.entities.suggestions;
 
-import dao.BaseDao;
+import dao.BaseDAO;
 import domainmodel.entities.track.Track;
 import jakarta.persistence.*;
 
@@ -10,7 +10,7 @@ public class TrackPlaysCountListener {
     @PostUpdate
     @PostRemove
     public void updateTrackTotalPlays(TrackPlaysCount trackPlaysCount) {
-        EntityManager em = BaseDao.getEntityManagerFactory().createEntityManager();
+        EntityManager em = BaseDAO.getEntityManagerFactory().createEntityManager();
 
         try {
             em.getTransaction().begin();

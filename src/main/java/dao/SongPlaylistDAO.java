@@ -6,7 +6,7 @@ import jakarta.persistence.EntityManager;
 import java.util.List;
 import java.util.Optional;
 
-public class SongPlaylistDao extends BaseDao<SongPlaylist> {
+public class SongPlaylistDAO extends BaseDAO<SongPlaylist> {
 
     @Override
     public Optional<SongPlaylist> get(long id) {

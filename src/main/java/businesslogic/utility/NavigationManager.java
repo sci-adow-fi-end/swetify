@@ -45,42 +45,42 @@ public class NavigationManager {
 
     private final Map<HandlerId, Handler> handlers;
     private final Stack<Handler> states;
-    private final Map<DaoId, BaseDao<?>> databases;
+    private final Map<DaoId, BaseDAO<?>> databases;
     private State currentState = new State();
     private int lastId = 0;
 
     public NavigationManager() {
 
         databases = new HashMap<>();
-        databases.put(DaoId.USER, new UserDao());
-        databases.put(DaoId.PODCAST, new PodcastDao());
-        databases.put(DaoId.SONG, new SongDao());
-        databases.put(DaoId.SONG_PLAYLIST, new SongPlaylistDao());
-        databases.put(DaoId.PODCAST_PLAYLIST, new PodcastPlaylistDao());
-        databases.put(DaoId.ARTIST, new ArtistDao());
-        databases.put(DaoId.ALBUM, new AlbumDao());
+        databases.put(DaoId.USER, new UserDAO());
+        databases.put(DaoId.PODCAST, new PodcastDAO());
+        databases.put(DaoId.SONG, new SongDAO());
+        databases.put(DaoId.SONG_PLAYLIST, new SongPlaylistDAO());
+        databases.put(DaoId.PODCAST_PLAYLIST, new PodcastPlaylistDAO());
+        databases.put(DaoId.ARTIST, new ArtistDAO());
+        databases.put(DaoId.ALBUM, new AlbumDAO());
 
         this.handlers = new HashMap<>();
-        handlers.put(HandlerId.LOGIN, new LoginHandler((UserDao) databases.get(DaoId.USER),
-                (ArtistDao) databases.get(DaoId.ARTIST)));
-        handlers.put(HandlerId.REGISTRATION, new RegistrationHandler((UserDao) databases.get(DaoId.USER),
-                (ArtistDao) databases.get(DaoId.ARTIST)));
+        handlers.put(HandlerId.LOGIN, new LoginHandler((UserDAO) databases.get(DaoId.USER),
+                (ArtistDAO) databases.get(DaoId.ARTIST)));
+        handlers.put(HandlerId.REGISTRATION, new RegistrationHandler((UserDAO) databases.get(DaoId.USER),
+                (ArtistDAO) databases.get(DaoId.ARTIST)));
         handlers.put(HandlerId.HOME, new HomeHandler());
-        handlers.put(HandlerId.SEARCH, new SearchHandler((SongDao) databases.get(DaoId.SONG),
-                (PodcastDao) databases.get(DaoId.PODCAST), (ArtistDao) databases.get(DaoId.ARTIST)));
-        handlers.put(HandlerId.VIEW_PLAYLIST, new PlaylistViewHandler((SongPlaylistDao) databases.get(DaoId.SONG_PLAYLIST)
-                ,(PodcastPlaylistDao) databases.get(DaoId.PODCAST_PLAYLIST)));
+        handlers.put(HandlerId.SEARCH, new SearchHandler((SongDAO) databases.get(DaoId.SONG),
+                (PodcastDAO) databases.get(DaoId.PODCAST), (ArtistDAO) databases.get(DaoId.ARTIST)));
+        handlers.put(HandlerId.VIEW_PLAYLIST, new PlaylistViewHandler((SongPlaylistDAO) databases.get(DaoId.SONG_PLAYLIST)
+                , (PodcastPlaylistDAO) databases.get(DaoId.PODCAST_PLAYLIST)));
         handlers.put(HandlerId.VIEW_SUGGESTIONS, new SuggestionsHandler());
         handlers.put(HandlerId.PLAY_TRACK, new PlaybackHandler());
         handlers.put(HandlerId.VIEW_ARTIST, new ArtistInfoHandler());
         handlers.put(HandlerId.VIEW_ALBUMS, new AlbumsHandler());
         handlers.put(HandlerId.ARTIST_HOME, new ArtistHomeHandler());
-        handlers.put(HandlerId.UPDATE_PLAYLIST, new PlaylistUpdateHandler((SongDao) databases.get(DaoId.SONG),(PodcastDao) databases.get(DaoId.PODCAST),
-                (SongPlaylistDao) databases.get(DaoId.SONG_PLAYLIST),(PodcastPlaylistDao) databases.get(DaoId.PODCAST_PLAYLIST) ));
-        handlers.put(HandlerId.LOAD_ALBUM, new AlbumLoadHandler((ArtistDao) databases.get(DaoId.ARTIST),
-                (SongDao) databases.get(DaoId.SONG),(AlbumDao) databases.get(DaoId.ALBUM) ));
-        handlers.put(HandlerId.LOAD_PODCAST, new PodcastLoadHandler((ArtistDao) databases.get(DaoId.ARTIST),
-                (PodcastDao) databases.get(DaoId.PODCAST) ));
+        handlers.put(HandlerId.UPDATE_PLAYLIST, new PlaylistUpdateHandler((SongDAO) databases.get(DaoId.SONG), (PodcastDAO) databases.get(DaoId.PODCAST),
+                (SongPlaylistDAO) databases.get(DaoId.SONG_PLAYLIST), (PodcastPlaylistDAO) databases.get(DaoId.PODCAST_PLAYLIST)));
+        handlers.put(HandlerId.LOAD_ALBUM, new AlbumLoadHandler((ArtistDAO) databases.get(DaoId.ARTIST),
+                (SongDAO) databases.get(DaoId.SONG), (AlbumDAO) databases.get(DaoId.ALBUM)));
+        handlers.put(HandlerId.LOAD_PODCAST, new PodcastLoadHandler((ArtistDAO) databases.get(DaoId.ARTIST),
+                (PodcastDAO) databases.get(DaoId.PODCAST)));
         //TODO stiò
 
         states = new Stack<>();
@@ -146,7 +146,7 @@ public class NavigationManager {
         return lastId;
     }
 
-    public BaseDao<?> getDaoById(DaoId daoId) {
+    public BaseDAO<?> getDaoById(DaoId daoId) {
         return databases.get(daoId);
     }
 

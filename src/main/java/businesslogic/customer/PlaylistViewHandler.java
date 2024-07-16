@@ -3,8 +3,8 @@ package businesslogic.customer;
 import businesslogic.utility.Handler;
 import businesslogic.utility.NavigationManager;
 import businesslogic.utility.State;
-import dao.PodcastPlaylistDao;
-import dao.SongPlaylistDao;
+import dao.PodcastPlaylistDAO;
+import dao.SongPlaylistDAO;
 import domainmodel.entities.playlist.PodcastPlaylist;
 import domainmodel.entities.playlist.SongPlaylist;
 import domainmodel.entities.track.Track;
@@ -13,13 +13,13 @@ import java.util.Scanner;
 
 public class PlaylistViewHandler extends Handler {
 
-    public PlaylistViewHandler(SongPlaylistDao spDAO, PodcastPlaylistDao ppDAO) {
+    public PlaylistViewHandler(SongPlaylistDAO spDAO, PodcastPlaylistDAO ppDAO) {
         this.spDAO = spDAO;
         this.ppDAO = ppDAO;
     }
 
-    SongPlaylistDao spDAO;
-    PodcastPlaylistDao ppDAO;
+    SongPlaylistDAO spDAO;
+    PodcastPlaylistDAO ppDAO;
 
     private void renderChoices() {
 

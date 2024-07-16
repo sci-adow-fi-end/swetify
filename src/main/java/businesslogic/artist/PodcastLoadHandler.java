@@ -2,8 +2,8 @@ package businesslogic.artist;
 
 import businesslogic.utility.Handler;
 import businesslogic.utility.State;
-import dao.ArtistDao;
-import dao.PodcastDao;
+import dao.ArtistDAO;
+import dao.PodcastDAO;
 import domainmodel.entities.Artist;
 import domainmodel.entities.track.Podcast;
 
@@ -14,13 +14,13 @@ import java.util.Scanner;
 public class PodcastLoadHandler extends Handler {
 
 
-    public PodcastLoadHandler(ArtistDao artistData, PodcastDao podcastData) {
+    public PodcastLoadHandler(ArtistDAO artistData, PodcastDAO podcastData) {
         this.artistData = artistData;
         this.podcastData = podcastData;
     }
 
-    ArtistDao artistData;
-    PodcastDao podcastData;
+    ArtistDAO artistData;
+    PodcastDAO podcastData;
 
     private void renderChoices() {
         System.out.println("1: Load a podcast");

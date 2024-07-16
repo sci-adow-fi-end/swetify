@@ -1,4 +1,4 @@
-import dao.SongDao;
+import dao.SongDAO;
 import domainmodel.entities.track.Song;
 import jakarta.persistence.NoResultException;
 import org.junit.jupiter.api.BeforeEach;
@@ -9,9 +9,10 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
-public class SongDaoTest extends BaseTest {
 
-    SongDao songDatabase;
+public class SongDAOTest extends BaseTest {
+
+    SongDAO songDatabase;
     Song song1 = new Song();
     Song song2 = new Song();
     Song song3 = new Song();
@@ -20,7 +21,7 @@ public class SongDaoTest extends BaseTest {
     @BeforeEach
     public void setUp(){
         super.setUp();
-        songDatabase = new SongDao();
+        songDatabase = new SongDAO();
 
         song1.setTitle("title1");
         song1.setDuration(Duration.ofSeconds(10));

@@ -3,7 +3,10 @@ package businesslogic.customer;
 import businesslogic.utility.ConfigOptions;
 import businesslogic.utility.Handler;
 import businesslogic.utility.State;
-import dao.*;
+import dao.PodcastDAO;
+import dao.PodcastPlaylistDAO;
+import dao.SongDAO;
+import dao.SongPlaylistDAO;
 import domainmodel.entities.playlist.PodcastPlaylist;
 import domainmodel.entities.playlist.SongPlaylist;
 import domainmodel.entities.track.Podcast;
@@ -16,17 +19,17 @@ import java.util.Scanner;
 public class PlaylistUpdateHandler extends Handler {
 
 
-    public PlaylistUpdateHandler(SongDao songData, PodcastDao podcastData, SongPlaylistDao soPlayData, PodcastPlaylistDao poPlayData) {
+    public PlaylistUpdateHandler(SongDAO songData, PodcastDAO podcastData, SongPlaylistDAO soPlayData, PodcastPlaylistDAO poPlayData) {
         this.songData = songData;
         this.podcastData = podcastData;
         this.soPlayData = soPlayData;
         this.poPlayData = poPlayData;
     }
 
-    SongDao songData;
-    PodcastDao podcastData;
-    SongPlaylistDao soPlayData;
-    PodcastPlaylistDao poPlayData;
+    SongDAO songData;
+    PodcastDAO podcastData;
+    SongPlaylistDAO soPlayData;
+    PodcastPlaylistDAO poPlayData;
 
 
 

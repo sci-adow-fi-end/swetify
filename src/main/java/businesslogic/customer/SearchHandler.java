@@ -4,9 +4,9 @@ import businesslogic.utility.ConfigOptions;
 import businesslogic.utility.Handler;
 import businesslogic.utility.NavigationManager;
 import businesslogic.utility.State;
-import dao.ArtistDao;
-import dao.PodcastDao;
-import dao.SongDao;
+import dao.ArtistDAO;
+import dao.PodcastDAO;
+import dao.SongDAO;
 import domainmodel.entities.Artist;
 import domainmodel.entities.track.Podcast;
 import domainmodel.entities.track.Song;
@@ -22,11 +22,11 @@ public class SearchHandler extends Handler {
     private List<Song> songs = new ArrayList<>();
     private List<Podcast> podcasts = new ArrayList<>();
     private List<Artist> artists = new ArrayList<>();
-    private final SongDao songsDatabase;
-    private final PodcastDao podcastsDatabase;
-    private final ArtistDao artistsDatabase;
+    private final SongDAO songsDatabase;
+    private final PodcastDAO podcastsDatabase;
+    private final ArtistDAO artistsDatabase;
 
-    public SearchHandler(SongDao songsDatabase, PodcastDao podcastsDatabase, ArtistDao artistsDatabase) {
+    public SearchHandler(SongDAO songsDatabase, PodcastDAO podcastsDatabase, ArtistDAO artistsDatabase) {
         this.songsDatabase = songsDatabase;
         this.podcastsDatabase = podcastsDatabase;
         this.artistsDatabase = artistsDatabase;

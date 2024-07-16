@@ -4,8 +4,8 @@ import businesslogic.utility.ConfigOptions;
 import businesslogic.utility.Handler;
 import businesslogic.utility.NavigationManager;
 import businesslogic.utility.State;
-import dao.ArtistDao;
-import dao.UserDao;
+import dao.ArtistDAO;
+import dao.UserDAO;
 import domainmodel.entities.Artist;
 import domainmodel.entities.User;
 import jakarta.persistence.NoResultException;
@@ -18,11 +18,11 @@ public class RegistrationHandler extends Handler {
     public String userName;
     public String password;
     public String stageName;
-    private final UserDao userDatabase;
-    private final ArtistDao artistDatabase;
+    private final UserDAO userDatabase;
+    private final ArtistDAO artistDatabase;
     private boolean isArtist = false;
 
-    public RegistrationHandler(UserDao userDatabase, ArtistDao artistDatabase) {
+    public RegistrationHandler(UserDAO userDatabase, ArtistDAO artistDatabase) {
         this.userDatabase = userDatabase;
         this.artistDatabase = artistDatabase;
     }

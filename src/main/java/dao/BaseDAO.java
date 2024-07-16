@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;
 
-public abstract class BaseDao<T> {
+public abstract class BaseDAO<T> {
 
 
     protected static final EntityManagerFactory entityManagerFactory;

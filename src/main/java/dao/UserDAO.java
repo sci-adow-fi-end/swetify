@@ -7,7 +7,7 @@ import jakarta.persistence.TypedQuery;
 import java.util.List;
 import java.util.Optional;
 
-public class UserDao extends BaseDao<User> {
+public class UserDAO extends BaseDAO<User> {
 
     @Override
     public Optional<User> get(long id) {

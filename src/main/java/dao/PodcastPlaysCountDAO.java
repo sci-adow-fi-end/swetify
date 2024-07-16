@@ -10,7 +10,7 @@ import jakarta.persistence.TypedQuery;
 import java.util.List;
 import java.util.Optional;
 
-public class PodcastPlaysCountDAO extends BaseDao<PodcastPlaysCount> {
+public class PodcastPlaysCountDAO extends BaseDAO<PodcastPlaysCount> {
 
     @Override
     public Optional<PodcastPlaysCount> get(long id) {

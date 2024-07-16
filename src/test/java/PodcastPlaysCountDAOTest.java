@@ -1,18 +1,21 @@
-import dao.BaseDao;
+import dao.BaseDAO;
 import dao.PodcastPlaysCountDAO;
 import domainmodel.entities.User;
 import domainmodel.entities.suggestions.PodcastPlaysCount;
 import domainmodel.entities.track.Podcast;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class PodcastPlaysCountDaoTest {
+class PodcastPlaysCountDAOTest {
 
     private static EntityManagerFactory entityManagerFactory;
     private EntityManager entityManager;
@@ -20,13 +23,9 @@ class PodcastPlaysCountDaoTest {
 
     @BeforeAll
     static void setUpBeforeClass() {
-        entityManagerFactory = BaseDao.getEntityManagerFactory();
+        entityManagerFactory = BaseDAO.getEntityManagerFactory();
     }
 
-    @AfterAll
-    static void tearDownAfterClass() {
-        entityManagerFactory.close();
-    }
 
     @BeforeEach
     void setUp() {

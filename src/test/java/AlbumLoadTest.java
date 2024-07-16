@@ -1,5 +1,4 @@
 import businesslogic.utility.NavigationManager;
-import dao.ArtistDao;
 import domainmodel.entities.Artist;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

@@ -7,7 +7,7 @@ import jakarta.persistence.EntityManager;
 import java.util.List;
 import java.util.Optional;
 
-public class PodcastPlaylistDao extends BaseDao<PodcastPlaylist> {
+public class PodcastPlaylistDAO extends BaseDAO<PodcastPlaylist> {
     @Override
     public Optional<PodcastPlaylist> get(long id) {
         EntityManager em = entityManagerFactory.createEntityManager();

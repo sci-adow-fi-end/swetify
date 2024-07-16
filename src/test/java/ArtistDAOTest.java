@@ -1,4 +1,4 @@
-import dao.ArtistDao;
+import dao.ArtistDAO;
 import domainmodel.entities.Artist;
 import jakarta.persistence.NoResultException;
 import org.junit.jupiter.api.BeforeEach;
@@ -9,16 +9,16 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
-public class ArtistDaoTest extends BaseTest {
+public class ArtistDAOTest extends BaseTest {
 
-    ArtistDao artistDatabase;
+    ArtistDAO artistDatabase;
 
     Artist[] artists = new Artist[]{new Artist(), new Artist()};
 
     @BeforeEach
     public void setUp(){
         super.setUp();
-        artistDatabase = new ArtistDao();
+        artistDatabase = new ArtistDAO();
 
         artists[0].setStageName("artist1");
         //artists[0].setFollowers(5000);

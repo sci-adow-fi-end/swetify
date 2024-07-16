@@ -1,5 +1,5 @@
-import dao.SongDao;
-import dao.SongPlaylistDao;
+import dao.SongDAO;
+import dao.SongPlaylistDAO;
 import domainmodel.entities.playlist.SongPlaylist;
 import domainmodel.entities.track.Song;
 import org.junit.jupiter.api.BeforeEach;
@@ -10,8 +10,8 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class SongPlaylistDaoTest extends BaseTest {
-    SongPlaylistDao songPlaylistDatabase;
+public class SongPlaylistDAOTest extends BaseTest {
+    SongPlaylistDAO songPlaylistDatabase;
     SongPlaylist songPlaylist1 = new SongPlaylist();
     SongPlaylist songPlaylist2 = new SongPlaylist();
     Song song1 = new Song();
@@ -21,8 +21,8 @@ public class SongPlaylistDaoTest extends BaseTest {
     @BeforeEach
     public void setUp() {
         super.setUp();
-        songPlaylistDatabase = new SongPlaylistDao();
-        SongDao songDatabase = new SongDao();
+        songPlaylistDatabase = new SongPlaylistDAO();
+        SongDAO songDatabase = new SongDAO();
         songPlaylist1.setTitle("playlist1");
         songPlaylist2.setTitle("playlist2");
         songPlaylistDatabase.save(songPlaylist1);

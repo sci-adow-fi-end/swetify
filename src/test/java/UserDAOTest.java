@@ -1,4 +1,4 @@
-import dao.UserDao;
+import dao.UserDAO;
 import domainmodel.entities.User;
 import jakarta.persistence.NoResultException;
 import org.junit.jupiter.api.BeforeEach;
@@ -9,9 +9,9 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
-public class UserDaoTest extends BaseTest {
+public class UserDAOTest extends BaseTest {
 
-    UserDao userDatabase;
+    UserDAO userDatabase;
     User[] users = new User[]{new User("Esidisi", "jojo"),
             new User("Kars", "stio2"),
             new User("Jotaro", "oraoraora")};
@@ -19,7 +19,7 @@ public class UserDaoTest extends BaseTest {
     @BeforeEach
     public void setUp(){
         super.setUp();
-        userDatabase = new UserDao();
+        userDatabase = new UserDAO();
 
         userDatabase.save(users[0]);
         userDatabase.save(users[1]);

@@ -3,9 +3,9 @@ package businesslogic.artist;
 import businesslogic.utility.ConfigOptions;
 import businesslogic.utility.Handler;
 import businesslogic.utility.State;
-import dao.AlbumDao;
-import dao.ArtistDao;
-import dao.SongDao;
+import dao.AlbumDAO;
+import dao.ArtistDAO;
+import dao.SongDAO;
 import domainmodel.entities.Album;
 import domainmodel.entities.Artist;
 import domainmodel.entities.track.Song;
@@ -18,16 +18,16 @@ import java.util.Scanner;
 
 public class AlbumLoadHandler extends Handler {
 
-    ArtistDao artistData;
-    SongDao songData;
+    ArtistDAO artistData;
+    SongDAO songData;
 
-    public AlbumLoadHandler(ArtistDao artistData, SongDao songData, AlbumDao albumData) {
+    public AlbumLoadHandler(ArtistDAO artistData, SongDAO songData, AlbumDAO albumData) {
         this.artistData = artistData;
         this.songData = songData;
         this.albumData = albumData;
     }
 
-    AlbumDao albumData;
+    AlbumDAO albumData;
 
     private void renderChoices() {
         System.out.println("1: Load an Album");

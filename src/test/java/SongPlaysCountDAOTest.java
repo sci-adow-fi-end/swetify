@@ -1,11 +1,14 @@
-import dao.BaseDao;
+import dao.BaseDAO;
 import dao.SongPlaysCountDAO;
 import domainmodel.entities.User;
 import domainmodel.entities.suggestions.SongPlaysCount;
 import domainmodel.entities.track.Song;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.util.Optional;
 
@@ -20,12 +23,7 @@ class SongPlaysCountDAOTest {
 
     @BeforeAll
     static void setUpBeforeClass() {
-        entityManagerFactory = BaseDao.getEntityManagerFactory();
-    }
-
-    @AfterAll
-    static void tearDownAfterClass() {
-        entityManagerFactory.close();
+        entityManagerFactory = BaseDAO.getEntityManagerFactory();
     }
 
     @BeforeEach
