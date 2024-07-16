@@ -17,6 +17,9 @@
         <class>domainmodel.entities.playlist.Playlist</class>
         <class>domainmodel.entities.playlist.SongPlaylist</class>
         <class>domainmodel.entities.playlist.PodcastPlaylist</class>
+        <class>domainmodel.entities.suggestions.TrackPlaysCount</class>
+        <class>domainmodel.entities.suggestions.SongPlaysCount</class>
+        <class>domainmodel.entities.suggestions.PodcastPlaysCount</class>
 
         <properties>
             <!-- Database connection settings -->

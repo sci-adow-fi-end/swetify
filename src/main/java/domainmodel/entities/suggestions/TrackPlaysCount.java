@@ -1,26 +1,29 @@
-package domainmodel.entities;
+package domainmodel.entities.suggestions;
 
+import domainmodel.entities.BaseEntity;
+import domainmodel.entities.User;
 import domainmodel.entities.track.Track;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "Suggestions",uniqueConstraints = { @UniqueConstraint(columnNames = { "track", "customer" }) })
+@Table(name = "TrackPlaysCount", uniqueConstraints = {@UniqueConstraint(columnNames = {"track_id", "customer_id"})})
+@EntityListeners(TrackPlaysCountListener.class)
 public class TrackPlaysCount extends BaseEntity {
 
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @ManyToOne(cascade = CascadeType.ALL)
     private User customer;
 
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @ManyToOne(cascade = CascadeType.ALL)
     private Track track;
-
 
     private int plays;
 
-    public TrackPlaysCount(){}
+    public TrackPlaysCount() {
+    }
 
-    public TrackPlaysCount(User customer, Track t, int plays) {
+    public TrackPlaysCount(User customer, Track track, int plays) {
         this.customer = customer;
-        this.track = t;
+        this.track = track;
         this.plays = plays;
     }
 
@@ -47,5 +50,4 @@ public class TrackPlaysCount extends BaseEntity {
     public void setPlays(int plays) {
         this.plays = plays;
     }
-
 }
