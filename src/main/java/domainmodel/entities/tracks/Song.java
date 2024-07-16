@@ -7,20 +7,27 @@ import java.util.List;
 
 @Entity
 public class Song extends Track {
-    private String lyrics;
+    private String genre;
 
     public Song(){}
 
-    public Song(String title, String lyrics, int minutes, int seconds, List<Artist> authors) {
+    public Song(String title, String genre, int minutes, int seconds, List<Artist> authors) {
         super(title, minutes, seconds, authors);
-        this.lyrics = lyrics;
+        this.genre = genre;
     }
 
-    public String getLyrics() {
-        return lyrics;
+
+
+    public String getGenre() {
+        return genre;
     }
 
-    public void setLyrics(String lyrics) {
-        this.lyrics = lyrics;
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+
+    @Override
+    public String toString() {
+        return super.getTitle()+"   "+super.getAuthors();
     }
 }

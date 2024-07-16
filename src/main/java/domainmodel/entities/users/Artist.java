@@ -90,4 +90,12 @@ public class Artist extends BaseEntity {
         this.followers = followers;
 
     }
+
+    @Override
+    public String toString() {
+        return
+                "" + stageName + '\'' +
+                ", biography='" + biography + '\'';
+
+    }
 }
