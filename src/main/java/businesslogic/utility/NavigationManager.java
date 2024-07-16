@@ -32,6 +32,7 @@ public class NavigationManager {
         SEARCH,
         VIEW_PLAYLIST,
         UPDATE_PLAYLIST,
+        VIEW_ALL_PLAYLISTS,
         VIEW_ARTIST,
         VIEW_TRACK,
         VIEW_SUGGESTIONS,
@@ -80,10 +81,12 @@ public class NavigationManager {
                 (PodcastDAO) databases.get(DaoId.PODCAST), (ArtistDAO) databases.get(DaoId.ARTIST)));
         handlers.put(HandlerId.VIEW_PLAYLIST, new PlaylistViewHandler((SongPlaylistDAO) databases.get(DaoId.SONG_PLAYLIST)
                 , (PodcastPlaylistDAO) databases.get(DaoId.PODCAST_PLAYLIST)));
+        handlers.put(HandlerId.VIEW_ALL_PLAYLISTS, new UserPlaylistsHandler((SongPlaylistDAO) databases.get(DaoId.SONG_PLAYLIST)
+                , (PodcastPlaylistDAO) databases.get(DaoId.PODCAST_PLAYLIST)));
         handlers.put(HandlerId.VIEW_SUGGESTIONS, new SuggestionsHandler((SuggestionDAO) databases.get(DaoId.SUGGESTIONS)));
         handlers.put(HandlerId.PLAY_TRACK, new PlaybackHandler());
         handlers.put(HandlerId.VIEW_ARTIST, new ArtistInfoHandler());
-        handlers.put(HandlerId.VIEW_ALBUMS, new AlbumsHandler());
+        handlers.put(HandlerId.VIEW_ALBUMS, new AlbumsHandler((AlbumDAO) databases.get(DaoId.ALBUM)));
         handlers.put(HandlerId.ARTIST_HOME, new ArtistHomeHandler());
         handlers.put(HandlerId.UPDATE_PLAYLIST, new PlaylistUpdateHandler((SongDAO) databases.get(DaoId.SONG), (PodcastDAO) databases.get(DaoId.PODCAST),
                 (SongPlaylistDAO) databases.get(DaoId.SONG_PLAYLIST), (PodcastPlaylistDAO) databases.get(DaoId.PODCAST_PLAYLIST)));

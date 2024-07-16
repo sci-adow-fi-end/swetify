@@ -1,4 +1,5 @@
 import businesslogic.utility.NavigationManager;
+import domainmodel.entities.users.Customer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -26,12 +27,13 @@ public class HomeHandlerTest extends BaseTest{
     }
 
     @Test
-    public void testHomeViewPlaylist() {
-        ByteArrayInputStream input = new ByteArrayInputStream("2\n6\n".getBytes());
+    public void testHomeViewAllPlaylists() {
+        ByteArrayInputStream input = new ByteArrayInputStream("2\n4\n".getBytes());
         System.setIn(input);
+        navigationManager.getCurrentState().setLoggedUser(new Customer());
         navigationManager.run();
 
-        assertEquals(NavigationManager.HandlerId.VIEW_PLAYLIST.ordinal(), navigationManager.getLastId());
+        assertEquals(NavigationManager.HandlerId.VIEW_ALL_PLAYLISTS.ordinal(), navigationManager.getLastId());
     }
 
     @Test

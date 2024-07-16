@@ -49,6 +49,7 @@ public class ArtistInfoHandler extends Handler {
                     break;
                 case 1:
                     state.getViewingArtist().setFollowers(state.getViewingArtist().getFollowers() + 1);
+                    state.getLoggedUser().addFollowedArtists(state.getViewingArtist());
                     System.out.println("Now you follow " + state.getViewingArtist().getStageName());
                     break;
                 case 2:

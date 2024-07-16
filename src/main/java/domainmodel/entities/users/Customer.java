@@ -2,6 +2,8 @@ package domainmodel.entities.users;
 
 import domainmodel.entities.BaseEntity;
 import domainmodel.entities.collections.Playlist;
+import domainmodel.entities.collections.PodcastPlaylist;
+import domainmodel.entities.collections.SongPlaylist;
 import domainmodel.entities.tracks.Podcast;
 import domainmodel.entities.tracks.Song;
 import domainmodel.entities.tracks.Track;
@@ -21,7 +23,10 @@ public class Customer extends BaseEntity {
     private String password;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Playlist<Track>> playlists = new LinkedList<>();
+    private List<SongPlaylist> songPlaylists = new LinkedList<>();
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<PodcastPlaylist> podcastPlaylists = new LinkedList<>();
 
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     private Playlist<Song> favouriteSongs = new Playlist<>("Favourites");
@@ -67,25 +72,31 @@ public class Customer extends BaseEntity {
 
     public void setPassword(String password) {
         this.password = password;
-
     }
 
-    public List<Playlist<Track>> getPlaylists() {
-        return playlists;
+    public List<SongPlaylist> getSongPlaylists() {
+        return songPlaylists;
     }
 
-    public void setPlaylists(List<Playlist<Track>> playlists) {
-        this.playlists = playlists;
 
+    public List<PodcastPlaylist> getPodcastPlaylists() {
+        return podcastPlaylists;
+    }
+
+    public void setSongPlaylists(List<SongPlaylist> playlists) {
+        songPlaylists = playlists;
+    }
+
+    public void setPodcastPlaylists(List<PodcastPlaylist> playlists) {
+        podcastPlaylists = playlists;
     }
 
     public List<Artist> getFollowedArtists() {
         return followedArtists;
     }
 
-    public void setFollowedArtists(List<Artist> followedArtists) {
-        this.followedArtists = followedArtists;
-
+    public void addFollowedArtists(Artist followedArtist) {
+        followedArtists.add(followedArtist);
     }
 
     public Playlist<Song> getFavouriteSongs() {

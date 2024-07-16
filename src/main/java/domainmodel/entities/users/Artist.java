@@ -78,6 +78,10 @@ public class Artist extends BaseEntity {
         this.albums.add(a);
     }
 
+    public List<Album> getAlbums() {
+        return albums;
+    }
+
     public void addPodcast(Podcast p){
         this.podcasts.add(p);
     }

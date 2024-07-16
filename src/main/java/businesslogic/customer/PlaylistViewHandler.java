@@ -5,72 +5,25 @@ import businesslogic.utility.NavigationManager;
 import businesslogic.utility.State;
 import dao.collections.PodcastPlaylistDAO;
 import dao.collections.SongPlaylistDAO;
-import domainmodel.entities.collections.PodcastPlaylist;
-import domainmodel.entities.collections.SongPlaylist;
 import domainmodel.entities.tracks.Track;
 
-import java.util.Scanner;
-
 public class PlaylistViewHandler extends Handler {
+
+    private final SongPlaylistDAO spDAO;
+    private final PodcastPlaylistDAO ppDAO;
 
     public PlaylistViewHandler(SongPlaylistDAO spDAO, PodcastPlaylistDAO ppDAO) {
         this.spDAO = spDAO;
         this.ppDAO = ppDAO;
     }
 
-    SongPlaylistDAO spDAO;
-    PodcastPlaylistDAO ppDAO;
-
     private void renderChoices() {
 
         System.out.println("1: play a song from the playlist");
         System.out.println("2: play entire playlist");
         System.out.println("3: modify the playlist");
-        System.out.println("4: create a new playlist");
-        System.out.println("5: go back");
-        System.out.println("6: close Swetify");
-    }
-
-    private String askPlaylistName(){
-        Scanner input = new Scanner(System.in);
-        System.out.println("Insert playlist name");
-        System.out.println("\n");
-        return input.nextLine();
-    }
-
-    private SongPlaylist createSongPlaylist(){
-        SongPlaylist sp = new SongPlaylist();
-        sp.setTitle(askPlaylistName());
-        spDAO.save(sp);
-        return sp;
-    }
-
-    private PodcastPlaylist createPodcastPlaylist(){
-        PodcastPlaylist pp = new PodcastPlaylist();
-        pp.setTitle(askPlaylistName());
-        ppDAO.save(pp);
-        return pp;
-    }
-
-    private void savePlaylist(){
-        System.out.println("1: create a playlist of songs");
-        System.out.println("2: create a playlist of podcast");
-        System.out.println("3: go back");
-        System.out.println("\n");
-        int choice = askNumberInRange(1,3);
-        switch (choice) {
-            case 1:
-                createSongPlaylist();
-                break;
-            case 2:
-                createPodcastPlaylist();
-                break;
-            case 3:
-                navigationManager.switchToController(NavigationManager.HandlerId.VIEW_PLAYLIST);
-                break;
-            default:
-                navigationManager.switchToController(NavigationManager.HandlerId.VIEW_PLAYLIST);
-        }
+        System.out.println("4: go back");
+        System.out.println("5: close Swetify");
     }
 
     private Track chooseTrack(State s){
@@ -98,12 +51,9 @@ public class PlaylistViewHandler extends Handler {
                 navigationManager.switchToController(NavigationManager.HandlerId.UPDATE_PLAYLIST);
                 break;
             case 4:
-                savePlaylist();
-                break;
-            case 5:
                 navigationManager.previousState();
                 break;
-            case 6:
+            case 5:
                 navigationManager.stop();
                 break;
 

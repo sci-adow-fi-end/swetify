@@ -1,75 +1,133 @@
 package businesslogic.customer;
 
 import businesslogic.utility.Handler;
+import businesslogic.utility.NavigationManager;
 import businesslogic.utility.State;
+import dao.collections.PodcastPlaylistDAO;
+import dao.collections.SongPlaylistDAO;
 import domainmodel.entities.collections.Playlist;
+import domainmodel.entities.collections.PodcastPlaylist;
+import domainmodel.entities.collections.SongPlaylist;
 import domainmodel.entities.tracks.Podcast;
 import domainmodel.entities.tracks.Song;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class UserPlaylistsHandler extends Handler {
 
-    private ArrayList<Playlist<Song>> songPlaylists;
-    private ArrayList<Playlist<Podcast>> podcastsPlaylists;
+    private List<SongPlaylist> songPlaylists;
+    private List<PodcastPlaylist> podcastsPlaylists;
+    private final SongPlaylistDAO spDAO;
+    private final PodcastPlaylistDAO ppDAO;
 
-    //TODO: pigliare le playlist dal dao
-    //TODO: decide how to implement PlaylistDao to handle generics
+    public UserPlaylistsHandler(SongPlaylistDAO spDAO, PodcastPlaylistDAO ppDAO) {
+        this.spDAO = spDAO;
+        this.ppDAO = ppDAO;
+    }
 
     private void renderChoices() {
-        System.out.println("press the number of a playlist to select it or 0 to go back");
+        System.out.println("1: view your playlists");
+        System.out.println("2: create a new playlist");
+        System.out.println("3: go back");
+        System.out.println("4: close Swetify");
         System.out.println("\n");
     }
 
-    @Override
-    public State update(State state) {
+    private int renderSavedPlaylists(State state) {
         clearScreen();
+
+        songPlaylists = state.getLoggedUser().getSongPlaylists();
+        podcastsPlaylists = state.getLoggedUser().getPodcastPlaylists();
+
         int index = 1;
         System.out.println("Song playlists:");
         for (Playlist<Song> sp : songPlaylists) {
-            System.out.println(index+") "+sp.getTitle());
+            System.out.println(index + ") " + sp.getTitle());
             index++;
         }
         System.out.println("\n");
 
         System.out.println("Podcast playlists:");
         for (Playlist<Podcast> pp : podcastsPlaylists) {
-            System.out.println(index+") "+pp.getTitle());
+            System.out.println(index + ") " + pp.getTitle());
             index++;
         }
         System.out.println("\n");
+        System.out.println("Type the number of the playlist you want to view");
 
-        renderChoices();
+        return index;
+    }
 
-        boolean validNavigationChoice=false;
-        int navigationChoice=-1;
-        Scanner scanner = new Scanner(System.in);
+    private String askPlaylistName() {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Insert playlist name");
+        System.out.println("\n");
+        return input.nextLine();
+    }
 
-        while(!validNavigationChoice) {
-            validNavigationChoice = true;
-            try {
-                navigationChoice = scanner.nextInt();
-            } catch (NumberFormatException e) {
-                printError("Inserted value is not a number");
-                validNavigationChoice = false;
-                continue;
-            }
+    private SongPlaylist createSongPlaylist() {
+        SongPlaylist sp = new SongPlaylist();
+        sp.setTitle(askPlaylistName());
+        spDAO.save(sp);
+        return sp;
+    }
 
-            if (navigationChoice==0){
-                navigationManager.previousState();
-            }
-            else if (navigationChoice <= songPlaylists.size()){
-                state.setSelectedPlaylist(songPlaylists.get(index-1));
-            }
-            else if (navigationChoice <= songPlaylists.size()+podcastsPlaylists.size()){
-                state.setSelectedPlaylist(podcastsPlaylists.get(index-1-songPlaylists.size()));
-            }
-            else{
-                validNavigationChoice = false;
-            }
+    private PodcastPlaylist createPodcastPlaylist() {
+        PodcastPlaylist pp = new PodcastPlaylist();
+        pp.setTitle(askPlaylistName());
+        ppDAO.save(pp);
+        return pp;
+    }
+
+    private void savePlaylist() {
+        System.out.println("1: create a playlist of songs");
+        System.out.println("2: create a playlist of podcast");
+        System.out.println("\n");
+        int choice = askNumberInRange(1, 3);
+        switch (choice) {
+            case 1:
+                createSongPlaylist();
+                break;
+            case 2:
+                createPodcastPlaylist();
+                break;
+            default:
+                printError("Inserted option not valid");
         }
+    }
 
+    @Override
+    public State update(State state) {
+        clearScreen();
+        renderChoices();
+        int choice = askNumberInRange(1, 4);
+
+        switch (choice) {
+            case 1:
+                int index = renderSavedPlaylists(state);
+                int navigationChoice = askNumberInRange(1, index - 1);
+
+                if (navigationChoice <= songPlaylists.size()) {
+                    state.setSelectedPlaylist(songPlaylists.get(index - 1));
+                    navigationManager.switchToController(NavigationManager.HandlerId.VIEW_PLAYLIST);
+                } else if (navigationChoice <= songPlaylists.size() + podcastsPlaylists.size()) {
+                    state.setSelectedPlaylist(podcastsPlaylists.get(index - 1 - songPlaylists.size()));
+                    navigationManager.switchToController(NavigationManager.HandlerId.VIEW_PLAYLIST);
+                }
+                break;
+            case 2:
+                savePlaylist();
+                break;
+            case 3:
+                navigationManager.previousState();
+                break;
+            case 4:
+                navigationManager.stop();
+                break;
+            default:
+                printError("Choice is not valid");
+        }
         return state;
     }
 

@@ -24,4 +24,13 @@ public class Podcast extends Track {
     public void setTheme(String theme) {
         this.theme = theme;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder authors = new StringBuilder();
+        for (Artist artist : getAuthors()) {
+            authors.append(artist.getStageName()).append("\n");
+        }
+        return "Title: " + getTitle() + "\n" + "Authors: " + authors + "Theme " + getTheme() + "\n" + "Duration: " + getDuration();
+    }
 }

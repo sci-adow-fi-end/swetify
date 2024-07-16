@@ -88,7 +88,7 @@ public class SearchHandler extends Handler {
                 if (songsFound){
                     int i = 0;
                     for (Song song : songs){
-                        System.out.println(i+") "+ song.getTitle());
+                        System.out.println(i + ") " + song);
                     }
                     System.out.println("Enter the number corresponding to the song you want to play:");
                     try{
@@ -109,7 +109,7 @@ public class SearchHandler extends Handler {
                 if (podcastsFound){
                     int i = 0;
                     for (Podcast podcast : podcasts){
-                        System.out.println(i+") "+ podcast.getTitle());
+                        System.out.println(i + ") " + podcast);
                     }
                     System.out.println("Enter the number corresponding to the podcast you want to play:");
                     try{

@@ -47,7 +47,7 @@ public class HomeHandler extends Handler {
                     navigationManager.switchToController(NavigationManager.HandlerId.SEARCH);
                     break;
                 case 2:
-                    navigationManager.switchToController(NavigationManager.HandlerId.VIEW_PLAYLIST);
+                    navigationManager.switchToController(NavigationManager.HandlerId.VIEW_ALL_PLAYLISTS);
                     break;
                 case 3:
                     navigationManager.switchToController(NavigationManager.HandlerId.VIEW_SUGGESTIONS);

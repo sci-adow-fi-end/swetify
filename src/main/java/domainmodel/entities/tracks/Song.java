@@ -16,8 +16,6 @@ public class Song extends Track {
         this.genre = genre;
     }
 
-
-
     public String getGenre() {
         return genre;
     }
@@ -28,6 +26,10 @@ public class Song extends Track {
 
     @Override
     public String toString() {
-        return super.getTitle()+"   "+super.getAuthors();
+        StringBuilder authors = new StringBuilder();
+        for (Artist artist : getAuthors()) {
+            authors.append(artist.getStageName()).append("\n");
+        }
+        return "Title: " + getTitle() + "\n" + "Authors: " + authors + "Genre " + getGenre() + "\n" + "Duration: " + getDuration();
     }
 }

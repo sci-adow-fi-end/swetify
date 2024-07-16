@@ -18,16 +18,15 @@ import java.util.Scanner;
 
 public class AlbumLoadHandler extends Handler {
 
-    ArtistDAO artistData;
-    SongDAO songData;
+    private final ArtistDAO artistData;
+    private final SongDAO songData;
+    private final AlbumDAO albumData;
 
     public AlbumLoadHandler(ArtistDAO artistData, SongDAO songData, AlbumDAO albumData) {
         this.artistData = artistData;
         this.songData = songData;
         this.albumData = albumData;
     }
-
-    AlbumDAO albumData;
 
     private void renderChoices() {
         System.out.println("1: Load an Album");
