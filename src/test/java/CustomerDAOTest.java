@@ -1,5 +1,5 @@
-import dao.UserDAO;
-import domainmodel.entities.User;
+import dao.users.CustomerDAO;
+import domainmodel.entities.users.Customer;
 import jakarta.persistence.NoResultException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -9,17 +9,17 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
-public class UserDAOTest extends BaseTest {
+public class CustomerDAOTest extends BaseTest {
 
-    UserDAO userDatabase;
-    User[] users = new User[]{new User("Esidisi", "jojo"),
-            new User("Kars", "stio2"),
-            new User("Jotaro", "oraoraora")};
+    CustomerDAO userDatabase;
+    Customer[] users = new Customer[]{new Customer("Esidisi", "jojo"),
+            new Customer("Kars", "stio2"),
+            new Customer("Jotaro", "oraoraora")};
 
     @BeforeEach
     public void setUp(){
         super.setUp();
-        userDatabase = new UserDAO();
+        userDatabase = new CustomerDAO();
 
         userDatabase.save(users[0]);
         userDatabase.save(users[1]);
@@ -28,20 +28,20 @@ public class UserDAOTest extends BaseTest {
 
     @Test
     void testGet(){
-        User usr = userDatabase.getByName(users[0].getUsername());
-        User usr2 = userDatabase.get(usr.getId()).orElseThrow();
+        Customer usr = userDatabase.getByName(users[0].getUsername());
+        Customer usr2 = userDatabase.get(usr.getId()).orElseThrow();
         assertEquals(usr.getUsername(), usr2.getUsername());
         assertEquals(usr.getPassword(), usr2.getPassword());
     }
 
     @Test
     void testGetByName(){
-        for (User user : users){
+        for (Customer user : users) {
             assertEquals(user.getUsername(), userDatabase.getByName(user.getUsername()).getUsername());
             assertEquals(user.getPassword(), userDatabase.getByName(user.getUsername()).getPassword());
         }
 
-        User user = new User("RyanGosling", "stiò");
+        Customer user = new Customer("RyanGosling", "stiò");
         boolean present;
         try{
             userDatabase.getByName(user.getUsername());
@@ -56,12 +56,12 @@ public class UserDAOTest extends BaseTest {
 
     @Test
     void getAll(){
-        List<User> foundUsers = userDatabase.getAll();
-        assertEquals(3, foundUsers.size());
+        List<Customer> foundCustomers = userDatabase.getAll();
+        assertEquals(3, foundCustomers.size());
 
-        for(int i = 0; i < foundUsers.size(); i++){
-            assertEquals(foundUsers.get(i).getUsername(), users[i].getUsername());
-            assertEquals(foundUsers.get(i).getPassword(), users[i].getPassword());
+        for (int i = 0; i < foundCustomers.size(); i++) {
+            assertEquals(foundCustomers.get(i).getUsername(), users[i].getUsername());
+            assertEquals(foundCustomers.get(i).getPassword(), users[i].getPassword());
         }
     }
 }

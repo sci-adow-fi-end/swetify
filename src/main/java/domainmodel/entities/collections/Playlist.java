@@ -1,7 +1,7 @@
-package domainmodel.entities.playlist;
+package domainmodel.entities.collections;
 
 import domainmodel.entities.BaseEntity;
-import domainmodel.entities.track.Track;
+import domainmodel.entities.tracks.Track;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToMany;

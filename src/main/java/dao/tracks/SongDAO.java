@@ -1,6 +1,7 @@
-package dao;
+package dao.tracks;
 
-import domainmodel.entities.track.Song;
+import dao.BaseDAO;
+import domainmodel.entities.tracks.Song;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 

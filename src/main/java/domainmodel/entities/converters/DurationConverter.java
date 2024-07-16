@@ -1,4 +1,4 @@
-package domainmodel.types;
+package domainmodel.entities.converters;
 
 import jakarta.persistence.AttributeConverter;
 

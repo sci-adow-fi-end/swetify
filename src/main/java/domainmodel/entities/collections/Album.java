@@ -1,7 +1,7 @@
-package domainmodel.entities;
+package domainmodel.entities.collections;
 
-import domainmodel.entities.playlist.Playlist;
-import domainmodel.entities.track.Song;
+import domainmodel.entities.BaseEntity;
+import domainmodel.entities.tracks.Song;
 import jakarta.persistence.*;
 
 import java.util.Date;

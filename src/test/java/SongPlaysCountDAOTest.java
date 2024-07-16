@@ -1,8 +1,8 @@
 import dao.BaseDAO;
-import dao.SongPlaysCountDAO;
-import domainmodel.entities.User;
+import dao.suggestions.SongPlaysCountDAO;
 import domainmodel.entities.suggestions.SongPlaysCount;
-import domainmodel.entities.track.Song;
+import domainmodel.entities.tracks.Song;
+import domainmodel.entities.users.Customer;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import org.junit.jupiter.api.AfterEach;
@@ -39,7 +39,7 @@ class SongPlaysCountDAOTest {
 
     @Test
     void testIncrementPlays() {
-        User user = new User();
+        Customer user = new Customer();
         user.setUsername("testUser");
         Song song = new Song("testSong", "testLyrics", 3, 30, null); // Assuming appropriate constructor and other fields
         SongPlaysCount spc = new SongPlaysCount(user, song, 10);

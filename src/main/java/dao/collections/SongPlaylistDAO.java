@@ -1,25 +1,26 @@
-package dao;
+package dao.collections;
 
-
-import domainmodel.entities.playlist.PodcastPlaylist;
+import dao.BaseDAO;
+import domainmodel.entities.collections.SongPlaylist;
 import jakarta.persistence.EntityManager;
 
 import java.util.List;
 import java.util.Optional;
 
-public class PodcastPlaylistDAO extends BaseDAO<PodcastPlaylist> {
+public class SongPlaylistDAO extends BaseDAO<SongPlaylist> {
+
     @Override
-    public Optional<PodcastPlaylist> get(long id) {
+    public Optional<SongPlaylist> get(long id) {
         EntityManager em = entityManagerFactory.createEntityManager();
-        PodcastPlaylist result = em.find(PodcastPlaylist.class, id);
+        SongPlaylist result = em.find(SongPlaylist.class, id);
         em.close();
         return Optional.ofNullable(result);
     }
 
     @Override
-    public PodcastPlaylist getByName(String name) {
+    public SongPlaylist getByName(String name) {
         EntityManager em = entityManagerFactory.createEntityManager();
-        PodcastPlaylist result = em.createQuery("SELECT s FROM PodcastPlaylist s WHERE LOWER(s.title) LIKE LOWER(:name)", PodcastPlaylist.class)
+        SongPlaylist result = em.createQuery("SELECT s FROM SongPlaylist s WHERE LOWER(s.title) LIKE LOWER(:name)", SongPlaylist.class)
                 .setParameter("name", "%" + name.toLowerCase() + "%")
                 .getSingleResult();
         em.close();
@@ -27,17 +28,17 @@ public class PodcastPlaylistDAO extends BaseDAO<PodcastPlaylist> {
     }
 
     @Override
-    public List<PodcastPlaylist> getAll() {
+    public List<SongPlaylist> getAll() {
         EntityManager em = entityManagerFactory.createEntityManager();
-        List<PodcastPlaylist> resultList = em.createQuery("SELECT s FROM PodcastPlaylist s", PodcastPlaylist.class)
+        List<SongPlaylist> resultList = em.createQuery("SELECT s FROM SongPlaylist s", SongPlaylist.class)
                 .getResultList();
         em.close();
         return resultList;
     }
 
-    public List<PodcastPlaylist> getAllByName(String name) {
+    public List<SongPlaylist> getAllByName(String name) {
         EntityManager em = entityManagerFactory.createEntityManager();
-        List<PodcastPlaylist> resultList = em.createQuery("SELECT s FROM PodcastPlaylist s WHERE LOWER(s.title) LIKE LOWER(:name)", PodcastPlaylist.class)
+        List<SongPlaylist> resultList = em.createQuery("SELECT s FROM SongPlaylist s WHERE LOWER(s.title) LIKE LOWER(:name)", SongPlaylist.class)
                 .setParameter("name", "%" + name.toLowerCase() + "%")
                 .getResultList();
         em.close();

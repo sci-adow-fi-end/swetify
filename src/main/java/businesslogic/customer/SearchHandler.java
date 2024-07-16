@@ -4,12 +4,12 @@ import businesslogic.utility.ConfigOptions;
 import businesslogic.utility.Handler;
 import businesslogic.utility.NavigationManager;
 import businesslogic.utility.State;
-import dao.ArtistDAO;
-import dao.PodcastDAO;
-import dao.SongDAO;
-import domainmodel.entities.Artist;
-import domainmodel.entities.track.Podcast;
-import domainmodel.entities.track.Song;
+import dao.tracks.PodcastDAO;
+import dao.tracks.SongDAO;
+import dao.users.ArtistDAO;
+import domainmodel.entities.tracks.Podcast;
+import domainmodel.entities.tracks.Song;
+import domainmodel.entities.users.Artist;
 
 import java.io.ByteArrayInputStream;
 import java.util.ArrayList;

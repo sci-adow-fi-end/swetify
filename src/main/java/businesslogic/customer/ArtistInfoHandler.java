@@ -1,9 +1,9 @@
 package businesslogic.customer;
 
-import businesslogic.utility.NavigationManager;
 import businesslogic.utility.Handler;
+import businesslogic.utility.NavigationManager;
 import businesslogic.utility.State;
-import domainmodel.entities.Artist;
+import domainmodel.entities.users.Artist;
 
 import java.util.Scanner;
 

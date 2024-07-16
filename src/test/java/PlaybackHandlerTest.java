@@ -1,6 +1,6 @@
 import businesslogic.customer.PlaybackHandler;
 import businesslogic.utility.State;
-import domainmodel.entities.track.Song;
+import domainmodel.entities.tracks.Song;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

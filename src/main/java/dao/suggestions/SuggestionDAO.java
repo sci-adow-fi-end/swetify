@@ -1,12 +1,13 @@
-package dao;
+package dao.suggestions;
 
-import domainmodel.entities.User;
+import dao.BaseDAO;
 import domainmodel.entities.suggestions.PodcastPlaysCount;
 import domainmodel.entities.suggestions.SongPlaysCount;
 import domainmodel.entities.suggestions.TrackPlaysCount;
-import domainmodel.entities.track.Podcast;
-import domainmodel.entities.track.Song;
-import domainmodel.entities.track.Track;
+import domainmodel.entities.tracks.Podcast;
+import domainmodel.entities.tracks.Song;
+import domainmodel.entities.tracks.Track;
+import domainmodel.entities.users.Customer;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.criteria.CriteriaBuilder;
@@ -23,7 +24,7 @@ public class SuggestionDAO extends BaseDAO<TrackPlaysCount> {
     private EntityManager entityManager;
 
     // Generic method to get top tracks by user
-    private <T extends TrackPlaysCount> List<Track> getTopTracksByUser(User user, Class<T> entityClass) {
+    private <T extends TrackPlaysCount> List<Track> getTopTracksByUser(Customer user, Class<T> entityClass) {
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
         CriteriaQuery<Track> query = cb.createQuery(Track.class);
         Root<T> root = query.from(entityClass);
@@ -60,7 +61,7 @@ public class SuggestionDAO extends BaseDAO<TrackPlaysCount> {
     }
 
     // Method to get top songs by similar users
-    public List<Song> getTopSongsBySimilarUsers(User user) {
+    public List<Song> getTopSongsBySimilarUsers(Customer user) {
         entityManager.getTransaction().begin();
 
         List<Track> top10Tracks = getTopTracksByUser(user, SongPlaysCount.class);
@@ -77,7 +78,7 @@ public class SuggestionDAO extends BaseDAO<TrackPlaysCount> {
     }
 
     // Method to get top podcasts by similar users
-    public List<Podcast> getTopPodcastsBySimilarUsers(User user) {
+    public List<Podcast> getTopPodcastsBySimilarUsers(Customer user) {
         entityManager.getTransaction().begin();
 
         List<Track> top10Tracks = getTopTracksByUser(user, PodcastPlaysCount.class);

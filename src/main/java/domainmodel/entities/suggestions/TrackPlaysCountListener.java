@@ -1,7 +1,7 @@
 package domainmodel.entities.suggestions;
 
 import dao.BaseDAO;
-import domainmodel.entities.track.Track;
+import domainmodel.entities.tracks.Track;
 import jakarta.persistence.*;
 
 public class TrackPlaysCountListener {

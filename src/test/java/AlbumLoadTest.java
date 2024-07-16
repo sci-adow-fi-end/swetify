@@ -1,5 +1,5 @@
 import businesslogic.utility.NavigationManager;
-import domainmodel.entities.Artist;
+import domainmodel.entities.users.Artist;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

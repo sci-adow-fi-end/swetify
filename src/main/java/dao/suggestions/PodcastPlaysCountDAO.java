@@ -1,8 +1,9 @@
-package dao;
+package dao.suggestions;
 
-import domainmodel.entities.User;
+import dao.BaseDAO;
 import domainmodel.entities.suggestions.PodcastPlaysCount;
-import domainmodel.entities.track.Podcast;
+import domainmodel.entities.tracks.Podcast;
+import domainmodel.entities.users.Customer;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.NoResultException;
 import jakarta.persistence.TypedQuery;
@@ -44,7 +45,7 @@ public class PodcastPlaysCountDAO extends BaseDAO<PodcastPlaysCount> {
         });
     }
 
-    public void incrementOrAddPlayCount(User user, Podcast podcast) {
+    public void incrementOrAddPlayCount(Customer user, Podcast podcast) {
         executeInsideTransaction(entityManager -> {
             try {
                 TypedQuery<PodcastPlaysCount> query = entityManager.createQuery(

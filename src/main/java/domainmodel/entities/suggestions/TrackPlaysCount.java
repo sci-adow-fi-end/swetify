@@ -1,8 +1,8 @@
 package domainmodel.entities.suggestions;
 
 import domainmodel.entities.BaseEntity;
-import domainmodel.entities.User;
-import domainmodel.entities.track.Track;
+import domainmodel.entities.tracks.Track;
+import domainmodel.entities.users.Customer;
 import jakarta.persistence.*;
 
 @Entity
@@ -11,7 +11,7 @@ import jakarta.persistence.*;
 public class TrackPlaysCount extends BaseEntity {
 
     @ManyToOne(cascade = CascadeType.ALL)
-    private User customer;
+    private Customer customer;
 
     @ManyToOne(cascade = CascadeType.ALL)
     private Track track;
@@ -21,7 +21,7 @@ public class TrackPlaysCount extends BaseEntity {
     public TrackPlaysCount() {
     }
 
-    public TrackPlaysCount(User customer, Track track, int plays) {
+    public TrackPlaysCount(Customer customer, Track track, int plays) {
         this.customer = customer;
         this.track = track;
         this.plays = plays;
@@ -35,11 +35,11 @@ public class TrackPlaysCount extends BaseEntity {
         this.track = track;
     }
 
-    public User getCustomer() {
+    public Customer getCustomer() {
         return customer;
     }
 
-    public void setCustomer(User customer) {
+    public void setCustomer(Customer customer) {
         this.customer = customer;
     }
 

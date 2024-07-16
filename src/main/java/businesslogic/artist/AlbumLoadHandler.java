@@ -3,12 +3,12 @@ package businesslogic.artist;
 import businesslogic.utility.ConfigOptions;
 import businesslogic.utility.Handler;
 import businesslogic.utility.State;
-import dao.AlbumDAO;
-import dao.ArtistDAO;
-import dao.SongDAO;
-import domainmodel.entities.Album;
-import domainmodel.entities.Artist;
-import domainmodel.entities.track.Song;
+import dao.collections.AlbumDAO;
+import dao.tracks.SongDAO;
+import dao.users.ArtistDAO;
+import domainmodel.entities.collections.Album;
+import domainmodel.entities.tracks.Song;
+import domainmodel.entities.users.Artist;
 import jakarta.persistence.NoResultException;
 
 import java.io.ByteArrayInputStream;

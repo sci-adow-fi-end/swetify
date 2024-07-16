@@ -1,5 +1,5 @@
-import dao.ArtistDAO;
-import domainmodel.entities.Artist;
+import dao.users.ArtistDAO;
+import domainmodel.entities.users.Artist;
 import jakarta.persistence.NoResultException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

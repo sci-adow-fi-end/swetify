@@ -3,11 +3,11 @@ package businesslogic.customer;
 import businesslogic.utility.Handler;
 import businesslogic.utility.NavigationManager;
 import businesslogic.utility.State;
-import dao.PodcastPlaylistDAO;
-import dao.SongPlaylistDAO;
-import domainmodel.entities.playlist.PodcastPlaylist;
-import domainmodel.entities.playlist.SongPlaylist;
-import domainmodel.entities.track.Track;
+import dao.collections.PodcastPlaylistDAO;
+import dao.collections.SongPlaylistDAO;
+import domainmodel.entities.collections.PodcastPlaylist;
+import domainmodel.entities.collections.SongPlaylist;
+import domainmodel.entities.tracks.Track;
 
 import java.util.Scanner;
 

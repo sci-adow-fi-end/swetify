@@ -1,7 +1,8 @@
-package domainmodel.entities.track;
+package domainmodel.entities.tracks;
 
-import domainmodel.entities.Artist;
 import domainmodel.entities.BaseEntity;
+import domainmodel.entities.converters.DurationConverter;
+import domainmodel.entities.users.Artist;
 import jakarta.persistence.*;
 
 import java.time.Duration;
@@ -13,7 +14,7 @@ import java.util.List;
 public abstract class Track extends BaseEntity {
     private String title;
 
-    @Convert(converter = domainmodel.types.DurationConverter.class)
+    @Convert(converter = DurationConverter.class)
     private Duration duration;
 
     @ManyToMany(cascade = CascadeType.ALL)

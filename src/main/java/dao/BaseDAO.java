@@ -40,7 +40,7 @@ public abstract class BaseDAO<T> {
         executeInsideTransaction(entityManager -> entityManager.remove(t));
     }
 
-    void executeInsideTransaction(Consumer<EntityManager> work) {
+    public void executeInsideTransaction(Consumer<EntityManager> work) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
         try {

@@ -1,6 +1,7 @@
-package dao;
+package dao.users;
 
-import domainmodel.entities.Artist;
+import dao.BaseDAO;
+import domainmodel.entities.users.Artist;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 

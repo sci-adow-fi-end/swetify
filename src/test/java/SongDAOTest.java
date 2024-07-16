@@ -1,5 +1,5 @@
-import dao.SongDAO;
-import domainmodel.entities.track.Song;
+import dao.tracks.SongDAO;
+import domainmodel.entities.tracks.Song;
 import jakarta.persistence.NoResultException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

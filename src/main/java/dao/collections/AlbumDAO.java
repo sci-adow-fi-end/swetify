@@ -1,6 +1,7 @@
-package dao;
+package dao.collections;
 
-import domainmodel.entities.Album;
+import dao.BaseDAO;
+import domainmodel.entities.collections.Album;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 

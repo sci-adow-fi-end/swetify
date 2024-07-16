@@ -1,6 +1,6 @@
-package domainmodel.entities.track;
+package domainmodel.entities.tracks;
 
-import domainmodel.entities.Artist;
+import domainmodel.entities.users.Artist;
 import jakarta.persistence.Entity;
 
 import java.util.List;

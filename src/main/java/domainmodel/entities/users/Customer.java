@@ -1,9 +1,10 @@
-package domainmodel.entities;
+package domainmodel.entities.users;
 
-import domainmodel.entities.playlist.Playlist;
-import domainmodel.entities.track.Podcast;
-import domainmodel.entities.track.Song;
-import domainmodel.entities.track.Track;
+import domainmodel.entities.BaseEntity;
+import domainmodel.entities.collections.Playlist;
+import domainmodel.entities.tracks.Podcast;
+import domainmodel.entities.tracks.Song;
+import domainmodel.entities.tracks.Track;
 import jakarta.persistence.*;
 
 import java.util.HashMap;
@@ -12,8 +13,8 @@ import java.util.List;
 import java.util.Map;
 
 @Entity
-@Table(name = "SwetifyUsers")
-public class User extends BaseEntity {
+@Table(name = "Customers")
+public class Customer extends BaseEntity {
     @Column(unique = true)
     private String username;
 
@@ -43,12 +44,12 @@ public class User extends BaseEntity {
     @Column(name = "listen_count")
     private Map<Track, Integer> trackListenCounts = new HashMap<>();
 
-    public User(String username, String password) {
+    public Customer(String username, String password) {
         this.username = username;
         this.password = password;
     }
 
-    public User() {
+    public Customer() {
     }
 
     public String getUsername() {

@@ -2,7 +2,7 @@ package businesslogic.customer;
 
 import businesslogic.utility.Handler;
 import businesslogic.utility.State;
-import domainmodel.entities.track.Track;
+import domainmodel.entities.tracks.Track;
 
 import java.util.Scanner;
 

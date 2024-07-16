@@ -7,7 +7,14 @@ import businesslogic.artist.PodcastLoadHandler;
 import businesslogic.common.LoginHandler;
 import businesslogic.common.RegistrationHandler;
 import businesslogic.customer.*;
-import dao.*;
+import dao.BaseDAO;
+import dao.collections.AlbumDAO;
+import dao.collections.PodcastPlaylistDAO;
+import dao.collections.SongPlaylistDAO;
+import dao.tracks.PodcastDAO;
+import dao.tracks.SongDAO;
+import dao.users.ArtistDAO;
+import dao.users.CustomerDAO;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -52,7 +59,7 @@ public class NavigationManager {
     public NavigationManager() {
 
         databases = new HashMap<>();
-        databases.put(DaoId.USER, new UserDAO());
+        databases.put(DaoId.USER, new CustomerDAO());
         databases.put(DaoId.PODCAST, new PodcastDAO());
         databases.put(DaoId.SONG, new SongDAO());
         databases.put(DaoId.SONG_PLAYLIST, new SongPlaylistDAO());
@@ -61,9 +68,9 @@ public class NavigationManager {
         databases.put(DaoId.ALBUM, new AlbumDAO());
 
         this.handlers = new HashMap<>();
-        handlers.put(HandlerId.LOGIN, new LoginHandler((UserDAO) databases.get(DaoId.USER),
+        handlers.put(HandlerId.LOGIN, new LoginHandler((CustomerDAO) databases.get(DaoId.USER),
                 (ArtistDAO) databases.get(DaoId.ARTIST)));
-        handlers.put(HandlerId.REGISTRATION, new RegistrationHandler((UserDAO) databases.get(DaoId.USER),
+        handlers.put(HandlerId.REGISTRATION, new RegistrationHandler((CustomerDAO) databases.get(DaoId.USER),
                 (ArtistDAO) databases.get(DaoId.ARTIST)));
         handlers.put(HandlerId.HOME, new HomeHandler());
         handlers.put(HandlerId.SEARCH, new SearchHandler((SongDAO) databases.get(DaoId.SONG),

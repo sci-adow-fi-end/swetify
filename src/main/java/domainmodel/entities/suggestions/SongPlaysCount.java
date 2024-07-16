@@ -1,7 +1,7 @@
 package domainmodel.entities.suggestions;
 
-import domainmodel.entities.User;
-import domainmodel.entities.track.Song;
+import domainmodel.entities.tracks.Song;
+import domainmodel.entities.users.Customer;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 
@@ -12,7 +12,7 @@ public class SongPlaysCount extends TrackPlaysCount {
     public SongPlaysCount() {
     }
 
-    public SongPlaysCount(User customer, Song song, int plays) {
+    public SongPlaysCount(Customer customer, Song song, int plays) {
         super(customer, song, plays);
     }
 }

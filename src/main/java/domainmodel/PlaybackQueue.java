@@ -1,7 +1,7 @@
 package domainmodel;
 
-import domainmodel.entities.playlist.Playlist;
-import domainmodel.entities.track.Track;
+import domainmodel.entities.collections.Playlist;
+import domainmodel.entities.tracks.Track;
 
 import java.util.ArrayDeque;
 import java.util.Deque;

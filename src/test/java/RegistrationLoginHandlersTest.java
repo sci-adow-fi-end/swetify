@@ -1,6 +1,6 @@
 import businesslogic.utility.NavigationManager;
-import domainmodel.entities.Artist;
-import domainmodel.entities.User;
+import domainmodel.entities.users.Artist;
+import domainmodel.entities.users.Customer;
 import jakarta.persistence.NoResultException;
 import jakarta.persistence.NonUniqueResultException;
 import org.junit.jupiter.api.BeforeEach;
@@ -67,7 +67,7 @@ public class RegistrationLoginHandlersTest extends BaseTest{
 
         navigationManager.run();
 
-        User usr = navigationManager.getCurrentState().getLoggedUser();
+        Customer usr = navigationManager.getCurrentState().getLoggedUser();
         assertEquals("Stio", usr.getUsername());
         assertEquals("NelChill", usr.getPassword());
     }

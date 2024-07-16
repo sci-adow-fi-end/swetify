@@ -4,10 +4,10 @@ import businesslogic.utility.ConfigOptions;
 import businesslogic.utility.Handler;
 import businesslogic.utility.NavigationManager;
 import businesslogic.utility.State;
-import dao.ArtistDAO;
-import dao.UserDAO;
-import domainmodel.entities.Artist;
-import domainmodel.entities.User;
+import dao.users.ArtistDAO;
+import dao.users.CustomerDAO;
+import domainmodel.entities.users.Artist;
+import domainmodel.entities.users.Customer;
 import jakarta.persistence.NoResultException;
 
 import java.io.ByteArrayInputStream;
@@ -18,12 +18,12 @@ public class LoginHandler extends Handler {
 
     public String userName;
     public String password;
-    private final UserDAO userDatabase;
-    private User usr;
+    private final CustomerDAO userDatabase;
+    private Customer usr;
     private final ArtistDAO artistDatabase;
     private Artist art;
 
-    public LoginHandler(UserDAO userDatabase, ArtistDAO artistDatabase) {
+    public LoginHandler(CustomerDAO userDatabase, ArtistDAO artistDatabase) {
         this.userDatabase = userDatabase;
         this.artistDatabase = artistDatabase;
     }

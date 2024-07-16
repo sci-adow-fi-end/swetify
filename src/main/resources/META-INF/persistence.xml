@@ -8,15 +8,15 @@
             Persistence unit for the swetify application
         </description>
 
-        <class>domainmodel.entities.Album</class>
-        <class>domainmodel.entities.Artist</class>
-        <class>domainmodel.entities.track.Podcast</class>
-        <class>domainmodel.entities.track.Track</class>
-        <class>domainmodel.entities.track.Song</class>
-        <class>domainmodel.entities.User</class>
-        <class>domainmodel.entities.playlist.Playlist</class>
-        <class>domainmodel.entities.playlist.SongPlaylist</class>
-        <class>domainmodel.entities.playlist.PodcastPlaylist</class>
+        <class>domainmodel.entities.collections.Album</class>
+        <class>domainmodel.entities.users.Artist</class>
+        <class>domainmodel.entities.tracks.Podcast</class>
+        <class>domainmodel.entities.tracks.Track</class>
+        <class>domainmodel.entities.tracks.Song</class>
+        <class>domainmodel.entities.users.Customer</class>
+        <class>domainmodel.entities.collections.Playlist</class>
+        <class>domainmodel.entities.collections.SongPlaylist</class>
+        <class>domainmodel.entities.collections.PodcastPlaylist</class>
         <class>domainmodel.entities.suggestions.TrackPlaysCount</class>
         <class>domainmodel.entities.suggestions.SongPlaysCount</class>
         <class>domainmodel.entities.suggestions.PodcastPlaysCount</class>

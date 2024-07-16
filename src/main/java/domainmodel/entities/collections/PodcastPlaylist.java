@@ -1,6 +1,6 @@
-package domainmodel.entities.playlist;
+package domainmodel.entities.collections;
 
-import domainmodel.entities.track.Podcast;
+import domainmodel.entities.tracks.Podcast;
 import jakarta.persistence.Entity;
 
 @Entity

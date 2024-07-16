@@ -1,6 +1,7 @@
-package dao;
+package dao.tracks;
 
-import domainmodel.entities.track.Podcast;
+import dao.BaseDAO;
+import domainmodel.entities.tracks.Podcast;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 

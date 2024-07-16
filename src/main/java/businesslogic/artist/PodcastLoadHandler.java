@@ -2,10 +2,10 @@ package businesslogic.artist;
 
 import businesslogic.utility.Handler;
 import businesslogic.utility.State;
-import dao.ArtistDAO;
-import dao.PodcastDAO;
-import domainmodel.entities.Artist;
-import domainmodel.entities.track.Podcast;
+import dao.tracks.PodcastDAO;
+import dao.users.ArtistDAO;
+import domainmodel.entities.tracks.Podcast;
+import domainmodel.entities.users.Artist;
 
 import java.util.ArrayList;
 import java.util.List;

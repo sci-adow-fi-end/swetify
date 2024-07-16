@@ -1,8 +1,8 @@
 import dao.BaseDAO;
-import dao.PodcastPlaysCountDAO;
-import domainmodel.entities.User;
+import dao.suggestions.PodcastPlaysCountDAO;
 import domainmodel.entities.suggestions.PodcastPlaysCount;
-import domainmodel.entities.track.Podcast;
+import domainmodel.entities.tracks.Podcast;
+import domainmodel.entities.users.Customer;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import org.junit.jupiter.api.AfterEach;
@@ -40,7 +40,7 @@ class PodcastPlaysCountDAOTest {
 
     @Test
     void testIncrementPlays() {
-        User user = new User();
+        Customer user = new Customer();
         user.setUsername("testUser");
         Podcast podcast = new Podcast("testPodcast", "testTheme", 60, 30, null); // Assuming appropriate constructor and other fields
         PodcastPlaysCount ppc = new PodcastPlaysCount(user, podcast, 5);

@@ -1,14 +1,14 @@
 package businesslogic.utility;
 
 import domainmodel.PlaybackQueue;
-import domainmodel.entities.Artist;
-import domainmodel.entities.User;
-import domainmodel.entities.playlist.Playlist;
-import domainmodel.entities.track.Track;
+import domainmodel.entities.collections.Playlist;
+import domainmodel.entities.tracks.Track;
+import domainmodel.entities.users.Artist;
+import domainmodel.entities.users.Customer;
 
 public class State {
 
-    private User loggedUser;
+    private Customer loggedUser;
 
 
     private Artist loggedArtist;
@@ -20,11 +20,11 @@ public class State {
     private Track playingTrack;
     private Artist viewingArtist;
 
-    public User getLoggedUser() {
+    public Customer getLoggedUser() {
         return loggedUser;
     }
 
-    public void setLoggedUser(User loggedUser) {
+    public void setLoggedUser(Customer loggedUser) {
         this.loggedUser = loggedUser;
     }
 

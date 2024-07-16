@@ -1,6 +1,8 @@
-package domainmodel.entities;
+package domainmodel.entities.users;
 
-import domainmodel.entities.track.Podcast;
+import domainmodel.entities.BaseEntity;
+import domainmodel.entities.collections.Album;
+import domainmodel.entities.tracks.Podcast;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
