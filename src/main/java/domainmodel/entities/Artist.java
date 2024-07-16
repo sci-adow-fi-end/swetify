@@ -10,6 +10,7 @@ import java.util.List;
 @Table(name = "Artists")
 public class Artist extends BaseEntity {
 
+    @Column(unique = true)
     private String username;
 
     private String password;

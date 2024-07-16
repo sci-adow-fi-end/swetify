@@ -14,6 +14,7 @@ import java.util.Map;
 @Entity
 @Table(name = "SwetifyUsers")
 public class User extends BaseEntity {
+    @Column(unique = true)
     private String username;
 
     private String password;
