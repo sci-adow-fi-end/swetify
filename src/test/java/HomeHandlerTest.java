@@ -30,7 +30,7 @@ public class HomeHandlerTest extends BaseTest{
 
     @Test
     public void testHomeViewPlaylist() {
-        ByteArrayInputStream input = new ByteArrayInputStream("2\n5\n".getBytes());
+        ByteArrayInputStream input = new ByteArrayInputStream("2\n6\n".getBytes());
         System.setIn(input);
         navigationManager.run();
 

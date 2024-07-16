@@ -13,6 +13,11 @@ import java.util.Scanner;
 
 public class PlaylistViewHandler extends Handler {
 
+    public PlaylistViewHandler(SongPlaylistDao spDAO, PodcastPlaylistDao ppDAO) {
+        this.spDAO = spDAO;
+        this.ppDAO = ppDAO;
+    }
+
     SongPlaylistDao spDAO;
     PodcastPlaylistDao ppDAO;
 

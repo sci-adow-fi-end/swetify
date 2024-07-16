@@ -124,7 +124,7 @@ public class AlbumLoadHandler extends Handler {
             songs.add(createSong(s));
         }
         na.getPlaylist().setTracks(songs);
-
+        albumData.update(na);
         return na;
     }
 

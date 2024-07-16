@@ -68,7 +68,8 @@ public class NavigationManager {
         handlers.put(HandlerId.HOME, new HomeHandler());
         handlers.put(HandlerId.SEARCH, new SearchHandler((SongDao) databases.get(DaoId.SONG),
                 (PodcastDao) databases.get(DaoId.PODCAST), (ArtistDao) databases.get(DaoId.ARTIST)));
-        handlers.put(HandlerId.VIEW_PLAYLIST, new PlaylistViewHandler());
+        handlers.put(HandlerId.VIEW_PLAYLIST, new PlaylistViewHandler((SongPlaylistDao) databases.get(DaoId.SONG_PLAYLIST)
+                ,(PodcastPlaylistDao) databases.get(DaoId.PODCAST_PLAYLIST)));
         handlers.put(HandlerId.VIEW_SUGGESTIONS, new SuggestionsHandler());
         handlers.put(HandlerId.PLAY_TRACK, new PlaybackHandler());
         handlers.put(HandlerId.VIEW_ARTIST, new ArtistInfoHandler());
