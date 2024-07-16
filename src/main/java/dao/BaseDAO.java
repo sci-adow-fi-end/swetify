@@ -14,7 +14,6 @@ public abstract class BaseDAO<T> {
 
     protected static final EntityManagerFactory entityManagerFactory;
     static{entityManagerFactory = Persistence.createEntityManagerFactory("swetifyPersistenceUnit");}
-    static boolean setUpComplete = false;
 
     public static EntityManagerFactory getEntityManagerFactory(){
         return entityManagerFactory;
