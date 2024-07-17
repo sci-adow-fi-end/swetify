@@ -24,6 +24,10 @@ public class Artist extends BaseEntity {
     @ManyToMany(cascade = CascadeType.MERGE)
     final private List<Album> albums = new ArrayList<>();
 
+    public List<Podcast> getPodcasts() {
+        return podcasts;
+    }
+
     @ManyToMany(cascade = CascadeType.MERGE)
     final private List<Podcast> podcasts = new ArrayList<>();
 

@@ -29,8 +29,8 @@ public class RegistrationHandler extends Handler {
 
     private void renderChoices() {
         clearScreen();
-        System.out.println("0: register to access Swetify");
-        System.out.println("1: go back to the login page");
+        System.out.println("1: register to access Swetify");
+        System.out.println("2: go back to the login page");
         System.out.println("\n");
     }
 
@@ -142,7 +142,7 @@ public class RegistrationHandler extends Handler {
                 continue;
             }
             switch (navigationOption) {
-                case 0:
+                case 1:
                     boolean validUsername = false;
                     while (!validUsername) {
 
@@ -165,7 +165,7 @@ public class RegistrationHandler extends Handler {
 
                     navigationManager.switchToController(NavigationManager.HandlerId.LOGIN);
                     break;
-                case 1:
+                case 2:
                     navigationManager.switchToController(NavigationManager.HandlerId.LOGIN);
                     break;
                 default:

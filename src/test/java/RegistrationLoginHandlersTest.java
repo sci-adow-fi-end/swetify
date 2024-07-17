@@ -25,7 +25,7 @@ public class RegistrationLoginHandlersTest extends BaseTest{
 
     @Test
     void testRegistrationCustomer() {
-        String testString = "0\n1\nStio\nNelChill\n3\n";
+        String testString = "1\n1\nStio\nNelChill\n3\n";
         ByteArrayInputStream input = new ByteArrayInputStream(testString.getBytes());
         System.setIn(input);
 
@@ -45,7 +45,7 @@ public class RegistrationLoginHandlersTest extends BaseTest{
 
     @Test
     void testRegistrationArtist() {
-        String testString = "0\n2\nStio\nNelChill\nKuruKuru\n3\n";
+        String testString = "1\n2\nStio\nNelChill\nKuruKuru\n3\n";
         ByteArrayInputStream input = new ByteArrayInputStream(testString.getBytes());
         System.setIn(input);
 
@@ -65,7 +65,7 @@ public class RegistrationLoginHandlersTest extends BaseTest{
 
     @Test
     void testLoginCustomer() {
-        String testString = "0\n1\nStio\nNelChill\n1\n1\nStio\nNelChill\n5\n";
+        String testString = "1\n1\nStio\nNelChill\n1\n1\nStio\nNelChill\n5\n";
         ByteArrayInputStream input = new ByteArrayInputStream(testString.getBytes());
         System.setIn(input);
 
@@ -78,7 +78,7 @@ public class RegistrationLoginHandlersTest extends BaseTest{
 
     @Test
     void testLoginArtist() {
-        String testString = "0\n2\nStio\nNelChill\nKuruKuru\n1\n2\nStio\nNelChill\n4\n";
+        String testString = "1\n2\nStio\nNelChill\nKuruKuru\n1\n2\nStio\nNelChill\n4\n";
         ByteArrayInputStream input = new ByteArrayInputStream(testString.getBytes());
         System.setIn(input);
 

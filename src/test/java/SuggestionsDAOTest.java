@@ -155,9 +155,8 @@ public class SuggestionsDAOTest extends BaseTest{
 
     @Test
     void testSuggestions(){
-
-        assertEquals( getTopTenSongsByTopTenListeners(getCustomersWhoListenedTopTenSongs(getUserTopTen(countList,cus),
-                countList),countList),sud.getTopSongsBySimilarUsers(cus));
+            assertEquals(getTopTenSongsByTopTenListeners(getCustomersWhoListenedTopTenSongs(getUserTopTen(countList, cus),
+                    countList), countList), sud.getTopSongsBySimilarUsers(cus));
 
     }
 

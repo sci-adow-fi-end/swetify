@@ -1,12 +1,15 @@
 package businesslogic.artist;
 
+import businesslogic.utility.ConfigOptions;
 import businesslogic.utility.Handler;
 import businesslogic.utility.State;
 import dao.tracks.PodcastDAO;
 import dao.users.ArtistDAO;
 import domainmodel.entities.tracks.Podcast;
+import domainmodel.entities.tracks.Song;
 import domainmodel.entities.users.Artist;
 
+import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -25,6 +28,7 @@ public class PodcastLoadHandler extends Handler {
     private void renderChoices() {
         System.out.println("1: Load a podcast");
         System.out.println("2: exit");
+        System.out.println("3: Close Swetify");
         System.out.println("\n");
     }
 
@@ -32,14 +36,24 @@ public class PodcastLoadHandler extends Handler {
         Scanner input = new Scanner(System.in);
         System.out.println("Insert podcast name");
         System.out.println("\n");
-        return input.nextLine();
+        String s = input.nextLine();
+        if (ConfigOptions.TEST_MODE) {
+            String nextInput = getRestOfInput(input);
+            System.setIn(new ByteArrayInputStream(nextInput.getBytes()));
+        }
+        return s;
     }
 
     private String askPodcastTheme(){
         Scanner input = new Scanner(System.in);
         System.out.println("Insert podcast theme");
         System.out.println("\n");
-        return input.nextLine();
+        String s = input.nextLine();
+        if (ConfigOptions.TEST_MODE) {
+            String nextInput = getRestOfInput(input);
+            System.setIn(new ByteArrayInputStream(nextInput.getBytes()));
+        }
+        return s;
     }
 
     private List<Artist> askAuthors(State s){
@@ -51,16 +65,26 @@ public class PodcastLoadHandler extends Handler {
             System.out.println("1: Add Collaboration");
             System.out.println("2: exit");
             insertionEnded = askNumberInRange(1,2)==2;
-            System.out.println("\n");
-            System.out.println("Insert artist name");
-            artists.addAll(artistData.getByStageName(input.nextLine()));
+            if(!insertionEnded) {
+                System.out.println("\n");
+                System.out.println("Insert artist name");
+                artists.addAll(artistData.getByStageName(input.nextLine()));
+            }
         }
         return artists;
     }
 
     private Podcast createPodcast(State s){
-        Podcast np = new Podcast(askPodcastName(),askPodcastTheme(),askNumberInRange(0, Integer.MAX_VALUE),
-                askNumberInRange(0, Integer.MAX_VALUE),askAuthors(s));
+        String title = askPodcastName();
+        String theme = askPodcastTheme();
+        System.out.println("Insert duration (minutes)");
+        int minutes = askNumberInRange(0, Integer.MAX_VALUE);
+        System.out.println("Insert duration (seconds)");
+        int seconds = askNumberInRange(0, Integer.MAX_VALUE);
+        List<Artist> authors = askAuthors(s);
+
+        Podcast np = new Podcast(title,theme,minutes,seconds,authors);
+
         podcastData.save(np);
         return np;
     }
@@ -73,11 +97,15 @@ public class PodcastLoadHandler extends Handler {
         int navOpt = askNumberInRange(1,2);
         switch (navOpt){
             case 1:
-                s.getLoggedArtist().addPodcast(createPodcast(s));
+                Podcast newPodcast = createPodcast(s);
+                s.getLoggedArtist().addPodcast(newPodcast);
                 artistData.update(s.getLoggedArtist());
                 break;
             case 2:
                 navigationManager.previousState();
+                break;
+            case 3:
+                navigationManager.stop();
                 break;
             default:
                 printError("option not valid");
