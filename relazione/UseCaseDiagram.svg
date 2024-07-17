@@ -1,0 +1,513 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" height="606" version="1.1"
+     width="893">
+    <defs/>
+    <g>
+        <g>
+            <path d=" M 30.06953213778411 290.65 C 30.06953213778411 282.00674288 36.90573622796592 275 45.338623046875 275 C 53.77150986578408 275 60.60771395596589 282.00674288 60.60771395596589 290.65 C 60.60771395596589 299.29325711999996 53.77150986578408 306.3 45.338623046875 306.3 C 36.90573622796592 306.3 30.06953213778411 299.29325711999996 30.06953213778411 290.65 Z"
+                  fill="#ffffff" paint-order="stroke fill markers" stroke="none"/>
+        </g>
+        <g>
+            <path d=" M 30.06953213778411 290.65 C 30.06953213778411 282.00674288 36.90573622796592 275 45.338623046875 275 C 53.77150986578408 275 60.60771395596589 282.00674288 60.60771395596589 290.65 C 60.60771395596589 299.29325711999996 53.77150986578408 306.3 45.338623046875 306.3 C 36.90573622796592 306.3 30.06953213778411 299.29325711999996 30.06953213778411 290.65 Z"
+                  fill="none" paint-order="fill stroke markers" stroke="#000000" stroke-dasharray=""
+                  stroke-miterlimit="10"/>
+        </g>
+        <g>
+            <path d=" M 45.338623046875 306.3 L 45.338623046875 336.7" fill="none" paint-order="fill stroke markers"
+                  stroke="#000000" stroke-dasharray="" stroke-miterlimit="10"/>
+        </g>
+        <g>
+            <path d=" M 29.171350319602283 317.7 L 61.50589577414772 317.7" fill="none"
+                  paint-order="fill stroke markers" stroke="#000000" stroke-dasharray="" stroke-miterlimit="10"/>
+        </g>
+        <g>
+            <path d=" M 45.338623046875 336.7 L 22.88407759232956 368" fill="none" paint-order="fill stroke markers"
+                  stroke="#000000" stroke-dasharray="" stroke-miterlimit="10"/>
+        </g>
+        <g>
+            <path d=" M 45.338623046875 336.7 L 67.79316850142044 368" fill="none" paint-order="fill stroke markers"
+                  stroke="#000000" stroke-dasharray="" stroke-miterlimit="10"/>
+        </g>
+        <g>
+            <g>
+                <path fill="none" stroke="none"/>
+                <text dominant-baseline="central" fill="#000000" font-family="Arial" font-size="13px"
+                      font-style="normal" font-weight="bold" stroke="none" text-anchor="middle"
+                      text-decoration="undefined" transform="matrix(1 0 0 1 -86 -38)" x="131.838623046875" y="420.5">
+                    Customer
+                </text>
+            </g>
+        </g>
+        <g>
+            <path d=" M 65 209 C 65 191.3268864 90.74362400000001 177 122.5 177 C 154.256376 177 180 191.3268864 180 209 C 180 226.67311360000002 154.256376 241 122.5 241 C 90.74362400000001 241 65 226.67311360000002 65 209 Z"
+                  fill="#C0C0C0" fill-opacity="0.2" paint-order="stroke fill markers" stroke="none"/>
+        </g>
+        <g>
+            <path d=" M 58 202 C 58 184.3268864 83.74362400000001 170 115.5 170 C 147.256376 170 173 184.3268864 173 202 C 173 219.67311360000002 147.256376 234 115.5 234 C 83.74362400000001 234 58 219.67311360000002 58 202 Z"
+                  fill="#ffffff" paint-order="stroke fill markers" stroke="none"/>
+        </g>
+        <g>
+            <path d=" M 58 202 C 58 184.3268864 83.74362400000001 170 115.5 170 C 147.256376 170 173 184.3268864 173 202 C 173 219.67311360000002 147.256376 234 115.5 234 C 83.74362400000001 234 58 219.67311360000002 58 202 Z"
+                  fill="none" paint-order="fill stroke markers" stroke="#000000" stroke-dasharray=""
+                  stroke-miterlimit="10"/>
+        </g>
+        <g>
+            <g>
+                <path fill="none" stroke="none"/>
+                <text dominant-baseline="central" fill="#000000" font-family="Arial" font-size="13px"
+                      font-style="normal" font-weight="bold" stroke="none" text-anchor="middle"
+                      text-decoration="undefined" transform="matrix(1 0 0 1 -86 -38)" x="201.5" y="241">play a track
+                </text>
+            </g>
+        </g>
+        <g>
+            <path d=" M 97 53 C 97 33.1177472 122.74362400000001 17 154.5 17 C 186.256376 17 212 33.1177472 212 53 C 212 72.8822528 186.256376 89 154.5 89 C 122.74362400000001 89 97 72.8822528 97 53 Z"
+                  fill="#C0C0C0" fill-opacity="0.2" paint-order="stroke fill markers" stroke="none"/>
+        </g>
+        <g>
+            <path d=" M 90 46 C 90 26.117747199999997 115.74362400000001 10 147.5 10 C 179.256376 10 205 26.117747199999997 205 46 C 205 65.8822528 179.256376 82 147.5 82 C 115.74362400000001 82 90 65.8822528 90 46 Z"
+                  fill="#ffffff" paint-order="stroke fill markers" stroke="none"/>
+        </g>
+        <g>
+            <path d=" M 90 46 C 90 26.117747199999997 115.74362400000001 10 147.5 10 C 179.256376 10 205 26.117747199999997 205 46 C 205 65.8822528 179.256376 82 147.5 82 C 115.74362400000001 82 90 65.8822528 90 46 Z"
+                  fill="none" paint-order="fill stroke markers" stroke="#000000" stroke-dasharray=""
+                  stroke-miterlimit="10"/>
+        </g>
+        <g>
+            <g>
+                <path fill="none" stroke="none"/>
+                <text dominant-baseline="central" fill="#000000" font-family="Arial" font-size="13px"
+                      font-style="normal" font-weight="bold" stroke="none" text-anchor="middle"
+                      text-decoration="undefined" transform="matrix(1 0 0 1 -86 -38)" x="233.5" y="85">play a song
+                </text>
+            </g>
+        </g>
+        <g>
+            <path d=" M 241 93 C 241 73.1177472 272.5639216 57 311.5 57 C 350.4360784 57 382 73.1177472 382 93 C 382 112.8822528 350.4360784 129 311.5 129 C 272.5639216 129 241 112.8822528 241 93 Z"
+                  fill="#C0C0C0" fill-opacity="0.2" paint-order="stroke fill markers" stroke="none"/>
+        </g>
+        <g>
+            <path d=" M 234 86 C 234 66.1177472 265.5639216 50 304.5 50 C 343.4360784 50 375 66.1177472 375 86 C 375 105.8822528 343.4360784 122 304.5 122 C 265.5639216 122 234 105.8822528 234 86 Z"
+                  fill="#ffffff" paint-order="stroke fill markers" stroke="none"/>
+        </g>
+        <g>
+            <path d=" M 234 86 C 234 66.1177472 265.5639216 50 304.5 50 C 343.4360784 50 375 66.1177472 375 86 C 375 105.8822528 343.4360784 122 304.5 122 C 265.5639216 122 234 105.8822528 234 86 Z"
+                  fill="none" paint-order="fill stroke markers" stroke="#000000" stroke-dasharray=""
+                  stroke-miterlimit="10"/>
+        </g>
+        <g>
+            <g>
+                <path fill="none" stroke="none"/>
+                <text dominant-baseline="central" fill="#000000" font-family="Arial" font-size="13px"
+                      font-style="normal" font-weight="bold" stroke="none" text-anchor="middle"
+                      text-decoration="undefined" transform="matrix(1 0 0 1 -86 -38)" x="390.5" y="125">play a podcast
+                </text>
+            </g>
+        </g>
+        <g>
+            <path d=" M 121 369 C 121 346.908608 163.3090864 329 215.5 329 C 267.6909136 329 310 346.908608 310 369 C 310 391.091392 267.6909136 409 215.5 409 C 163.3090864 409 121 391.091392 121 369 Z"
+                  fill="#C0C0C0" fill-opacity="0.2" paint-order="stroke fill markers" stroke="none"/>
+        </g>
+        <g>
+            <path d=" M 114 362 C 114 339.908608 156.3090864 322 208.5 322 C 260.6909136 322 303 339.908608 303 362 C 303 384.091392 260.6909136 402 208.5 402 C 156.3090864 402 114 384.091392 114 362 Z"
+                  fill="#ffffff" paint-order="stroke fill markers" stroke="none"/>
+        </g>
+        <g>
+            <path d=" M 114 362 C 114 339.908608 156.3090864 322 208.5 322 C 260.6909136 322 303 339.908608 303 362 C 303 384.091392 260.6909136 402 208.5 402 C 156.3090864 402 114 384.091392 114 362 Z"
+                  fill="none" paint-order="fill stroke markers" stroke="#000000" stroke-dasharray=""
+                  stroke-miterlimit="10"/>
+        </g>
+        <g>
+            <g>
+                <path fill="none" stroke="none"/>
+                <text dominant-baseline="central" fill="#000000" font-family="Arial" font-size="13px"
+                      font-style="normal" font-weight="bold" stroke="none" text-anchor="middle"
+                      text-decoration="undefined" transform="matrix(1 0 0 1 -86 -38)" x="294.5" y="401">edit playback
+                    queue
+                </text>
+            </g>
+        </g>
+        <g>
+            <path d=" M 113 481 C 113 463.3268864 150.3842192 449 196.5 449 C 242.61578079999998 449 280 463.3268864 280 481 C 280 498.67311359999997 242.61578079999998 513 196.5 513 C 150.3842192 513 113 498.67311359999997 113 481 Z"
+                  fill="#C0C0C0" fill-opacity="0.2" paint-order="stroke fill markers" stroke="none"/>
+        </g>
+        <g>
+            <path d=" M 106 474 C 106 456.3268864 143.3842192 442 189.5 442 C 235.61578079999998 442 273 456.3268864 273 474 C 273 491.67311359999997 235.61578079999998 506 189.5 506 C 143.3842192 506 106 491.67311359999997 106 474 Z"
+                  fill="#ffffff" paint-order="stroke fill markers" stroke="none"/>
+        </g>
+        <g>
+            <path d=" M 106 474 C 106 456.3268864 143.3842192 442 189.5 442 C 235.61578079999998 442 273 456.3268864 273 474 C 273 491.67311359999997 235.61578079999998 506 189.5 506 C 143.3842192 506 106 491.67311359999997 106 474 Z"
+                  fill="none" paint-order="fill stroke markers" stroke="#000000" stroke-dasharray=""
+                  stroke-miterlimit="10"/>
+        </g>
+        <g>
+            <g>
+                <path fill="none" stroke="none"/>
+                <text dominant-baseline="central" fill="#000000" font-family="Arial" font-size="13px"
+                      font-style="normal" font-weight="bold" stroke="none" text-anchor="middle"
+                      text-decoration="undefined" transform="matrix(1 0 0 1 -86 -38)" x="275.5" y="513">view suggestions
+                </text>
+            </g>
+        </g>
+        <g>
+            <path d=" M 33 574 C 33 557.9837408 66.80249759999998 545 108.5 545 C 150.19750240000002 545 184 557.9837408 184 574 C 184 590.0162592 150.19750240000002 603 108.5 603 C 66.80249759999998 603 33 590.0162592 33 574 Z"
+                  fill="#C0C0C0" fill-opacity="0.2" paint-order="stroke fill markers" stroke="none"/>
+        </g>
+        <g>
+            <path d=" M 26 567 C 26 550.9837408 59.80249759999998 538 101.5 538 C 143.19750240000002 538 177 550.9837408 177 567 C 177 583.0162592 143.19750240000002 596 101.5 596 C 59.80249759999998 596 26 583.0162592 26 567 Z"
+                  fill="#ffffff" paint-order="stroke fill markers" stroke="none"/>
+        </g>
+        <g>
+            <path d=" M 26 567 C 26 550.9837408 59.80249759999998 538 101.5 538 C 143.19750240000002 538 177 550.9837408 177 567 C 177 583.0162592 143.19750240000002 596 101.5 596 C 59.80249759999998 596 26 583.0162592 26 567 Z"
+                  fill="none" paint-order="fill stroke markers" stroke="#000000" stroke-dasharray=""
+                  stroke-miterlimit="10"/>
+        </g>
+        <g>
+            <g>
+                <path fill="none" stroke="none"/>
+                <text dominant-baseline="central" fill="#000000" font-family="Arial" font-size="13px"
+                      font-style="normal" font-weight="bold" stroke="none" text-anchor="middle"
+                      text-decoration="undefined" transform="matrix(1 0 0 1 -86 -38)" x="187.5" y="606">CRUD a playlist
+                </text>
+            </g>
+        </g>
+        <g>
+            <path d=" M 289 253 C 289 237.53602560000002 319.6684912 225 357.5 225 C 395.3315088 225 426 237.53602560000002 426 253 C 426 268.4639744 395.3315088 281 357.5 281 C 319.6684912 281 289 268.4639744 289 253 Z"
+                  fill="#C0C0C0" fill-opacity="0.2" paint-order="stroke fill markers" stroke="none"/>
+        </g>
+        <g>
+            <path d=" M 282 246 C 282 230.53602560000002 312.6684912 218 350.5 218 C 388.3315088 218 419 230.53602560000002 419 246 C 419 261.4639744 388.3315088 274 350.5 274 C 312.6684912 274 282 261.4639744 282 246 Z"
+                  fill="#ffffff" paint-order="stroke fill markers" stroke="none"/>
+        </g>
+        <g>
+            <path d=" M 282 246 C 282 230.53602560000002 312.6684912 218 350.5 218 C 388.3315088 218 419 230.53602560000002 419 246 C 419 261.4639744 388.3315088 274 350.5 274 C 312.6684912 274 282 261.4639744 282 246 Z"
+                  fill="none" paint-order="fill stroke markers" stroke="#000000" stroke-dasharray=""
+                  stroke-miterlimit="10"/>
+        </g>
+        <g>
+            <g>
+                <path fill="none" stroke="none"/>
+                <text dominant-baseline="central" fill="#000000" font-family="Arial" font-size="13px"
+                      font-style="normal" font-weight="bold" stroke="none" text-anchor="middle"
+                      text-decoration="undefined" transform="matrix(1 0 0 1 -86 -38)" x="436.5" y="285">search a track
+                </text>
+            </g>
+        </g>
+        <g>
+            <path d=" M 345 381 C 345 365.5360256 381.936504 353 427.5 353 C 473.063496 353 510 365.5360256 510 381 C 510 396.4639744 473.063496 409 427.5 409 C 381.936504 409 345 396.4639744 345 381 Z"
+                  fill="#C0C0C0" fill-opacity="0.2" paint-order="stroke fill markers" stroke="none"/>
+        </g>
+        <g>
+            <path d=" M 338 374 C 338 358.5360256 374.936504 346 420.5 346 C 466.063496 346 503 358.5360256 503 374 C 503 389.4639744 466.063496 402 420.5 402 C 374.936504 402 338 389.4639744 338 374 Z"
+                  fill="#ffffff" paint-order="stroke fill markers" stroke="none"/>
+        </g>
+        <g>
+            <path d=" M 338 374 C 338 358.5360256 374.936504 346 420.5 346 C 466.063496 346 503 358.5360256 503 374 C 503 389.4639744 466.063496 402 420.5 402 C 374.936504 402 338 389.4639744 338 374 Z"
+                  fill="none" paint-order="fill stroke markers" stroke="#000000" stroke-dasharray=""
+                  stroke-miterlimit="10"/>
+        </g>
+        <g>
+            <g>
+                <path fill="none" stroke="none"/>
+                <text dominant-baseline="central" fill="#000000" font-family="Arial" font-size="13px"
+                      font-style="normal" font-weight="bold" stroke="none" text-anchor="middle"
+                      text-decoration="undefined" transform="matrix(1 0 0 1 -86 -38)" x="506.5" y="413">view authors
+                    info
+                </text>
+            </g>
+        </g>
+        <g>
+            <path d=" M 377 517 C 377 497.11774720000005 414.6080768 481 461 481 C 507.39192319999995 481 545 497.11774720000005 545 517 C 545 536.8822528 507.39192319999995 553 461 553 C 414.6080768 553 377 536.8822528 377 517 Z"
+                  fill="#C0C0C0" fill-opacity="0.2" paint-order="stroke fill markers" stroke="none"/>
+        </g>
+        <g>
+            <path d=" M 370 510 C 370 490.11774720000005 407.6080768 474 454 474 C 500.39192319999995 474 538 490.11774720000005 538 510 C 538 529.8822528 500.39192319999995 546 454 546 C 407.6080768 546 370 529.8822528 370 510 Z"
+                  fill="#ffffff" paint-order="stroke fill markers" stroke="none"/>
+        </g>
+        <g>
+            <path d=" M 370 510 C 370 490.11774720000005 407.6080768 474 454 474 C 500.39192319999995 474 538 490.11774720000005 538 510 C 538 529.8822528 500.39192319999995 546 454 546 C 407.6080768 546 370 529.8822528 370 510 Z"
+                  fill="none" paint-order="fill stroke markers" stroke="#000000" stroke-dasharray=""
+                  stroke-miterlimit="10"/>
+        </g>
+        <g>
+            <g>
+                <path fill="none" stroke="none"/>
+                <text dominant-baseline="central" fill="#000000" font-family="Arial" font-size="13px"
+                      font-style="normal" font-weight="bold" stroke="none" text-anchor="middle"
+                      text-decoration="undefined" transform="matrix(1 0 0 1 -86 -38)" x="540" y="549">follow an artist
+                </text>
+            </g>
+        </g>
+        <g>
+            <path d=" M 417 137 C 417 119.3268864 447.66849119999995 105 485.5 105 C 523.3315088 105 554 119.3268864 554 137 C 554 154.6731136 523.3315088 169 485.5 169 C 447.66849119999995 169 417 154.6731136 417 137 Z"
+                  fill="#C0C0C0" fill-opacity="0.2" paint-order="stroke fill markers" stroke="none"/>
+        </g>
+        <g>
+            <path d=" M 410 130 C 410 112.3268864 440.66849119999995 98 478.5 98 C 516.3315088 98 547 112.3268864 547 130 C 547 147.6731136 516.3315088 162 478.5 162 C 440.66849119999995 162 410 147.6731136 410 130 Z"
+                  fill="#ffffff" paint-order="stroke fill markers" stroke="none"/>
+        </g>
+        <g>
+            <path d=" M 410 130 C 410 112.3268864 440.66849119999995 98 478.5 98 C 516.3315088 98 547 112.3268864 547 130 C 547 147.6731136 516.3315088 162 478.5 162 C 440.66849119999995 162 410 147.6731136 410 130 Z"
+                  fill="none" paint-order="fill stroke markers" stroke="#000000" stroke-dasharray=""
+                  stroke-miterlimit="10"/>
+        </g>
+        <g>
+            <g>
+                <path fill="none" stroke="none"/>
+                <text dominant-baseline="central" fill="#000000" font-family="Arial" font-size="13px"
+                      font-style="normal" font-weight="bold" stroke="none" text-anchor="middle"
+                      text-decoration="undefined" transform="matrix(1 0 0 1 -86 -38)" x="564.5" y="169">search a song
+                </text>
+            </g>
+        </g>
+        <g>
+            <path d=" M 489 241 C 489 218.90860800000002 525.7126464 201 571 201 C 616.2873536 201 653 218.90860800000002 653 241 C 653 263.091392 616.2873536 281 571 281 C 525.7126464 281 489 263.091392 489 241 Z"
+                  fill="#C0C0C0" fill-opacity="0.2" paint-order="stroke fill markers" stroke="none"/>
+        </g>
+        <g>
+            <path d=" M 482 234 C 482 211.90860800000002 518.7126464 194 564 194 C 609.2873536 194 646 211.90860800000002 646 234 C 646 256.091392 609.2873536 274 564 274 C 518.7126464 274 482 256.091392 482 234 Z"
+                  fill="#ffffff" paint-order="stroke fill markers" stroke="none"/>
+        </g>
+        <g>
+            <path d=" M 482 234 C 482 211.90860800000002 518.7126464 194 564 194 C 609.2873536 194 646 211.90860800000002 646 234 C 646 256.091392 609.2873536 274 564 274 C 518.7126464 274 482 256.091392 482 234 Z"
+                  fill="none" paint-order="fill stroke markers" stroke="#000000" stroke-dasharray=""
+                  stroke-miterlimit="10"/>
+        </g>
+        <g>
+            <g>
+                <path fill="none" stroke="none"/>
+                <text dominant-baseline="central" fill="#000000" font-family="Arial" font-size="13px"
+                      font-style="normal" font-weight="bold" stroke="none" text-anchor="middle"
+                      text-decoration="undefined" transform="matrix(1 0 0 1 -86 -38)" x="650" y="273">search a podcast
+                </text>
+            </g>
+        </g>
+        <g>
+            <path d=" M 77 273 L 98 235" fill="none" paint-order="fill stroke markers" stroke="#000000"
+                  stroke-dasharray="" stroke-miterlimit="10"/>
+        </g>
+        <g>
+            <path d=" M 82 340 L 113 346" fill="none" paint-order="fill stroke markers" stroke="#000000"
+                  stroke-dasharray="" stroke-miterlimit="10"/>
+        </g>
+        <g>
+            <path d=" M 82 370 L 155 441" fill="none" paint-order="fill stroke markers" stroke="#000000"
+                  stroke-dasharray="" stroke-miterlimit="10"/>
+        </g>
+        <g>
+            <path d=" M 60 395 L 94 537" fill="none" paint-order="fill stroke markers" stroke="#000000"
+                  stroke-dasharray="" stroke-miterlimit="10"/>
+        </g>
+        <g>
+            <path d=" M 82 323 L 281 266" fill="none" paint-order="fill stroke markers" stroke="#000000"
+                  stroke-dasharray="" stroke-miterlimit="10"/>
+        </g>
+        <g>
+            <path d=" M 139 83 L 122 169" fill="none" paint-order="fill stroke markers" stroke="#000000"
+                  stroke-dasharray="" stroke-miterlimit="10"/>
+        </g>
+        <g>
+            <path d=" M 117.68231497639567 147.42785138107604 L 122 169 L 134.20074821398694 150.69312306757664"
+                  fill="#FFFFFF" paint-order="stroke fill markers" stroke="none"/>
+        </g>
+        <g>
+            <path d=" M 117.68231497639567 147.42785138107604 L 122 169 L 134.20074821398694 150.69312306757664 L 117.68231497639567 147.42785138107604"
+                  fill="none" paint-order="fill stroke markers" stroke="#000000" stroke-dasharray=""
+                  stroke-miterlimit="10"/>
+        </g>
+        <g>
+            <path d=" M 244 123 L 169 169" fill="none" paint-order="fill stroke markers" stroke="#000000"
+                  stroke-dasharray="" stroke-miterlimit="10"/>
+        </g>
+        <g>
+            <path d=" M 181.92438543698694 151.19662220037443 L 169 169 L 190.72780975530338 165.55003141502084"
+                  fill="#FFFFFF" paint-order="stroke fill markers" stroke="none"/>
+        </g>
+        <g>
+            <path d=" M 181.92438543698694 151.19662220037443 L 169 169 L 190.72780975530338 165.55003141502084 L 181.92438543698694 151.19662220037443"
+                  fill="none" paint-order="fill stroke markers" stroke="#000000" stroke-dasharray=""
+                  stroke-miterlimit="10"/>
+        </g>
+        <g>
+            <path d=" M 174 213 L 281 233" fill="none" paint-order="fill stroke markers" stroke="#000000"
+                  stroke-dasharray="3" stroke-miterlimit="10"/>
+        </g>
+        <g>
+            <path d=" M 270.2369033556452 235.2706278039958 L 281 233 L 271.7837650584544 226.99491769396673"
+                  fill="none" paint-order="fill stroke markers" stroke="#000000" stroke-dasharray=""
+                  stroke-miterlimit="10"/>
+        </g>
+        <g>
+            <rect fill="#ffffff" height="13" stroke="none" transform="matrix(1 0 0 1 -86 -38)" width="53.49169921875"
+                  x="292" y="225"/>
+        </g>
+        <g>
+            <g>
+                <path fill="none" stroke="none"/>
+                <text dominant-baseline="central" fill="#000000" font-family="Arial" font-size="13px"
+                      font-style="normal" font-weight="normal" stroke="none" text-anchor="middle"
+                      text-decoration="undefined" transform="matrix(1 0 0 1 -86 -38)" x="318.745849609375" y="231.5">
+                    «extend»
+                </text>
+            </g>
+        </g>
+        <g>
+            <path d=" M 404 345 L 366 275" fill="none" paint-order="fill stroke markers" stroke="#000000"
+                  stroke-dasharray="3" stroke-miterlimit="10"/>
+        </g>
+        <g>
+            <path d=" M 374.5480786054463 281.92317500537956 L 366 275 L 367.1489803543816 285.9398283416718"
+                  fill="none" paint-order="fill stroke markers" stroke="#000000" stroke-dasharray=""
+                  stroke-miterlimit="10"/>
+        </g>
+        <g>
+            <rect fill="#ffffff" height="13" stroke="none" transform="matrix(1 0 0 1 -86 -38)" width="53.49169921875"
+                  x="418" y="356"/>
+        </g>
+        <g>
+            <g>
+                <path fill="none" stroke="none"/>
+                <text dominant-baseline="central" fill="#000000" font-family="Arial" font-size="13px"
+                      font-style="normal" font-weight="normal" stroke="none" text-anchor="middle"
+                      text-decoration="undefined" transform="matrix(1 0 0 1 -86 -38)" x="444.745849609375" y="362.5">
+                    «extend»
+                </text>
+            </g>
+        </g>
+        <g>
+            <path d=" M 445 473 L 427 403" fill="none" paint-order="fill stroke markers" stroke="#000000"
+                  stroke-dasharray="3" stroke-miterlimit="10"/>
+        </g>
+        <g>
+            <path d=" M 433.6078113101423 411.7941360968292 L 427 403 L 425.45403491745753 413.8908214549482"
+                  fill="none" paint-order="fill stroke markers" stroke="#000000" stroke-dasharray=""
+                  stroke-miterlimit="10"/>
+        </g>
+        <g>
+            <rect fill="#ffffff" height="13" stroke="none" transform="matrix(1 0 0 1 -86 -38)" width="53.49169921875"
+                  x="466" y="477"/>
+        </g>
+        <g>
+            <g>
+                <path fill="none" stroke="none"/>
+                <text dominant-baseline="central" fill="#000000" font-family="Arial" font-size="13px"
+                      font-style="normal" font-weight="normal" stroke="none" text-anchor="middle"
+                      text-decoration="undefined" transform="matrix(1 0 0 1 -86 -38)" x="492.745849609375" y="483.5">
+                    «extend»
+                </text>
+            </g>
+        </g>
+        <g>
+            <path d=" M 442 163 L 382 217" fill="none" paint-order="fill stroke markers" stroke="#000000"
+                  stroke-dasharray="" stroke-miterlimit="10"/>
+        </g>
+        <g>
+            <path d=" M 391.4756756319442 197.1452380694661 L 382 217 L 402.73975129559693 209.66087769574688"
+                  fill="#FFFFFF" paint-order="stroke fill markers" stroke="none"/>
+        </g>
+        <g>
+            <path d=" M 391.4756756319442 197.1452380694661 L 382 217 L 402.73975129559693 209.66087769574688 L 391.4756756319442 197.1452380694661"
+                  fill="none" paint-order="fill stroke markers" stroke="#000000" stroke-dasharray=""
+                  stroke-miterlimit="10"/>
+        </g>
+        <g>
+            <path d=" M 481 239 L 420 242" fill="none" paint-order="fill stroke markers" stroke="#000000"
+                  stroke-dasharray="" stroke-miterlimit="10"/>
+        </g>
+        <g>
+            <path d=" M 439.8872626064915 232.59272696152368 L 420 242 L 440.7143648062678 249.41047169030782"
+                  fill="#FFFFFF" paint-order="stroke fill markers" stroke="none"/>
+        </g>
+        <g>
+            <path d=" M 439.8872626064915 232.59272696152368 L 420 242 L 440.7143648062678 249.41047169030782 L 439.8872626064915 232.59272696152368"
+                  fill="none" paint-order="fill stroke markers" stroke="#000000" stroke-dasharray=""
+                  stroke-miterlimit="10"/>
+        </g>
+        <g>
+            <path d=" M 838.7309090909091 290.65 C 838.7309090909091 282.00674288 845.5671131810909 275 854 275 C 862.4328868189091 275 869.2690909090909 282.00674288 869.2690909090909 290.65 C 869.2690909090909 299.29325711999996 862.4328868189091 306.3 854 306.3 C 845.5671131810909 306.3 838.7309090909091 299.29325711999996 838.7309090909091 290.65 Z"
+                  fill="#ffffff" paint-order="stroke fill markers" stroke="none"/>
+        </g>
+        <g>
+            <path d=" M 838.7309090909091 290.65 C 838.7309090909091 282.00674288 845.5671131810909 275 854 275 C 862.4328868189091 275 869.2690909090909 282.00674288 869.2690909090909 290.65 C 869.2690909090909 299.29325711999996 862.4328868189091 306.3 854 306.3 C 845.5671131810909 306.3 838.7309090909091 299.29325711999996 838.7309090909091 290.65 Z"
+                  fill="none" paint-order="fill stroke markers" stroke="#000000" stroke-dasharray=""
+                  stroke-miterlimit="10"/>
+        </g>
+        <g>
+            <path d=" M 854 306.3 L 854 336.7" fill="none" paint-order="fill stroke markers" stroke="#000000"
+                  stroke-dasharray="" stroke-miterlimit="10"/>
+        </g>
+        <g>
+            <path d=" M 837.8327272727272 317.7 L 870.1672727272728 317.7" fill="none" paint-order="fill stroke markers"
+                  stroke="#000000" stroke-dasharray="" stroke-miterlimit="10"/>
+        </g>
+        <g>
+            <path d=" M 854 336.7 L 831.5454545454545 368" fill="none" paint-order="fill stroke markers"
+                  stroke="#000000" stroke-dasharray="" stroke-miterlimit="10"/>
+        </g>
+        <g>
+            <path d=" M 854 336.7 L 876.4545454545455 368" fill="none" paint-order="fill stroke markers"
+                  stroke="#000000" stroke-dasharray="" stroke-miterlimit="10"/>
+        </g>
+        <g>
+            <g>
+                <path fill="none" stroke="none"/>
+                <text dominant-baseline="central" fill="#000000" font-family="Arial" font-size="13px"
+                      font-style="normal" font-weight="bold" stroke="none" text-anchor="middle"
+                      text-decoration="undefined" transform="matrix(1 0 0 1 -86 -38)" x="940.5" y="420.5">Artist
+                </text>
+            </g>
+        </g>
+        <g>
+            <path d=" M 569 445 C 569 425.1177472 605.936504 409 651.5 409 C 697.063496 409 734 425.1177472 734 445 C 734 464.8822528 697.063496 481 651.5 481 C 605.936504 481 569 464.8822528 569 445 Z"
+                  fill="#C0C0C0" fill-opacity="0.2" paint-order="stroke fill markers" stroke="none"/>
+        </g>
+        <g>
+            <path d=" M 562 438 C 562 418.1177472 598.936504 402 644.5 402 C 690.063496 402 727 418.1177472 727 438 C 727 457.8822528 690.063496 474 644.5 474 C 598.936504 474 562 457.8822528 562 438 Z"
+                  fill="#ffffff" paint-order="stroke fill markers" stroke="none"/>
+        </g>
+        <g>
+            <path d=" M 562 438 C 562 418.1177472 598.936504 402 644.5 402 C 690.063496 402 727 418.1177472 727 438 C 727 457.8822528 690.063496 474 644.5 474 C 598.936504 474 562 457.8822528 562 438 Z"
+                  fill="none" paint-order="fill stroke markers" stroke="#000000" stroke-dasharray=""
+                  stroke-miterlimit="10"/>
+        </g>
+        <g>
+            <g>
+                <path fill="none" stroke="none"/>
+                <text dominant-baseline="central" fill="#000000" font-family="Arial" font-size="13px"
+                      font-style="normal" font-weight="bold" stroke="none" text-anchor="middle"
+                      text-decoration="undefined" transform="matrix(1 0 0 1 -86 -38)" x="730.5" y="477">publish an album
+                </text>
+            </g>
+        </g>
+        <g>
+            <path d=" M 825 348 L 719 401" fill="none" paint-order="fill stroke markers" stroke="#000000"
+                  stroke-dasharray="" stroke-miterlimit="10"/>
+        </g>
+        <g>
+            <path d=" M 553 333 C 553 317.5360256 591.055792 305 638 305 C 684.944208 305 723 317.5360256 723 333 C 723 348.4639744 684.944208 361 638 361 C 591.055792 361 553 348.4639744 553 333 Z"
+                  fill="#C0C0C0" fill-opacity="0.2" paint-order="stroke fill markers" stroke="none"/>
+        </g>
+        <g>
+            <path d=" M 546 326 C 546 310.5360256 584.055792 298 631 298 C 677.944208 298 716 310.5360256 716 326 C 716 341.4639744 677.944208 354 631 354 C 584.055792 354 546 341.4639744 546 326 Z"
+                  fill="#ffffff" paint-order="stroke fill markers" stroke="none"/>
+        </g>
+        <g>
+            <path d=" M 546 326 C 546 310.5360256 584.055792 298 631 298 C 677.944208 298 716 310.5360256 716 326 C 716 341.4639744 677.944208 354 631 354 C 584.055792 354 546 341.4639744 546 326 Z"
+                  fill="none" paint-order="fill stroke markers" stroke="#000000" stroke-dasharray=""
+                  stroke-miterlimit="10"/>
+        </g>
+        <g>
+            <g>
+                <path fill="none" stroke="none"/>
+                <text dominant-baseline="central" fill="#000000" font-family="Arial" font-size="13px"
+                      font-style="normal" font-weight="bold" stroke="none" text-anchor="middle"
+                      text-decoration="undefined" transform="matrix(1 0 0 1 -86 -38)" x="717" y="365">publish a podcast
+                </text>
+            </g>
+        </g>
+        <g>
+            <path d=" M 825 333 L 717 329" fill="none" paint-order="fill stroke markers" stroke="#000000"
+                  stroke-dasharray="" stroke-miterlimit="10"/>
+        </g>
+    </g>
+</svg>
