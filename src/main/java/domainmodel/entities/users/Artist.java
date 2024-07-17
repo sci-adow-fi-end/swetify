@@ -21,11 +21,12 @@ public class Artist extends BaseEntity {
 
     private String biography;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.MERGE)
     final private List<Album> albums = new ArrayList<>();
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.MERGE)
     final private List<Podcast> podcasts = new ArrayList<>();
+
     @Transient
     private int followers;
 

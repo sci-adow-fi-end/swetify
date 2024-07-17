@@ -15,7 +15,7 @@ import java.util.List;
 @Table(name = "Playlists")
 public class Playlist<T extends Track> extends BaseEntity implements Iterable<T> {
     protected String title;
-    @ManyToMany(cascade = CascadeType.ALL, targetEntity = Track.class)
+    @ManyToMany(cascade = CascadeType.MERGE, targetEntity = Track.class)
     protected List<T> tracks = new ArrayList<>();
 
     public Playlist(){

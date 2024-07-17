@@ -10,8 +10,10 @@ import java.util.List;
 @Entity
 @Table(name = "Albums")
 public class Album extends BaseEntity {
-    @OneToOne(cascade = CascadeType.ALL)
-    private Playlist<Song> playlist;
+
+    @OneToOne(cascade = CascadeType.PERSIST)
+    final private Playlist<Song> playlist;
+
     @Temporal(TemporalType.DATE)
     private Date releaseDate;
 
@@ -19,6 +21,7 @@ public class Album extends BaseEntity {
         this.playlist = new Playlist<>();
     }
 
+    //TODO use this constructor
     public Album(String title, List<Song> trackList) {
         this.playlist = new Playlist<>(title,trackList);
         this.releaseDate = new Date();
@@ -28,9 +31,6 @@ public class Album extends BaseEntity {
         return playlist;
     }
 
-    public void setPlaylist(Playlist<Song> playlist) {
-        this.playlist = playlist;
-    }
 
     public Date getReleaseDate() {
         return releaseDate;

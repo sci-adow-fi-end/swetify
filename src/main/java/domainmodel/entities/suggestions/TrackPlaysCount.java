@@ -10,10 +10,10 @@ import jakarta.persistence.*;
 @EntityListeners(TrackPlaysCountListener.class)
 public class TrackPlaysCount extends BaseEntity {
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.MERGE)
     private Customer customer;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.MERGE)
     private Track track;
 
     private int plays;

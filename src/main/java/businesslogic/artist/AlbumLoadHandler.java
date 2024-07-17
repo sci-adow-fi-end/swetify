@@ -97,6 +97,7 @@ public class AlbumLoadHandler extends Handler {
         List<Artist> authors = askAuthors(s);
 
         Song ns = new Song(title,lyrics,minutes,seconds,authors);
+        songData.save(ns);
         return ns;
     }
 

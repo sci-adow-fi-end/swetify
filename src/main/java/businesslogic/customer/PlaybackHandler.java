@@ -75,11 +75,11 @@ public class PlaybackHandler extends Handler {
 
     private void printQueue(State state){
         System.out.println("Current track");
-        System.out.println(state.getPlayingTrack().getTitle());
+        System.out.println(state.getPlayingTrack());
         System.out.println("\n");
         System.out.println("Next songs in queue:");
         for(Track t: state.getQueue()){
-            System.out.println(t.getTitle());
+            System.out.println(t);
         }
     }
 

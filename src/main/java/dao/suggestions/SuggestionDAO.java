@@ -9,6 +9,7 @@ import domainmodel.entities.tracks.Song;
 import domainmodel.entities.tracks.Track;
 import domainmodel.entities.users.Customer;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
@@ -20,10 +21,9 @@ import java.util.stream.Collectors;
 
 public class SuggestionDAO extends BaseDAO<TrackPlaysCount> {
 
-    @PersistenceContext
-    private EntityManager entityManager;
 
     private <T extends TrackPlaysCount> List<Track> getTopTracksByUser(Customer user, Class<T> entityClass) {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
         CriteriaQuery<Track> query = cb.createQuery(Track.class);
         Root<T> root = query.from(entityClass);
@@ -36,6 +36,7 @@ public class SuggestionDAO extends BaseDAO<TrackPlaysCount> {
     }
 
     private <T extends TrackPlaysCount> List<Long> getUsersWhoListenedToTopTracks(List<Track> topTracks, Class<T> entityClass) {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
         CriteriaQuery<Long> query = cb.createQuery(Long.class);
         Root<T> root = query.from(entityClass);
@@ -45,6 +46,7 @@ public class SuggestionDAO extends BaseDAO<TrackPlaysCount> {
     }
 
     private <T extends TrackPlaysCount> List<Track> getTopTracksByUsers(List<Long> users, Class<T> entityClass) {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
         CriteriaQuery<Track> query = cb.createQuery(Track.class);
         Root<T> root = query.from(entityClass);
@@ -53,11 +55,12 @@ public class SuggestionDAO extends BaseDAO<TrackPlaysCount> {
                 .groupBy(root.get("track"))
                 .orderBy(cb.desc(cb.sum(root.get("plays"))));
         return entityManager.createQuery(query)
-                .setMaxResults(3)
+                .setMaxResults(10)
                 .getResultList();
     }
 
     public List<Song> getTopSongsBySimilarUsers(Customer user) {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
         entityManager.getTransaction().begin();
 
         List<Track> top10Tracks = getTopTracksByUser(user, SongPlaysCount.class);
@@ -73,6 +76,7 @@ public class SuggestionDAO extends BaseDAO<TrackPlaysCount> {
     }
 
     public List<Podcast> getTopPodcastsBySimilarUsers(Customer user) {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
         entityManager.getTransaction().begin();
 
         List<Track> top10Tracks = getTopTracksByUser(user, PodcastPlaysCount.class);

@@ -1,4 +1,5 @@
 import businesslogic.utility.NavigationManager;
+import dao.users.ArtistDAO;
 import domainmodel.entities.users.Artist;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,9 +16,11 @@ public class AlbumLoadTest extends BaseTest{
     @BeforeEach
     public void setup(){
         super.setUp();
+        ArtistDAO adao = new ArtistDAO();
         nm.pushHandler(NavigationManager.HandlerId.LOAD_ALBUM);
         Artist a = new Artist("paolino","paperino","paperinik","ero un gran figo",0);
         nm.getCurrentState().setLoggedArtist(a);
+        adao.save(a);
     }
 
     @Test
