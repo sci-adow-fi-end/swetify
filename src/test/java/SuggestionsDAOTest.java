@@ -3,9 +3,7 @@ import dao.tracks.SongDAO;
 import dao.users.CustomerDAO;
 import domainmodel.entities.suggestions.SongPlaysCount;
 import domainmodel.entities.tracks.Song;
-import domainmodel.entities.users.Artist;
 import domainmodel.entities.users.Customer;
-import org.apache.commons.lang3.tuple.Pair;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -135,7 +133,7 @@ public class SuggestionsDAOTest extends BaseTest{
     public List<Song> getTopTenSongsByTopTenListeners(List<Customer> customers, List<SongPlaysCount> spcl) {
         Map<Song, Integer> songPlayCountMap = new HashMap<>();
 
-        // Conta le occorrenze di ogni canzone ascoltata dai customer restituiti
+        // Somma le riproduzioni di ogni canzone ascoltata dai customer restituiti
         for (SongPlaysCount spc : spcl) {
             if (customers.contains(spc.getCustomer())) {
                 Song song = (Song) spc.getTrack();
@@ -149,7 +147,7 @@ public class SuggestionsDAOTest extends BaseTest{
                 .map(Map.Entry::getKey)
                 .toList();
 
-        // Limita la lunghezza della lista a 10 canzoni e restituisce le prime 3
+        // Limita la lunghezza della lista a 10 canzoni e restituisce le prime 10
         return sortedSongs.stream().limit(10).collect(Collectors.toList());
     }
 

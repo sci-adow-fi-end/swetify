@@ -3,11 +3,21 @@ package businesslogic.customer;
 import businesslogic.utility.Handler;
 import businesslogic.utility.NavigationManager;
 import businesslogic.utility.State;
+import dao.users.ArtistDAO;
+import dao.users.CustomerDAO;
 import domainmodel.entities.users.Artist;
 
 import java.util.Scanner;
 
 public class ArtistInfoHandler extends Handler {
+
+    private final ArtistDAO artistDAO;
+    private final CustomerDAO customerDAO;
+
+    public ArtistInfoHandler(ArtistDAO artistDAO, CustomerDAO customerDAO) {
+        this.artistDAO = artistDAO;
+        this.customerDAO = customerDAO;
+    }
 
     private void renderArtistInfo(Artist artist) {
         System.out.println("Stage name: "+artist.getStageName());
@@ -50,6 +60,8 @@ public class ArtistInfoHandler extends Handler {
                 case 1:
                     state.getViewingArtist().setFollowers(state.getViewingArtist().getFollowers() + 1);
                     state.getLoggedUser().addFollowedArtists(state.getViewingArtist());
+                    artistDAO.update(state.getViewingArtist());
+                    customerDAO.update(state.getLoggedUser());
                     System.out.println("Now you follow " + state.getViewingArtist().getStageName());
                     break;
                 case 2:

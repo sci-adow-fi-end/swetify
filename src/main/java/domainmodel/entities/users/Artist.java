@@ -27,17 +27,15 @@ public class Artist extends BaseEntity {
     @ManyToMany(cascade = CascadeType.MERGE)
     final private List<Podcast> podcasts = new ArrayList<>();
 
-    @Transient
-    private int followers;
+    private int followers = 0;
 
     public Artist(){}
 
-    public Artist(String username, String password, String stageName, String biography, int followers) {
+    public Artist(String username, String password, String stageName, String biography) {
         this.username = username;
         this.password = password;
         this.stageName = stageName;
         this.biography = biography;
-        this.followers = followers;
     }
 
     public String getUsername() {

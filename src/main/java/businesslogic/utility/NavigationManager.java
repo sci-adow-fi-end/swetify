@@ -85,7 +85,8 @@ public class NavigationManager {
                 , (PodcastPlaylistDAO) databases.get(DaoId.PODCAST_PLAYLIST)));
         handlers.put(HandlerId.VIEW_SUGGESTIONS, new SuggestionsHandler((SuggestionDAO) databases.get(DaoId.SUGGESTIONS)));
         handlers.put(HandlerId.PLAY_TRACK, new PlaybackHandler());
-        handlers.put(HandlerId.VIEW_ARTIST, new ArtistInfoHandler());
+        handlers.put(HandlerId.VIEW_ARTIST, new ArtistInfoHandler((ArtistDAO) databases.get(DaoId.ARTIST),
+                (CustomerDAO) databases.get(DaoId.USER)));
         handlers.put(HandlerId.VIEW_ALBUMS, new AlbumsHandler((AlbumDAO) databases.get(DaoId.ALBUM)));
         handlers.put(HandlerId.ARTIST_HOME, new ArtistHomeHandler());
         handlers.put(HandlerId.UPDATE_PLAYLIST, new PlaylistUpdateHandler((SongDAO) databases.get(DaoId.SONG), (PodcastDAO) databases.get(DaoId.PODCAST),
@@ -94,7 +95,6 @@ public class NavigationManager {
                 (SongDAO) databases.get(DaoId.SONG), (AlbumDAO) databases.get(DaoId.ALBUM)));
         handlers.put(HandlerId.LOAD_PODCAST, new PodcastLoadHandler((ArtistDAO) databases.get(DaoId.ARTIST),
                 (PodcastDAO) databases.get(DaoId.PODCAST)));
-        //TODO stiò
 
         states = new Stack<>();
 
@@ -157,14 +157,6 @@ public class NavigationManager {
 
     public int getLastId() {
         return lastId;
-    }
-
-    public BaseDAO<?> getDaoById(DaoId daoId) {
-        return databases.get(daoId);
-    }
-
-    public Handler getHandlerById(HandlerId handlerId) {
-        return handlers.get(handlerId);
     }
 
     public State getCurrentState() {
