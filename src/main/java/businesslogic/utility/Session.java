@@ -6,7 +6,7 @@ import domainmodel.entities.tracks.Track;
 import domainmodel.entities.users.Artist;
 import domainmodel.entities.users.Customer;
 
-public class State {
+public class Session {
 
     private Customer loggedUser;
 

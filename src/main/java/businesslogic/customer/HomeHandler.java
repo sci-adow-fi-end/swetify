@@ -3,7 +3,7 @@ package businesslogic.customer;
 import businesslogic.utility.ConfigOptions;
 import businesslogic.utility.Handler;
 import businesslogic.utility.NavigationManager;
-import businesslogic.utility.State;
+import businesslogic.utility.Session;
 
 import java.io.ByteArrayInputStream;
 import java.util.Scanner;
@@ -11,8 +11,8 @@ import java.util.Scanner;
 public class HomeHandler extends Handler {
 
 
-    private void renderChoices(State state) {
-        System.out.println(state.getLoggedUser().getUsername() + " welcome to swetify, the engineer's music streaming service!");
+    private void renderChoices(Session session) {
+        System.out.println(session.getLoggedUser().getUsername() + " welcome to swetify, the engineer's music streaming service!");
         System.out.println("\n");
         System.out.println("1: Search for a track, artist or playlist");
         System.out.println("2: View your playlists");
@@ -23,9 +23,9 @@ public class HomeHandler extends Handler {
 
 
     @Override
-    public State update(State state) {
+    public Session update(Session session) {
         clearScreen();
-        renderChoices(state);
+        renderChoices(session);
         int navigationOption = -1;
         boolean validNavigationOption = false;
         Scanner input = new Scanner(System.in);
@@ -63,6 +63,6 @@ public class HomeHandler extends Handler {
                     validNavigationOption=false;
             }
         }
-        return state;
+        return session;
     }
 }

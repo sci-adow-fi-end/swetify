@@ -3,7 +3,7 @@ package businesslogic.common;
 import businesslogic.utility.ConfigOptions;
 import businesslogic.utility.Handler;
 import businesslogic.utility.NavigationManager;
-import businesslogic.utility.State;
+import businesslogic.utility.Session;
 import dao.users.ArtistDAO;
 import dao.users.CustomerDAO;
 import domainmodel.entities.users.Artist;
@@ -129,7 +129,7 @@ public class RegistrationHandler extends Handler {
 
 
     @Override
-    public State update(State state) {
+    public Session update(Session session) {
         renderChoices();
         int navigationOption = -1;
         boolean validNavigationOption = false;
@@ -172,6 +172,6 @@ public class RegistrationHandler extends Handler {
                     validNavigationOption = false;
             }
         }
-        return state;
+        return session;
     }
 }

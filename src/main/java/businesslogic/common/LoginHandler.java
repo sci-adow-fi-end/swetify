@@ -3,7 +3,7 @@ package businesslogic.common;
 import businesslogic.utility.ConfigOptions;
 import businesslogic.utility.Handler;
 import businesslogic.utility.NavigationManager;
-import businesslogic.utility.State;
+import businesslogic.utility.Session;
 import dao.users.ArtistDAO;
 import dao.users.CustomerDAO;
 import domainmodel.entities.users.Artist;
@@ -117,7 +117,7 @@ private boolean validatePassword(boolean isArtist) {
 }
 
 @Override
-public State update(State state) {
+public Session update(Session session) {
     clearScreen();
     renderChoices();
     int navigationChoice;
@@ -153,10 +153,10 @@ public State update(State state) {
                     validPassword = validatePassword(isArtist);
                 }
                 if(!isArtist){
-                    state.setLoggedUser(usr);
+                    session.setLoggedUser(usr);
                 }
                 else{
-                    state.setLoggedArtist(art);
+                    session.setLoggedArtist(art);
                 }
 
                 if (!isArtist) {
@@ -176,7 +176,7 @@ public State update(State state) {
                 validNavigationChoice = false;
         }
     }
-    return state;
+    return session;
 }
 }
 

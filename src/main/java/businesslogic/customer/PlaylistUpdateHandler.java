@@ -2,7 +2,7 @@ package businesslogic.customer;
 
 import businesslogic.utility.ConfigOptions;
 import businesslogic.utility.Handler;
-import businesslogic.utility.State;
+import businesslogic.utility.Session;
 import dao.collections.PodcastPlaylistDAO;
 import dao.collections.SongPlaylistDAO;
 import dao.tracks.PodcastDAO;
@@ -42,7 +42,7 @@ public class PlaylistUpdateHandler extends Handler {
     }
 
 
-    private Song askNewSong(State s){
+    private Song askNewSong(Session s) {
         Scanner input = new Scanner(System.in);
         System.out.println("Insert song name");
         System.out.println("\n");
@@ -64,7 +64,7 @@ public class PlaylistUpdateHandler extends Handler {
         return songs.get(selectedSong-1);
     }
 
-    private Podcast askNewPodcast(State s){
+    private Podcast askNewPodcast(Session s) {
         Scanner input = new Scanner(System.in);
         System.out.println("Insert podcast name");
         System.out.println("\n");
@@ -88,29 +88,29 @@ public class PlaylistUpdateHandler extends Handler {
 
 
     @Override
-    public State update(State state) {
+    public Session update(Session session) {
         clearScreen();
-        int size = state.getSelectedPlaylist().print();
+        int size = session.getSelectedPlaylist().print();
         renderChoices();
         int option= askNumberInRange(1,4);
 
 
-        if (state.getSelectedPlaylist() instanceof SongPlaylist) {
+        if (session.getSelectedPlaylist() instanceof SongPlaylist) {
 
             switch (option) {
                 case 1:
                     System.out.println("Type the name of the song you want to add");
                     System.out.println("\n");
 
-                    ((SongPlaylist)(state.getSelectedPlaylist())).addSong(askNewSong(state));
-                    soPlayData.update((SongPlaylist) state.getSelectedPlaylist());
+                    ((SongPlaylist) (session.getSelectedPlaylist())).addSong(askNewSong(session));
+                    soPlayData.update((SongPlaylist) session.getSelectedPlaylist());
                     break;
                 case 2:
                     System.out.println("Type the number of the song you want to remove");
                     System.out.println("\n");
                     int removedSong = askNumberInRange(1,size)-1;
-                    state.getSelectedPlaylist().removeTrack(removedSong);
-                    soPlayData.update((SongPlaylist) state.getSelectedPlaylist());
+                    session.getSelectedPlaylist().removeTrack(removedSong);
+                    soPlayData.update((SongPlaylist) session.getSelectedPlaylist());
                     break;
                 case 3:
                     navigationManager.previousState();
@@ -126,16 +126,16 @@ public class PlaylistUpdateHandler extends Handler {
                     System.out.println("Type the name of the song you want to add");
                     System.out.println("\n");
 
-                    ((PodcastPlaylist)(state.getSelectedPlaylist())).addPodcast(askNewPodcast(state));
-                    poPlayData.update((PodcastPlaylist) state.getSelectedPlaylist());
+                    ((PodcastPlaylist) (session.getSelectedPlaylist())).addPodcast(askNewPodcast(session));
+                    poPlayData.update((PodcastPlaylist) session.getSelectedPlaylist());
 
                     break;
                 case 2:
                     System.out.println("Type the number of the song you want to remove");
                     System.out.println("\n");
                     int removedSong = askNumberInRange(1,size)-1;
-                    state.getSelectedPlaylist().removeTrack(removedSong);
-                    poPlayData.update((PodcastPlaylist) state.getSelectedPlaylist());
+                    session.getSelectedPlaylist().removeTrack(removedSong);
+                    poPlayData.update((PodcastPlaylist) session.getSelectedPlaylist());
                     break;
                 case 3:
                     navigationManager.previousState();
@@ -146,6 +146,6 @@ public class PlaylistUpdateHandler extends Handler {
             }
 
         }
-        return state;
+        return session;
     }
 }

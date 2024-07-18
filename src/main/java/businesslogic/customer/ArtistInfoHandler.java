@@ -2,7 +2,7 @@ package businesslogic.customer;
 
 import businesslogic.utility.Handler;
 import businesslogic.utility.NavigationManager;
-import businesslogic.utility.State;
+import businesslogic.utility.Session;
 import dao.users.ArtistDAO;
 import dao.users.CustomerDAO;
 import domainmodel.entities.users.Artist;
@@ -33,13 +33,13 @@ public class ArtistInfoHandler extends Handler {
     }
 
     @Override
-    public State update(State state) {
+    public Session update(Session session) {
 
         boolean validNavigationOption = false;
 
         while (!validNavigationOption) { //render again choices when the input is not valid
             clearScreen();
-            renderArtistInfo(state.getViewingArtist());
+            renderArtistInfo(session.getViewingArtist());
             renderChoices();
 
             int navigationOption = -1;
@@ -58,11 +58,11 @@ public class ArtistInfoHandler extends Handler {
                     navigationManager.switchToController(NavigationManager.HandlerId.VIEW_ALBUMS);
                     break;
                 case 1:
-                    state.getViewingArtist().setFollowers(state.getViewingArtist().getFollowers() + 1);
-                    state.getLoggedUser().addFollowedArtists(state.getViewingArtist());
-                    artistDAO.update(state.getViewingArtist());
-                    customerDAO.update(state.getLoggedUser());
-                    System.out.println("Now you follow " + state.getViewingArtist().getStageName());
+                    session.getViewingArtist().setFollowers(session.getViewingArtist().getFollowers() + 1);
+                    session.getLoggedUser().addFollowedArtists(session.getViewingArtist());
+                    artistDAO.update(session.getViewingArtist());
+                    customerDAO.update(session.getLoggedUser());
+                    System.out.println("Now you follow " + session.getViewingArtist().getStageName());
                     break;
                 case 2:
                     navigationManager.previousState();
@@ -76,7 +76,7 @@ public class ArtistInfoHandler extends Handler {
             }
         }
 
-        return state;
+        return session;
     }
 
 }

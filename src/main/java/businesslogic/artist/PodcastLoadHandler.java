@@ -2,7 +2,7 @@ package businesslogic.artist;
 
 import businesslogic.utility.ConfigOptions;
 import businesslogic.utility.Handler;
-import businesslogic.utility.State;
+import businesslogic.utility.Session;
 import dao.tracks.PodcastDAO;
 import dao.users.ArtistDAO;
 import domainmodel.entities.tracks.Podcast;
@@ -55,7 +55,7 @@ public class PodcastLoadHandler extends Handler {
         return s;
     }
 
-    private List<Artist> askAuthors(State s){
+    private List<Artist> askAuthors(Session s) {
         List<Artist> artists= new ArrayList<>();
         Scanner input = new Scanner(System.in);
         artists.add(s.getLoggedArtist());
@@ -73,7 +73,7 @@ public class PodcastLoadHandler extends Handler {
         return artists;
     }
 
-    private void createPodcast(State s) {
+    private void createPodcast(Session s) {
         String title = askPodcastName();
         String theme = askPodcastTheme();
         System.out.println("Insert duration (minutes)");
@@ -88,7 +88,7 @@ public class PodcastLoadHandler extends Handler {
     }
 
     @Override
-    public State update(State s) {
+    public Session update(Session s) {
 
         clearScreen();
         renderChoices();

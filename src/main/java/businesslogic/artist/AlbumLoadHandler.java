@@ -2,7 +2,7 @@ package businesslogic.artist;
 
 import businesslogic.utility.ConfigOptions;
 import businesslogic.utility.Handler;
-import businesslogic.utility.State;
+import businesslogic.utility.Session;
 import dao.collections.AlbumDAO;
 import dao.tracks.SongDAO;
 import dao.users.ArtistDAO;
@@ -60,7 +60,7 @@ public class AlbumLoadHandler extends Handler {
     }
 
 
-    private List<Artist> askAuthors(State s){
+    private List<Artist> askAuthors(Session s) {
         List<Artist> artists= new ArrayList<>();
         Scanner input = new Scanner(System.in);
         artists.add(s.getLoggedArtist());
@@ -86,7 +86,7 @@ public class AlbumLoadHandler extends Handler {
         return artists;
     }
 
-    private Song createSong(State s){
+    private Song createSong(Session s) {
 
         String title = askSongName();
         String lyrics = askSongLyrics();
@@ -101,7 +101,7 @@ public class AlbumLoadHandler extends Handler {
         return ns;
     }
 
-    private void createAlbum(State s) {
+    private void createAlbum(Session s) {
         List<Song> songs= new ArrayList<>();
         String name;
         Scanner input = new Scanner(System.in);
@@ -127,7 +127,7 @@ public class AlbumLoadHandler extends Handler {
     }
 
 
-    public State update(State s) {
+    public Session update(Session s) {
 
         clearScreen();
         renderChoices();

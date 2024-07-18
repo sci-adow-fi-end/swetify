@@ -1,7 +1,7 @@
 package businesslogic.customer;
 
 import businesslogic.utility.Handler;
-import businesslogic.utility.State;
+import businesslogic.utility.Session;
 import dao.suggestions.SuggestionDAO;
 import domainmodel.entities.tracks.Podcast;
 import domainmodel.entities.tracks.Song;
@@ -25,21 +25,21 @@ public class SuggestionsHandler extends Handler {
     }
 
     @Override
-    public State update(State state) {
+    public Session update(Session session) {
         clearScreen();
         renderChoices();
 
         int option = askNumberInRange(1, 4);
         switch (option) {
             case 1:
-                List<Song> suggestedSongs = suggestionsDatabase.getTopSongsBySimilarUsers(state.getLoggedUser());
+                List<Song> suggestedSongs = suggestionsDatabase.getTopSongsBySimilarUsers(session.getLoggedUser());
                 System.out.println("Swetify recommends you to listen the following tracks:");
                 for (int i = 0; i < suggestedSongs.size(); i++) {
                     System.out.println(i + ") " + suggestedSongs.get(i).getTitle());
                 }
                 break;
             case 2:
-                List<Podcast> suggestedPodcasts = suggestionsDatabase.getTopPodcastsBySimilarUsers(state.getLoggedUser());
+                List<Podcast> suggestedPodcasts = suggestionsDatabase.getTopPodcastsBySimilarUsers(session.getLoggedUser());
                 System.out.println("Swetify recommends you to listen the following podcasts:");
                 for (int i = 0; i < suggestedPodcasts.size(); i++) {
                     System.out.println(i + ") " + suggestedPodcasts.get(i).getTitle());
@@ -53,6 +53,6 @@ public class SuggestionsHandler extends Handler {
                 break;
         }
 
-        return state;
+        return session;
     }
 }

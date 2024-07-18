@@ -18,7 +18,7 @@ public abstract class Handler {
 
     protected static NavigationManager navigationManager;
 
-    public abstract State update(State state);
+    public abstract Session update(Session session);
 
     public void setNavigationManager(NavigationManager navigationManager) {
         Handler.navigationManager = navigationManager;

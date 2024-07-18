@@ -1,5 +1,5 @@
 import businesslogic.customer.PlaybackHandler;
-import businesslogic.utility.State;
+import businesslogic.utility.Session;
 import domainmodel.entities.tracks.Song;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class PlaybackHandlerTest extends BaseTest{
 
-    private final State state = new State();
+    private final Session session = new Session();
     private final Song track1 = new Song();
     private final Song track2 = new Song();
     private final PlaybackHandler playbackHandler = new PlaybackHandler();
@@ -21,21 +21,21 @@ public class PlaybackHandlerTest extends BaseTest{
     public void setUp() {
         super.setUp();
         track1.setTitle("Song 1");
-        track1.setDuration(Duration.ofSeconds(10)); // 10 seconds
+        track1.setDuration(Duration.ofSeconds(1)); // 10 seconds
         track2.setTitle("Song 2");
         track2.setDuration(Duration.ofSeconds(20)); // 20 seconds
 
-        state.setPlayingTrack(track1);
-        state.getQueue().addTrackAtBottom(track2);
+        session.setPlayingTrack(track1);
+        session.getQueue().addTrackAtBottom(track2);
 
-        playbackThread = playbackHandler.createPlaybackQueue(state);
+        playbackThread = playbackHandler.createPlaybackQueue(session);
     }
 
     @Test
     public void testInitialPlaybackState() {
         playbackThread.start();
         assertTrue(playbackThread.isAlive());
-        assertEquals(track1, state.getPlayingTrack());
+        assertEquals(track1, session.getPlayingTrack());
         assertTrue(playbackThread.isPaused());
 
         playbackThread.interrupt();
@@ -64,9 +64,9 @@ public class PlaybackHandlerTest extends BaseTest{
         playbackThread.start();
 
         // Wait a bit for the thread to start and switch tracks
-        Thread.sleep(11000);  // Adjust the sleep duration as needed
+        Thread.sleep(2000);  // Adjust the sleep duration as needed
 
-        assertEquals(track2, state.getPlayingTrack());
+        assertEquals(track2, session.getPlayingTrack());
         assertFalse(playbackThread.isSkipped());
 
         playbackThread.interrupt();
@@ -80,10 +80,8 @@ public class PlaybackHandlerTest extends BaseTest{
     public void testHandler() throws InterruptedException {
         ByteArrayInputStream input = new ByteArrayInputStream("1".getBytes());
         System.setIn(input);
-        playbackHandler.update(state);
+        playbackHandler.update(session);
 
         Thread.sleep(2000);
     }
-
-    // Add more tests to cover other behaviors and edge cases
 }

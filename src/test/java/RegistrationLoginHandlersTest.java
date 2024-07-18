@@ -71,7 +71,7 @@ public class RegistrationLoginHandlersTest extends BaseTest{
 
         navigationManager.run();
 
-        Customer usr = navigationManager.getCurrentState().getLoggedUser();
+        Customer usr = navigationManager.getSession().getLoggedUser();
         assertEquals("Stio", usr.getUsername());
         assertEquals("NelChill", usr.getPassword());
     }
@@ -84,7 +84,7 @@ public class RegistrationLoginHandlersTest extends BaseTest{
 
         navigationManager.run();
 
-        Artist artist = navigationManager.getCurrentState().getLoggedArtist();
+        Artist artist = navigationManager.getSession().getLoggedArtist();
         assertEquals("Stio", artist.getUsername());
         assertEquals("NelChill", artist.getPassword());
         assertEquals("KuruKuru", artist.getStageName());

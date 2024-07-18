@@ -3,7 +3,7 @@ package businesslogic.customer;
 import businesslogic.utility.ConfigOptions;
 import businesslogic.utility.Handler;
 import businesslogic.utility.NavigationManager;
-import businesslogic.utility.State;
+import businesslogic.utility.Session;
 import dao.tracks.PodcastDAO;
 import dao.tracks.SongDAO;
 import dao.users.ArtistDAO;
@@ -37,7 +37,7 @@ public class SearchHandler extends Handler {
     }
 
     @Override
-    public State update(State state) {
+    public Session update(Session session) {
         clearScreen();
         renderChoices();
 
@@ -93,8 +93,8 @@ public class SearchHandler extends Handler {
                     System.out.println("Enter the number corresponding to the song you want to play:");
                     try{
                         navigationChoice = scanner.nextInt();
-                        state.setSelectedTrack(songs.get(navigationChoice));
-                        state.setPlayingTrack(songs.get(navigationChoice));
+                        session.setSelectedTrack(songs.get(navigationChoice));
+                        session.setPlayingTrack(songs.get(navigationChoice));
                         navigationManager.switchToController(NavigationManager.HandlerId.PLAY_TRACK);
                         break;
                     }
@@ -116,7 +116,7 @@ public class SearchHandler extends Handler {
                     System.out.println("Enter the number corresponding to the podcast you want to play:");
                     try{
                         navigationChoice = scanner.nextInt();
-                        state.setSelectedTrack(podcasts.get(navigationChoice));
+                        session.setSelectedTrack(podcasts.get(navigationChoice));
                         navigationManager.switchToController(NavigationManager.HandlerId.PLAY_TRACK);
                     }
                     catch (NumberFormatException e){
@@ -138,7 +138,7 @@ public class SearchHandler extends Handler {
                     System.out.println("Enter the number corresponding to the artist you want to view:");
                     try{
                         navigationChoice = scanner.nextInt();
-                        state.setViewingArtist(artists.get(navigationChoice));
+                        session.setViewingArtist(artists.get(navigationChoice));
                         navigationManager.switchToController(NavigationManager.HandlerId.VIEW_ARTIST);
                     }
                     catch (NumberFormatException e){
@@ -155,6 +155,6 @@ public class SearchHandler extends Handler {
         else
             navigationManager.previousState();
 
-        return state;
+        return session;
     }
 }

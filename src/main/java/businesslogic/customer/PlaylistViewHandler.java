@@ -2,7 +2,7 @@ package businesslogic.customer;
 
 import businesslogic.utility.Handler;
 import businesslogic.utility.NavigationManager;
-import businesslogic.utility.State;
+import businesslogic.utility.Session;
 import dao.collections.PodcastPlaylistDAO;
 import dao.collections.SongPlaylistDAO;
 import domainmodel.entities.tracks.Track;
@@ -26,25 +26,25 @@ public class PlaylistViewHandler extends Handler {
         System.out.println("5: close Swetify");
     }
 
-    private Track chooseTrack(State s){
+    private Track chooseTrack(Session s) {
         System.out.println("Insert the number of the song you want to play");
         int size = s.getSelectedPlaylist().getTracks().size();
         return s.getSelectedPlaylist().getTracks().get(askNumberInRange(1,size)-1);
     }
 
     @Override
-    public State update(State state) {
+    public Session update(Session session) {
         clearScreen();
         renderChoices();
         int navigationOption = askNumberInRange(1, 6);
 
         switch (navigationOption) {
             case 1:
-                state.addOnTop(chooseTrack(state));
+                session.addOnTop(chooseTrack(session));
                 break;
             case 2:
-                for(Track t:state.getSelectedPlaylist().getTracks().reversed()){
-                    state.getQueue().addTrackOnTop(t);
+                for (Track t : session.getSelectedPlaylist().getTracks().reversed()) {
+                    session.getQueue().addTrackOnTop(t);
                 }
                 break;
             case 3:
@@ -62,6 +62,6 @@ public class PlaylistViewHandler extends Handler {
 
         }
 
-        return state;
+        return session;
     }
 }

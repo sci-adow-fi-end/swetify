@@ -1,8 +1,9 @@
 package businesslogic.artist;
+
 import businesslogic.utility.ConfigOptions;
 import businesslogic.utility.Handler;
 import businesslogic.utility.NavigationManager;
-import businesslogic.utility.State;
+import businesslogic.utility.Session;
 
 import java.io.ByteArrayInputStream;
 import java.util.Scanner;
@@ -10,8 +11,8 @@ import java.util.Scanner;
 public class ArtistHomeHandler extends Handler {
 
 
-    private void renderChoices(State state) {
-        System.out.println(state.getLoggedArtist().getUsername() + " welcome to swetify, the engineer's music streaming service!");
+    private void renderChoices(Session session) {
+        System.out.println(session.getLoggedArtist().getUsername() + " welcome to swetify, the engineer's music streaming service!");
         System.out.println("\n");
         System.out.println("1: Upload an album");
         System.out.println("2: Upload a podcast");
@@ -21,9 +22,9 @@ public class ArtistHomeHandler extends Handler {
 
 
     @Override
-    public State update(State state) {
+    public Session update(Session session) {
         clearScreen();
-        renderChoices(state);
+        renderChoices(session);
         int navigationOption = -1;
         boolean validNavigationOption = false;
         Scanner input = new Scanner(System.in);
@@ -58,6 +59,6 @@ public class ArtistHomeHandler extends Handler {
                     validNavigationOption=false;
             }
         }
-        return state;
+        return session;
     }
 }

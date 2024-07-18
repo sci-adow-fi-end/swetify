@@ -1,7 +1,7 @@
 package businesslogic.customer;
 
 import businesslogic.utility.Handler;
-import businesslogic.utility.State;
+import businesslogic.utility.Session;
 import domainmodel.entities.tracks.Track;
 
 import java.util.Scanner;
@@ -12,13 +12,13 @@ public class PlaybackHandler extends Handler {
 
         private boolean paused = true;
         private boolean skip = false;
-        private businesslogic.utility.State state;
+        private Session session;
         int totalSteps;
 
 
-        PlaybackThread(businesslogic.utility.State state){
-            this.state=state;
-            this.totalSteps = (int) state.getPlayingTrack().getDuration().toSeconds();
+        PlaybackThread(Session session) {
+            this.session = session;
+            this.totalSteps = (int) session.getPlayingTrack().getDuration().toSeconds();
         }
 
         public void run() {
@@ -41,9 +41,9 @@ public class PlaybackHandler extends Handler {
                         skip = false;
                         Thread.sleep(100);
                         i=0;
-                        Track newTrack = state.getQueue().getNextSong();
-                        state.setPlayingTrack(newTrack);
-                        this.totalSteps = (int) state.getPlayingTrack().getDuration().toSeconds();
+                        Track newTrack = session.getQueue().getNextSong();
+                        session.setPlayingTrack(newTrack);
+                        this.totalSteps = (int) session.getPlayingTrack().getDuration().toSeconds();
 
                     }
                 }
@@ -73,12 +73,12 @@ public class PlaybackHandler extends Handler {
         System.out.println("2: skip track");
     }
 
-    private void printQueue(State state){
+    private void printQueue(Session session) {
         System.out.println("Current track");
-        System.out.println(state.getPlayingTrack());
+        System.out.println(session.getPlayingTrack());
         System.out.println("\n");
         System.out.println("Next songs in queue:");
-        for(Track t: state.getQueue()){
+        for (Track t : session.getQueue()) {
             System.out.println(t);
         }
     }
@@ -109,12 +109,12 @@ public class PlaybackHandler extends Handler {
 
     }
 
-    public PlaybackThread createPlaybackQueue(State state){
-        return new PlaybackThread(state);
+    public PlaybackThread createPlaybackQueue(Session session) {
+        return new PlaybackThread(session);
     }
 
     @Override
-    public State update(State state){
+    public Session update(Session session) {
         clearScreen();
 
 
@@ -130,7 +130,7 @@ public class PlaybackHandler extends Handler {
                 continue;
             }
 
-            PlaybackThread pbt = new PlaybackThread(state);
+            PlaybackThread pbt = new PlaybackThread(session);
             pbt.start();
 
             switch (navigationOption) {
@@ -160,6 +160,6 @@ public class PlaybackHandler extends Handler {
             }
         }
 
-        return state;
+        return session;
     }
 }

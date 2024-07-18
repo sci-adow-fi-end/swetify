@@ -15,7 +15,7 @@ public class HomeHandlerTest extends BaseTest{
     public void setUp() {
         super.setUp();
         navigationManager.pushHandler(NavigationManager.HandlerId.HOME);
-        navigationManager.getCurrentState().setLoggedUser(new Customer());
+        navigationManager.getSession().setLoggedUser(new Customer());
     }
 
     @Test
@@ -31,7 +31,7 @@ public class HomeHandlerTest extends BaseTest{
     public void testHomeViewAllPlaylists() {
         ByteArrayInputStream input = new ByteArrayInputStream("2\n4\n".getBytes());
         System.setIn(input);
-        navigationManager.getCurrentState().setLoggedUser(new Customer());
+        navigationManager.getSession().setLoggedUser(new Customer());
         navigationManager.run();
 
         assertEquals(NavigationManager.HandlerId.VIEW_ALL_PLAYLISTS.ordinal(), navigationManager.getLastId());

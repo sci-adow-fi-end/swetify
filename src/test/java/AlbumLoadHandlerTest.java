@@ -21,7 +21,7 @@ public class AlbumLoadHandlerTest extends BaseTest {
         ArtistDAO adao = new ArtistDAO();
         nm.pushHandler(NavigationManager.HandlerId.LOAD_ALBUM);
         Artist a = new Artist("paolino", "paperino", "paperinik", "ero un gran figo");
-        nm.getCurrentState().setLoggedArtist(a);
+        nm.getSession().setLoggedArtist(a);
         adao.save(a);
     }
 
@@ -33,7 +33,7 @@ public class AlbumLoadHandlerTest extends BaseTest {
         Album loadedAlbum = new Album();
         AlbumDAO adao = new AlbumDAO();
 
-        for (Album album : adao.getByArtist(nm.getCurrentState().getLoggedArtist())) {
+        for (Album album : adao.getByArtist(nm.getSession().getLoggedArtist())) {
             if (album.getPlaylist().getTitle().equals("stio")) {
                 loadedAlbum = album;
                 break;

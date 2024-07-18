@@ -21,7 +21,7 @@ public class PodcastLoadHandlerTest extends BaseTest{
         ArtistDAO adao = new ArtistDAO();
         nm.pushHandler(NavigationManager.HandlerId.LOAD_PODCAST);
         Artist a = new Artist("paolino", "paperino", "paperinik", "ero un gran figo");
-        nm.getCurrentState().setLoggedArtist(a);
+        nm.getSession().setLoggedArtist(a);
         adao.save(a);
     }
 
@@ -33,7 +33,7 @@ public class PodcastLoadHandlerTest extends BaseTest{
         Podcast loadedPodcast = new Podcast();
 
         PodcastDAO pdao = new PodcastDAO();
-        for (Podcast pod : pdao.getByArtist(nm.getCurrentState().getLoggedArtist())) {
+        for (Podcast pod : pdao.getByArtist(nm.getSession().getLoggedArtist())) {
             if (pod.getTitle().equals("stio")) {
                 loadedPodcast = pod;
                 break;

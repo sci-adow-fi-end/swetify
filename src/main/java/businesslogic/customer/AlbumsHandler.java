@@ -1,7 +1,7 @@
 package businesslogic.customer;
 
 import businesslogic.utility.Handler;
-import businesslogic.utility.State;
+import businesslogic.utility.Session;
 import dao.collections.AlbumDAO;
 import domainmodel.entities.collections.Album;
 import domainmodel.entities.tracks.Song;
@@ -21,10 +21,10 @@ public class AlbumsHandler extends Handler {
     }
 
     @Override
-    public State update(State state) {
+    public Session update(Session session) {
 
         clearScreen();
-        List<Album> albums = albumDAO.getByArtist(state.getLoggedArtist());
+        List<Album> albums = albumDAO.getByArtist(session.getLoggedArtist());
         int index = 1;
 
         System.out.println("Albums:");
@@ -45,6 +45,6 @@ public class AlbumsHandler extends Handler {
                 System.out.println(i + ") " + albumSongs.get(i));
             }
         }
-        return state;
+        return session;
     }
 }

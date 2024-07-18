@@ -2,7 +2,7 @@ package businesslogic.customer;
 
 import businesslogic.utility.Handler;
 import businesslogic.utility.NavigationManager;
-import businesslogic.utility.State;
+import businesslogic.utility.Session;
 import dao.collections.PodcastPlaylistDAO;
 import dao.collections.SongPlaylistDAO;
 import domainmodel.entities.collections.Playlist;
@@ -34,11 +34,11 @@ public class UserPlaylistsHandler extends Handler {
         System.out.println("\n");
     }
 
-    private int renderSavedPlaylists(State state) {
+    private int renderSavedPlaylists(Session session) {
         clearScreen();
 
-        songPlaylists = state.getLoggedUser().getSongPlaylists();
-        podcastsPlaylists = state.getLoggedUser().getPodcastPlaylists();
+        songPlaylists = session.getLoggedUser().getSongPlaylists();
+        podcastsPlaylists = session.getLoggedUser().getPodcastPlaylists();
 
         int index = 1;
         System.out.println("Song playlists:");
@@ -98,21 +98,21 @@ public class UserPlaylistsHandler extends Handler {
     }
 
     @Override
-    public State update(State state) {
+    public Session update(Session session) {
         clearScreen();
         renderChoices();
         int choice = askNumberInRange(1, 4);
 
         switch (choice) {
             case 1:
-                int index = renderSavedPlaylists(state);
+                int index = renderSavedPlaylists(session);
                 int navigationChoice = askNumberInRange(1, index - 1);
 
                 if (navigationChoice <= songPlaylists.size()) {
-                    state.setSelectedPlaylist(songPlaylists.get(index - 1));
+                    session.setSelectedPlaylist(songPlaylists.get(index - 1));
                     navigationManager.switchToController(NavigationManager.HandlerId.VIEW_PLAYLIST);
                 } else if (navigationChoice <= songPlaylists.size() + podcastsPlaylists.size()) {
-                    state.setSelectedPlaylist(podcastsPlaylists.get(index - 1 - songPlaylists.size()));
+                    session.setSelectedPlaylist(podcastsPlaylists.get(index - 1 - songPlaylists.size()));
                     navigationManager.switchToController(NavigationManager.HandlerId.VIEW_PLAYLIST);
                 }
                 break;
@@ -128,7 +128,7 @@ public class UserPlaylistsHandler extends Handler {
             default:
                 printError("Choice is not valid");
         }
-        return state;
+        return session;
     }
 
 }
