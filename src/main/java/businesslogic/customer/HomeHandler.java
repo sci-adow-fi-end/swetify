@@ -12,7 +12,7 @@ public class HomeHandler extends Handler {
 
 
     private void renderChoices(Session session) {
-        System.out.println(session.getLoggedUser().getUsername() + " welcome to swetify, the engineer's music streaming service!");
+        printGreen(session.getLoggedUser().getUsername() + " welcome to swetify, the engineer's music streaming service!");
         System.out.println("\n");
         System.out.println("1: Search for a track, artist or playlist");
         System.out.println("2: View your playlists");

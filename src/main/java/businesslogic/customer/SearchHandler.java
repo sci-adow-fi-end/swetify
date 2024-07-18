@@ -36,6 +36,55 @@ public class SearchHandler extends Handler {
         System.out.println("enter a keyword to search or press - to go back\n");
     }
 
+    private int printResults(Session session) {
+        songs = songsDatabase.getByTitle(input);
+        podcasts = podcastsDatabase.getByTitle(input);
+        artists = artistsDatabase.getByStageName(input);
+
+        int i = 1;
+        for (Song song : songs) {
+            System.out.println(i + ") " + song);
+            i++;
+        }
+        System.out.println("\n\n");
+
+        for (Podcast podcast : podcasts) {
+            System.out.println(i + ") " + podcast);
+            i++;
+        }
+        System.out.println("\n\n");
+
+        for (Artist artist : artists) {
+            System.out.println(i + ") " + artist.getStageName());
+        }
+        System.out.println("\n\n");
+
+        if (i > 0) {
+            System.out.println("insert the number of a track to play it or the number of an artist to view his info");
+            int choice = askNumberInRange(1, i) - 1; //the minus 1 is to make it a valid index
+            if (choice < songs.size()) {
+                session.setSelectedTrack(songs.get(choice));
+                return 1;
+            } else if (choice < songs.size() + podcasts.size()) {
+                session.setSelectedTrack(podcasts.get(choice));
+                return 2;
+            } else if (choice < songs.size() + podcasts.size() + artists.size()) {
+                session.setViewingArtist(artists.get(choice));
+                return 3;
+            }
+            else{
+                printError("value out of range");
+                return -1;
+            }
+
+        } else {
+            printError("no results found");
+            return -1;
+        }
+
+    }
+
+
     @Override
     public Session update(Session session) {
         clearScreen();
@@ -43,117 +92,28 @@ public class SearchHandler extends Handler {
 
         Scanner scanner = new Scanner(System.in);
         input = scanner.nextLine();
-        boolean songsFound = false;
-        boolean podcastsFound = false;
-        boolean artistsFound = false;
+        boolean someResultsFound = false;
 
         if (ConfigOptions.TEST_MODE) {
             String nextInput = getRestOfInput(scanner);
             System.setIn(new ByteArrayInputStream(nextInput.getBytes()));
         }
 
-        if (!input.equals("-")){
-
-            songs = songsDatabase.getByTitle(input);
-            if (songs.isEmpty()){
-                System.out.println(ANSI_RED +"No song matches found"+ ANSI_RESET);
-            }
-            else{
-                songsFound = true;
-            }
-
-            podcasts = podcastsDatabase.getByTitle(input);
-            if (podcasts.isEmpty()){
-                System.out.println(ANSI_RED +"No podcast matches found"+ ANSI_RESET);
-            }
-            else{
-                podcastsFound = true;
+        if (!input.equals("-")) {
+            int userChoice = printResults(session);
+            switch (userChoice) {
+                case 1:
+                case 2:
+                    navigationManager.switchToController(NavigationManager.HandlerId.PLAY_TRACK);
+                    break;
+                case 3:
+                    navigationManager.switchToController(NavigationManager.HandlerId.VIEW_ARTIST);
+                    break;
             }
 
-            artists = artistsDatabase.getByStageName(input);
-            if (artists.isEmpty()){
-                System.out.println(ANSI_RED +"No artist matches found"+ ANSI_RESET);
-            }
-            else{
-                artistsFound = true;
-            }
-
-            int navigationChoice;
-            boolean validNavigationChoice = false;
-
-            while (!validNavigationChoice) {
-
-                validNavigationChoice = true;
-
-                if (songsFound){
-                    int i = 0;
-                    for (Song song : songs){
-                        System.out.println(i + ") " + song);
-                    }
-                    System.out.println("Enter the number corresponding to the song you want to play:");
-                    try{
-                        navigationChoice = scanner.nextInt();
-                        session.setSelectedTrack(songs.get(navigationChoice));
-                        session.setPlayingTrack(songs.get(navigationChoice));
-                        navigationManager.switchToController(NavigationManager.HandlerId.PLAY_TRACK);
-                        break;
-                    }
-                    catch (NumberFormatException e){
-                        System.out.println("Input is not a number");
-                        validNavigationChoice = false;
-                    }
-                    catch (IndexOutOfBoundsException e){
-                        System.out.println("Please enter a valid number");
-                        validNavigationChoice = false;
-                    }
-                }
-
-                if (podcastsFound){
-                    int i = 0;
-                    for (Podcast podcast : podcasts){
-                        System.out.println(i + ") " + podcast);
-                    }
-                    System.out.println("Enter the number corresponding to the podcast you want to play:");
-                    try{
-                        navigationChoice = scanner.nextInt();
-                        session.setSelectedTrack(podcasts.get(navigationChoice));
-                        navigationManager.switchToController(NavigationManager.HandlerId.PLAY_TRACK);
-                    }
-                    catch (NumberFormatException e){
-                        System.out.println("Input is not a number");
-                        validNavigationChoice = false;
-                    }
-                    catch (IndexOutOfBoundsException e){
-                        System.out.println("Please enter a valid number");
-                        validNavigationChoice = false;
-                    }
-                }
-
-                if (artistsFound){
-                    int i = 0;
-                    for (Artist artist : artists){
-                        System.out.println(i+") "+ artist.getStageName());
-                    }
-
-                    System.out.println("Enter the number corresponding to the artist you want to view:");
-                    try{
-                        navigationChoice = scanner.nextInt();
-                        session.setViewingArtist(artists.get(navigationChoice));
-                        navigationManager.switchToController(NavigationManager.HandlerId.VIEW_ARTIST);
-                    }
-                    catch (NumberFormatException e){
-                        System.out.println("Input is not a number");
-                        validNavigationChoice = false;
-                    }
-                    catch (IndexOutOfBoundsException e){
-                        System.out.println("Please enter a valid number");
-                        validNavigationChoice = false;
-                    }
-                }
-            }
-        }
-        else
+        } else {
             navigationManager.previousState();
+        }
 
         return session;
     }

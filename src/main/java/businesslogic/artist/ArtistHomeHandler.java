@@ -12,7 +12,7 @@ public class ArtistHomeHandler extends Handler {
 
 
     private void renderChoices(Session session) {
-        System.out.println(session.getLoggedArtist().getUsername() + " welcome to swetify, the engineer's music streaming service!");
+        printGreen(session.getLoggedArtist().getUsername() + " welcome to swetify, the engineer's music streaming service!");
         System.out.println("\n");
         System.out.println("1: Upload an album");
         System.out.println("2: Upload a podcast");

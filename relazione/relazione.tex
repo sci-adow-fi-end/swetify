@@ -387,11 +387,14 @@
   \end{enumerate}
 
   \subsubsection{SuggestionDAOTest}
-  \begin{enumerate}
-    \item \textbf{\textit{testHomeSearch()}}:
-    \item \textbf{\textit{testHomeViewPlaylists()}}:
-    \item \textbf{\textit{testHomeSuggestions}}:
-  \end{enumerate}
+  \begin{itemize}
+  \item
+    \textbf{\textit{testSuggestions()}}: verifica che la query effettuata dalla funzione
+    \textit{getTopSongsBySimilarUsers} della classe \textit{SuggestionDa} sia conforme alla logica desiderata
+    calcolando in maniera indipendente il risultato atteso grazie alle funzioni \textit{getUserTopTen},
+    \textit{getCustomersWhoListenedTopTenSongs}, \textit{getTopTenSongsByTopTenListeners}.
+  \end{itemize
+  }
 
   \subsubsection{SongPlaylistDAOTest}
 

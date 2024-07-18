@@ -35,6 +35,11 @@ public abstract class Handler {
         System.out.println(ANSI_RED+error+ANSI_RESET);
         System.out.println(" ");
     }
+    protected static void printGreen(String message){
+        System.out.println(" ");
+        System.out.println(ANSI_GREEN+message+ANSI_RESET);
+        System.out.println(" ");
+    }
 
     protected static int askNumberInRange(int min, int max){
         int navigationOption = -1;
