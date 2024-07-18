@@ -13,12 +13,6 @@ import java.util.List;
 public class Customer extends BaseUser {
     @Column(unique = true)
 
-    @OneToMany(cascade = CascadeType.MERGE, orphanRemoval = true)
-    final private List<SongPlaylist> songPlaylists = new LinkedList<>();
-
-    @OneToMany(cascade = CascadeType.MERGE, orphanRemoval = true)
-    final private List<PodcastPlaylist> podcastPlaylists = new LinkedList<>();
-
     @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     final private List<Artist> followedArtists = new LinkedList<>();
 
@@ -29,18 +23,6 @@ public class Customer extends BaseUser {
 
     public Customer() {
     }
-
-
-
-    public List<SongPlaylist> getSongPlaylists() {
-        return songPlaylists;
-    }
-
-
-    public List<PodcastPlaylist> getPodcastPlaylists() {
-        return podcastPlaylists;
-    }
-
 
     public List<Artist> getFollowedArtists() {
         return followedArtists;
