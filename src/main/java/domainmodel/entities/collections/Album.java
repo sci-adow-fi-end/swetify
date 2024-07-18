@@ -36,11 +36,13 @@ public class Album extends BaseEntity {
     }
 
 
-    // TODO: This should return a List and not the Playlist object
-    public Playlist<Song> getPlaylist() {
-        return playlist;
+    public List<Song> getSongs(){
+        return playlist.getTracks();
     }
 
+    public String getTitle(){
+        return playlist.getTitle();
+    }
 
     public Date getReleaseDate() {
         return releaseDate;

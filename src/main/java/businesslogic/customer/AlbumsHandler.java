@@ -29,7 +29,7 @@ public class AlbumsHandler extends Handler {
 
         System.out.println("Albums:");
         for (Album a : albums) {
-            System.out.println(index + ") " + a.getPlaylist().getTitle());
+            System.out.println(index + ") " + a.getTitle());
             index++;
         }
 
@@ -39,7 +39,7 @@ public class AlbumsHandler extends Handler {
         if (choice == 0) {
             navigationManager.previousState();
         } else {
-            List<Song> albumSongs = albums.get(choice - 1).getPlaylist().getTracks();
+            List<Song> albumSongs = albums.get(choice - 1).getSongs();
 
             for (int i = 0; i < albumSongs.size(); i++) {
                 System.out.println(i + ") " + albumSongs.get(i));

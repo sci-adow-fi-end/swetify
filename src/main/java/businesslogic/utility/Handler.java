@@ -24,7 +24,6 @@ public abstract class Handler {
         Handler.navigationManager = navigationManager;
     }
 
-    //TODO add clearscreen to all handlers
     protected static void clearScreen() {
         System.out.print("\033[H\033[2J");
         System.out.flush();

@@ -34,14 +34,14 @@ public class AlbumLoadHandlerTest extends BaseTest {
         AlbumDAO adao = new AlbumDAO();
 
         for (Album album : adao.getByArtist(nm.getSession().getLoggedArtist())) {
-            if (album.getPlaylist().getTitle().equals("stio")) {
+            if (album.getTitle().equals("stio")) {
                 loadedAlbum = album;
                 break;
             }
         }
 
-        assertEquals(1, loadedAlbum.getPlaylist().getTracks().size());
-        assertEquals("stio", loadedAlbum.getPlaylist().getTracks().getFirst().getTitle());
+        assertEquals(1, loadedAlbum.getSongs().size());
+        assertEquals("stio", loadedAlbum.getSongs().getFirst().getTitle());
 
     }
 
