@@ -346,6 +346,10 @@
 
   \subsection{Design pattern}
 
+  \subsubsection{DAO}
+  Il DAO (Data Access Object) è un pattern strutturale che permette di disaccoppiare il layer di business logic da quello che si occupa di rendere gli oggetti persistenti nel database. I DAO espongono alla business logic un'API per effettuare le operazioni di CRUD. Ciò permette di rispettare il principio di singola responsabilità.
+  Nel nostro caso (Figura \ref{fig:DAO}), è stato prevista una classe base astratta e generica che definisce l'implementazione di default per le operazioni CRUD di base. Nella maggior parte dei casi questa implementazione è adeguata per tutti i DAO concreti. Nei casi in cui erano necessari metodi di accesso ai dati più specifici, ad esempio filtraggio per attributi che non siano l'ID, essi sono stati implementati nel rispettivo DAO concreto.
+
   \subsection{Diagramma di sequenza}
   \begin{figure}[H]
     \centering
@@ -368,7 +372,7 @@
   \subsubsection{Track}
   Rappresenta una traccia audio che può essere aggiunta alla coda\\ di riproduzione.
 
-  \subsection{DurationConverter}
+  \subsubsection{DurationConverter}
   Implementa l'interfaccia AttributeConverter di Jakarta per convertire la durata delle Track dal tipo Duration a un tipo supportato dal DBMS.
   \subsubsection{Song}
   Concretizzazione di Track che rappresenta una canzone.
@@ -437,8 +441,16 @@
   \subsection{DAO}
 
   \subsubsection{BaseDAO}
-  Classe base generica del Data Access Object che definisce i metodi CRUD di base per interfacciarsi col DBMS.
-  Oltre ai CRUD di una singola entità è implementato anche un metodo per ottenere l'intera tabella. I metodi per eseguire filtraggi sulla base di parametri specifici sono definiti nelle classi derivate.
+  Classe base generica del Data Access Object che definisce le operazioni CRUD di base per interfacciarsi col DBMS e ne fornisce un'implementazione di default.
+  Metodi implementati:
+  \begin{itemize}
+      \item \textbf{\textit{get(long id)}}: restituisce un oggetto di tipo T il cui ID nel database corrisponde a quello dato.
+      \item \textbf{\textit{getAll()}}: restituisce tutti gli oggetti di tipo T nel database.
+      \item \textbf{\textit{save(T t)}}: rende persistente l'oggetto dato.
+      \item \textbf{\textit{update(T t)}}: aggiorna nel database lo stato dell'oggetto.
+      \item \textbf{\textit{delete(T t)}}: elimina dal database l'oggetto.
+  \end{itemize}
+   I metodi per eseguire filtraggi sulla base di parametri specifici sono definiti nelle classi derivate.
 
   \subsubsection{CustomerDAO}
   Permette di ottenere oggetti Customer dal database a patire dal loro username.
@@ -447,19 +459,19 @@
   Permette di ottenere oggetti Artist dal database a patire dal loro nome d'arte o username.
 
   \subsubsection{SongDAO}
-  Permette di ottenere oggetti Song dal database in base a una parola chiave o un Artist.
+  Permette di ottenere oggetti Song dal database a partire da una parola chiave o un Artist.
 
   \subsubsection{PodcastDAO}
-  Permette di ottenere oggetti Podcast dal database in base ad una parola chiave o un Artist.
+  Permette di ottenere oggetti Podcast dal database a partire da una parola chiave o un Artist.
 
   \subsubsection{SongPlaylistDAO}
-  Permette di ottenere oggetti SongPlaylist dal database in base al titolo.
+  Permette di ottenere oggetti SongPlaylist dal database a partire dal titolo.
 
   \subsubsection{PodcastPlaylistDAO}
-  Permette di ottenere oggetti PodcastPlaylist dal database in base al titolo.
+  Permette di ottenere oggetti PodcastPlaylist dal database a partire dal titolo.
 
   \subsubsection{AlbumDAO}
-  Permette di ottenere oggetti Album dal database in base al titolo o all'autore
+  Permette di ottenere oggetti Album dal database a partire dal titolo o dall'autore
 
   \subsubsection{SongPlaysCountDAO}
   Permette di aggiornare nel database il conteggio delle riproduzioni di una canzone.
