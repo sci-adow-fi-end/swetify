@@ -70,7 +70,7 @@ public class SuggestionsDAOTest extends BaseTest{
 
         }
         cus = customerList.getFirst();
-        Random random = new Random();
+        Random random = new Random("carciofo".hashCode());
         HashSet<IntTuple> hm = new HashSet<>();
 
         for (int i=0; i<200; i++){
@@ -154,7 +154,7 @@ public class SuggestionsDAOTest extends BaseTest{
 
 
     @Test
-    void testSuggestions(){
+    void testSuggestionsRandom(){
             assertEquals(getTopTenSongsByTopTenListeners(getCustomersWhoListenedTopTenSongs(getUserTopTen(countList, cus),
                     countList), countList), sud.getTopSongsBySimilarUsers(cus));
 
