@@ -29,8 +29,6 @@
   Il nostro intensivo utilizzo di piattaforme di streaming musicali ha suscitato in noi un interesse riguardo
   la loro struttura e il desiderio di replicarne il funzionamento.\\
   Abbiamo deciso quindi di realizzare un'applicazione che simuli le loro funzionalità da noi denominata Swetify.
-
-
   \section{Requisiti Funzionali}
   Swetify prevede la partecipazione di due tipologie di utenti: cliente e artista.
 
@@ -186,22 +184,18 @@
   \newpage
 
   \subsection{Mockups}
-
   \subsubsection{Pagina di accesso}
   \begin{figure}[H]
     \includegraphics[scale=0.25]{welcome}
   \end{figure}
-
   \subsubsection{Pagina di ricerca}
   \begin{figure}[H]
     \includegraphics[scale=0.25]{search}
   \end{figure}
-
   \subsubsection{Suggerimenti}
   \begin{figure}[H]
     \includegraphics[scale=0.25]{suggestions}
   \end{figure}
-
   \subsubsection{Coda di riproduzione}
   \begin{figure}[H]
     \includegraphics[scale=0.25]{playback}
@@ -211,7 +205,6 @@
   \begin{figure}[H]
     \includegraphics[scale=0.30]{sequenze01}
   \end{figure}
-
 
   \section{Scelte di progetto}
 
@@ -229,7 +222,6 @@
 
   \end{itemize}
 
-
   \section{Documentazione}
 
   \subsection{Domain model}
@@ -240,31 +232,22 @@
 
   \subsubsection{Entity}
   Classe base astratta che garantisce la presenza di un ID al fine di localizzare gli oggetti nel database.
-
   \subsubsection{Customer}
   Rappresenta il cliente e contiene le sue credenziali di accesso oltre alle playlist salvate.
-
   \subsubsection{Artist}
   Rappresenta l'artista e contiene le sue credenziali d'accesso e gli album da lui caricati.
-
   \subsubsection{Track}
   Rappresenta un qualsiasi oggetto che può essere aggiunto alla coda\\ di riproduzione.
-
   \subsubsection{Song}
   Concretizzazione di Track che rappresenta una canzone.
-
   \subsubsection{Podcast}
   Concretizzazione di Track che rappresenta un podcast.
-
   \subsubsection{Playlist}
   Rappresenta una playlist ed espone i metodi per aggiungere o rimuovere\\ delle track in testa oppure in coda.
-
   \subsubsection{Album}
   Permette all'utente di riprodurre le canzoni al suo interno ma è immutabile.
-
   \subsubsection{Suggestion}
   Rappresenta il possibile interesse del cliente verso una track.
-
   \subsubsection{PlaybackQueue}
   Rappresenta la coda di riproduzione e permette di aggiungere in testa ed in coda oltre ad eliminare in testa.
 
@@ -277,45 +260,33 @@
   \subsubsection{Handler}
   Classe base astratta che rappresenta un handler generico.\\
   Essa garantisce la presenza di un metodo update in ogni handler che contiene la logica di quest'ultimo.
-
   \subsubsection{State}
   Classe che permette ai vari handler di comunicare tra loro dati come
   l'utente loggato, la canzone o la playlist selezionata
-
   \subsubsection{NavigationManager}
   Gestisce la navigazione tra le pagine passando il controllo ai vari handler.
-
   \subsubsection{AlbumsHandler}
   Permette di visualizzare o riprodurre un album.
-
   \subsubsection{ArtistInfoHandler}
   Mostra le informazioni salienti di un artista.
-
   \subsubsection{HomeHandler}
   Contiene la schermata di ingresso e instrada l'utente verso le varie pagine.
-
   \subsubsection{LoginHandler}
   Permette all'utente di effettuare l'accesso con un nome utente e una password o
   eventualmente passare alla schermata di registrazione.
-
   \subsubsection{PlaybackHandler}
   Gestisce la coda di riproduzione e permette all'utente di visualizzare i
   brani contenuti in essa.
-
   \subsubsection{PlaylistHandler}
   Mostra all'utente i brani contenuti in una data playlist e permette ad esso di
   aggiungerla alla coda di riproduzione.
-
   \subsubsection{RegistrationHandler}
   Permette all'utente di registrarsi all'interno dell'applicazione con un
   nome utente ed una password.
-
   \subsubsection{SearchHandler}
   Gestisce la ricerca all'interno delle canzoni, dei podcast e degli artisti disponibili.
-
   \subsubsection{SuggestionsHandler}
   Mostra all'utente le track suggerite dall'applicazione.
-
   \subsubsection{UserPlaylistsHandler}
   Mostra l'elenco delle playlist create dall'utente.
 
@@ -328,28 +299,111 @@
   \subsubsection{Dao}
   Classe base astratta del data acces object che garantisce la capacità di leggere
   o scrivere oggetti dal database.
-
   \subsubsection{CustomerDao}
   Permette di ottenere oggetti Customer dal database a patire dal loro nome utente o ID.
-
   \subsubsection{ArtistDao}
   Permette di ottenere oggetti Artist dal database a patire dal loro nome utente o ID.
-
   \subsubsection{SongDao}
   Permette di ottenere oggetti Song dal database in base ad una parola chiave.
-
   \subsubsection{PodcastDao}
   Permette di ottenere oggetti Podcast dal database in base ad una parola chiave.
-
   \subsubsection{PlaylistDao}
-  Permette di leggere e scivere le playlist dell'utente dal database.
+  Permette di leggere e scrivere le playlist dell'utente dal database.
 
 
   \section{Test}
 
+  \subsection{Tipologie di test effettuati e organizzazione}
+
+  Per poter garantire il corretto funzionamento di \textit{Swetify} sono stati effettuate due tipologie di test:
+  \begin{itemize}
+    \item \textbf{test di integrazione}: verificano il comportamento che le componenti dell'applicazione mostrano quando interagiscono tra di loro; nello specifico, vengono testate le operazioni che i DAO utilizzano per interagire con il database di sistema
+    \item \textbf{test funzionali}: verificano il comportamento delle singole componenti dell'applicazione in un possibile scenario reale in cui quest'ultima viene utilizzata. Tra i test funzionali rientrano, per esempio, quelli relativi alla navigazione tra una schermata e l'altra dell'applicazione
+  \end{itemize}
+
   \begin{figure}[H]
     \includesvg[scale=0.7]{TestsUML.svg}
+    \caption{struttura del package \textit{Test}}
+    \label{fig:testsUML}
   \end{figure}
+
+  In figura \ref{fig:testsUML} viene mostrata l'organizzazione delle classi di test, contenute nel package \textit{Test}. Come si può notare, è presente una classe base \textbf{\textit{BaseTest}} contenente le funzionalità comuni a tutte le altre classi, come la funzione \textbf{\textit{setUp()}}; questa funzione serve per ripulire il database tra un test e l'altro, motivo per il quale viene eseguita prima di ciascun test.
+
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{setUp.png}
+    \caption{esempio di implementazione di \textit{setUp()} (in questo caso relativa a SongDAOTest)}
+    \label{fig:setUp}
+  \end{figure}
+
+
+  Come si può vedere in figura \ref{fig:setUp}, la \textit{setUp()} della classe base viene chiamata all'inizio della \textit{setUp()} delle classi
+  derivate, seguita dall'inizializzazione del database e degli oggetti necessari per l'esecuzione dei test.
+
+  Per la scrittura di tutti i test è stato utilizzato il framework \textbf{\textit{Junit 5.0}}.
+
+  \subsection{Test di integrazione}
+  Di seguito vengono descritti i metodi presenti nelle classi relative ai test di integrazione; ogni metodo consiste nel verificare il comportamento di una specifica query, scritta in linguaggio SQL, per l'accesso al database.
+
+  \subsubsection{SongDAOTest}
+  \begin{enumerate}
+
+    \item \textbf{\textit{testGet()}}: verifica che \textit{SongDAO.getByTitle()} e \textit{SongDAO.get()} restituiscano lo stesso risultato, confrontando i titoli delle canzoni (oggetti di tipo \textit{Song}) restituite
+
+    \item \textbf{\textit{testGetByTitle()}}: prima viene verificata la presenza di alcuni oggetti di tipo \textit{Song} salvati precedentemente sul database, attraverso \textit{SongDAO.getByTitle()}; successivamente, viene creato un nuovo oggetto \textit{song} di tipo \textit{Song} senza però salvarlo, e viene verificata l'assenza di risultati restituiti da \textit{SongDAO.getByTitle(song.getTitle())}
+
+    \item \textbf{\textit{testGetAll()}}: verifica che \textit{SongDAO.getAll()} restituisca il giusto numero di risultati, sulla base di quanti oggetti di tipo \textit{Song} sono presenti nel database
+
+  \end{enumerate}
+
+  \subsubsection{ArtistDAOTest}
+  \begin{enumerate}
+
+    \item \textbf{\textit{testGet()}}: verifica che \textit{ArtistDAO.getByStageName()} e \textit{ArtistDAO.get()} restituiscano lo stesso risultato, confrontando nome, numero di seguaci e biografia degli artisti (oggetti di tipo \textit{Artist}) restituiti
+
+    \item \textbf{\textit{testGetByUserName()}}: prima viene verificata la presenza di alcuni oggetti di tipo \textit{Artist} salvati precedentemente sul database, attraverso \textit{ArtistDAO.getByUserName()}; successivamente, viene creato un nuovo oggetto \textit{artist} di tipo \textit{Artist} senza però salvarlo, e viene verificata l'assenza di risultati restituiti da\textit{ArtistDAO.getByUserName(artist.getUsername())}
+
+    \item \textbf{\textit{testByStageName()}}: dopo aver creato e salvato due nuovi oggetti di tipo \textit{Artist} con lo stesso nome di uno degli artisti presenti nel database, verifica che \textit{ArtistDAO.getByStageName()} restituisca il giusto numero di risultati
+
+    \item \textbf{\textit{testGetAll()}}: prima verifica che \textit{ArtistDAO.getAll()} restituisca il giusto numero di risultati, sulla base di quanti oggetti di tipo \textit{Artist} sono presenti nel database, e successivamente verifica che tali risultati siano corretti, controllando nome, numero di seguaci e biografia per ciascuno di essi
+
+  \end{enumerate}
+
+  \subsubsection{CustomerDAOTest}
+  \begin{enumerate}
+
+    \item \textbf{\textit{testGet()}}: verifica che \textit{CustomerDAO.getByStageName()} e \textit{CustomerDAO.get()} restituiscano lo stesso risultato, confrontando nome utente e password dei customer (oggetti di tipo \textit{Customer}) restituiti
+
+    \item \textbf{\textit{testGetByUserName()}}: prima viene verificata la presenza di alcuni oggetti di tipo \textit{Customer} salvati precedentemente sul database, attraverso \textit{CustomerDAO.getByUserName()}; successivamente, viene creato un nuovo oggetto \textit{user} di tipo \textit{Customer} senza però salvarlo, e viene verificata l'assenza di risultati restituiti da\textit{CustomerDAO.getByUserName(user.getUsername())}
+
+    \item \textbf{\textit{testGetAll()}}: prima verifica che \textit{CustomerDAO.getAll()} restituisca il giusto numero di risultati, sulla base di quanti oggetti di tipo \textit{Customer} sono presenti nel database, e successivamente verifica che tali risultati siano corretti, controllando nome utente e password per ciascuno di essi
+
+  \end{enumerate}
+
+  \subsubsection{SuggestionDAOTest}
+  \begin{enumerate}
+    \item \textbf{\textit{testHomeSearch()}}:
+    \item \textbf{\textit{testHomeViewPlaylists()}}:
+    \item \textbf{\textit{testHomeSuggestions}}:
+  \end{enumerate}
+
+  \subsubsection{SongPlaylistDAOTest}
+
+  \subsubsection{PodcastPlaylistDAOTest}
+
+  \subsubsection{SongPlaysCountDAOTest}
+
+  \subsection{Test funzionali}
+  Come per i test di integrazione, di seguito vengono descritti i metodi presenti nelle classi relative ai test funzionali; nella \textit{setUp()} di ciascun metodo viene inizializzato il \textit{NavigationManager} e viene chiamato il metodo \textit{pushHandler()} specificando l'Id dell'handler coinvolto nei test all'interno di una certa classe.
+
+  \subsubsection{HomeHandlerTest}
+
+  \subsubsection{PlaybackHandlerTest}
+
+  \subsubsection{RegistrationLoginHandlersTest}
+
+  \subsubsection{AlbumLoadHandlerTest}
+
 
 
 \end{document}
