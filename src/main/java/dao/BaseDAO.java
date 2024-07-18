@@ -7,13 +7,18 @@ import jakarta.persistence.Persistence;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Properties;
 import java.util.function.Consumer;
 
 public abstract class BaseDAO<T> {
 
 
     protected static final EntityManagerFactory entityManagerFactory;
-    static{entityManagerFactory = Persistence.createEntityManagerFactory("swetifyPersistenceUnit");}
+
+    static {
+        Properties properties = HibernateConfig.getHibernateProperties();
+        entityManagerFactory = Persistence.createEntityManagerFactory("swetifyPersistenceUnit", properties);
+    }
 
     public static EntityManagerFactory getEntityManagerFactory(){
         return entityManagerFactory;
