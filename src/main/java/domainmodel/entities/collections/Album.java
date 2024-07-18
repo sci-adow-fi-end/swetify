@@ -36,6 +36,7 @@ public class Album extends BaseEntity {
     }
 
 
+    // TODO: This should return a List and not the Playlist object
     public Playlist<Song> getPlaylist() {
         return playlist;
     }
