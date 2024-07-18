@@ -7,7 +7,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "Users")
-public class BaseUser extends BaseEntity {
+public abstract class BaseUser extends BaseEntity {
     @Column(unique = true)
     String username;
     String password;
