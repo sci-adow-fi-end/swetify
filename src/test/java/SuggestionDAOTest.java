@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class SuggestionsDAOTest extends BaseTest{
+public class SuggestionDAOTest extends BaseTest {
 
     SuggestionDAO sud = new SuggestionDAO();
     Customer cus = new Customer();
