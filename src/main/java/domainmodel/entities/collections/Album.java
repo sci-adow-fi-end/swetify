@@ -25,7 +25,6 @@ public class Album extends BaseEntity {
         this.playlist = new Playlist<>();
     }
 
-    //TODO use this constructor
     public Album(String title, List<Song> trackList, Artist author) {
         this.playlist = new Playlist<>(title,trackList);
         this.releaseDate = new Date();

@@ -1,4 +1,5 @@
 import businesslogic.utility.NavigationManager;
+import dao.collections.AlbumDAO;
 import dao.users.ArtistDAO;
 import domainmodel.entities.collections.Album;
 import domainmodel.entities.users.Artist;
@@ -30,8 +31,9 @@ public class AlbumLoadHandlerTest extends BaseTest {
         System.setIn(input);
         nm.run();
         Album loadedAlbum = new Album();
+        AlbumDAO adao = new AlbumDAO();
 
-        for (Album album : nm.getCurrentState().getLoggedArtist().getAlbums()) {
+        for (Album album : adao.getByArtist(nm.getCurrentState().getLoggedArtist())) {
             if (album.getPlaylist().getTitle().equals("stio")) {
                 loadedAlbum = album;
                 break;

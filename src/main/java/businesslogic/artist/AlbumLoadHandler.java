@@ -114,8 +114,6 @@ public class AlbumLoadHandler extends Handler {
             System.setIn(new ByteArrayInputStream(nextInput.getBytes()));
         }
         System.out.println("\n");
-        Album na = new Album();
-        na.getPlaylist().setTitle(name);
         while(!insertionEnded){
             System.out.println("1: Add Song");
             System.out.println("2: Exit");
@@ -124,7 +122,7 @@ public class AlbumLoadHandler extends Handler {
             songs.add(createSong(s));
             }
         }
-        na.getPlaylist().setTracks(songs);
+        Album na = new Album(name, songs, s.getLoggedArtist());
         albumData.save(na);
     }
 

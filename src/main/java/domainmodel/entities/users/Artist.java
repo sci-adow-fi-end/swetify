@@ -67,10 +67,6 @@ public class Artist extends BaseEntity {
         this.biography = biography;
     }
 
-    public List<Album> getAlbums() {
-        return albums;
-    }
-
     public int getFollowers() {
         return followers;
     }
