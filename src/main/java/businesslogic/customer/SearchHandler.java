@@ -94,7 +94,9 @@ public class SearchHandler extends Handler {
                     try{
                         navigationChoice = scanner.nextInt();
                         state.setSelectedTrack(songs.get(navigationChoice));
+                        state.setPlayingTrack(songs.get(navigationChoice));
                         navigationManager.switchToController(NavigationManager.HandlerId.PLAY_TRACK);
+                        break;
                     }
                     catch (NumberFormatException e){
                         System.out.println("Input is not a number");

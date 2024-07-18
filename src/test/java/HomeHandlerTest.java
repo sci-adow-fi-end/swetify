@@ -15,6 +15,7 @@ public class HomeHandlerTest extends BaseTest{
     public void setUp() {
         super.setUp();
         navigationManager.pushHandler(NavigationManager.HandlerId.HOME);
+        navigationManager.getCurrentState().setLoggedUser(new Customer());
     }
 
     @Test

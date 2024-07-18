@@ -10,8 +10,8 @@ import java.util.Scanner;
 public class ArtistHomeHandler extends Handler {
 
 
-    private void renderChoices() {
-        System.out.println("Welcome to swetify, the engineer's music streaming service!");
+    private void renderChoices(State state) {
+        System.out.println(state.getLoggedArtist().getUsername() + " welcome to swetify, the engineer's music streaming service!");
         System.out.println("\n");
         System.out.println("1: Upload an album");
         System.out.println("2: Upload a podcast");
@@ -23,7 +23,7 @@ public class ArtistHomeHandler extends Handler {
     @Override
     public State update(State state) {
         clearScreen();
-        renderChoices();
+        renderChoices(state);
         int navigationOption = -1;
         boolean validNavigationOption = false;
         Scanner input = new Scanner(System.in);
@@ -49,6 +49,7 @@ public class ArtistHomeHandler extends Handler {
                     break;
                 case 3:
                     navigationManager.switchToController(NavigationManager.HandlerId.LOGIN);
+                    break;
                 case 4:
                     navigationManager.stop();
                     break;

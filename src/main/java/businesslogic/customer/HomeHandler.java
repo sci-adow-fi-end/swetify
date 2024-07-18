@@ -11,8 +11,8 @@ import java.util.Scanner;
 public class HomeHandler extends Handler {
 
 
-    private void renderChoices() {
-        System.out.println("Welcome to swetify, the engineer's music streaming service!");
+    private void renderChoices(State state) {
+        System.out.println(state.getLoggedUser().getUsername() + " welcome to swetify, the engineer's music streaming service!");
         System.out.println("\n");
         System.out.println("1: Search for a track, artist or playlist");
         System.out.println("2: View your playlists");
@@ -25,7 +25,7 @@ public class HomeHandler extends Handler {
     @Override
     public State update(State state) {
         clearScreen();
-        renderChoices();
+        renderChoices(state);
         int navigationOption = -1;
         boolean validNavigationOption = false;
         Scanner input = new Scanner(System.in);

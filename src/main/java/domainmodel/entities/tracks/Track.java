@@ -17,7 +17,7 @@ public abstract class Track extends BaseEntity {
     @Convert(converter = DurationConverter.class)
     private Duration duration;
 
-    @ManyToMany(cascade = CascadeType.MERGE)
+    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private List<Artist> authors = new ArrayList<>();
 
     private long totalPlays;
