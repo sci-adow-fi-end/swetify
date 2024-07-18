@@ -31,7 +31,7 @@ public class AlbumDAO extends BaseDAO<Album> {
 
     public List<Album> getByArtist(Artist artist) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
-        TypedQuery<Album> query = entityManager.createQuery("SELECT a FROM Album a JOIN a.playlist p WHERE a.author = :artist", Album.class);
+        TypedQuery<Album> query = entityManager.createQuery("SELECT a FROM Album a JOIN a.playlist p WHERE a.playlist.author = :artist", Album.class);
         query.setParameter("artist", artist);
         List<Album> result = query.getResultList();
         entityManager.close();
