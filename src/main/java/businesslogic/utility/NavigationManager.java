@@ -39,7 +39,8 @@ public class NavigationManager {
         PLAY_TRACK,
         VIEW_ALBUMS,
         LOAD_ALBUM,
-        LOAD_PODCAST
+        LOAD_PODCAST,
+        VIEW_FOLLOWED_ARTISTS
     }
 
     public enum DaoId {
@@ -105,6 +106,8 @@ public class NavigationManager {
                 (SongDAO) DAOs.get(DaoId.SONG), (AlbumDAO) DAOs.get(DaoId.ALBUM)));
 
         handlers.put(HandlerId.LOAD_PODCAST, new PodcastLoadHandler((ArtistDAO) DAOs.get(DaoId.ARTIST),
+                (PodcastDAO) DAOs.get(DaoId.PODCAST)));
+        handlers.put(HandlerId.VIEW_FOLLOWED_ARTISTS, new FollowedArtistsViewHandler((SongDAO) DAOs.get(DaoId.SONG),
                 (PodcastDAO) DAOs.get(DaoId.PODCAST)));
 
         states = new Stack<>();

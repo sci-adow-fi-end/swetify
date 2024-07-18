@@ -65,7 +65,7 @@ public class RegistrationLoginHandlersTest extends BaseTest{
 
     @Test
     void testLoginCustomer() {
-        String testString = "1\n1\nStio\nNelChill\n1\n1\nStio\nNelChill\n5\n";
+        String testString = "1\n1\nStio\nNelChill\n1\n1\nStio\nNelChill\n6\n";
         ByteArrayInputStream input = new ByteArrayInputStream(testString.getBytes());
         System.setIn(input);
 

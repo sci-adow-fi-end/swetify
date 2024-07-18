@@ -17,8 +17,9 @@ public class HomeHandler extends Handler {
         System.out.println("1: Search for a track, artist or playlist");
         System.out.println("2: View your playlists");
         System.out.println("3: View suggested songs and podcasts");
-        System.out.println("4: Log out");
-        System.out.println("5: Close Swetify");
+        System.out.println("4: View followed artists");
+        System.out.println("5: Log out");
+        System.out.println("6: Close Swetify");
     }
 
 
@@ -53,9 +54,12 @@ public class HomeHandler extends Handler {
                     navigationManager.switchToController(NavigationManager.HandlerId.VIEW_SUGGESTIONS);
                     break;
                 case 4:
-                    navigationManager.switchToController(NavigationManager.HandlerId.LOGIN);
+                    navigationManager.switchToController(NavigationManager.HandlerId.VIEW_FOLLOWED_ARTISTS);
                     break;
                 case 5:
+                    navigationManager.switchToController(NavigationManager.HandlerId.LOGIN);
+                    break;
+                case 6:
                     navigationManager.stop();
                     break;
                 default:

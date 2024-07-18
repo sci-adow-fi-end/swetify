@@ -59,7 +59,7 @@ public class SearchHandler extends Handler {
         }
         System.out.println("\n\n");
 
-        if (i > 0) {
+        if (i > 1) {
             System.out.println("insert the number of a track to play it or the number of an artist to view his info");
             int choice = askNumberInRange(1, i) - 1; //the minus 1 is to make it a valid index
             if (choice < songs.size()) {

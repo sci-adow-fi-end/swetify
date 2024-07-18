@@ -20,7 +20,7 @@ public class HomeHandlerTest extends BaseTest{
 
     @Test
     public void testHomeSearch() {
-        ByteArrayInputStream input = new ByteArrayInputStream("1\n-\n5\n".getBytes());
+        ByteArrayInputStream input = new ByteArrayInputStream("1\n-\n6\n".getBytes());
         System.setIn(input);
         navigationManager.run();
 
