@@ -7,13 +7,8 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "Artists")
-public class Artist extends BaseEntity {
-
-    @Column(unique = true)
-    private String username;
-
-    private String password;
-
+public class Artist extends BaseUser{
+    
     private String stageName;
 
     private String biography;
@@ -29,21 +24,6 @@ public class Artist extends BaseEntity {
         this.biography = biography;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
 
     public String getStageName() {
         return stageName;

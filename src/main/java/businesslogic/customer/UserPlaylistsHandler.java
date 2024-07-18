@@ -37,8 +37,8 @@ public class UserPlaylistsHandler extends Handler {
     private int renderSavedPlaylists(Session session) {
         clearScreen();
 
-        songPlaylists = session.getLoggedUser().getSongPlaylists();
-        podcastsPlaylists = session.getLoggedUser().getPodcastPlaylists();
+        songPlaylists = spDAO.getByCustomer(session.getLoggedUser());
+        podcastsPlaylists = ppDAO.getByCustomer(session.getLoggedUser());
 
         int index = 1;
         System.out.println("Song playlists:");

@@ -3,7 +3,12 @@ package dao.collections;
 
 import dao.BaseDAO;
 import domainmodel.entities.collections.PodcastPlaylist;
+import domainmodel.entities.collections.SongPlaylist;
+import domainmodel.entities.users.Artist;
+import domainmodel.entities.users.BaseUser;
+import domainmodel.entities.users.Customer;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.TypedQuery;
 
 import java.util.List;
 import java.util.Optional;
@@ -33,5 +38,14 @@ public class PodcastPlaylistDAO extends BaseDAO<PodcastPlaylist> {
                 .getResultList();
         em.close();
         return resultList;
+    }
+
+    public List<PodcastPlaylist> getByCustomer(Customer cus) {
+        EntityManager em = entityManagerFactory.createEntityManager();
+        TypedQuery<PodcastPlaylist> query = em.createQuery("SELECT pp FROM PodcastPlaylist pp JOIN p.author a WHERE a = :artist", PodcastPlaylist.class);
+        query.setParameter("artist", cus);
+        List<PodcastPlaylist> result = query.getResultList();
+        em.close();
+        return result;
     }
 }

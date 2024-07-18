@@ -10,11 +10,8 @@ import java.util.List;
 
 @Entity
 @Table(name = "Customers")
-public class Customer extends BaseEntity {
+public class Customer extends BaseUser {
     @Column(unique = true)
-    private String username;
-
-    private String password;
 
     @OneToMany(cascade = CascadeType.MERGE, orphanRemoval = true)
     final private List<SongPlaylist> songPlaylists = new LinkedList<>();
@@ -33,22 +30,7 @@ public class Customer extends BaseEntity {
     public Customer() {
     }
 
-    public String getUsername() {
-        return username;
-    }
 
-    public void setUsername(String username) {
-        this.username = username;
-
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
 
     public List<SongPlaylist> getSongPlaylists() {
         return songPlaylists;

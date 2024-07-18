@@ -2,6 +2,7 @@ package domainmodel.entities.collections;
 
 import domainmodel.entities.BaseEntity;
 import domainmodel.entities.tracks.Track;
+import domainmodel.entities.users.BaseUser;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -15,14 +16,23 @@ public class Playlist<T extends Track> extends BaseEntity implements Iterable<T>
     @ManyToMany(cascade = CascadeType.MERGE, targetEntity = Track.class, fetch = FetchType.EAGER)
     protected List<T> tracks = new ArrayList<>();
 
+
+
+    @ManyToOne
+    private BaseUser author;
+
     public Playlist(){
     }
     public Playlist(String title) {
         this.title=title;
     }
-    public Playlist(String title, List<T> trackList) {
+    public Playlist(String title,BaseUser author, List<T> trackList) {
         this.title=title;
         this.tracks=trackList;
+        this.author = author;
+    }
+    public BaseUser getAuthor() {
+        return author;
     }
 
     public String getTitle() {

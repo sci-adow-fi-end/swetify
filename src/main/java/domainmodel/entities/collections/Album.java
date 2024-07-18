@@ -3,6 +3,7 @@ package domainmodel.entities.collections;
 import domainmodel.entities.BaseEntity;
 import domainmodel.entities.tracks.Song;
 import domainmodel.entities.users.Artist;
+import domainmodel.entities.users.BaseUser;
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -18,21 +19,17 @@ public class Album extends BaseEntity {
     @Temporal(TemporalType.DATE)
     private Date releaseDate;
 
-    @ManyToOne
-    private Artist author;
-
     public Album(){
         this.playlist = new Playlist<>();
     }
 
     public Album(String title, List<Song> trackList, Artist author) {
-        this.playlist = new Playlist<>(title,trackList);
+        this.playlist = new Playlist<>(title,author,trackList);
         this.releaseDate = new Date();
-        this.author = author;
     }
 
-    public Artist getAuthor() {
-        return author;
+    public BaseUser getAuthor() {
+        return playlist.getAuthor();
     }
 
 
