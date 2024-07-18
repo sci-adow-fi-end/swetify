@@ -324,31 +324,41 @@
   \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\linewidth]{model01.png} %TODO: mettere l'UML aggiornato
-    \caption{disposizione delle classi nel package \textit{domainModel}}
+    \caption{diagramma delle classi contenute nel package \textit{domainModel}}
     \label{fig:domainModel}
   \end{figure}
+
+  Definisce la rappresentazione dei dati all'interno dell'applicazione e come gli oggetti sono mappati nel database. Per fare questo è stata usata la tecnica ORM (Object Relational Mapping), realizzata tramite l'utilizzo delle annotazioni fornite dalle JPA (package jakarta.persistence).
 
   \subsubsection{Business logic}
   \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\linewidth]{logic01.png} %TODO: mettere l'UML aggiornato
-    \caption{disposizione delle classi nel package \textit{businessLogic}}
+    \caption{diagramma delle classi contenute nel package \textit{businessLogic}}
     \label{fig:businessLogic}
   \end{figure}
+  % TODO: scrivere descrizione della business logic
 
   \subsubsection{DAO}
   \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\linewidth]{dao01.png} %TODO: mettere l'UML aggiornato
-    \caption{disposizione delle classi nel package \textit{dao}}
+    \caption{diagramma delle classi contenute nel package \textit{dao}}
     \label{fig:DAO}
   \end{figure}
+  Contiene le classi che realizzano il Data Access Object pattern che si occupa della persistenza dei dati.
 
   \subsection{Design pattern}
 
   \subsubsection{DAO}
+  \begin{figure}[H]
+    \centering
+    \includesvg[width=0.85\linewidth]{DAOPattern.svg}
+    \caption{diagramma delle classi del design pattern DAO}
+    \label{fig:daoPattern}
+  \end{figure}
   Il DAO (Data Access Object) è un pattern strutturale che permette di disaccoppiare il layer di business logic da quello che si occupa di rendere gli oggetti persistenti nel database. I DAO espongono alla business logic un'API per effettuare le operazioni di CRUD. Ciò permette di rispettare il principio di singola responsabilità.
-  Nel nostro caso (Figura \ref{fig:DAO}), è stato prevista una classe base astratta e generica che definisce l'implementazione di default per le operazioni CRUD di base. Nella maggior parte dei casi questa implementazione è adeguata per tutti i DAO concreti. Nei casi in cui erano necessari metodi di accesso ai dati più specifici, ad esempio filtraggio per attributi che non siano l'ID, essi sono stati implementati nel rispettivo DAO concreto.
+  Nel nostro caso, è stato prevista una classe base astratta e generica che definisce l'implementazione di default per le operazioni CRUD di base. Nella maggior parte dei casi questa implementazione è adeguata per tutti i DAO concreti. Nei casi in cui erano necessari metodi di accesso ai dati più specifici, ad esempio filtraggio per attributi che non siano l'ID, essi sono stati implementati nel rispettivo DAO concreto.
 
   \subsection{Diagramma di sequenza}
   \begin{figure}[H]
