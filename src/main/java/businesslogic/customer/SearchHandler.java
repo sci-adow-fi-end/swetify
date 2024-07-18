@@ -66,10 +66,10 @@ public class SearchHandler extends Handler {
                 session.setSelectedTrack(songs.get(choice));
                 return 1;
             } else if (choice < songs.size() + podcasts.size()) {
-                session.setSelectedTrack(podcasts.get(choice));
+                session.setSelectedTrack(podcasts.get(choice - songs.size()));
                 return 2;
             } else if (choice < songs.size() + podcasts.size() + artists.size()) {
-                session.setViewingArtist(artists.get(choice));
+                session.setViewingArtist(artists.get(choice - (songs.size() + podcasts.size())));
                 return 3;
             }
             else{

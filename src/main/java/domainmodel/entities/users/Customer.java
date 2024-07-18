@@ -1,18 +1,12 @@
 package domainmodel.entities.users;
 
 import domainmodel.entities.BaseEntity;
-import domainmodel.entities.collections.Playlist;
 import domainmodel.entities.collections.PodcastPlaylist;
 import domainmodel.entities.collections.SongPlaylist;
-import domainmodel.entities.tracks.Podcast;
-import domainmodel.entities.tracks.Song;
-import domainmodel.entities.tracks.Track;
 import jakarta.persistence.*;
 
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 
 @Entity
 @Table(name = "Customers")
@@ -28,7 +22,7 @@ public class Customer extends BaseEntity {
     @OneToMany(cascade = CascadeType.MERGE, orphanRemoval = true)
     final private List<PodcastPlaylist> podcastPlaylists = new LinkedList<>();
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     final private List<Artist> followedArtists = new LinkedList<>();
 
     public Customer(String username, String password) {
@@ -72,6 +66,10 @@ public class Customer extends BaseEntity {
 
     public void addFollowedArtists(Artist followedArtist) {
         followedArtists.add(followedArtist);
+    }
+
+    public void removeFollowedArtists(Artist followedArtist) {
+        followedArtists.remove(followedArtist);
     }
 
 }
