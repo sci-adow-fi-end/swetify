@@ -4,6 +4,8 @@
 \usepackage{hyperref}
 \usepackage[inkscapeformat=png]{svg}
 \usepackage[margin=0.85in]{geometry}
+\usepackage[italian]{babel} % nomi di tabelle e figure ora sono in italiano
+\usepackage{changepage}
 
 \hypersetup{
   colorlinks,
@@ -13,16 +15,51 @@
   urlcolor=black
 }
 
-\title{Swetify}
-\author{Niccolò Malgeri, Filippo Viti, Alessio Delli Colli}
-\date{July 2024}
+
 
 \begin{document}
 
-  \maketitle
+  \begin{titlepage}
+    \begin{center}
+      \vspace*{1cm}
+      \includegraphics[width=10cm]{unifi.jpg} \\
+      \vspace{1cm}
+      \LARGE Università degli studi di Firenze \\
+      \vspace{0.4cm}
+      \LARGE Dipartimento di Ingegneria dell'Informazione \\
+      \rule{17cm}{1.5pt} \\
+      \vspace{0.4cm}
+      \LARGE \textbf{Swetify: un'applicazione a linea di comando per lo streaming musicale} \\
+      \rule{17cm}{1.5pt} \\
+      \vspace{1cm}
+      \begin{adjustwidth}{1cm}{}
+        \begin{flushleft}
+          \begin{minipage}[t]{0.45\textwidth}
+            \large \textit{\textbf{Autori:}} \\
+            A. Delli Colli \\
+            N. Malgeri \\
+            F. Viti \\
+            \hspace{-0.2cm} \\
+            \large \textit{\textbf{Anno accademico}:} \\
+            2023-2024
+          \end{minipage}
+          \begin{minipage}[t]{0.45\textwidth}
+            \hspace*{1cm}
+            \large \textit{\textbf{Corso:}} \\
+            \hspace*{1.1cm} B024253 \\
+            \hspace*{1.1cm} Basi di dati - Ingegneria del software \\
+            \vspace{0.5cm} \\
+            \hspace*{1.1cm} \textit{\textbf{Docente del corso:}} \\
+            \hspace*{1.1cm} E. Vicario \\
+          \end{minipage}
+        \end{flushleft}
+      \end{adjustwidth}
+    \end{center}
+  \end{titlepage}
 
+  \renewcommand{\contentsname}{\LARGE Indice}
   \tableofcontents
-  \newpage
+  \pagebreak
 
 
   \section{Introduzione}
@@ -34,11 +71,11 @@
 
   \subsection{Architettura dell'applicazione e pratiche utilizzate}
   Per la progettazione del software è stato seguito lo standard UML, realizzando i diagrammi con StarUML.
-  Il software è stato realizzato in Java. Il modello dei dati è rappresentato dal package domainModel,
-  mentre la logica e la visualizzazione dell'interfaccia utente si trova nel package businessLogic. La businessLogic si interfaccia con dei DAO che si occupano di rendere i dati persistenti attraverso JPA (Jakarta Persistence API). In particolare è stato scelto Hibernate come implementazione della JPA. Come RDBMS è stato usato H2, integrato di default in Hibernate. L'architettura generale dell'applicazione è illustrata in Figura \ref{fig:architettura}.
-  Il testing è stato effettuato con JUnit.
+  Il software è stato realizzato in Java. Il modello dei dati è rappresentato dal package \textbf{domainModel},
+  mentre la logica e la visualizzazione dell'interfaccia utente si trova nel package \textbf{businessLogic}. La \textbf{businessLogic} si interfaccia con dei DAO che si occupano di rendere i dati persistenti attraverso \textbf{JPA} (\textbf{\textit{Jakarta Persistence API}}). In particolare è stato scelto \textbf{\textit{Hibernate}} come implementazione della \textbf{JPA}. Come RDBMS è stato usato \textbf{H2}, integrato di default in \textbf{\textit{Hibernate}}. L'architettura generale dell'applicazione è illustrata in Figura \ref{fig:architettura}.
+  Il testing è stato effettuato con il framework \textbf{\textit{JUnit 5}}.
   Per semplicità, l'interfaccia effettivamente realizzata è a linea di comando.
-  Sono stati realizzati dei mockup utilizzando Inkscape, un programma per grafica vettoriale, che rappresentano l'aspetto che avrebbe l'applicazione se fosse stata realizzata un'interfaccia grafica.
+  Sono stati realizzati dei mockup utilizzando \textbf{\textit{Inkscape}}, un programma per grafica vettoriale, che rappresentano l'aspetto che avrebbe l'applicazione se fosse stata realizzata un'interfaccia grafica.
 
   \begin{figure}[H]
     \centering
@@ -47,13 +84,12 @@
     \label{fig:architettura}
   \end{figure}
 
-  \section{Requisiti}
 
-  \subsection{Requisiti funzionali}
+  \section{Requisiti}
   \label{sec:reqFunc}
   Swetify prevede la partecipazione di due tipologie di utenti: cliente e artista.
 
-  \subsubsection{Funzionalità proposte per il cliente}
+  \subsection{Funzionalità proposte per il cliente}
 
   \begin{itemize}
 
@@ -72,13 +108,16 @@
 
   \end{itemize}
 
-  \subsubsection{Funzionalità proposte per l'artista}
+  \subsection{Funzionalità proposte per l'artista}
 
   \begin{itemize}
 
     \item caricare album contenenti canzoni o podcast.
 
   \end{itemize}
+
+
+  \section{Progettazione}
 
   \subsection{Diagramma dei casi d'uso}
 
@@ -93,35 +132,39 @@
 
   \subsection{Template dei casi d'uso}
 
-  \begin{center}
+  \begin{table}[H]
+    \centering
     \begin{tabular}{|l|l|}
       \hline
-      \textbf{UC1}            & \textbf{riproduzione canzone}                               \\
+      \textbf{UC1}            & \textbf{riproduzione canzone}                                                 \\
       \hline
-      livello                 & user goal                                                   \\
+      livello                 & user goal                                                                     \\
       \hline
-      descrizione             & l'utente cerca e riproduce una canzone                      \\
+      descrizione             & l'utente cerca e riproduce una canzone                                        \\
       \hline
-      attori                  & cliente                                                     \\
+      attori                  & cliente                                                                       \\
       \hline
-      pre-condizioni          & l'utente deve avere le credenziali per effettuare l'accesso \\
+      pre-condizioni          & l'utente deve avere le credenziali per effettuare l'accesso                   \\
       \hline
-      post-condizioni         & la canzone selezionata viene aggiunta alla coda             \\
+      post-condizioni         & la canzone selezionata viene aggiunta alla coda                               \\
       \hline
-      normale svolgimento     & 1) l'utente apre la pagina di ricerca                       \\
-      & 2) inserisce il nome di una canzone                         \\
-      & 3) seleziona una voce dall'elenco proposto                  \\
+      normale svolgimento     & 1) l'utente apre la pagina di ricerca (mockup in figura \ref{fig:searchPage}) \\
+      & 2) inserisce il nome di una canzone                                           \\
+      & 3) seleziona una voce dall'elenco proposto                                    \\
       & 4) seleziona l'opzione ``aggiungi in coda"
 
       \\
       \hline
-      svolgimenti alternativi & 4b) l'utente seleziona l'opzione "aggiungi in testa"        \\
+      svolgimenti alternativi & 4b) l'utente seleziona l'opzione "aggiungi in testa"                          \\
       \hline
-
     \end{tabular}
+    \label{tab:uct1}
+  \end{table}
 
-    \vspace{40pt}
+  \vspace{40pt}
 
+  \begin{table}[H]
+    \centering
     \begin{tabular}{|l|l|}
       \hline
       \textbf{UC2}            & \textbf{modifica playlist}                                  \\
@@ -149,9 +192,13 @@
       \hline
 
     \end{tabular}
+    \label{tab:uct2}
+  \end{table}
 
-    \vspace{40pt}
+  \vspace{40pt}
 
+  \begin{table}[H]
+    \centering
     \begin{tabular}{|l|l|}
       \hline
       \textbf{UC3}            & \textbf{aggiunta album}                                      \\
@@ -175,14 +222,18 @@
       \hline
 
     \end{tabular}
+    \label{tab:uct3}
+  \end{table}
 
-    \vspace{40pt}
+  \vspace{40pt}
 
+  \begin{table}[H]
+    \centering
     \begin{tabular}{|l|l|}
       \hline
       \textbf{UC4}                     & \textbf{iscrizione ad un artista}                           \\
       \hline
-      livello                          & user goal                                                   \\
+      livello                          & function                                                    \\
       \hline
       descrizione                      & l'utente aggiunge un artista agli artisti seguiti           \\
       \hline
@@ -200,67 +251,120 @@
       & 4) seleziona l'opzione ``aggiungi in coda"
       \\
       \hline
-
-
     \end{tabular}
-  \end{center}
+    \label{tab:uct4}
+  \end{table}
 
-  \newpage
+  \vspace{40pt}
+
+  \begin{table}[H]
+    \centering
+    \begin{tabular}{|l|l|}
+      \hline
+      \textbf{UC5}                     & \textbf{visualizzazione dei consigliati}                                         \\
+      \hline
+      livello                          & user goal                                                                        \\
+      \hline
+      descrizione                      & l'utente visualizza le canzoni ed i podcast consigliati                          \\
+      \hline
+      attori                           & cliente                                                                          \\
+      \hline
+      pre-condizioni                   & l'utente deve avere le credenziali per effettuare l'accesso                      \\
+      & e avere ascoltato almeno una canzone o podcast                                   \\
+      \hline
+      post-condizioni                  & i consigliati sono mostrati nella sezione apposita                               \\
+      \hline
+      normale svolgimento \hspace{5pt} & 1) l'utente va alla homepage                                                     \\
+      & 2) accede alla sezione dei consigliati                                           \\
+      & 3) visualizza le tracce consigliate (mockup in figura \ref{fig:suggestionsPage}) \\
+      \hline
+    \end{tabular}
+    \label{tab:uct5}
+  \end{table}
+
+  \pagebreak
 
   \subsection{Mockups}
+
   \subsubsection{Pagina di accesso}
   \begin{figure}[H]
+    \centering
     \includegraphics[scale=0.25]{welcome}
+    \caption{prototipo della pagina di login}
+    \label{fig:loginPage}
   \end{figure}
+
   \subsubsection{Pagina di ricerca}
   \begin{figure}[H]
+    \centering
     \includegraphics[scale=0.25]{search}
+    \caption{prototipo della pagina di ricerca}
+    \label{fig:searchPage}
   \end{figure}
+
   \subsubsection{Suggerimenti}
   \begin{figure}[H]
+    \centering
     \includegraphics[scale=0.25]{suggestions}
+    \caption{prototipo della pagina dei consigliati}
+    \label{fig:suggestionsPage}
   \end{figure}
+
   \subsubsection{Coda di riproduzione}
   \begin{figure}[H]
+    \centering
     \includegraphics[scale=0.25]{playback}
+    \caption{prototipo della coda di riproduzione}
+    \label{fig:playbackQueue}
   \end{figure}
 
-  \subsection{Sequence diagram}
+  \subsection{Struttura delle classi}
+
+  \subsubsection{Domain model}
   \begin{figure}[H]
-    \includegraphics[scale=0.30]{sequenze01}
+    \centering
+    \includegraphics[width=0.5\linewidth]{model01.png} %TODO: mettere l'UML aggiornato
+    \caption{disposizione delle classi nel package \textit{domainModel}}
+    \label{fig:domainModel}
   \end{figure}
 
-  \section{Scelte di progetto}
+  \subsubsection{Business logic}
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{logic01.png} %TODO: mettere l'UML aggiornato
+    \caption{disposizione delle classi nel package \textit{businessLogic}}
+    \label{fig:businessLogic}
+  \end{figure}
 
-  Abbiamo scelto di strutturare il progetto creando una divisione tra domain model, business logic e data
-  access objects.
-  \begin{itemize}
-    \item
-    Il package  \textbf{domainmodel} definisce le classi che simboleggiano gli elementi con cui l'utente
-    interagisce.
-    \item
-    il package \textbf{businesslogic} descrive le modalità e le possibilità di interazione che l'utente
-    ha con tali oggetti.
-    \item
-    il \textbf{dao} garantisce la persistenza di alcuni oggetti all'interno dell'applicazione.
+  \subsubsection{DAO}
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{dao01.png} %TODO: mettere l'UML aggiornato
+    \caption{disposizione delle classi nel package \textit{dao}}
+    \label{fig:DAO}
+  \end{figure}
 
-  \end{itemize}
+  \subsection{Design pattern}
+
+  \subsection{Diagramma di sequenza}
+  \begin{figure}[H]
+    \centering
+    \includesvg[width=0.85\linewidth]{ModifyUserPlaylist.svg}
+    \caption{diagramma di sequenza relativo alla modifica della playlist di un utente}
+    \label{fig:seqDiag}
+  \end{figure}
 
 
   \section{Implementazione}
 
   \subsection{Domain model}
 
-  \begin{figure}[H]
-    \includegraphics[scale=0.4]{model01}
-  \end{figure}
-
   \subsubsection{BaseEntity}
   Classe base astratta che garantisce la presenza di un ID in tutte entità concrete.
   \subsubsection{Customer}
-  Rappresenta il cliente e contiene le sue credenziali di accesso oltre alle playlist salvate. // TODO: decidere se fare inversione
+  Rappresenta il cliente e contiene le sue credenziali di accesso oltre alle playlist salvate.
   \subsubsection{Artist}
-  Rappresenta l'artista e contiene le sue credenziali d'accesso e gli album da lui caricati. // TODO: sus
+  Rappresenta l'artista e contiene le sue credenziali d'accesso e gli album da lui caricati
   \subsubsection{Track}
   Rappresenta una traccia audio che può essere aggiunta alla coda\\ di riproduzione.
 
@@ -297,10 +401,6 @@
 
   \subsection{Business logic}
 
-  \begin{figure}[H]
-    \includegraphics[scale=0.28]{logic01}
-  \end{figure}
-
   \subsubsection{Handler}
   Classe base astratta che rappresenta un handler generico.\\
   Essa garantisce la presenza di un metodo update in ogni handler che contiene la logica di quest'ultimo.
@@ -335,10 +435,6 @@
   Mostra l'elenco delle playlist create dall'utente.
 
   \subsection{DAO}
-
-  \begin{figure}[H]
-    \includegraphics[scale=0.3]{dao01}
-  \end{figure}
 
   \subsubsection{BaseDAO}
   Classe base generica del Data Access Object che definisce i metodi CRUD di base per interfacciarsi col DBMS.
@@ -404,8 +500,6 @@
 
   Come si può vedere in figura \ref{fig:setUp}, la \textit{setUp()} della classe base viene chiamata all'inizio della \textit{setUp()} delle classi
   derivate, seguita dall'inizializzazione del database e degli oggetti necessari per l'esecuzione dei test.
-
-  Per la scrittura di tutti i test è stato utilizzato il framework \textbf{\textit{Junit 5.0}}.
 
   \subsection{Test di integrazione}
   Di seguito vengono descritti i metodi presenti nelle classi relative ai test di integrazione; ogni metodo consiste nel verificare il comportamento di una specifica query, scritta in linguaggio SQL, per l'accesso al database.
@@ -485,7 +579,7 @@
 
   \end{itemize}
 
-  \subsubsection{PlaybackHandlerTest}:
+  \subsubsection{PlaybackHandlerTest}
   \begin{itemize}
 
     \item \textbf{\textit{testInitialPlaybackState()}}: verifica che lo stato iniziale della coda di riproduzione sia corretto. In particolare,
