@@ -64,7 +64,12 @@
   \end{itemize}
 
   \subsection{Diagramma dei casi d'uso}
-  \includegraphics[scale=0.33]{usecase04}
+  \begin{figure}
+    \centering
+    \includesvg[width=0.7\linewidth]{UseCaseDiagram.svg}
+    \caption{diagramma dei casi d'uso}
+    \label{fig:useCaseDiagram}
+  \end{figure}
 
   \subsection{Template dei casi d'uso}
 
@@ -344,6 +349,7 @@
 
   \subsection{Test di integrazione}
   Di seguito vengono descritti i metodi presenti nelle classi relative ai test di integrazione; ogni metodo consiste nel verificare il comportamento di una specifica query, scritta in linguaggio SQL, per l'accesso al database.
+
 
   \subsubsection{SongDAOTest}
   \begin{enumerate}
