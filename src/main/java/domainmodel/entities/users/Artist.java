@@ -1,11 +1,9 @@
 package domainmodel.entities.users;
 
 import domainmodel.entities.BaseEntity;
-import domainmodel.entities.collections.Album;
-import jakarta.persistence.*;
-
-import java.util.ArrayList;
-import java.util.List;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "Artists")
@@ -19,9 +17,6 @@ public class Artist extends BaseEntity {
     private String stageName;
 
     private String biography;
-
-    @ManyToMany(cascade = CascadeType.MERGE)
-    final private List<Album> albums = new ArrayList<>();
 
     private int followers = 0;
 
