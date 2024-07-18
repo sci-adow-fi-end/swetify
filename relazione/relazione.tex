@@ -375,10 +375,12 @@
 
   \subsubsection{BaseEntity}
   Classe base astratta che garantisce la presenza di un ID in tutte entità concrete.
+  \subsubsection{BaseUser}
+  Classe base per Customer e Artist che contiene le credenziali di accesso.
   \subsubsection{Customer}
-  Rappresenta il cliente e contiene le sue credenziali di accesso oltre alle playlist salvate.
+  Estende il BaseUser aggiungendo una lista di artisti seguiti.
   \subsubsection{Artist}
-  Rappresenta l'artista e contiene le sue credenziali d'accesso e gli album da lui caricati
+  Estende il BasUser aggiungendo il nome d'arte, la biografia e il numero di follower.
   \subsubsection{Track}
   Rappresenta una traccia audio che può essere aggiunta alla coda\\ di riproduzione.
 
@@ -392,10 +394,10 @@
   Rappresenta una playlist generica ed espone i metodi per aggiungere o rimuovere\\ delle track in testa oppure in coda.
 
   \subsubsection{SongPlaylist}
-  Rappresenta una playlist a cui possono essere aggiunte soltanto canzoni
+  Rappresenta una playlist a cui possono essere aggiunte soltanto canzoni.
 
   \subsubsection{PodcastPlaylist}
-  Rappresenta una playlist a cui possono essere aggiunti soltanto podcast
+  Rappresenta una playlist a cui possono essere aggiunti soltanto podcast.
   \subsubsection{Album}
   Incapsula una playlist di cui espone selettivamente soltanto i metodi di lettura, in modo da rendere immutabile la lista di canzoni dopo che è stata creata.
   \subsubsection{PlaybackQueue}
