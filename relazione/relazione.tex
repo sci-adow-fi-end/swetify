@@ -25,46 +25,54 @@
   \newpage
 
 
-  \section{Motivazioni}
+  \section{Introduzione}
+
+  \subsection{Motivazioni}
   Il nostro intensivo utilizzo di piattaforme di streaming musicali ha suscitato in noi un interesse riguardo
   la loro struttura e il desiderio di replicarne il funzionamento.\\
   Abbiamo deciso quindi di realizzare un'applicazione che simuli le loro funzionalità da noi denominata Swetify.
-  \section{Requisiti Funzionali}
+
+  \subsection{Architettura dell'applicazione e pratiche utilizzate}
+
+
+  \section{Requisiti}
+
+  \subsection{Requisiti funzionali}
+  \label{sec:reqFunc}
   Swetify prevede la partecipazione di due tipologie di utenti: cliente e artista.
 
-  \subsection{Funzionalità proposte al cliente}
+  \subsubsection{Funzionalità proposte per il cliente}
 
   \begin{itemize}
-    \item
-    visualizzare un catalogo musicale che consenta agli utenti di cercare brani, album e artisti tramite una barra
+
+    \item visualizzare un catalogo musicale che consenta agli utenti di cercare brani, album e artisti tramite una barra
     di ricerca.
 
-    \item
-    visualizzare le informazioni dettagliate di un brano, inclusi titolo, artista, album e durata.
+    \item visualizzare le informazioni dettagliate di un brano, inclusi titolo, artista, album e durata.
 
-    \item
-    riprodurre, mettere in pausa e saltare i brani.
+    \item riprodurre, mettere in pausa e saltare i brani.
 
-    \item
-    creare, modificare ed eliminare le proprie playlist, aggiungere e rimuovere brani da queste playlist.
+    \item creare, modificare ed eliminare le proprie playlist, aggiungere e rimuovere brani da queste playlist.
 
-    \item
-    ricevere raccomandazioni di brani basate sulla cronologia di ascolto dell'utente
+    \item ricevere raccomandazioni di brani basate sulla cronologia di ascolto dell'utente
 
-    \item
-    seguire gli artisti per ricevere aggiornamenti sui nuovi rilasci.
+    \item seguire gli artisti per ricevere aggiornamenti sui nuovi rilasci.
 
   \end{itemize}
 
-  \subsection{Funzionalità proposte all'artista}
+  \subsubsection{Funzionalità proposte per l'artista}
 
   \begin{itemize}
-    \item
-    caricare album contenenti canzoni o podcast.
+
+    \item caricare album contenenti canzoni o podcast.
+
   \end{itemize}
 
   \subsection{Diagramma dei casi d'uso}
-  \begin{figure}
+
+  Come accennato nella sezione \ref{sec:reqFunc}, ci sono due protagonisti, l'utente (\textbf{\textit{Customer}}) e l'artista (\textbf{\textit{Artist}}). La figura \ref{fig:useCaseDiagram} rappresenta il diagramma dei casi d'uso, questi ultimi corrispondenti ai requisiti funzionali descritti precedentemente.
+
+  \begin{figure}[H]
     \centering
     \includesvg[width=0.7\linewidth]{UseCaseDiagram.svg}
     \caption{diagramma dei casi d'uso}
@@ -72,7 +80,6 @@
   \end{figure}
 
   \subsection{Template dei casi d'uso}
-
 
   \begin{center}
     \begin{tabular}{|l|l|}
@@ -367,7 +374,8 @@
   \end{itemize}
 
   \begin{figure}[H]
-    \includesvg[scale=0.7]{TestsUML.svg}
+    \centering
+    \includesvg[width=0.85\linewidth]{TestsUML.svg}
     \caption{struttura del package \textit{Test}}
     \label{fig:testsUML}
   \end{figure}
@@ -392,7 +400,7 @@
 
 
   \subsubsection{SongDAOTest}
-  \begin{enumerate}
+  \begin{itemize}
 
     \item \textbf{\textit{testGet()}}: verifica che \textit{SongDAO.getByTitle()} e \textit{SongDAO.get()} restituiscano lo stesso risultato, confrontando i titoli delle canzoni (oggetti di tipo \textit{Song}) restituite
 
@@ -400,10 +408,10 @@
 
     \item \textbf{\textit{testGetAll()}}: verifica che \textit{SongDAO.getAll()} restituisca il giusto numero di risultati, sulla base di quanti oggetti di tipo \textit{Song} sono presenti nel database
 
-  \end{enumerate}
+  \end{itemize}
 
   \subsubsection{ArtistDAOTest}
-  \begin{enumerate}
+  \begin{itemize}
 
     \item \textbf{\textit{testGet()}}: verifica che \textit{ArtistDAO.getByStageName()} e \textit{ArtistDAO.get()} restituiscano lo stesso risultato, confrontando nome, numero di seguaci e biografia degli artisti (oggetti di tipo \textit{Artist}) restituiti
 
@@ -413,10 +421,10 @@
 
     \item \textbf{\textit{testGetAll()}}: prima verifica che \textit{ArtistDAO.getAll()} restituisca il giusto numero di risultati, sulla base di quanti oggetti di tipo \textit{Artist} sono presenti nel database, e successivamente verifica che tali risultati siano corretti, controllando nome, numero di seguaci e biografia per ciascuno di essi
 
-  \end{enumerate}
+  \end{itemize}
 
   \subsubsection{CustomerDAOTest}
-  \begin{enumerate}
+  \begin{itemize}
 
     \item \textbf{\textit{testGet()}}: verifica che \textit{CustomerDAO.getByStageName()} e \textit{CustomerDAO.get()} restituiscano lo stesso risultato, confrontando nome utente e password dei customer (oggetti di tipo \textit{Customer}) restituiti
 
@@ -424,17 +432,17 @@
 
     \item \textbf{\textit{testGetAll()}}: prima verifica che \textit{CustomerDAO.getAll()} restituisca il giusto numero di risultati, sulla base di quanti oggetti di tipo \textit{Customer} sono presenti nel database, e successivamente verifica che tali risultati siano corretti, controllando nome utente e password per ciascuno di essi
 
-  \end{enumerate}
+  \end{itemize}
+
 
   \subsubsection{SuggestionDAOTest}
   \begin{itemize}
-  \item
+    \item
     \textbf{\textit{testSuggestions()}}: verifica che la query effettuata dalla funzione
-    \textit{getTopSongsBySimilarUsers} della classe \textit{SuggestionDa} sia conforme alla logica desiderata
-    calcolando in maniera indipendente il risultato atteso grazie alle funzioni \textit{getUserTopTen},
-    \textit{getCustomersWhoListenedTopTenSongs}, \textit{getTopTenSongsByTopTenListeners}.
-  \end{itemize
-  }
+    \textit{getTopSongsBySimilarUsers()} della classe \textit{SuggestionDAO} sia conforme alla logica desiderata
+    calcolando in maniera indipendente il risultato atteso grazie alle funzioni \textit{getUserTopTen()},
+    \textit{getCustomersWhoListenedTopTenSongs()}, \textit{getTopTenSongsByTopTenListeners()}.
+  \end{itemize}
 
   \subsubsection{SongPlaylistDAOTest}
 
@@ -443,15 +451,60 @@
   \subsubsection{SongPlaysCountDAOTest}
 
   \subsection{Test funzionali}
-  Come per i test di integrazione, di seguito vengono descritti i metodi presenti nelle classi relative ai test funzionali; nella \textit{setUp()} di ciascun metodo viene inizializzato il \textit{NavigationManager} e viene chiamato il metodo \textit{pushHandler()} specificando l'Id dell'handler coinvolto nei test all'interno di una certa classe.
+
+  Come per i test di integrazione, di seguito vengono descritti i metodi presenti nelle classi relative ai test funzionali; nella \textit{setUp()} di ciascun metodo viene inizializzato il \textit{NavigationManager} e viene chiamato il metodo \textit{pushHandler()} specificando l'identificativo dell'handler coinvolto nei test all'interno di una certa classe. Lo scenario di utilizzo dell'applicazione è rappresentato da un oggetto di tipo \textit{ByteArrayInputStream} contenente la sequenza di input da testare; un esempio di sequenza testata è mostrata in figura \ref{fig:testString}
+
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{testString.png}
+    \caption{esempio di sequenza di input testata}
+    \label{fig:testString}
+  \end{figure}
 
   \subsubsection{HomeHandlerTest}
 
-  \subsubsection{PlaybackHandlerTest}
+  \begin{itemize}
+
+    \item \textbf{\textit{testHomeSearch()}}: verifica la navigazione dalla homepage alla pagina di ricerca, confrontando l'identificativo dell'ultimo Handler che ha chiamato l'\textit{update()} con quello di \textit{SearchHandler}
+
+    \item \textbf{\textit{testHomeViewPlaylists()}}: verifica la navigazione dalla homepage alla pagina di visualizzazione delle playlist di un utente, confrontando l'identificativo dell'ultimo Handler che ha chiamato l'\textit{update()} con quello di \textit{UserPlaylistsHandler}
+
+    \item \textbf{\textit{testHomeSuggestions()}}: verifica la navigazione dalla homepage alla pagina di visualizzazione dei suggeriti, confrontando l'identificativo dell'ultimo Handler che ha chiamato l'\textit{update()} con quello di \textit{SuggestionHandler}
+
+  \end{itemize}
+
+  \subsubsection{PlaybackHandlerTest}:
+  \begin{itemize}
+
+    \item \textbf{\textit{testInitialPlaybackState()}}: verifica che lo stato iniziale della coda di riproduzione sia corretto. In particolare,
+    dopo aver inserito una canzone \textit{song} nella coda di riproduzione, verifica che il thread in esecuzione rappresentante la coda stessa sia attivo (con il metodo \textit{Thread.isAlive()}) e che \textit{song} sia in pausa
+
+    \item \textbf{\textit{testPlayPauseFunctionality()}}: verifica la funzionalità di pausa di una canzone, controllando se il thread relativo alla coda sia in esecuzione (se una canzone è in riproduzione) oppure no
+
+    \item \textbf{\textit{testSkipFunctionality()}}: verifica la funzionalità di skip di una canzone
+
+    \item \textbf{\textit{testTrackSwitching()}}: verifica che la coda di riproduzione passi correttamente da una canzone in riproduzione alla successiva; in particolare, controlla che la successiva canzone nella coda sia in riproduzione dopo che quella corrente è terminata
+
+  \end{itemize}
 
   \subsubsection{RegistrationLoginHandlersTest}
+  \begin{itemize}
+    \item \textbf{\textit{testRegistrationCustomer()}}:
+    dopo aver aggiunto un utente (oggetto di tipo \textit{Customer}) al database, verifica che sia effettivamente presente attraverso \textit{CustomerDAO.getByUsername()} e che ce ne sia uno solo
+
+    \item \textbf{\textit{testRegistrationArtist()}}:
+    dopo aver aggiunto un artista (oggetto di tipo \textit{Artist}) al database, verifica che sia effettivamente presente attraverso \textit{ArtistDAO.getByUsername()} e che ce ne sia uno solo
+
+    \item \textbf{\textit{testLoginCustomer()}}: dopo aver aggiunto un utente (oggetto di tipo \textit{Customer}) al database e dopo aver fatto registrazione e login, verifica che nome e password di tale utente corrispondano a quelli memorizzati nella sessione corrente
+
+    \item \textbf{\textit{testLoginArtist()}}: dopo aver aggiunto un artista (oggetto di tipo \textit{Artist}) al database e dopo aver fatto registrazione e login, verifica che nome e password di tale artista corrispondano a quelli memorizzati nella sessione corrente
+
+  \end{itemize}
 
   \subsubsection{AlbumLoadHandlerTest}
+  \begin{itemize}
+    \item \textbf{\textit{testSuccessfulAlbumLoad()}}: dopo aver creato un album contenente una sola canzone, verifica che tale canzone sia presente e che sia effettivamente l'unica al suo interno
+  \end{itemize}
 
 
 
