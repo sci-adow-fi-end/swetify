@@ -2,6 +2,7 @@ package dao.collections;
 
 import dao.BaseDAO;
 import domainmodel.entities.collections.Album;
+import domainmodel.entities.users.Artist;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 
@@ -23,6 +24,15 @@ public class AlbumDAO extends BaseDAO<Album> {
         TypedQuery<Album> query = entityManager.createQuery("SELECT a FROM Album a JOIN a.playlist p WHERE LOWER(p.title) LIKE LOWER(:name)",
                 Album.class);
         query.setParameter("name", "%" + title.toLowerCase() + "%");
+        List<Album> result = query.getResultList();
+        entityManager.close();
+        return result;
+    }
+
+    public List<Album> getByArtist(Artist artist) {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        TypedQuery<Album> query = entityManager.createQuery("SELECT a FROM Album a JOIN a.playlist p WHERE a.author = :artistId", Album.class);
+        query.setParameter("artistId", artist.getId());
         List<Album> result = query.getResultList();
         entityManager.close();
         return result;

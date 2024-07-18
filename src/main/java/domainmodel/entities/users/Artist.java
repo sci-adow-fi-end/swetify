@@ -2,7 +2,6 @@ package domainmodel.entities.users;
 
 import domainmodel.entities.BaseEntity;
 import domainmodel.entities.collections.Album;
-import domainmodel.entities.tracks.Podcast;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -23,13 +22,6 @@ public class Artist extends BaseEntity {
 
     @ManyToMany(cascade = CascadeType.MERGE)
     final private List<Album> albums = new ArrayList<>();
-
-    public List<Podcast> getPodcasts() {
-        return podcasts;
-    }
-
-    @ManyToMany(cascade = CascadeType.MERGE)
-    final private List<Podcast> podcasts = new ArrayList<>();
 
     private int followers = 0;
 
@@ -56,7 +48,6 @@ public class Artist extends BaseEntity {
 
     public void setPassword(String password) {
         this.password = password;
-
     }
 
     public String getStageName() {
@@ -74,19 +65,10 @@ public class Artist extends BaseEntity {
 
     public void setBiography(String biography) {
         this.biography = biography;
-
-    }
-
-    public void addAlbum(Album a){
-        this.albums.add(a);
     }
 
     public List<Album> getAlbums() {
         return albums;
-    }
-
-    public void addPodcast(Podcast p){
-        this.podcasts.add(p);
     }
 
     public int getFollowers() {
@@ -95,7 +77,6 @@ public class Artist extends BaseEntity {
 
     public void setFollowers(int followers) {
         this.followers = followers;
-
     }
 
     @Override

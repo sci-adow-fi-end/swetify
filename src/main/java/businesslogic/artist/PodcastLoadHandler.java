@@ -6,7 +6,6 @@ import businesslogic.utility.State;
 import dao.tracks.PodcastDAO;
 import dao.users.ArtistDAO;
 import domainmodel.entities.tracks.Podcast;
-import domainmodel.entities.tracks.Song;
 import domainmodel.entities.users.Artist;
 
 import java.io.ByteArrayInputStream;
@@ -74,7 +73,7 @@ public class PodcastLoadHandler extends Handler {
         return artists;
     }
 
-    private Podcast createPodcast(State s){
+    private void createPodcast(State s) {
         String title = askPodcastName();
         String theme = askPodcastTheme();
         System.out.println("Insert duration (minutes)");
@@ -86,7 +85,6 @@ public class PodcastLoadHandler extends Handler {
         Podcast np = new Podcast(title,theme,minutes,seconds,authors);
 
         podcastData.save(np);
-        return np;
     }
 
     @Override
@@ -97,9 +95,7 @@ public class PodcastLoadHandler extends Handler {
         int navOpt = askNumberInRange(1,2);
         switch (navOpt){
             case 1:
-                Podcast newPodcast = createPodcast(s);
-                s.getLoggedArtist().addPodcast(newPodcast);
-                artistData.update(s.getLoggedArtist());
+                createPodcast(s);
                 break;
             case 2:
                 navigationManager.previousState();

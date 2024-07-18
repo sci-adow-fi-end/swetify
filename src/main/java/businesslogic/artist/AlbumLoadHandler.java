@@ -101,7 +101,7 @@ public class AlbumLoadHandler extends Handler {
         return ns;
     }
 
-    private Album createAlbum(State s){
+    private void createAlbum(State s) {
         List<Song> songs= new ArrayList<>();
         String name;
         Scanner input = new Scanner(System.in);
@@ -126,7 +126,6 @@ public class AlbumLoadHandler extends Handler {
         }
         na.getPlaylist().setTracks(songs);
         albumData.save(na);
-        return na;
     }
 
 
@@ -137,9 +136,7 @@ public class AlbumLoadHandler extends Handler {
         int navOpt = askNumberInRange(1,3);
         switch (navOpt){
             case 1:
-                s.getLoggedArtist().addAlbum(createAlbum(s));
-                artistData.update(s.getLoggedArtist());
-
+                createAlbum(s);
                 break;
             case 2:
                 navigationManager.previousState();

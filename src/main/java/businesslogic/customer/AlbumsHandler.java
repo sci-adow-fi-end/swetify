@@ -11,7 +11,6 @@ import java.util.List;
 public class AlbumsHandler extends Handler {
 
     private final AlbumDAO albumDAO;
-    private List<Album> albums;
 
     public AlbumsHandler(AlbumDAO albumDAO) {
         this.albumDAO = albumDAO;
@@ -25,7 +24,7 @@ public class AlbumsHandler extends Handler {
     public State update(State state) {
 
         clearScreen();
-        albums = state.getLoggedArtist().getAlbums();
+        List<Album> albums = albumDAO.getByArtist(state.getLoggedArtist());
         int index = 1;
 
         System.out.println("Albums:");

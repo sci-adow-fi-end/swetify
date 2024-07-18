@@ -1,11 +1,13 @@
 import dao.users.ArtistDAO;
 import domainmodel.entities.users.Artist;
+import jakarta.persistence.NoResultException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class ArtistDAOTest extends BaseTest {
 
@@ -18,9 +20,11 @@ public class ArtistDAOTest extends BaseTest {
         super.setUp();
         artistDatabase = new ArtistDAO();
 
+        artists[0].setUsername("artistUN1");
         artists[0].setStageName("artist1");
         artists[0].setFollowers(5000);
         artists[0].setBiography("fuck it we ball");
+        artists[1].setUsername("artistUN2");
         artists[1].setStageName("artist2");
         artists[1].setFollowers(3000);
         artists[1].setBiography("God dammit OpenBoard!");
@@ -41,21 +45,27 @@ public class ArtistDAOTest extends BaseTest {
     }
 
     @Test
-    void testGetByName(){
+    void testGetByUserName() {
         for (Artist artist : artists){
-            assertEquals(artist.getStageName(), artistDatabase.getByStageName(artist.getStageName()).getFirst().getStageName());
-            assertEquals(artist.getFollowers(), artistDatabase.getByStageName(artist.getStageName()).getFirst().getFollowers());
-            assertEquals(artist.getBiography(), artistDatabase.getByStageName(artist.getStageName()).getFirst().getBiography());
+            assertEquals(artist.getStageName(), artistDatabase.getByUserName(artist.getUsername()).getStageName());
+            assertEquals(artist.getFollowers(), artistDatabase.getByUserName(artist.getUsername()).getFollowers());
+            assertEquals(artist.getBiography(), artistDatabase.getByUserName(artist.getUsername()).getBiography());
         }
 
         Artist artist = new Artist();
-        artist.setStageName("artist3");
+        artist.setUsername("artistUN3");
         artist.setFollowers(5000);
         artist.setBiography("kuru kuru");
 
-        List<Artist> results = artistDatabase.getByStageName(artist.getStageName());
+        boolean present;
+        try {
+            artistDatabase.getByUserName(artist.getUsername());
+            present = true;
+        } catch (NoResultException e) {
+            present = false;
+        }
 
-        assertEquals(0, results.size());
+        assertFalse(present);
     }
 
     @Test
