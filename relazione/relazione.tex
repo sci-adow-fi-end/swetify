@@ -33,7 +33,19 @@
   Abbiamo deciso quindi di realizzare un'applicazione che simuli le loro funzionalità da noi denominata Swetify.
 
   \subsection{Architettura dell'applicazione e pratiche utilizzate}
+  Per la progettazione del software è stato seguito lo standard UML, realizzando i diagrammi con StarUML.
+  Il software è stato realizzato in Java. Il modello dei dati è rappresentato dal package domainModel,
+  mentre la logica e la visualizzazione dell'interfaccia utente si trova nel package businessLogic. La businessLogic si interfaccia con dei DAO che si occupano di rendere i dati persistenti attraverso JPA (Jakarta Persistence API). In particolare è stato scelto Hibernate come implementazione della JPA. Come RDBMS è stato usato H2, integrato di default in Hibernate. L'architettura generale dell'applicazione è illustrata in Figura \ref{fig:architettura}.
+  Il testing è stato effettuato con JUnit.
+  Per semplicità, l'interfaccia effettivamente realizzata è a linea di comando.
+  Sono stati realizzati dei mockup utilizzando Inkscape, un programma per grafica vettoriale, che rappresentano l'aspetto che avrebbe l'applicazione se fosse stata realizzata un'interfaccia grafica.
 
+  \begin{figure}[H]
+    \centering
+    \includesvg[width=0.7\linewidth]{Architettura.svg}
+    \caption{Architettura dell'applicazione}
+    \label{fig:architettura}
+  \end{figure}
 
   \section{Requisiti}
 
