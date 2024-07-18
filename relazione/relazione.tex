@@ -227,7 +227,8 @@
 
   \end{itemize}
 
-  \section{Documentazione}
+
+  \section{Implementazione}
 
   \subsection{Domain model}
 
@@ -235,26 +236,45 @@
     \includegraphics[scale=0.4]{model01}
   \end{figure}
 
-  \subsubsection{Entity}
-  Classe base astratta che garantisce la presenza di un ID al fine di localizzare gli oggetti nel database.
+  \subsubsection{BaseEntity}
+  Classe base astratta che garantisce la presenza di un ID in tutte entità concrete.
   \subsubsection{Customer}
-  Rappresenta il cliente e contiene le sue credenziali di accesso oltre alle playlist salvate.
+  Rappresenta il cliente e contiene le sue credenziali di accesso oltre alle playlist salvate. // TODO: decidere se fare inversione
   \subsubsection{Artist}
-  Rappresenta l'artista e contiene le sue credenziali d'accesso e gli album da lui caricati.
+  Rappresenta l'artista e contiene le sue credenziali d'accesso e gli album da lui caricati. // TODO: sus
   \subsubsection{Track}
-  Rappresenta un qualsiasi oggetto che può essere aggiunto alla coda\\ di riproduzione.
+  Rappresenta una traccia audio che può essere aggiunta alla coda\\ di riproduzione.
+
+  \subsection{DurationConverter}
+  Implementa l'interfaccia AttributeConverter di Jakarta per convertire la durata delle Track dal tipo Duration a un tipo supportato dal DBMS.
   \subsubsection{Song}
   Concretizzazione di Track che rappresenta una canzone.
   \subsubsection{Podcast}
   Concretizzazione di Track che rappresenta un podcast.
   \subsubsection{Playlist}
-  Rappresenta una playlist ed espone i metodi per aggiungere o rimuovere\\ delle track in testa oppure in coda.
+  Rappresenta una playlist generica ed espone i metodi per aggiungere o rimuovere\\ delle track in testa oppure in coda.
+
+  \subsubsection{SongPlaylist}
+  Rappresenta una playlist a cui possono essere aggiunte soltanto canzoni
+
+  \subsubsection{PodcastPlaylist}
+  Rappresenta una playlist a cui possono essere aggiunti soltanto podcast
   \subsubsection{Album}
-  Permette all'utente di riprodurre le canzoni al suo interno ma è immutabile.
-  \subsubsection{Suggestion}
-  Rappresenta il possibile interesse del cliente verso una track.
+  Incapsula una playlist di cui espone selettivamente soltanto i metodi di lettura, in modo da rendere immutabile la lista di canzoni dopo che è stata creata.
   \subsubsection{PlaybackQueue}
-  Rappresenta la coda di riproduzione e permette di aggiungere in testa ed in coda oltre ad eliminare in testa.
+  Rappresenta la coda di riproduzione e permette di aggiungere in testa ed in coda oltre ad eliminare in testa. Non è persistente.
+
+  \subsubsection{TrackPlaysCount}
+  Classe astratta che associa un Customer a ogni Track che ha ascoltato mantenendo un conteggio del numero di riproduzioni. Questa informazione serve per il calcolo delle tracce suggerite.
+
+  \subsubsection{SongPlaysCount}
+  Concretizzazione di TrackPlaysCount che conta quante volte un utente ha riprodotto ogni canzone
+
+  \subsubsection{PodcastPlaysCount}
+  Concretizzazione di TrackPlaysCount che conta quante volte un utente ha riprodotto ogni canzone
+
+  \subsubsection{TrackPlaysCountListener}
+  Trigger che mantiene aggiornato il numero totale di riproduzioni di una traccia.
 
   \subsection{Business logic}
 
@@ -295,25 +315,45 @@
   \subsubsection{UserPlaylistsHandler}
   Mostra l'elenco delle playlist create dall'utente.
 
-  \subsection{Dao}
+  \subsection{DAO}
 
   \begin{figure}[H]
     \includegraphics[scale=0.3]{dao01}
   \end{figure}
 
-  \subsubsection{Dao}
-  Classe base astratta del data acces object che garantisce la capacità di leggere
-  o scrivere oggetti dal database.
-  \subsubsection{CustomerDao}
-  Permette di ottenere oggetti Customer dal database a patire dal loro nome utente o ID.
-  \subsubsection{ArtistDao}
-  Permette di ottenere oggetti Artist dal database a patire dal loro nome utente o ID.
-  \subsubsection{SongDao}
-  Permette di ottenere oggetti Song dal database in base ad una parola chiave.
-  \subsubsection{PodcastDao}
-  Permette di ottenere oggetti Podcast dal database in base ad una parola chiave.
-  \subsubsection{PlaylistDao}
-  Permette di leggere e scrivere le playlist dell'utente dal database.
+  \subsubsection{BaseDAO}
+  Classe base generica del Data Access Object che definisce i metodi CRUD di base per interfacciarsi col DBMS.
+  Oltre ai CRUD di una singola entità è implementato anche un metodo per ottenere l'intera tabella. I metodi per eseguire filtraggi sulla base di parametri specifici sono definiti nelle classi derivate.
+
+  \subsubsection{CustomerDAO}
+  Permette di ottenere oggetti Customer dal database a patire dal loro username.
+
+  \subsubsection{ArtistDAO}
+  Permette di ottenere oggetti Artist dal database a patire dal loro nome d'arte o username.
+
+  \subsubsection{SongDAO}
+  Permette di ottenere oggetti Song dal database in base a una parola chiave o un Artist.
+
+  \subsubsection{PodcastDAO}
+  Permette di ottenere oggetti Podcast dal database in base ad una parola chiave o un Artist.
+
+  \subsubsection{SongPlaylistDAO}
+  Permette di ottenere oggetti SongPlaylist dal database in base al titolo.
+
+  \subsubsection{PodcastPlaylistDAO}
+  Permette di ottenere oggetti PodcastPlaylist dal database in base al titolo.
+
+  \subsubsection{AlbumDAO}
+  Permette di ottenere oggetti Album dal database in base al titolo o all'autore
+
+  \subsubsection{SongPlaysCountDAO}
+  Permette di aggiornare nel database il conteggio delle riproduzioni di una canzone.
+
+  \subsubsection{PodcastPlaysCountDAO}
+  Permette di aggiornare nel database il conteggio delle riproduzioni di un podcast.
+
+  \subsubsection{SuggestionDAO}
+  Permette, dato un utente, di ottenere una lista di canzoni suggerite in base a cosa hanno ascoltato utenti con preferenze affini.
 
 
   \section{Test}
