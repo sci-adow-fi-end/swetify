@@ -39,7 +39,7 @@
             A. Delli Colli \\
             N. Malgeri \\
             F. Viti \\
-            \hspace{-0.2cm} \\
+            \hspace{-4cm} \\
             \large \textit{\textbf{Anno accademico}:} \\
             2023-2024
           \end{minipage}
@@ -348,7 +348,7 @@
   \end{figure}
   Contiene le classi che realizzano il Data Access Object pattern che si occupa della persistenza dei dati.
 
-  \subsection{Design pattern}
+  \subsection{Design patterns}
 
   \subsubsection{DAO}
   \begin{figure}[H]
@@ -360,13 +360,36 @@
   Il DAO (Data Access Object) è un pattern strutturale che permette di disaccoppiare il layer di business logic da quello che si occupa di rendere gli oggetti persistenti nel database. I DAO espongono alla business logic un'API per effettuare le operazioni di CRUD. Ciò permette di rispettare il principio di singola responsabilità.
   Nel nostro caso, è stato prevista una classe base astratta e generica che definisce l'implementazione di default per le operazioni CRUD di base. Nella maggior parte dei casi questa implementazione è adeguata per tutti i DAO concreti. Nei casi in cui erano necessari metodi di accesso ai dati più specifici, ad esempio filtraggio per attributi che non siano l'ID, essi sono stati implementati nel rispettivo DAO concreto.
 
+  \subsubsection{State}
+
+  \begin{figure}[H]
+    \centering
+    \includesvg[width=0.8\linewidth]{StatePattern.svg}
+    \caption{State pattern}
+    \label{fig:statePattern}
+  \end{figure}
+
+  Lo \textit{State} è un pattern comportamentale, mostrato in figura \ref{fig:statePattern}, che permette ad un oggetto di cambiare comportamento sulla base di un proprio stato. Ha tre componenti principali:
+  \begin{itemize}
+    \item \textbf{\textit{State}}: classe base astratta rappresentante uno stato generico dell'oggetto. Espone un metodo \textbf{\textit{handle()}} implementato dalle classi derivate
+    \item \textbf{\textit{ConcreteState}}: classe concreta derivata da \textit{State} rappresentante uno specifico stato che l'oggetto può assumere
+    \item \textbf{\textit{Context}}: rappresenta l'oggetto il cui comportamento dipende dallo stato che possiede; ha un riferimento a \textbf{\textit{State}} e un metodo \textbf{\textit{request()}}, per l'aggiornamento dello stato
+  \end{itemize}
+
+  Quando un oggetto di tipo \textit{Context} deve mostrare un determinato comportamento, viene chiamato il metodo \textit{request()} che internamente chiama \textit{State.handle()} e delega tale responsabilità allo stato corrente dell'oggetto, di tipo \textit{ConcreteState}. Se in un qualsiasi momento avviene una transizione ad un altro \textit{ConcreteState}, il \textit{Context} aggiornerà il proprio riferimento e ciò si riflette in un cambiamento dello stato interno.
+
+  Lo state pattern si può ritrovare nelle classi rappresentanti gli \textit{Handler} all'interno del package \textit{businessLogic} (figura \ref{fig:businessLogic}). Infatti, la classe \textit{NavigationManager} può essere vista come un (\textit{Context}) il cui comportamento dipende dall'\textit{Handler} "attivo" nell'applicazione (\textit{ConcreteState}); quando c'è necessità di passare da una finestra dell'applicazione ad un'altra, l'Handler corrente chiama \textit{NavigationManager.switchToController()}, modificando lo Stack di stati contenuto nel \textit{NavigationManager} e permettendo di passare il controllo all'Handler che deve occuparsi della visualizzazione della nuova finestra.
+
   \subsection{Diagramma di sequenza}
+
   \begin{figure}[H]
     \centering
     \includesvg[width=0.85\linewidth]{ModifyUserPlaylist.svg}
     \caption{diagramma di sequenza relativo alla modifica della playlist di un utente}
     \label{fig:seqDiag}
   \end{figure}
+
+  Un diagramma di sequenza mostra la successione temporale delle chiamate dei metodi delle classi dell'applicazione in un determinato scenario di utilizzo. La figura \ref{fig:seqDiag} rappresenta il diagramma di sequenza relativo allo scenario in cui un utente decide di modificare una delle proprie playlist.
 
 
   \section{Implementazione}
@@ -456,13 +479,13 @@
   Classe base generica del Data Access Object che definisce le operazioni CRUD di base per interfacciarsi col DBMS e ne fornisce un'implementazione di default.
   Metodi implementati:
   \begin{itemize}
-      \item \textbf{\textit{get(long id)}}: restituisce un oggetto di tipo T il cui ID nel database corrisponde a quello dato.
-      \item \textbf{\textit{getAll()}}: restituisce tutti gli oggetti di tipo T nel database.
-      \item \textbf{\textit{save(T t)}}: rende persistente l'oggetto dato.
-      \item \textbf{\textit{update(T t)}}: aggiorna nel database lo stato dell'oggetto.
-      \item \textbf{\textit{delete(T t)}}: elimina dal database l'oggetto.
+    \item \textbf{\textit{get(long id)}}: restituisce un oggetto di tipo T il cui ID nel database corrisponde a quello dato.
+    \item \textbf{\textit{getAll()}}: restituisce tutti gli oggetti di tipo T nel database.
+    \item \textbf{\textit{save(T t)}}: rende persistente l'oggetto dato.
+    \item \textbf{\textit{update(T t)}}: aggiorna nel database lo stato dell'oggetto.
+    \item \textbf{\textit{delete(T t)}}: elimina dal database l'oggetto.
   \end{itemize}
-   I metodi per eseguire filtraggi sulla base di parametri specifici sono definiti nelle classi derivate.
+  I metodi per eseguire filtraggi sulla base di parametri specifici sono definiti nelle classi derivate.
 
   \subsubsection{CustomerDAO}
   Permette di ottenere oggetti Customer dal database a patire dal loro username.
