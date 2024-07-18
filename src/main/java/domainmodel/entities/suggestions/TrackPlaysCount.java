@@ -8,7 +8,7 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "TrackPlaysCount", uniqueConstraints = {@UniqueConstraint(columnNames = {"track_id", "customer_id"})})
 @EntityListeners(TrackPlaysCountListener.class)
-public class TrackPlaysCount extends BaseEntity {
+public abstract class TrackPlaysCount extends BaseEntity {
 
     @ManyToOne(cascade = CascadeType.MERGE)
     private Customer customer;
