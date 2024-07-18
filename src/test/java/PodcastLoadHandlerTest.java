@@ -1,6 +1,6 @@
 import businesslogic.utility.NavigationManager;
+import dao.tracks.PodcastDAO;
 import dao.users.ArtistDAO;
-import domainmodel.entities.collections.Album;
 import domainmodel.entities.tracks.Podcast;
 import domainmodel.entities.users.Artist;
 import org.junit.jupiter.api.BeforeEach;
@@ -32,7 +32,8 @@ public class PodcastLoadHandlerTest extends BaseTest{
         nm.run();
         Podcast loadedPodcast = new Podcast();
 
-        for (Podcast pod: nm.getCurrentState().getLoggedArtist().getPodcasts()) {
+        PodcastDAO pdao = new PodcastDAO();
+        for (Podcast pod : pdao.getByArtist(nm.getCurrentState().getLoggedArtist())) {
             if (pod.getTitle().equals("stio")) {
                 loadedPodcast = pod;
                 break;

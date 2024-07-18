@@ -2,6 +2,7 @@ package dao.tracks;
 
 import dao.BaseDAO;
 import domainmodel.entities.tracks.Podcast;
+import domainmodel.entities.users.Artist;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 
@@ -35,4 +36,14 @@ public class PodcastDAO extends BaseDAO<Podcast> {
         entityManager.close();
         return resultList;
     }
+
+    public List<Podcast> getByArtist(Artist artist) {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        TypedQuery<Podcast> query = entityManager.createQuery("SELECT p FROM Podcast p JOIN p.authors a WHERE a = :artist", Podcast.class);
+        query.setParameter("artist", artist);
+        List<Podcast> resultList = query.getResultList();
+        entityManager.close();
+        return resultList;
+    }
+
 }
