@@ -439,7 +439,7 @@
   Concretizzazione di TrackPlaysCount che conta quante volte un utente ha riprodotto ogni canzone
 
   \subsubsection{TrackPlaysCountListener}
-  Trigger che mantiene aggiornato il numero totale di riproduzioni di una traccia.
+  Trigger che mantiene aggiornato il numero totale di riproduzioni di una traccia. Viene registrato tramite delle annotazioni fornite dalla JPA e gestito in maniera automatica da Hibernate.
 
   \subsection{Business logic}
 
@@ -639,15 +639,25 @@
 
   \begin{itemize}
     \item
-    \textbf{\textit{testSuggestions()}}: verifica che la query effettuata dalla funzione
-    \textit{getTopSongsBySimilarUsers()} della classe \textit{SuggestionDAO} sia conforme alla logica desiderata
-    calcolando in maniera indipendente il risultato atteso grazie alle funzioni \textit{getUserTopTen()},
-    \textit{getCustomersWhoListenedTopTenSongs()}, \textit{getTopTenSongsByTopTenListeners()}.
+    \textbf{\textit{testGet()}}: si assicura che la Playlist restituita da
+    \textit{getByTitle()} coincida con quella restituita da  \textit{get()} nel caso
+    in cui sia presente solo una playlist col nome utilizzato.
+
+    \item
+    \textbf{\textit{testGetAll()}}: verifica che la lunghezza della lista restituita da
+    \textit{getAll()} sia conforme a quanto atteso;
+
+    \item
+    \textbf{\textit{testGetByTitle()}}: verifica che la lunghezza della lista restituita da
+    \textit{getByTitle()} sia conforme a quanto atteso;
+
   \end{itemize}
 
-  \subsubsection{PodcastPlaylistDAOTest}
-
   \subsubsection{SongPlaysCountDAOTest}
+  \begin{itemize}
+    \item
+    \textbf{\textit{testIncrementPlays()}}: verifica che, dopo aver chiamato il metodo \textit{incrementPlays()} di \textit{SongPlaysCount}, il conteggio del numero di riproduzioni di una canzone venga effettivamente incrementato.
+  \end{itemize}
 
   \subsection{Test funzionali}
 
