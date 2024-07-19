@@ -130,32 +130,34 @@
     \label{fig:useCaseDiagram}
   \end{figure}
 
+
+
   \subsection{Template dei casi d'uso}
 
   \begin{table}[H]
     \centering
     \begin{tabular}{|l|l|}
       \hline
-      \textbf{UC1}            & \textbf{riproduzione canzone}                                                 \\
+      \textbf{UC1} & \textbf{riproduzione canzone}\\
       \hline
-      livello                 & user goal                                                                     \\
+      livello & user goal\\
       \hline
-      descrizione             & l'utente cerca e riproduce una canzone                                        \\
+      descrizione & l'utente cerca e riproduce una canzone\\
       \hline
-      attori                  & cliente                                                                       \\
+      attori & cliente\\
       \hline
-      pre-condizioni          & l'utente deve avere le credenziali per effettuare l'accesso                   \\
+      pre-condizioni & l'utente deve avere le credenziali per effettuare l'accesso\\
       \hline
-      post-condizioni         & la canzone selezionata viene aggiunta alla coda                               \\
+      post-condizioni & la canzone selezionata viene aggiunta alla coda\\
       \hline
-      normale svolgimento     & 1) l'utente apre la pagina di ricerca (mockup in figura \ref{fig:searchPage}) \\
-      & 2) inserisce il nome di una canzone                                           \\
-      & 3) seleziona una voce dall'elenco proposto                                    \\
+      normale svolgimento & 1) l'utente apre la pagina di ricerca (mockup in figura \ref{fig:searchPage})\\
+      & 2) inserisce il nome di una canzone\\
+      & 3) seleziona una voce dall'elenco proposto\\
       & 4) seleziona l'opzione ``aggiungi in coda"
 
       \\
       \hline
-      svolgimenti alternativi & 4b) l'utente seleziona l'opzione "aggiungi in testa"                          \\
+      svolgimenti alternativi & 4b) l'utente seleziona l'opzione "aggiungi in testa"\\
       \hline
     \end{tabular}
     \label{tab:uct1}
@@ -167,28 +169,28 @@
     \centering
     \begin{tabular}{|l|l|}
       \hline
-      \textbf{UC2}            & \textbf{modifica playlist}                                  \\
+      \textbf{UC2} & \textbf{modifica playlist}\\
       \hline
-      livello                 & user goal                                                   \\
+      livello & user goal\\
       \hline
-      descrizione             & l'utente modifica una delle sue playlist personali          \\
+      descrizione & l'utente modifica una delle sue playlist personali\\
       \hline
       attori                  & cliente                                                     \\
       \hline
-      pre-condizioni          & l'utente deve avere le credenziali per effettuare l'accesso \\
-      & ed avere una playlist salvata                               \\
+      pre-condizioni & l'utente deve avere le credenziali per effettuare l'accesso\\
+      &ed avere una playlist salvata\\
       \hline
-      post-condizioni         & la playlist presenta i cambiamenti apportati dall'utente    \\
+      post-condizioni & la playlist presenta i cambiamenti apportati dall'utente\\
       \hline
-      normale svolgimento     & 1) l'utente apre la pagina "le mie playlist"                \\
-      & 2) l'utente seleziona la playlist da modificare             \\
-      & 3) l'utente cerca una canzone da aggiungere                 \\
+      normale svolgimento & 1) l'utente apre la pagina "le mie playlist"\\
+      & 2) l'utente seleziona la playlist da modificare\\
+      & 3) l'utente cerca una canzone da aggiungere\\
       & 4) l'utente termina salvando le modifiche
 
       \\
       \hline
-      svolgimenti alternativi & 3b) l'utente seleziona una canzone da rimuovere             \\
-      & 4b) l'utente annulla le modifiche alla playlist             \\
+      svolgimenti alternativi & 3b) l'utente seleziona una canzone da rimuovere\\
+      & 4b) l'utente annulla le modifiche alla playlist\\
       \hline
 
     \end{tabular}
@@ -201,24 +203,24 @@
     \centering
     \begin{tabular}{|l|l|}
       \hline
-      \textbf{UC3}            & \textbf{aggiunta album}                                      \\
+      \textbf{UC3} & \textbf{aggiunta album}\\
       \hline
-      livello                 & user goal                                                    \\
+      livello & user goal\\
       \hline
-      descrizione             & l'artista carica un nuovo album sul suo profilo              \\
+      descrizione & l'artista carica un nuovo album sul suo profilo\\
       \hline
-      attori                  & artista                                                      \\
+      attori & artista\\
       \hline
-      pre-condizioni          & l'artista deve avere le credenziali per effettuare l'accesso \\
+      pre-condizioni & l'artista deve avere le credenziali per effettuare l'accesso\\
       \hline
-      post-condizioni         & il nuovo album è visibile se cercato dagli utenti            \\
+      post-condizioni & il nuovo album è visibile se cercato dagli utenti\\
       \hline
-      normale svolgimento     & 1) l'artista seleziona l'opzione carica album                \\
-      & 2) inserisce i nomi delle canzoni ed i rispettivi dati       \\
+      normale svolgimento & 1) l'artista seleziona l'opzione carica album\\
+      & 2) inserisce i nomi delle canzoni ed i rispettivi dati\\
       & 3) l'artista termina l'inserimento salvando l'album
       \\
       \hline
-      svolgimenti alternativi & 3b) l'artista annulla il caricamento dell'album              \\
+      svolgimenti alternativi & 3b) l'artista annulla il caricamento dell'album\\
       \hline
 
     \end{tabular}
@@ -231,23 +233,23 @@
     \centering
     \begin{tabular}{|l|l|}
       \hline
-      \textbf{UC4}                     & \textbf{iscrizione ad un artista}                           \\
+      \textbf{UC4} & \textbf{iscrizione ad un artista}\\
       \hline
       livello                          & function                                                    \\
       \hline
-      descrizione                      & l'utente aggiunge un artista agli artisti seguiti           \\
+      descrizione & l'utente aggiunge un artista agli artisti seguiti\\
       \hline
-      attori                           & cliente                                                     \\
+      attori & cliente\\
       \hline
-      pre-condizioni                   & l'utente deve avere le credenziali per effettuare l'accesso \\
+      pre-condizioni & l'utente deve avere le credenziali per effettuare l'accesso\\
       \hline
-      post-condizioni                  & nel momento in cui l'artista carica un nuovo album          \\
-      & l'utente può visualizzarlo nella sezione                    \\
-      & "nuovi rilasci"                                             \\
+      post-condizioni & nel momento in cui l'artista carica un nuovo album\\
+      & l'utente può visualizzarlo nella sezione\\
+      & "nuovi rilasci"\\
       \hline
-      normale svolgimento \hspace{5pt} & 1) l'utente apre la pagina di ricerca                       \\
-      & 2) inserisce il nome di una canzone                         \\
-      & 3) seleziona una voce dall'elenco proposto                  \\
+      normale svolgimento \hspace{5pt} & 1) l'utente apre la pagina di ricerca\\
+      & 2) inserisce il nome di una canzone\\
+      & 3) seleziona una voce dall'elenco proposto\\
       & 4) seleziona l'opzione ``aggiungi in coda"
       \\
       \hline
@@ -261,22 +263,22 @@
     \centering
     \begin{tabular}{|l|l|}
       \hline
-      \textbf{UC5}                     & \textbf{visualizzazione dei consigliati}                                         \\
+      \textbf{UC5} & \textbf{visualizzazione dei consigliati}\\
       \hline
-      livello                          & user goal                                                                        \\
+      livello & user goal\\
       \hline
-      descrizione                      & l'utente visualizza le canzoni ed i podcast consigliati                          \\
+      descrizione & l'utente visualizza le canzoni ed i podcast consigliati\\
       \hline
-      attori                           & cliente                                                                          \\
+      attori & cliente\\
       \hline
-      pre-condizioni                   & l'utente deve avere le credenziali per effettuare l'accesso                      \\
-      & e avere ascoltato almeno una canzone o podcast                                   \\
+      pre-condizioni & l'utente deve avere le credenziali per effettuare l'accesso \\
+      & e avere ascoltato almeno una canzone o podcast\\
       \hline
-      post-condizioni                  & i consigliati sono mostrati nella sezione apposita                               \\
+      post-condizioni & i consigliati sono mostrati nella sezione apposita\\
       \hline
-      normale svolgimento \hspace{5pt} & 1) l'utente va alla homepage                                                     \\
-      & 2) accede alla sezione dei consigliati                                           \\
-      & 3) visualizza le tracce consigliate (mockup in figura \ref{fig:suggestionsPage}) \\
+      normale svolgimento \hspace{5pt} & 1) l'utente va alla homepage\\
+      & 2) accede alla sezione dei consigliati\\
+      & 3) visualizza le tracce consigliate (mockup in figura \ref{fig:suggestionsPage})\\
       \hline
     \end{tabular}
     \label{tab:uct5}
@@ -318,6 +320,8 @@
     \label{fig:playbackQueue}
   \end{figure}
 
+
+
   \subsection{Struttura delle classi}
 
   \subsubsection{Domain model}
@@ -339,7 +343,7 @@
     \label{fig:businessLogic}
   \end{figure}
 
-  Definisce le regole, i processi e le funzionalità che guidano il comportamento dell’applicazione, in base alle diverse esigenze degli utenti. All'interno del package \textbf{\textit{businessLogic}} (figura \ref{fig:businessLogic}) sono presenti le classi che si occupano della visualizzazione, da linea di comando, del contenuto delle finestre dell'applicazione; queste classi sono dette \textit{Handlers} (come ad esempio \textit{HomeHandler} per la visualizzazione della homepage, \textit{SearchHandler} per la finestra di ricerca). Il passaggio da una finestra all'altra viene gestito dalla classe \textbf{\textit{NavigationManager}}.
+  Definisce le regole, i processi e le funzionalità che guidano il comportamento dell’applicazione, in base alle diverse esigenze degli utenti. All'interno del package \textbf{\textit{businessLogic}} (figura \ref{fig:businessLogic}) sono presenti le classi che si occupano della visualizzazione, da linea di comando, del contenuto delle finestre dell'applicazione, distribuite in modo da averne una per pagina; queste classi sono dette \textit{Handlers} (come ad esempio \textit{HomeHandler} per la visualizzazione della homepage, \textit{SearchHandler} per la finestra di ricerca). Il passaggio da una finestra all'altra viene gestito dalla classe \textbf{\textit{NavigationManager}}.
 
   \subsubsection{DAO}
   \begin{figure}[H]
@@ -349,6 +353,9 @@
     \label{fig:DAO}
   \end{figure}
   Contiene le classi che realizzano il Data Access Object pattern che si occupa della persistenza dei dati.
+
+
+
 
   \subsection{Design patterns}
 
@@ -515,45 +522,46 @@
     \item \textbf{\textit{update(T t)}}: aggiorna nel database lo stato dell'oggetto.
     \item \textbf{\textit{delete(T t)}}: elimina dal database l'oggetto.
   \end{itemize}
-  I metodi per eseguire filtraggi sulla base di parametri specifici sono definiti nelle classi derivate.
+  I metodi per eseguire filtraggi sulla base di parametri specifici sono definiti nelle classi derivate (figura \ref{fig:DAO}).
 
   \subsubsection{CustomerDAO}
-  Permette di ottenere oggetti Customer dal database a patire dal loro username.
+  Permette di ottenere oggetti Customer dal database a patire dal loro username attraverso il metodo \textbf{\textit{getUserName()}}.
 
   \subsubsection{ArtistDAO}
-  Permette di ottenere oggetti Artist dal database a patire dal loro nome d'arte o username.
+  Permette di ottenere oggetti Artist dal database a patire dal loro nome d'arte o username attraverso i metodi \textbf{\textit{getStageName()}} e \textbf{\textit{getUserName()}}.
 
   \subsubsection{SongDAO}
-  Permette di ottenere oggetti Song dal database a partire da una parola chiave o un Artist.
+  Permette di ottenere oggetti Song dal database a partire da una parola chiave, attraverso il metodo \textbf{\textit{getByTitle()}}, o un Artist, attraverso il metodo \textbf{\textit{getByArtist()}}.
 
   \subsubsection{PodcastDAO}
-  Permette di ottenere oggetti Podcast dal database a partire da una parola chiave o un Artist.
+  Permette di ottenere oggetti Podcast dal database a partire da una parola chiave (\textbf{\textit{getByTitle()}}) o un Artist (\textbf{\textit{getByArtist()}}).
 
   \subsubsection{SongPlaylistDAO}
-  Permette di ottenere oggetti SongPlaylist dal database a partire dal titolo.
+  Permette di ottenere oggetti SongPlaylist dal database a partire dal titolo attraverso il metodo \textbf{\textit{getByTitle()}}.
 
   \subsubsection{PodcastPlaylistDAO}
-  Permette di ottenere oggetti PodcastPlaylist dal database a partire dal titolo.
+  Permette di ottenere oggetti PodcastPlaylist dal database a partire dal titolo (\textbf{\textit{getByTitle()}}).
 
   \subsubsection{AlbumDAO}
-  Permette di ottenere oggetti Album dal database a partire dal titolo o dall'autore
+  Permette di ottenere oggetti Album dal database a partire dal titolo, attraverso il metodo \textbf{\textit{getByTitle()}}, o dall'autore, attraverso il metodo \textbf{\textit{getByArtist()}}
 
   \subsubsection{SongPlaysCountDAO}
-  Permette di aggiornare nel database il conteggio delle riproduzioni di una canzone.
+  Permette di aggiornare nel database il conteggio delle riproduzioni di una canzone attraverso il metodo \textbf{\textit{incrementPlays()}}.
 
   \subsubsection{PodcastPlaysCountDAO}
-  Permette di aggiornare nel database il conteggio delle riproduzioni di un podcast.
+  Permette di aggiornare nel database il conteggio delle riproduzioni di un podcast attraverso il metodo \textbf{\textit{incrementPlays()}}.
 
   \subsubsection{SuggestionDAO}
   Permette, dato un utente, di ottenere una lista di canzoni suggerite in base a cosa hanno ascoltato utenti con preferenze affini. Il sistema di suggerimenti propone ad ogni utente delle canzoni che potrebbe apprezzare cercando le canzoni più ascoltate da utenti "simili" a lui.
   Gli utenti sono considerati simili all'utente corrente se hanno ascoltato le sue canzoni più ascoltate.
   Il funzionamento dettagliato del processo è descritto dalla seguente query:
-  \begin{figure}
+  \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\linewidth]{query.png}
     \caption{Query SQL che restituisce le canzoni suggerite all'utente}
     \label{fig:query}
   \end{figure}
+
 
 
   \section{Test}
@@ -681,6 +689,7 @@
     \item \textbf{\textit{testHomeSuggestions()}}: verifica la navigazione dalla homepage alla pagina di visualizzazione dei suggeriti, confrontando l'identificativo dell'ultimo Handler che ha chiamato l'\textit{update()} con quello di \textit{SuggestionHandler}
 
   \end{itemize}
+
 
   \subsubsection{PlaybackHandlerTest}
   \begin{itemize}
