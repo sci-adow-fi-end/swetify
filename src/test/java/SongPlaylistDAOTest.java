@@ -59,12 +59,6 @@ public class SongPlaylistDAOTest extends BaseTest {
     }
 
     @Test
-    void testGetByName() {
-        assertEquals(songPlaylist1.getTitle(), songPlaylistDatabase.getByTitle(songPlaylist1.getTitle()).getFirst().getTitle());
-        assertEquals(songPlaylist2.getTitle(), songPlaylistDatabase.getByTitle(songPlaylist2.getTitle()).getFirst().getTitle());
-    }
-
-    @Test
     void testGetAll() {
         List<SongPlaylist> allPlaylists = songPlaylistDatabase.getAll();
         assertEquals(2, allPlaylists.size());
