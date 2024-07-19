@@ -545,7 +545,15 @@
   Permette di aggiornare nel database il conteggio delle riproduzioni di un podcast.
 
   \subsubsection{SuggestionDAO}
-  Permette, dato un utente, di ottenere una lista di canzoni suggerite in base a cosa hanno ascoltato utenti con preferenze affini.
+  Permette, dato un utente, di ottenere una lista di canzoni suggerite in base a cosa hanno ascoltato utenti con preferenze affini. Il sistema di suggerimenti propone ad ogni utente delle canzoni che potrebbe apprezzare cercando le canzoni più ascoltate da utenti "simili" a lui.
+  Gli utenti sono considerati simili all'utente corrente se hanno ascoltato le sue canzoni più ascoltate.
+  Il funzionamento dettagliato del processo è descritto dalla seguente query:
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.7\linewidth]{query.png}
+    \caption{Query SQL che restituisce le canzoni suggerite all'utente}
+    \label{fig:query}
+  \end{figure}
 
 
   \section{Test}
@@ -628,6 +636,14 @@
   \end{itemize}
 
   \subsubsection{SongPlaylistDAOTest}
+
+  \begin{itemize}
+    \item
+    \textbf{\textit{testSuggestions()}}: verifica che la query effettuata dalla funzione
+    \textit{getTopSongsBySimilarUsers()} della classe \textit{SuggestionDAO} sia conforme alla logica desiderata
+    calcolando in maniera indipendente il risultato atteso grazie alle funzioni \textit{getUserTopTen()},
+    \textit{getCustomersWhoListenedTopTenSongs()}, \textit{getTopTenSongsByTopTenListeners()}.
+  \end{itemize}
 
   \subsubsection{PodcastPlaylistDAOTest}
 
