@@ -16,16 +16,12 @@ public class Album extends BaseEntity {
     @OneToOne(cascade = CascadeType.PERSIST)
     final private Playlist<Song> playlist;
 
-    @Temporal(TemporalType.DATE)
-    private Date releaseDate;
-
     public Album(){
         this.playlist = new Playlist<>();
     }
 
     public Album(String title, List<Song> trackList, Artist author) {
         this.playlist = new Playlist<>(title,author,trackList);
-        this.releaseDate = new Date();
     }
 
     public BaseUser getAuthor() {
@@ -39,14 +35,6 @@ public class Album extends BaseEntity {
 
     public String getTitle(){
         return playlist.getTitle();
-    }
-
-    public Date getReleaseDate() {
-        return releaseDate;
-    }
-
-    public void setReleaseDate(Date releaseDate) {
-        this.releaseDate = releaseDate;
     }
 
 }

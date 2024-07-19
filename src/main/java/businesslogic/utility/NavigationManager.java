@@ -34,7 +34,6 @@ public class NavigationManager {
         UPDATE_PLAYLIST,
         VIEW_ALL_PLAYLISTS,
         VIEW_ARTIST,
-        VIEW_TRACK,
         VIEW_SUGGESTIONS,
         PLAY_TRACK,
         VIEW_ALBUMS,
@@ -96,7 +95,7 @@ public class NavigationManager {
         handlers.put(HandlerId.VIEW_ARTIST, new ArtistInfoHandler((ArtistDAO) DAOs.get(DaoId.ARTIST),
                 (CustomerDAO) DAOs.get(DaoId.USER)));
 
-        handlers.put(HandlerId.VIEW_ALBUMS, new AlbumsHandler((AlbumDAO) DAOs.get(DaoId.ALBUM)));
+        handlers.put(HandlerId.VIEW_ALBUMS, new AlbumViewHandler((AlbumDAO) DAOs.get(DaoId.ALBUM)));
         handlers.put(HandlerId.ARTIST_HOME, new ArtistHomeHandler());
 
         handlers.put(HandlerId.UPDATE_PLAYLIST, new PlaylistUpdateHandler((SongDAO) DAOs.get(DaoId.SONG), (PodcastDAO) DAOs.get(DaoId.PODCAST),

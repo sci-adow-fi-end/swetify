@@ -21,11 +21,7 @@ public class Playlist<T extends Track> extends BaseEntity implements Iterable<T>
     @ManyToOne
     private BaseUser author;
 
-    public Playlist(){
-    }
-    public Playlist(String title) {
-        this.title=title;
-    }
+    public Playlist(){}
     public Playlist(String title,BaseUser author, List<T> trackList) {
         this.title=title;
         this.tracks=trackList;
@@ -54,11 +50,6 @@ public class Playlist<T extends Track> extends BaseEntity implements Iterable<T>
 
     public void setTracks(List<T> tracks) {
         this.tracks = tracks;
-
-    }
-
-    public void addTrack(T track) {
-        tracks.add(track);
 
     }
 

@@ -238,7 +238,7 @@ class businesslogic.common.LoginHandler {
 }
 
 
-class businesslogic.customer.AlbumsHandler {
+class businesslogic.customer.AlbumViewHandler {
 + State update(State)
 }
 
@@ -328,7 +328,7 @@ businesslogic.utility.Handler <|-- businesslogic.customer.HomeHandler
 domainmodel.Track <|-- domainmodel.Song
 businesslogic.utility.Handler <|-- businesslogic.common.RegistrationHandler
 businesslogic.utility.Handler <|-- businesslogic.common.LoginHandler
-businesslogic.utility.Handler <|-- businesslogic.customer.AlbumsHandler
+businesslogic.utility.Handler <|-- businesslogic.customer.AlbumViewHandler
 businesslogic.utility.Handler <|-- businesslogic.customer.SearchHandler
 businesslogic.utility.Handler <|-- businesslogic.customer.ArtistInfoHandler
 domainmodel.Model <|-- domainmodel.User

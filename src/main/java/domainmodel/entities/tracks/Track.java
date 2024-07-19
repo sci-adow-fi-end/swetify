@@ -55,9 +55,6 @@ public abstract class Track extends BaseEntity {
         this.authors = artists;
     }
 
-    public long getTotalPlays() {
-        return totalPlays;
-    }
 
     public void setTotalPlays(long totalPlays) {
         this.totalPlays = totalPlays;

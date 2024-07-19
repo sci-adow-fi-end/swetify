@@ -8,11 +8,11 @@ import domainmodel.entities.tracks.Song;
 
 import java.util.List;
 
-public class AlbumsHandler extends Handler {
+public class AlbumViewHandler extends Handler {
 
     private final AlbumDAO albumDAO;
 
-    public AlbumsHandler(AlbumDAO albumDAO) {
+    public AlbumViewHandler(AlbumDAO albumDAO) {
         this.albumDAO = albumDAO;
     }
 
