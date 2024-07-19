@@ -71,7 +71,7 @@
 
   \subsection{Architettura dell'applicazione e pratiche utilizzate}
   Per la progettazione del software è stato seguito lo standard UML, realizzando i diagrammi con StarUML.
-  Il software è stato realizzato in Java. Il modello dei dati è rappresentato dal package \textbf{domainModel},
+  Il software è stato realizzato in Java. Come build system è stato utilizzato \textbf{\textit{Gradle}}, che permette anche di gestire in maniera automatica le dipendenze del progetto. Il modello dei dati è rappresentato dal package \textbf{domainModel},
   mentre la logica e la visualizzazione dell'interfaccia utente si trova nel package \textbf{businessLogic}. La \textbf{businessLogic} si interfaccia con dei DAO che si occupano di rendere i dati persistenti attraverso \textbf{JPA} (\textbf{\textit{Jakarta Persistence API}}). In particolare è stato scelto \textbf{\textit{Hibernate}} come implementazione della \textbf{JPA}. Come RDBMS è stato usato \textbf{H2}, integrato di default in \textbf{\textit{Hibernate}}. L'architettura generale dell'applicazione è illustrata in Figura \ref{fig:architettura}.
   Il testing è stato effettuato con il framework \textbf{\textit{JUnit 5}}.
   Per semplicità, l'interfaccia effettivamente realizzata è a linea di comando.
