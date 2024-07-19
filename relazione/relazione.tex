@@ -323,7 +323,7 @@
   \subsubsection{Domain model}
   \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\linewidth]{model01.png} %TODO: mettere l'UML aggiornato
+    \includegraphics[width=0.9\linewidth]{domainModel.png}
     \caption{diagramma delle classi contenute nel package \textit{domainModel}}
     \label{fig:domainModel}
   \end{figure}
@@ -331,18 +331,20 @@
   Definisce la rappresentazione dei dati all'interno dell'applicazione e come gli oggetti sono mappati nel database. Per fare questo è stata usata la tecnica ORM (Object Relational Mapping), realizzata tramite l'utilizzo delle annotazioni fornite dalle JPA (package jakarta.persistence).
 
   \subsubsection{Business logic}
+
   \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\linewidth]{logic01.png} %TODO: mettere l'UML aggiornato
+    \includegraphics[width=1\linewidth]{businessLogic.png}
     \caption{diagramma delle classi contenute nel package \textit{businessLogic}}
     \label{fig:businessLogic}
   \end{figure}
-  % TODO: scrivere descrizione della business logic
+
+  Definisce le regole, i processi e le funzionalità che guidano il comportamento dell’applicazione, in base alle diverse esigenze degli utenti. All'interno del package \textbf{\textit{businessLogic}} (figura \ref{fig:businessLogic}) sono presenti le classi che si occupano della visualizzazione, da linea di comando, del contenuto delle finestre dell'applicazione; queste classi sono dette \textit{Handlers} (come ad esempio \textit{HomeHandler} per la visualizzazione della homepage, \textit{SearchHandler} per la finestra di ricerca). Il passaggio da una finestra all'altra viene gestito dalla classe \textbf{\textit{NavigationManager}}.
 
   \subsubsection{DAO}
   \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\linewidth]{dao01.png} %TODO: mettere l'UML aggiornato
+    \includegraphics[width=1\linewidth]{DAOs.png}
     \caption{diagramma delle classi contenute nel package \textit{dao}}
     \label{fig:DAO}
   \end{figure}
@@ -361,6 +363,7 @@
   Nel nostro caso, è stato prevista una classe base astratta e generica che definisce l'implementazione di default per le operazioni CRUD di base. Nella maggior parte dei casi questa implementazione è adeguata per tutti i DAO concreti. Nei casi in cui erano necessari metodi di accesso ai dati più specifici, ad esempio filtraggio per attributi che non siano l'ID, essi sono stati implementati nel rispettivo DAO concreto.
 
   \subsubsection{State}
+  \label{sec:statePattern}
 
   \begin{figure}[H]
     \centering
@@ -378,7 +381,7 @@
 
   Quando un oggetto di tipo \textit{Context} deve mostrare un determinato comportamento, viene chiamato il metodo \textit{request()} che internamente chiama \textit{State.handle()} e delega tale responsabilità allo stato corrente dell'oggetto, di tipo \textit{ConcreteState}. Se in un qualsiasi momento avviene una transizione ad un altro \textit{ConcreteState}, il \textit{Context} aggiornerà il proprio riferimento e ciò si riflette in un cambiamento dello stato interno.
 
-  Lo state pattern si può ritrovare nelle classi rappresentanti gli \textit{Handler} all'interno del package \textit{businessLogic} (figura \ref{fig:businessLogic}). Infatti, la classe \textit{NavigationManager} può essere vista come un (\textit{Context}) il cui comportamento dipende dall'\textit{Handler} "attivo" nell'applicazione (\textit{ConcreteState}); quando c'è necessità di passare da una finestra dell'applicazione ad un'altra, l'Handler corrente chiama \textit{NavigationManager.switchToController()}, modificando lo Stack di stati contenuto nel \textit{NavigationManager} e permettendo di passare il controllo all'Handler che deve occuparsi della visualizzazione della nuova finestra.
+  Lo state pattern si può ritrovare nelle classi rappresentanti gli \textit{Handler} all'interno del package \textit{businessLogic} (figura \ref{fig:businessLogic}). Infatti, la classe \textit{NavigationManager} può essere vista come un \textit{Context} il cui comportamento dipende dall'\textit{Handler} "attivo" nell'applicazione (\textit{ConcreteState}); dettagli maggiori sull'implementazione sono presenti nella sezione \ref{sec:navManager}
 
   \subsection{Diagramma di sequenza}
 
@@ -389,7 +392,7 @@
     \label{fig:seqDiag}
   \end{figure}
 
-  Un diagramma di sequenza mostra la successione temporale delle chiamate dei metodi delle classi dell'applicazione in un determinato scenario di utilizzo. La figura \ref{fig:seqDiag} rappresenta il diagramma di sequenza relativo allo scenario in cui un utente decide di modificare una delle proprie playlist.
+  Un \textbf{diagramma di sequenza} mostra la successione temporale delle chiamate dei metodi delle classi dell'applicazione in un determinato scenario di utilizzo. La figura \ref{fig:seqDiag} rappresenta il diagramma di sequenza relativo allo scenario in cui un utente decide di modificare una delle proprie playlist.
 
 
   \section{Implementazione}
@@ -441,14 +444,30 @@
   \subsection{Business logic}
 
   \subsubsection{Handler}
-  Classe base astratta che rappresenta un handler generico.\\
-  Essa garantisce la presenza di un metodo update in ogni handler che contiene la logica di quest'ultimo.
-  \subsubsection{State}
-  Classe che permette ai vari handler di comunicare tra loro dati come
-  l'utente loggato, la canzone o la playlist selezionata
+  Classe base astratta che rappresenta un \textit{Handler} generico e corrisponde alla classe \textit{State} dello State pattern (sezione \ref{sec:statePattern}). Ha un metodo \textit{update()} per aggiornare ciò che viene visualizzato da linea di comando come finestra corrente dell'applicazione, definito all'interno delle classi derivate.
+
+  \subsubsection{Session}
+  Classe che rappresenta una sessione dell'applicazione; permette ai vari \textit{Handler} di comunicare tra loro dati come l'utente che ha effettuato l'accesso, la canzone o la playlist selezionata
+
   \subsubsection{NavigationManager}
-  Gestisce la navigazione tra le pagine passando il controllo ai vari handler.
-  \subsubsection{AlbumsHandler}
+  \label{sec:navManager}
+  Gestisce la navigazione tra le pagine passando il controllo ai vari handler; rappresenta il \textit{Context} dello State pattern (sezione \ref{sec:statePattern}). Ha uno stack di riferimenti a \textit{Handler} chiamato \textit{states}, attraverso il quale viene tenuta traccia della finestra visualizzata in un certo momento. Il metodo \textit{switchToController()} (figura \ref{fig:switchToController}) effettua un \textit{push} sullo stack dell'\textit{Handler} a cui deve essere passato il controllo. \textit{NavigationManager.switchToController()} si trova all'interno dell' \textit{update()} di ciascun \textit{Handler}, metodo che viene eseguito all'interno di un loop nella \textit{run()} del \textit{NavigationManager} (figura \ref{fig:run})
+
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{switchToController.png}
+    \caption{metodo \textit{switchToController()} di \textit{NavigationManager}}
+    \label{fig:switchToController}
+  \end{figure}
+
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{run.png}
+    \caption{metodo \textit{run()} di \textit{NavigationManager}}
+    \label{fig:run}
+  \end{figure}
+
+  \subsubsection{AlbumViewHandler}
   Permette di visualizzare o riprodurre un album.
   \subsubsection{ArtistInfoHandler}
   Mostra le informazioni salienti di un artista.
@@ -457,9 +476,20 @@
   \subsubsection{LoginHandler}
   Permette all'utente di effettuare l'accesso con un nome utente e una password o
   eventualmente passare alla schermata di registrazione.
+
   \subsubsection{PlaybackHandler}
-  Gestisce la coda di riproduzione e permette all'utente di visualizzare i
-  brani contenuti in essa.
+  Gestisce la coda di riproduzione e permette all'utente di visualizzare i brani contenuti in essa. Utilizza un \textit{thread} che viene fatto partire all'apertura della coda di riproduzione, e che si occupa della visualizzazione della \textit{progress bar} della canzone in cima alla coda.
+  In figura \ref{fig:thread} viene mostrato il metodo \textit{run()} del thread della coda di riproduzione.
+
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{threadRun.png}
+    \caption{metodo \textit{run()} del thread della coda di riproduzione}
+    \label{fig:thread}
+  \end{figure}
+
+
+
   \subsubsection{PlaylistHandler}
   Mostra all'utente i brani contenuti in una data playlist e permette ad esso di
   aggiungerla alla coda di riproduzione.
@@ -469,7 +499,7 @@
   \subsubsection{SearchHandler}
   Gestisce la ricerca all'interno delle canzoni, dei podcast e degli artisti disponibili.
   \subsubsection{SuggestionsHandler}
-  Mostra all'utente le track suggerite dall'applicazione.
+  Mostra all'utente le tracce consigliate dall'applicazione sulla base dei suoi ultimi ascolti.
   \subsubsection{UserPlaylistsHandler}
   Mostra l'elenco delle playlist create dall'utente.
 

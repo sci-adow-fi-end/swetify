@@ -142,7 +142,7 @@ public class NavigationManager {
         if (handlers.containsKey(id)) {
             states.push(handlers.get(id));
         } else {
-            throw new IllegalArgumentException("gne gne il controller non c'è");
+            throw new IllegalArgumentException("Controller not present");
         }
     }
 
